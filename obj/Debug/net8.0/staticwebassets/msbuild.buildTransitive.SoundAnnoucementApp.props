@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/SoundAnnoucementApp.props" />
+</Project>

@@ -1,0 +1,26 @@
+@page "/queue"
+@using SoundAnnoucementApp.Services
+@using Microsoft.JSInterop
+@inject QueueService QueueService
+@inject IJSRuntime JS
+
+<h3>Queue Counter</h3>
+
+<p>Number of items in queue: @QueueCount</p>
+
+<button @onclick="AddToQueue">Add Item</button>
+
+@code {
+    private int QueueCount => QueueService.Count();
+
+    private async Task AddToQueue()
+    {
+        QueueService.Enqueue("Item " + (QueueCount + 1));
+        await AnnounceQueueCount();
+    }
+
+    private async Task AnnounceQueueCount()
+    {
+        await JS.InvokeVoidAsync("audioHelper.announceNumber", QueueCount);
+    }
+}
