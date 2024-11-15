@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uyTCCgvWfpLb4fxQwi/lgteEbgfjLwlEnctsaViJ/Yo=",
+  "Hash": "edvkDFPbcbYxN0m7z1pC42rAubYvwkefmhUp3wZGAwk=",
   "Source": "SoundAnnoucementApp",
   "BasePath": "/",
   "Mode": "Root",
@@ -71,7 +71,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/dotnet.js"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/dotnet.js"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js.map",
@@ -90,15 +90,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/dotnet.js.map"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/dotnet.js.map"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.8.0.8.qh341msynt.js",
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.8.0.10.7z5jv8citr.js",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.8.qh341msynt.js",
+      "RelativePath": "_framework/dotnet.native.8.0.10.7z5jv8citr.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,7 +109,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/dotnet.native.js"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/dotnet.native.js"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.wasm",
@@ -128,15 +128,15 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/dotnet.native.wasm"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/dotnet.native.wasm"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.8.0.8.jelmtf0b89.js",
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.8.0.10.jjxunrra83.js",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.8.jelmtf0b89.js",
+      "RelativePath": "_framework/dotnet.runtime.8.0.10.jjxunrra83.js",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,7 +147,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/dotnet.runtime.js"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/dotnet.runtime.js"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.js.map",
@@ -166,7 +166,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/dotnet.runtime.js.map"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/dotnet.runtime.js.map"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_CJK.dat",
@@ -185,7 +185,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/icudt_CJK.dat"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/icudt_CJK.dat"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_EFIGS.dat",
@@ -204,7 +204,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/icudt_EFIGS.dat"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/icudt_EFIGS.dat"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_no_CJK.dat",
@@ -223,7 +223,7 @@
       "AssetTraitValue": "native",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.8/runtimes/browser-wasm/native/icudt_no_CJK.dat"
+      "OriginalItemSpec": "/Users/home/.nuget/packages/microsoft.netcore.app.runtime.mono.browser-wasm/8.0.10/runtimes/browser-wasm/native/icudt_no_CJK.dat"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/Microsoft.AspNetCore.Authorization.wasm",
@@ -3912,6 +3912,25 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Net.WebSockets.wasm"
     },
     {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/0eolidxvnr.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_EFIGS.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_EFIGS.dat"
+    },
+    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/0m0vsso6c3.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -4596,25 +4615,6 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Threading.Tasks.wasm"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/65gwxabplj.gz",
-      "SourceId": "SoundAnnoucementApp",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_EFIGS.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_EFIGS.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_EFIGS.dat"
-    },
-    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/6dxj8qolkl.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -4805,6 +4805,25 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Security.Claims.wasm"
     },
     {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/7z5jv8citr.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.8.0.10.7z5jv8citr.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.8.0.10.7z5jv8citr.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.8.0.10.7z5jv8citr.js"
+    },
+    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/85twojnxyj.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -4917,6 +4936,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Runtime.Handles.wasm"
+    },
+    {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/8xn8xyktkr.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js.map"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/9j88jd4ep9.gz",
@@ -5603,25 +5641,6 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Diagnostics.DiagnosticSource.wasm"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/elhdzpk7az.gz",
-      "SourceId": "SoundAnnoucementApp",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_no_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_no_CJK.dat"
-    },
-    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/en5q6v4dmr.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -5734,25 +5753,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Globalization.wasm"
-    },
-    {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/g8bcf3jh8q.gz",
-      "SourceId": "SoundAnnoucementApp",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.wasm.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.wasm",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.wasm"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/g8d3g0n6tb.gz",
@@ -6002,6 +6002,25 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Data.wasm"
     },
     {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/hvm0nyzzqv.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.native.wasm.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.wasm",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.wasm"
+    },
+    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/i18lx7xmwj.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -6059,23 +6078,23 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Reflection.TypeExtensions.wasm"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/jelmtf0b89.gz",
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/jjxunrra83.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
       "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.8.0.8.jelmtf0b89.js.gz",
+      "RelativePath": "_framework/dotnet.runtime.8.0.10.jjxunrra83.js.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
       "AssetMergeBehavior": "",
       "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.8.0.8.jelmtf0b89.js",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.8.0.10.jjxunrra83.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.8.0.8.jelmtf0b89.js"
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.8.0.10.jjxunrra83.js"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/juzg6m476a.gz",
@@ -6152,25 +6171,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Private.DataContractSerialization.wasm"
-    },
-    {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/kdzc0jhw0l.gz",
-      "SourceId": "SoundAnnoucementApp",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js.map"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/kke19lp3tr.gz",
@@ -6304,6 +6304,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Reflection.Emit.ILGeneration.wasm"
+    },
+    {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/ltqwd8jf8a.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.js.map",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.js.map"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/mdkul3iw07.gz",
@@ -6781,25 +6800,6 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Diagnostics.Tools.wasm"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/qh341msynt.gz",
-      "SourceId": "SoundAnnoucementApp",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.native.8.0.8.qh341msynt.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.8.0.8.qh341msynt.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.native.8.0.8.qh341msynt.js"
-    },
-    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/qm3q40mzrd.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -7161,25 +7161,6 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Text.Encodings.Web.wasm"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/tekmk975py.gz",
-      "SourceId": "SoundAnnoucementApp",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/icudt_CJK.dat.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_CJK.dat",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_CJK.dat"
-    },
-    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/tiwrbuj9os.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -7389,6 +7370,25 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Threading.ThreadPool.wasm"
     },
     {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/v2pe1c5aou.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_no_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_no_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_no_CJK.dat"
+    },
+    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/vcq150znsz.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -7522,25 +7522,6 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/Microsoft.Extensions.Configuration.wasm"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/x6ygew0qxe.gz",
-      "SourceId": "SoundAnnoucementApp",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.js.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js"
-    },
-    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/x7jogr6fuf.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -7558,6 +7539,25 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Reflection.Metadata.wasm"
+    },
+    {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/xauopdpi1w.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/icudt_CJK.dat.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_CJK.dat",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/icudt_CJK.dat"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/xgyaxkkst3.gz",
@@ -7674,6 +7674,25 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Collections.Specialized.wasm"
     },
     {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/yx8b9w0pbc.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Computed",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "_framework/dotnet.js.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.js"
+    },
+    {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/yybwcmo9p2.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -7691,25 +7710,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/System.Private.CoreLib.wasm"
-    },
-    {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/zawb2pidui.gz",
-      "SourceId": "SoundAnnoucementApp",
-      "SourceType": "Computed",
-      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/",
-      "BasePath": "/",
-      "RelativePath": "_framework/dotnet.runtime.js.map.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.js.map",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/dotnet.runtime.js.map"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/zg5lmuv77n.gz",
@@ -7938,6 +7938,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/index.html"
+    },
+    {
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/usb.js",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/",
+      "BasePath": "/",
+      "RelativePath": "js/usb.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/usb.js"
     },
     {
       "Identity": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/sample-data/weather.json",

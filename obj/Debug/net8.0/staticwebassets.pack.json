@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets/index.html"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/usb.js",
+      "PackagePath": "staticwebassets/js/usb.js"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/sample-data/weather.json",
       "PackagePath": "staticwebassets/sample-data/weather.json"
     },

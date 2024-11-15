@@ -1,15 +1,15 @@
 {
   "mainAssemblyName": "SoundAnnoucementApp",
   "resources": {
-    "hash": "sha256-MOjEsdg1fCEqZ0/OWp1+pE1zKmjdlZedBCuR0Y5k0aI=",
+    "hash": "sha256-Cx568BZ6gz58gQ76SZtFUtHsnsuaVh5CuEwO87UqV34=",
     "jsModuleNative": {
-      "dotnet.native.8.0.8.qh341msynt.js": "sha256-juC5sA7gHTLXFEhAKgdM2/RavswpwCtDfjYGsAz2FXg="
+      "dotnet.native.8.0.10.7z5jv8citr.js": "sha256-QVxMlY7ohmjgde/bZMA0dlWDAeuUP+tEfkiSdg4DFcE="
     },
     "jsModuleRuntime": {
-      "dotnet.runtime.8.0.8.jelmtf0b89.js": "sha256-0Dpj/NkVD5WqSC16ZvJLmlc38iv9+Je+umYBVOycPVU="
+      "dotnet.runtime.8.0.10.jjxunrra83.js": "sha256-FjrgL9dY6dc2yUoXDWowSfachSgM8O29qUMWDQOJKRI="
     },
     "wasmNative": {
-      "dotnet.native.wasm": "sha256-OcUTcd7qQceenWEF93409WZcaXp2qQbEyhdchog4RUE="
+      "dotnet.native.wasm": "sha256-4ymhDbG5daKbi9yL1L574jRRiFFQhiOrDJU5YAYALU4="
     },
     "icu": {
       "icudt_CJK.dat": "sha256-SZLtQnRc0JkwqHab0VUVP7T3uBPSeYzxzDnpxPpUnHk=",
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-Gz8PyW2/fwihe5ul81OwmRUrU71r+KtbyRw6xlOGD+Q=",
       "netstandard.wasm": "sha256-jMTqIQzoDS810lyhZpMO5eEC36EzntXqSVn+2qwkOMQ=",
       "System.Private.CoreLib.wasm": "sha256-NFj5WE5VLP2LptZIRJCUIc1AMk06FmxpsSILfPISwAw=",
-      "SoundAnnoucementApp.wasm": "sha256-Wx/j0zgjkk1XVP+/8cqnkKv7AM2uFj1ZxRPIbLUvS/c="
+      "SoundAnnoucementApp.wasm": "sha256-jPUgkVQi7OQeswRdkQ/dh8r/7gV0cmNY3G/7Lbiwbwg="
     },
     "pdb": {
-      "SoundAnnoucementApp.pdb": "sha256-hqzrp05neP3cmjbnECYSgYm56I92XFuQ5CzzfH66PYk="
+      "SoundAnnoucementApp.pdb": "sha256-ba5mG3us9wRAmGni2GAw8s8gyaeJbJvWAufHZO31Jg4="
     }
   },
   "cacheBootResources": true,
