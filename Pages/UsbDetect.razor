@@ -1,0 +1,43 @@
+@page "/usb-detect"
+@using Microsoft.JSInterop
+@inject IJSRuntime JS
+
+<h3>USB Device Detection</h3>
+
+<button @onclick="RequestDevice">Request USB Device</button>
+<ul>
+    @foreach (var device in devices)
+    {
+        <li>@device.DeviceName - @device.DeviceManufacturer</li>
+    }
+</ul>
+
+@code {
+    private List<USBDeviceInfo> devices = new List<USBDeviceInfo>();
+
+    public class USBDeviceInfo
+    {
+        public string DeviceName { get; set; }
+        public string DeviceManufacturer { get; set; }
+        public string DeviceVendorId { get; set; }
+        public string DeviceProductId { get; set; }
+    }
+
+    private async Task RequestDevice()
+    {
+        try
+        {
+            var device = await JS.InvokeAsync<USBDeviceInfo>("requestUSBDevice");
+            if (device != null)
+            {
+                devices.Add(device);
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine("Error detecting USB device: " + ex.Message);
+        }
+    }
+
+}

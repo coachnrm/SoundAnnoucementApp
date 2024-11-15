@@ -13,43 +13,47 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = SoundAnnoucementApp
 build_property.RootNamespace = SoundAnnoucementApp
-build_property.ProjectDir = /Users/home/Desktop/SoundAnnoucementApp/
+build_property.ProjectDir = D:\SoundAnnoucementApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/home/Desktop/SoundAnnoucementApp
+build_property.MSBuildProjectDirectory = D:\SoundAnnoucementApp
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/home/Desktop/SoundAnnoucementApp/App.razor]
+[D:/SoundAnnoucementApp/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/home/Desktop/SoundAnnoucementApp/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+[D:/SoundAnnoucementApp/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/home/Desktop/SoundAnnoucementApp/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+[D:/SoundAnnoucementApp/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/home/Desktop/SoundAnnoucementApp/Pages/QueueCounter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVldWVDb3VudGVyLnJhem9y
+[D:/SoundAnnoucementApp/Pages/QueueCounter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/home/Desktop/SoundAnnoucementApp/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2VhdGhlci5yYXpvcg==
+[D:/SoundAnnoucementApp/Pages/UsbDetect.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNiRGV0ZWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/home/Desktop/SoundAnnoucementApp/_Imports.razor]
+[D:/SoundAnnoucementApp/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/home/Desktop/SoundAnnoucementApp/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L01haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-5dammzdwpc
+[D:/SoundAnnoucementApp/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-eaitrgb9r4
 
-[/Users/home/Desktop/SoundAnnoucementApp/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L05hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-l72vqjlho6
+[D:/SoundAnnoucementApp/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-pdnfuziggc

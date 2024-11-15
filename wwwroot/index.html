@@ -26,8 +26,25 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+    <script>
+        if ("usb" in navigator) {
+            navigator.usb.addEventListener("connect", (event) => {
+                console.log("USB device inserted:", event.device);
+                DotNet.invokeMethodAsync("SoundAnnoucementApp", "OnUsbDeviceConnected")
+                    .then(() => {
+                        console.log("Blazor method invoked after USB connection.");
+                    })
+                    .catch(err => console.error("Error invoking Blazor method:", err));
+            });
+            navigator.usb.addEventListener('disconnect', (event) => {
+                console.log("USB device disconnected:", event.device);
+                DotNet.invokeMethodAsync("SoundAnnoucementApp", "OnUsbDeviceDisconnected");
+            });
+        }
+    </script>
     <script src="_framework/blazor.webassembly.js"></script>
     <script src="/audio.js"></script>
+    <script src="js/usb.js"></script>
 </body>
 
 </html>

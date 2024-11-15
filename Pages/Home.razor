@@ -1,7 +1,44 @@
 ﻿@page "/"
+@inject NavigationManager uriHelper;
 
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
+<input @bind="inputText" @oninput="OnInputChanged" />
 
 Welcome to your new app.
+
+@* @code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var timer = new Timer(new TimerCallback(_ =>
+            {
+                uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+            }), null, 5000, 5000);
+        }
+    }
+} *@
+
+@code {
+    private string inputText = string.Empty;
+    private Timer? typingTimer;
+
+    // Timer delay time in milliseconds
+    private const int delayMilliseconds = 5000; // 5 seconds delay
+
+    // This method is called whenever the user types in the input field
+    private void OnInputChanged(ChangeEventArgs e)
+    {
+        // Clear any existing timer to reset the delay
+        typingTimer?.Dispose();
+
+        // Start a new timer for the next 5 seconds
+        typingTimer = new Timer(new TimerCallback((state) =>
+        {
+            // Refresh the page after the delay
+            uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+        }), null, delayMilliseconds, Timeout.Infinite);
+    }
+}
