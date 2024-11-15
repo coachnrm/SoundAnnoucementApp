@@ -45,14 +45,6 @@
       "PackagePath": "staticwebassets\\js\\usb.js"
     },
     {
-      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\usbDetection.js",
-      "PackagePath": "staticwebassets\\js\\usbDetection.js"
-    },
-    {
-      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\usbInterop.js",
-      "PackagePath": "staticwebassets\\js\\usbInterop.js"
-    },
-    {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
