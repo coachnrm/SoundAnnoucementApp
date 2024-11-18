@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "SoundAnnoucementApp",
   "resources": {
-    "hash": "sha256-Cx568BZ6gz58gQ76SZtFUtHsnsuaVh5CuEwO87UqV34=",
+    "hash": "sha256-BqS4AaAXfo850DQlp+bJfe5Ls6TZErVTBOJ9Qw9Rheo=",
     "jsModuleNative": {
       "dotnet.native.8.0.10.7z5jv8citr.js": "sha256-QVxMlY7ohmjgde/bZMA0dlWDAeuUP+tEfkiSdg4DFcE="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-Gz8PyW2/fwihe5ul81OwmRUrU71r+KtbyRw6xlOGD+Q=",
       "netstandard.wasm": "sha256-jMTqIQzoDS810lyhZpMO5eEC36EzntXqSVn+2qwkOMQ=",
       "System.Private.CoreLib.wasm": "sha256-NFj5WE5VLP2LptZIRJCUIc1AMk06FmxpsSILfPISwAw=",
-      "SoundAnnoucementApp.wasm": "sha256-jPUgkVQi7OQeswRdkQ/dh8r/7gV0cmNY3G/7Lbiwbwg="
+      "SoundAnnoucementApp.wasm": "sha256-wSnMJxT1FYMXOn81ARDzPnwbJ/9mpkBQpllc4o4Uavk="
     },
     "pdb": {
-      "SoundAnnoucementApp.pdb": "sha256-ba5mG3us9wRAmGni2GAw8s8gyaeJbJvWAufHZO31Jg4="
+      "SoundAnnoucementApp.pdb": "sha256-BMlTbMbuH+nfZkciTXr4lJeKRNNwp6lfWnVNQeDELTQ="
     }
   },
   "cacheBootResources": true,
