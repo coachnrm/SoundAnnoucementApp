@@ -1,0 +1,34 @@
+@page "/print"
+@using Microsoft.JSInterop
+@using System.Text.Json;
+@inject IJSRuntime JS
+
+<button @onclick="GeneratePdf">Print</button>
+
+
+@code {
+    // Define the title and content
+        private string title = "Claim Id xxxxxxxxxx";
+        private string content = "QN xxxx";
+        private List<Person> persons = new List<Person>
+        {
+            new Person { FirstName = "สมชาย", LastName = "แข็งแรง" },
+            new Person { FirstName = "สมหญิง", LastName = "รักเรียน" },
+            new Person { FirstName = "สมควร", LastName = "ทำตาม" }
+        };
+     
+     private async Task GeneratePdf()
+    {
+        // Serialize the persons list into JSON
+        var personsJson = JsonSerializer.Serialize(persons);
+
+        // Call JavaScript function to generate the PDF with custom font
+        await JS.InvokeVoidAsync("generatePdfWithFont", title, content, personsJson);
+    }
+
+    public class Person
+    {
+        public string FirstName {get; set;}
+        public string LastName {get; set;}
+    }
+}

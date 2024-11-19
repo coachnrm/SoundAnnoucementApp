@@ -34,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/Print.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJpbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/QueueCounter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVldWVDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

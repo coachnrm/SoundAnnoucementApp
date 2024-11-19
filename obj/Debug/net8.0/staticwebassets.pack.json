@@ -29,8 +29,16 @@
       "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css.map"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/css/print.css",
+      "PackagePath": "staticwebassets/css/print.css"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/favicon.png",
       "PackagePath": "staticwebassets/favicon.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/fonts/NotoSans-Regular.ttf",
+      "PackagePath": "staticwebassets/fonts/NotoSans-Regular.ttf"
     },
     {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/icon-192.png",
@@ -39,6 +47,10 @@
     {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/print.js",
+      "PackagePath": "staticwebassets/js/print.js"
     },
     {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/usb.js",
