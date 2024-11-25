@@ -1,6 +1,7 @@
 @page "/queue"
 @using SoundAnnoucementApp.Services
 @using Microsoft.JSInterop
+@using SoundAnnoucementApp.Models
 @inject QueueService QueueService
 @inject IJSRuntime JS
 
@@ -8,9 +9,31 @@
 
 <p>Number of items in queue: @QueueCount</p>
 
+<p>
+    <label for="nameInput">ชื่อนามสกุลคนไข้:</label>
+    <InputText id="nameInput" @bind-Value="userName" />
+</p>
+<p>
+    <label for="noNameInput">ช่องซักประวัติ:</label>
+    <InputText id="noNameInput" @bind-Value="noName" />
+</p>
+
 <button @onclick="AddToQueue">Add Item</button>
 
-@code {
+<ul>
+    @foreach (var person in people)
+    {
+       <li>
+            <InputCheckbox 
+                @bind-Value="person.IsSelected"
+                @onclick="() => SelectPerson(person)" /> 
+            @person.FirstName @person.LastName
+        </li>
+    }
+</ul>
+
+@* @code {
+    private string userName = string.Empty;
     private int QueueCount => QueueService.Count();
 
     private async Task AddToQueue()
@@ -22,5 +45,52 @@
     private async Task AnnounceQueueCount()
     {
         await JS.InvokeVoidAsync("audioHelper.announceNumber", QueueCount);
+    } 
+
+} *@
+
+@code {
+    private string userName = string.Empty;
+    private string noName = string.Empty;
+    private int QueueCount => QueueService.Count();
+
+    private async Task AddToQueue()
+    {
+        // Enqueue the entered username
+        QueueService.Enqueue(userName);  
+        // Announce the queue number and username
+        await AnnounceQueue(QueueCount, userName, noName);
     }
+
+    private async Task AnnounceQueue(int queueNumber, string name, string channel)
+    {
+        // Call the JS function with both the queue number and the username
+        await JS.InvokeVoidAsync("audioHelper.announceQueue", queueNumber, name, channel);
+    }
+
+     // Method to update the userName based on selected person and ensure only one checkbox is selected
+    private void SelectPerson(Person selectedPerson)
+    {
+        // Uncheck all checkboxes first
+        foreach (var person in people)
+        {
+            person.IsSelected = false;
+        }
+
+        // Then, check the selected person
+        selectedPerson.IsSelected = true;
+
+        // Update the userName based on the selected person's first and last name
+        userName = $"{selectedPerson.FirstName} {selectedPerson.LastName}";
+    }
+
+    // Create a list of 5 persons with dummy data
+    private List<Person> people = new List<Person>
+    {
+        new Person { FirstName = "สมชาย", LastName = "แข็งแรง" },
+        new Person { FirstName = "สมหญิง", LastName = "ใจดี" },
+        new Person { FirstName = "สมควร", LastName = "ทำดี" },
+        new Person { FirstName = "สมทรง", LastName = "รักโลก" },
+        new Person { FirstName = "สมใจ", LastName = "ปรารถนา" }
+    };
 }

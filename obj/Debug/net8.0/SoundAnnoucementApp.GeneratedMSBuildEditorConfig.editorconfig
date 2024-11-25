@@ -34,8 +34,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoundAnnoucementApp/Pages/Print.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoundAnnoucementApp/Pages/QueueCounter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/RichTextBox.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmljaFRleHRCb3gucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoundAnnoucementApp/Pages/UsbDetect.razor]

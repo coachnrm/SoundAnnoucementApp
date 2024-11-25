@@ -4,7 +4,9 @@
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
+<p>@displayText</p>
 <input @bind="inputText" @oninput="OnInputChanged" />
+<button @onclick="ShowText">Click Me</button>
 
 Welcome to your new app.
 
@@ -23,6 +25,7 @@ Welcome to your new app.
 
 @code {
     private string inputText = string.Empty;
+    private string displayText = "";
     private Timer? typingTimer;
 
     // Timer delay time in milliseconds
@@ -41,4 +44,15 @@ Welcome to your new app.
             uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
         }), null, delayMilliseconds, Timeout.Infinite);
     }
+
+    private void ShowText()
+    {
+        displayText = "Hello, Blazor!";
+        var timer = new Timer(new TimerCallback(_ =>
+            {
+                uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true); // Full page reload
+            }), null, 5000, 5000); // Timer with a 5-second delay
+    }
+
+
 }

@@ -1,0 +1,59 @@
+@page "/quill-editor"
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+<h3>Quill Editor Example</h3>
+
+<div id="quill-editor-container" style="height: 400px;"></div>
+
+<button @onclick="GetEditorContent">Get Content (HTML)</button>
+<button @onclick="GetEditorText">Get Text</button>
+<button @onclick="GetPlainText">Get PlainText</button>
+<button @onclick="SetEditorContent">Set Content</button>
+
+<p><strong>Editor Content:</strong></p>
+<pre>@editorContent</pre>
+<pre>@trimmedText</pre>
+<pre>@modifiedText</pre>
+
+@code {
+    private string rtfText = "014-95-00  Medication counseling                                                         \r\nADR-Pharmacist note  (ADR)   \r\nวันที่ 1/10/67\r\nS+O ผู้ป่วยเริ่มใช้ยา Allopurinol 100 mg. 30/5/67 และ เริ่มใช้ยา Imatinib 100 mg. 10/6/67 เมื่อ2สัปดาห์ก่อนจนถึง\r\nปัจจุบัน มีอาการ ผื่นขึ้นทั่วตัว ลักษณะคล้าย MP Rash คัน ผิวหนังลอก ปากลอกและเจ็บ อวัยวะเพศลอกและเจ็บ หน้าบวม โดย\r\nเมื่อวันที่ 10/9/67 ได้รับยา loratadine 10mg. และ 0.1% TA Milk เพื่อบรรเทาอาการคัน \r\nA ทบทวนประวัติยาที่ใช้กับผู้ป่วย \r\nโดยผู้ป่วยใช้ยา Allopurinol 30/5/67-30/9/67 \r\nและ Imatinib 10/6/67-30/9/67\r\nP  แนะนำหากสงสัยว่ามีอาการแพ้ยาอีกให้รีบมาโรงพยาบาล และ ส่งตรวจยีนแพ้ยา Allopurinol HLAB*5801, \r\nCBC,LFT,BUN,Scr\r\nนศภ.กฤตภาส/ภญ.ธนภร\r\n";
+    private string trimmedText;
+    private string modifiedText;
+    private string editorContent;
+
+    // Initialize the Quill editor when the component is loaded
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Initialize Quill editor with the container div
+            await JSRuntime.InvokeVoidAsync("BlazorQuill.init", "#quill-editor-container");
+        }
+    }
+
+    // Method to get HTML content from the Quill editor
+    private async Task GetEditorContent()
+    {
+        editorContent = await JSRuntime.InvokeAsync<string>("BlazorQuill.getContent");
+    }
+
+    // Method to get plain text content from the Quill editor
+    private async Task GetEditorText()
+    {
+        editorContent = await JSRuntime.InvokeAsync<string>("BlazorQuill.getText");
+    }
+
+     private async Task GetPlainText()
+    {
+        trimmedText = rtfText.Replace("\r\n", "").Trim();
+        modifiedText = System.Text.RegularExpressions.Regex.Replace(trimmedText, @"\s{2,}", "\n");
+    }
+
+    // Method to set content in the Quill editor
+    private async Task SetEditorContent()
+    {
+        string content = "<p>This is <b>HTML</b> content</p>";
+        await JSRuntime.InvokeVoidAsync("BlazorQuill.setContent", content);
+    }
+}

@@ -1,0 +1,32 @@
+@media print {
+    @page {
+        size: 80mm 60mm; /* Fixed size: A4, Letter, or custom sizes */
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Border for the printable content */
+    .content-to-print-wrapper {
+        width: 100%;
+        height: 100%;
+        padding: 10mm;  /* Adjust padding to give a margin inside the border */
+        border: 1px solid black;  /* Show border of the page */
+        box-sizing: border-box;
+    }
+
+    /* Hide elements you don't want to print */
+    #printButton, header, footer {
+        display: none;
+    }
+
+    .content-to-print {
+        width: 100%;
+        height: 100%;
+        page-break-before: always;
+    }
+}

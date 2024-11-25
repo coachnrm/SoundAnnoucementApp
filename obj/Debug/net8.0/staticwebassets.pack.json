@@ -29,8 +29,16 @@
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\print.css",
+      "PackagePath": "staticwebassets\\css\\print.css"
+    },
+    {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\fonts\\NotoSans-Regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\NotoSans-Regular.ttf"
     },
     {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\icon-192.png",
@@ -39,6 +47,18 @@
     {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\BlazorQuill.js",
+      "PackagePath": "staticwebassets\\js\\BlazorQuill.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\print.js",
+      "PackagePath": "staticwebassets\\js\\print.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\rtfConvert.js",
+      "PackagePath": "staticwebassets\\js\\rtfConvert.js"
     },
     {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\usb.js",
