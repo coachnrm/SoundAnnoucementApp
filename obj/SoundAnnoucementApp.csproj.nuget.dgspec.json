@@ -1,32 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj": {}
+    "/Users/home/Desktop/SoundAnnoucementApp/SoundAnnoucementApp.csproj": {}
   },
   "projects": {
-    "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj": {
+    "/Users/home/Desktop/SoundAnnoucementApp/SoundAnnoucementApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
+        "projectUniqueName": "/Users/home/Desktop/SoundAnnoucementApp/SoundAnnoucementApp.csproj",
         "projectName": "SoundAnnoucementApp",
-        "projectPath": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "D:\\SoundAnnoucementApp\\obj\\",
+        "projectPath": "/Users/home/Desktop/SoundAnnoucementApp/SoundAnnoucementApp.csproj",
+        "packagesPath": "/Users/home/.nuget/packages/",
+        "outputPath": "/Users/home/Desktop/SoundAnnoucementApp/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/home/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +38,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -62,13 +57,13 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.10, )",
+              "version": "[8.0.11, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.10, )",
+              "version": "[9.0.0, )",
               "autoReferenced": true
             }
           },
@@ -85,8 +80,16 @@
           "warn": true,
           "downloadDependencies": [
             {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.11, 8.0.11]"
+            },
+            {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[8.0.10, 8.0.10]"
+              "version": "[8.0.11, 8.0.11]"
             }
           ],
           "frameworkReferences": {
@@ -94,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

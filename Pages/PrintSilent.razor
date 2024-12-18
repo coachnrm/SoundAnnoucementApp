@@ -1,0 +1,17 @@
+@page "/silent"
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+<h3>Print Receipt</h3>
+
+<!-- Button to trigger the print -->
+<button @onclick="PrintReceipt">Print Receipt</button>
+
+
+@code {
+    // C# code in Blazor
+    public async Task PrintReceipt()
+    {
+        await JSRuntime.InvokeVoidAsync("printReceipt");
+    }
+}

@@ -5,6 +5,8 @@
 
 <button @onclick="GeneratePdf">Print</button>
 
+<canvas id="graphCanvas" width="400" height="200" style="display: none;"></canvas>
+
 
 @code {
     // Define the title and content
@@ -24,6 +26,15 @@
 
         // Call JavaScript function to generate the PDF with custom font
         await JS.InvokeVoidAsync("generatePdfWithFont", title, content, personsJson);
+    }
+
+    private async Task GeneratePdfWithGraph()
+    {
+        // Serialize the persons list into JSON
+        var personsJson = JsonSerializer.Serialize(persons);
+
+        // Call JavaScript function to generate the PDF with custom font
+        await JS.InvokeVoidAsync("generatePdfWithGraph", title, content, personsJson);
     }
 
     public class Person
