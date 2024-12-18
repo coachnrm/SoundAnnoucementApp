@@ -152,3 +152,33 @@ function arrayBufferToBase64(buffer) {
     return window.btoa(binary);
 }
 
+window.renderChart = () => {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const config = {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [
+                {
+                    label: 'Dataset 1',
+                    data: [65, 59, 80, 81, 56, 55],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart',
+                },
+            },
+        },
+    };
+    new Chart(ctx, config);
+};

@@ -4,8 +4,8 @@
 @inject IJSRuntime JS
 
 <button @onclick="GeneratePdf">Print</button>
-
-<canvas id="graphCanvas" width="400" height="200" style="display: none;"></canvas>
+<!-- Canvas for the Chart -->
+<canvas id="myChart" width="400" height="200"></canvas>
 
 
 @code {
@@ -19,6 +19,15 @@
             new Person { FirstName = "สมควร", LastName = "ทำตาม" }
         };
      
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Call JavaScript to render the chart
+            await JS.InvokeVoidAsync("renderChart");
+        }
+    }
+
      private async Task GeneratePdf()
     {
         // Serialize the persons list into JSON

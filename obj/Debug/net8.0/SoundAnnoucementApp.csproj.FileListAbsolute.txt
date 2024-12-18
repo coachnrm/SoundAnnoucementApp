@@ -2066,6 +2066,6 @@ D:/SoundAnnoucementApp/obj/Debug/net8.0/SoundAnn.4AA48039.Up2Date
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/c3f552aj2h-oyz0vx2fzb.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/staticwebassets.build.endpoints.json
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/staticwebassets/msbuild.SoundAnnoucementApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/o7e8pc3128-jf5c54b3ir.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/sw1u7n1mgo-18okztsuf6.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/2wducpxqk8-ina7vnjz0n.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/o7e8pc3128-z44xb7svxo.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/sw1u7n1mgo-im2o1x1mxl.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/compressed/2wducpxqk8-673ww63791.gz
