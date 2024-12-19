@@ -8,7 +8,7 @@
 
 window.audioHelper = {
     announceQueue: function (number, name, channel) {
-        const utterance = new SpeechSynthesisUtterance(`ขอเชิญคิวซักประวัติที่ ${number} คุณ${name} ที่${channel} ค่ะ`);
+        const utterance = new SpeechSynthesisUtterance(`ขอเชิญคิวซักประวัติที่${number} คุณ${name} ที่ช่องซักประวัติที่${channel}ครับ`);
         utterance.lang = 'th-TH'; // Set the language to Thai
         window.speechSynthesis.speak(utterance);
     }

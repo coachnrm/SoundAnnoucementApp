@@ -1,91 +1,91 @@
 {
   "Files": [
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net8.0/wwwroot/_framework/blazor.webassembly.js",
-      "PackagePath": "staticwebassets/_framework/blazor.webassembly.js"
+      "Id": "D:\\SoundAnnoucementApp\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net8.0/scopedcss/bundle/SoundAnnoucementApp.styles.css",
-      "PackagePath": "staticwebassets/SoundAnnoucementApp.styles.css"
+      "Id": "D:\\SoundAnnoucementApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
+      "PackagePath": "staticwebassets\\SoundAnnoucementApp.styles.css"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio.js",
-      "PackagePath": "staticwebassets/audio.js"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio.js",
+      "PackagePath": "staticwebassets\\audio.js"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/css/app.css",
-      "PackagePath": "staticwebassets/css/app.css"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/css/bootstrap/bootstrap.min.css",
-      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/css/bootstrap/bootstrap.min.css.map",
-      "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css.map"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/css/print.css",
-      "PackagePath": "staticwebassets/css/print.css"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\print.css",
+      "PackagePath": "staticwebassets\\css\\print.css"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/favicon.png",
-      "PackagePath": "staticwebassets/favicon.png"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/fonts/NotoSans-Regular.ttf",
-      "PackagePath": "staticwebassets/fonts/NotoSans-Regular.ttf"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\fonts\\NotoSans-Regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\NotoSans-Regular.ttf"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/icon-192.png",
-      "PackagePath": "staticwebassets/icon-192.png"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/index.html",
-      "PackagePath": "staticwebassets/index.html"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/BlazorQuill.js",
-      "PackagePath": "staticwebassets/js/BlazorQuill.js"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\BlazorQuill.js",
+      "PackagePath": "staticwebassets\\js\\BlazorQuill.js"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/print.js",
-      "PackagePath": "staticwebassets/js/print.js"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\print.js",
+      "PackagePath": "staticwebassets\\js\\print.js"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/printsilent.js",
-      "PackagePath": "staticwebassets/js/printsilent.js"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\printsilent.js",
+      "PackagePath": "staticwebassets\\js\\printsilent.js"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/rtfConvert.js",
-      "PackagePath": "staticwebassets/js/rtfConvert.js"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\rtfConvert.js",
+      "PackagePath": "staticwebassets\\js\\rtfConvert.js"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/usb.js",
-      "PackagePath": "staticwebassets/js/usb.js"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\usb.js",
+      "PackagePath": "staticwebassets\\js\\usb.js"
     },
     {
-      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/sample-data/weather.json",
-      "PackagePath": "staticwebassets/sample-data/weather.json"
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.SoundAnnoucementApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SoundAnnoucementApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.SoundAnnoucementApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SoundAnnoucementApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.SoundAnnoucementApp.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SoundAnnoucementApp.props",
       "PackagePath": "build\\SoundAnnoucementApp.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.SoundAnnoucementApp.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SoundAnnoucementApp.props",
       "PackagePath": "buildMultiTargeting\\SoundAnnoucementApp.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.SoundAnnoucementApp.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SoundAnnoucementApp.props",
       "PackagePath": "buildTransitive\\SoundAnnoucementApp.props"
     }
   ],
