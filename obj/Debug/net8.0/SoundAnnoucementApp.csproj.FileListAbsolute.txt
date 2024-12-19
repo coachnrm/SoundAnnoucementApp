@@ -2883,9 +2883,6 @@ D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\p7fwr57xv6-tjcz0u77k5.gz
 D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\3k45rscf1h-tptq2av103.gz
 D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\k53l4uc43m-lfu7j35m59.gz
 D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\c3f552aj2h-oyz0vx2fzb.gz
-D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\o7e8pc3128-gex1ivt4b4.gz
-D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\sw1u7n1mgo-lb6g4e5os8.gz
-D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\2wducpxqk8-puxgfsl156.gz
 D:\SoundAnnoucementApp\obj\Debug\net8.0\staticwebassets.build.json
 D:\SoundAnnoucementApp\obj\Debug\net8.0\staticwebassets.development.json
 D:\SoundAnnoucementApp\obj\Debug\net8.0\staticwebassets.build.endpoints.json
@@ -2900,3 +2897,6 @@ D:\SoundAnnoucementApp\obj\Debug\net8.0\SoundAnnoucementApp.dll
 D:\SoundAnnoucementApp\obj\Debug\net8.0\refint\SoundAnnoucementApp.dll
 D:\SoundAnnoucementApp\obj\Debug\net8.0\SoundAnnoucementApp.pdb
 D:\SoundAnnoucementApp\obj\Debug\net8.0\ref\SoundAnnoucementApp.dll
+D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\o7e8pc3128-3y2nmwokqs.gz
+D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\sw1u7n1mgo-shemj0xq4x.gz
+D:\SoundAnnoucementApp\obj\Debug\net8.0\compressed\2wducpxqk8-d124xo5nap.gz
