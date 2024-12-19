@@ -192,8 +192,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>t8hn1x6ou2</Fingerprint>
-      <Integrity>Ddzf8VG65NpNdTnlBDz8pwU0yie6WmrL7acQEyN89H4=</Integrity>
+      <Fingerprint>popdi1dxea</Fingerprint>
+      <Integrity>tzauKkMrCDrua9rcBvh7ivQNsTcA2xHa22KqiW9wWKQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\print.js'))</OriginalItemSpec>
@@ -228,8 +228,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>jh837vymlo</Fingerprint>
-      <Integrity>tzBeanXn+OcPwZ1/pgHD7X0SfVZp0F+d5vxHcmzb10c=</Integrity>
+      <Fingerprint>a5yp1nudp1</Fingerprint>
+      <Integrity>HvZa8Rbm3qcE43nDIwteF29xU6I0rRIKzaN3XRp7ITg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\rtfConvert.js'))</OriginalItemSpec>

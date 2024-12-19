@@ -4,6 +4,7 @@
 @inject IJSRuntime JS
 
 <button @onclick="GeneratePdf">Print</button>
+<button @onclick="PrintPdf">Print PDF</button>
 <!-- Canvas for the Chart -->
 <canvas id="myChart" width="400" height="200"></canvas>
 
@@ -44,6 +45,11 @@
 
         // Call JavaScript function to generate the PDF with custom font
         await JS.InvokeVoidAsync("generatePdfWithGraph", title, content, personsJson);
+    }
+
+    private async Task PrintPdf()
+    {
+        await JS.InvokeVoidAsync("generateAndPrintPDF");
     }
 
     public class Person
