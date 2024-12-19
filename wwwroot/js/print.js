@@ -134,11 +134,25 @@ window.generatePdfWithFont = (title, content, personsJson) => {
                 document.body.removeChild(canvas); // Clean up the canvas from DOM
 
                 // Save the generated PDF
-                doc.save('generated_with_chart.pdf');
+                //doc.save('generated_with_chart.pdf');
+                // Preview the PDF instead of saving it
+                previewPdf(doc);
             }, 1000); // Allow chart to render (adjust if needed)
         })
         .catch(error => console.error('Error loading font:', error));
 };
+
+// Function to preview PDF
+function previewPdf(doc) {
+    // Get the PDF as a Blob
+    const pdfBlob = doc.output('blob');
+
+    // Create a Blob URL for the PDF
+    const blobUrl = URL.createObjectURL(pdfBlob);
+    // Open the Blob URL in a new tab for preview
+    const newWindow = window.open(blobUrl, '_blank');
+}
+
 
 
 // Helper function to convert array buffer to base64
@@ -182,34 +196,3 @@ window.renderChart = () => {
     };
     new Chart(ctx, config);
 };
-
-async function generateAndPrintPDF() {
-    // Load jsPDF
-    const { jsPDF } = window.jspdf;
-
-    // Create a new jsPDF instance
-    const doc = new jsPDF();
-
-    // Add content to the PDF
-    doc.text("Hello, this is a test PDF for auto-printing.", 10, 10);
-
-    // Generate the PDF as a Blob URL
-    const pdfBlob = doc.output("blob");
-    const pdfURL = URL.createObjectURL(pdfBlob);
-
-    // Create an invisible iframe
-    const iframe = document.createElement("iframe");
-    iframe.style.visibility = "hidden";
-    iframe.src = pdfURL;
-
-    // Append the iframe to the document
-    document.body.appendChild(iframe);
-
-    // Wait for the iframe to load and then print
-    iframe.onload = () => {
-        iframe.contentWindow.print();
-        
-        // Optional: Remove the iframe after printing
-        setTimeout(() => document.body.removeChild(iframe), 1000);
-    };
-}
