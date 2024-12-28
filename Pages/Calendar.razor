@@ -1,0 +1,157 @@
+﻿@page "/calendar"
+@using SoundAnnoucementApp.Models
+@using System.Globalization
+
+<h1>ปฏิทินกิจกรรม</h1>
+
+<div>
+    <label>Year:</label>
+    <select @onchange="LoadYear">
+        @foreach (int year in years)
+        {
+            <option value="@year" selected="@(year == selectedYear)">@year</option>
+        }
+    </select>
+
+    <label>Month:</label>
+    <select @onchange="LoadMonth">
+        @foreach (string monthName in monthNames)
+        {
+            <option>@monthName</option>
+        }
+    </select>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            @for (var dayIndex = 0; dayIndex < days.Count(); dayIndex++)
+            {
+                <th>
+                    @days[dayIndex]
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (var weekIndex = 0; weekIndex < weeks.Count(); weekIndex++)
+        {
+            <tr>
+                @for (var dayIndex = 0; dayIndex < weeks[weekIndex].Dates.Count(); dayIndex++)
+                {
+                    <td>
+                        @weeks[weekIndex].Dates[dayIndex].DateValue
+                        <br /><br />
+                        <label style="color:#c00;font-weight:bold">@weeks[weekIndex].Dates[dayIndex].Note</label>
+                        <br /><br />
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    List<string> monthNames = new List<string>();
+    List<string> days = new List<string>();
+    List<WeekClass> weeks = new List<WeekClass>();
+    List<int> years = new List<int>();
+
+    int selectedYear = DateTime.Now.Year;
+    string selectedMonth = DateTime.Now.ToString("MMMM", CultureInfo.CreateSpecificCulture("th-TH"));
+
+    DateTime startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+    DateTime endDate = (new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)).AddMonths(1).AddDays(-1);
+
+    protected override void OnInitialized()
+    {
+        System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Globalization.CultureInfo("th-TH");
+        System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = new System.Globalization.CultureInfo("th-TH");
+        // Generate years in Buddhist Era (BE)
+        years = Enumerable.Range(DateTime.Now.Year - 10, 21)
+                        .ToList();
+        monthNames = System.Globalization.CultureInfo
+            .CreateSpecificCulture("th-TH") // Thai culture
+            .DateTimeFormat
+            .MonthGenitiveNames
+            .Where(m => !string.IsNullOrWhiteSpace(m))
+            .ToList();
+
+        GenerateCalendarHead();
+        GenerateCalendarBody();
+    }
+
+    private void LoadYear(ChangeEventArgs e)
+    {
+        selectedYear = int.Parse(e.Value.ToString());
+        UpdateCalendar();
+    }
+
+    private void LoadMonth(ChangeEventArgs e)
+    {
+        selectedMonth = e.Value.ToString();
+        UpdateCalendar();
+    }
+
+    private void UpdateCalendar()
+    {
+        int monthIndex = DateTime.ParseExact(selectedMonth, "MMMM", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")).Month;
+        startDate = new DateTime(selectedYear, monthIndex, 1);
+        endDate = (new DateTime(selectedYear, monthIndex, 1)).AddMonths(1).AddDays(-1);
+
+        GenerateCalendarHead();
+        GenerateCalendarBody();
+    }
+
+    private void GenerateCalendarHead()
+    {
+        var day1 = new List<string>();
+        for (var dt = startDate; dt <= endDate; dt = dt.AddDays(1))
+        {
+            day1.Add(dt.ToString("dddd", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")));
+        }
+        days = day1.Distinct().ToList();
+    }
+
+    private void GenerateCalendarBody()
+    {
+        weeks = new List<WeekClass>();
+
+        int flag = 0;
+        WeekClass week = new WeekClass();
+        List<DayEvent> dates = new List<DayEvent>();
+        var totalDays = (int)(endDate - startDate).TotalDays;
+        int countdays = 0;
+
+        for (var dt = startDate; dt <= endDate; dt = dt.AddDays(1))
+        {
+            flag++;
+
+            dates.Add(new DayEvent()
+            {
+                DateValue = dt.ToString("dd-MMM-yyyy"),
+                //DayName = dt.ToString("dddd", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH"))
+                //DayName = dt.ToString("dddd", CultureInfo.CreateSpecificCulture("th-TH")) // Thai day name
+            });
+
+            if (flag == 7)
+            {
+                week = new WeekClass();
+                week.Dates = dates;
+                weeks.Add(week);
+
+                dates = new List<DayEvent>();
+                flag = 0;
+            }
+            if (countdays == totalDays)
+            {
+                week = new WeekClass();
+                week.Dates = dates;
+                weeks.Add(week);
+                break;
+            }
+            countdays++;
+        }
+    }
+}
+

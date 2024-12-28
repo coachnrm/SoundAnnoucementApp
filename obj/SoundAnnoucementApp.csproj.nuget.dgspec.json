@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj": {}
+    "/Users/home/Desktop/SoundAnnoucementApp/SoundAnnoucementApp.csproj": {}
   },
   "projects": {
-    "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj": {
+    "/Users/home/Desktop/SoundAnnoucementApp/SoundAnnoucementApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
+        "projectUniqueName": "/Users/home/Desktop/SoundAnnoucementApp/SoundAnnoucementApp.csproj",
         "projectName": "SoundAnnoucementApp",
-        "projectPath": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
-        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "D:\\SoundAnnoucementApp\\obj\\",
+        "projectPath": "/Users/home/Desktop/SoundAnnoucementApp/SoundAnnoucementApp.csproj",
+        "packagesPath": "/Users/home/.nuget/packages/",
+        "outputPath": "/Users/home/Desktop/SoundAnnoucementApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/home/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -88,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
