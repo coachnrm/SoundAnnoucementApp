@@ -76,9 +76,38 @@
             .MonthGenitiveNames
             .Where(m => !string.IsNullOrWhiteSpace(m))
             .ToList();
+        
+        @* monthNames = System.Globalization.CultureInfo
+            .CreateSpecificCulture("en-US") // Use English culture for base month names
+            .DateTimeFormat
+            .MonthGenitiveNames
+            .Where(m => !string.IsNullOrWhiteSpace(m))
+            .Select(month => GetThaiMonthName(month)) // Map to Thai names
+            .ToList(); *@
 
         GenerateCalendarHead();
         GenerateCalendarBody();
+    }
+
+    // Helper method to map English month names to Thai
+    private string GetThaiMonthName(string month)
+    {
+        return month switch
+        {
+            "January" => "มกราคม",
+            "February" => "กุมภาพันธ์",
+            "March" => "มีนาคม",
+            "April" => "เมษายน",
+            "May" => "พฤษภาคม",
+            "June" => "มิถุนายน",
+            "July" => "กรกฎาคม",
+            "August" => "สิงหาคม",
+            "September" => "กันยายน",
+            "October" => "ตุลาคม",
+            "November" => "พฤศจิกายน",
+            "December" => "ธันวาคม",
+            _ => month // Fallback to original name if no match
+        };
     }
 
     private void LoadYear(ChangeEventArgs e)
@@ -103,7 +132,7 @@
         GenerateCalendarBody();
     }
 
-    private void GenerateCalendarHead()
+    @* private void GenerateCalendarHead()
     {
         var day1 = new List<string>();
         for (var dt = startDate; dt <= endDate; dt = dt.AddDays(1))
@@ -111,9 +140,44 @@
             day1.Add(dt.ToString("dddd", System.Globalization.CultureInfo.CreateSpecificCulture("th-TH")));
         }
         days = day1.Distinct().ToList();
+
+        // Ensure distinct days and order starts with Sunday
+        days = day1.Distinct().ToList();
+
+        // Reorder to make Sunday the first day
+        var sundayIndex = days.IndexOf("Sunday"); // "Sunday" is Sunday in Thai
+        if (sundayIndex != -1)
+        {
+            days = days.Skip(sundayIndex).Concat(days.Take(sundayIndex)).ToList();
+        }
+    } *@
+    private void GenerateCalendarHead()
+    {
+        var day1 = new List<string>
+        {
+            "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+        };
+
+        days = day1.Select(day => GetThaiDayName(day)).ToList();
     }
 
-    private void GenerateCalendarBody()
+    // Helper method to map English day names to Thai
+    private string GetThaiDayName(string day)
+    {
+        return day switch
+        {
+            "Sunday" => "อาทิตย์",
+            "Monday" => "จันทร์",
+            "Tuesday" => "อังคาร",
+            "Wednesday" => "พุธ",
+            "Thursday" => "พฤหัสบดี",
+            "Friday" => "ศุกร์",
+            "Saturday" => "เสาร์",
+            _ => day // Fallback to original name if no match
+        };
+    }
+
+    @* private void GenerateCalendarBody()
     {
         weeks = new List<WeekClass>();
 
@@ -152,6 +216,100 @@
             }
             countdays++;
         }
+    } *@
+
+    @* private void GenerateCalendarBody()
+    {
+        weeks = new List<WeekClass>();
+
+        WeekClass week = new WeekClass();
+        List<DayEvent> dates = new List<DayEvent>();
+
+        // Add blank cells for days before the first day of the month
+        int firstDayOfWeek = (int)startDate.DayOfWeek; // Sunday = 0, Monday = 1, ..., Saturday = 6
+        for (int i = 0; i < firstDayOfWeek; i++)
+        {
+            dates.Add(new DayEvent { DateValue = "" }); // Empty cell
+        }
+
+        // Populate the actual dates
+        for (var dt = startDate; dt <= endDate; dt = dt.AddDays(1))
+        {
+            dates.Add(new DayEvent
+            {
+                DateValue = dt.ToString("dd-MMM-yyyy", CultureInfo.CreateSpecificCulture("th-TH")),
+                Note = "" // Add any default note here if needed
+            });
+
+            // Add a new week if the current week is complete (7 days)
+            if (dates.Count == 7)
+            {
+                week = new WeekClass { Dates = new List<DayEvent>(dates) };
+                weeks.Add(week);
+                dates.Clear();
+            }
+        }
+
+        // Add remaining days to the last week if any
+        if (dates.Count > 0)
+        {
+            while (dates.Count < 7) // Fill remaining days with empty cells
+            {
+                dates.Add(new DayEvent { DateValue = "" }); // Empty cell
+            }
+            week = new WeekClass { Dates = new List<DayEvent>(dates) };
+            weeks.Add(week);
+        }
+    } *@
+
+    private void GenerateCalendarBody()
+    {
+        weeks = new List<WeekClass>();
+
+        WeekClass week = new WeekClass();
+        List<DayEvent> dates = new List<DayEvent>();
+
+        // Add blank cells for days before the first day of the month
+        int firstDayOfWeek = (int)startDate.DayOfWeek; // Sunday = 0, Monday = 1, ..., Saturday = 6
+        for (int i = 0; i < firstDayOfWeek; i++)
+        {
+            dates.Add(new DayEvent { DateValue = "" }); // Empty cell
+        }
+
+        // Populate the actual dates
+        for (var dt = startDate; dt <= endDate; dt = dt.AddDays(1))
+        {
+            // Get the Thai month name for the current date
+            string thaiMonthName = GetThaiMonthName(monthNames[dt.Month - 1]);
+
+            // Add the day event with the Thai month name
+            dates.Add(new DayEvent
+            {
+                DateValue = $"{dt.Day}-{thaiMonthName}-{dt.Year + 543}", // Buddhist Era year
+                Note = "" // Add any default note here if needed
+            });
+
+            // Add a new week if the current week is complete (7 days)
+            if (dates.Count == 7)
+            {
+                week = new WeekClass { Dates = new List<DayEvent>(dates) };
+                weeks.Add(week);
+                dates.Clear();
+            }
+        }
+
+        // Add remaining days to the last week if any
+        if (dates.Count > 0)
+        {
+            while (dates.Count < 7) // Fill remaining days with empty cells
+            {
+                dates.Add(new DayEvent { DateValue = "" }); // Empty cell
+            }
+            week = new WeekClass { Dates = new List<DayEvent>(dates) };
+            weeks.Add(week);
+        }
     }
+
+
 }
 
