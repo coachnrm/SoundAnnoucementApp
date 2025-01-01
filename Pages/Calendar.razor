@@ -5,6 +5,7 @@
 <h1>ปฏิทินกิจกรรม</h1>
 
 <div>
+    <button @onclick="GoToPreviousMonth">Previous</button>
     <label>Year:</label>
     <select @onchange="LoadYear">
         @foreach (int year in years)
@@ -20,6 +21,7 @@
             <option>@monthName</option>
         }
     </select>
+    <button @onclick="GoToNextMonth">Next</button>
 </div>
 
 <table class="table table-bordered table-striped">
@@ -308,6 +310,40 @@
             week = new WeekClass { Dates = new List<DayEvent>(dates) };
             weeks.Add(week);
         }
+    }
+
+    private void GoToNextMonth()
+    {
+        // Increment the month
+        int currentMonthIndex = DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CreateSpecificCulture("th-TH")).Month - 1;
+        currentMonthIndex++;
+
+        if (currentMonthIndex >= 12) // If it's December, move to January of the next year
+        {
+            currentMonthIndex = 0;
+            selectedYear++;
+        }
+
+        // Update selected month
+        selectedMonth = monthNames[currentMonthIndex];
+        UpdateCalendar();
+    }
+
+    private void GoToPreviousMonth()
+    {
+        // Decrement the month
+        int currentMonthIndex = DateTime.ParseExact(selectedMonth, "MMMM", CultureInfo.CreateSpecificCulture("th-TH")).Month - 1;
+        currentMonthIndex--;
+
+        if (currentMonthIndex < 0) // If it's January, move to December of the previous year
+        {
+            currentMonthIndex = 11;
+            selectedYear--;
+        }
+
+        // Update selected month
+        selectedMonth = monthNames[currentMonthIndex];
+        UpdateCalendar();
     }
 
 
