@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets/js/BlazorQuill.js"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/drawingCanvas.js",
+      "PackagePath": "staticwebassets/js/drawingCanvas.js"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/print.js",
       "PackagePath": "staticwebassets/js/print.js"
     },

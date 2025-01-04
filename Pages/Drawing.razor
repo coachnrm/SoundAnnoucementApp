@@ -1,0 +1,68 @@
+﻿@* @page "/drawing"
+@inject IJSRuntime JSRuntime
+
+<h3>Drawing Canvas</h3>
+
+<canvas id="drawingCanvas" width="800" height="600" style="border:1px solid black;"></canvas>
+
+<button @onclick="ClearCanvas" class="btn btn-danger">Clear</button>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initDrawingCanvas", "drawingCanvas");
+        }
+    }
+
+    private async Task ClearCanvas()
+    {
+        await JSRuntime.InvokeVoidAsync("clearCanvas", "drawingCanvas");
+    }
+} *@
+
+@page "/drawing"
+@inject IJSRuntime JSRuntime
+
+<h3>Drawing Canvas</h3>
+
+<div>
+    <button @onclick='() => SetMode("draw")' class="btn btn-primary">Draw</button>
+    <button @onclick='() => SetMode("type")' class="btn btn-primary">Type</button>
+    <button @onclick="Undo" class="btn btn-warning">Undo</button>
+    <button @onclick="ClearCanvas" class="btn btn-danger">Clear</button>
+</div>
+
+<canvas id="drawingCanvas" width="800" height="600" style="border:1px solid black;"></canvas>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initDrawingCanvas", "drawingCanvas");
+        }
+    }
+
+    private async Task SetMode(string mode)
+    {
+        await JSRuntime.InvokeVoidAsync("setCanvasMode", mode);
+    }
+
+    @* private async Task ClearCanvas()
+    {
+        await JSRuntime.InvokeVoidAsync("clearCanvas", "drawingCanvas");
+    } *@
+
+    private async Task ClearCanvas()
+    {
+        await JSRuntime.InvokeVoidAsync("clearCanvas", "drawingCanvas");
+    }
+
+    private async Task Undo()
+    {
+        await JSRuntime.InvokeVoidAsync("undoCanvasAction", "drawingCanvas");
+    }
+}
+

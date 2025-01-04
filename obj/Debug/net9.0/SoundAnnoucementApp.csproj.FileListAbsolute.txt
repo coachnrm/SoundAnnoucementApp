@@ -1865,7 +1865,6 @@ D:/SoundAnnoucementApp/obj/Debug/net9.0/compressed/7sqo05pfmo-1wmc0mnwuh.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/ujnnzepw35-bpk8xqwxhs.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/t8t21dftzv-8inm30yfxf.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/0p4immmnd1-0sn6tfwn2k.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/21k7zv2b9f-bc3u6devet.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/1taqf1ai7x-a81ysc9mcf.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/7sqo05pfmo-tjqhyp2ur4.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/td7mw3rrgx-36o3c550hp.gz
@@ -2089,10 +2088,12 @@ D:/SoundAnnoucementApp/obj/Debug/net9.0/compressed/7sqo05pfmo-1wmc0mnwuh.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/refint/SoundAnnoucementApp.dll
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/SoundAnnoucementApp.pdb
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/ref/SoundAnnoucementApp.dll
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.fer1vmrx38.pdb
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.yjv7j60arq.wasm
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.yjv7j60arq.wasm.gz
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.fer1vmrx38.pdb.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-yjv7j60arq.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-fer1vmrx38.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-zp7evyyejz.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/21k7zv2b9f-pwsh040kt4.gz
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.ifwiic3y6k.pdb
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.bz43evwkkf.wasm
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.bz43evwkkf.wasm.gz
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.ifwiic3y6k.pdb.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/dui7q3gnnl-reudqfi13b.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-bz43evwkkf.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-ifwiic3y6k.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-w1c9xvr5mf.gz
