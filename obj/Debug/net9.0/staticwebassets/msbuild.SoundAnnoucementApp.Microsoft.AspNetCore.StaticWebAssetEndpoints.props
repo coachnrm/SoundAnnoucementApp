@@ -120,17 +120,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-upZuzfwCe8dS2urKywkNNb7qDlLqiPySebyt\u002BDHLMQ0="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1964"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022upZuzfwCe8dS2urKywkNNb7qDlLqiPySebyt\u002BDHLMQ0=\u0022"},{"Name":"Last-Modified","Value":"Fri, 29 Nov 2024 12:18:23 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="js/drawingCanvas.cpqjzm4ykt.js">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\drawingCanvas.js'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"cpqjzm4ykt"},{"Name":"integrity","Value":"sha256-8OhBZqdQTG5Nom/pjI9NsEAAYr85MLElvefxqnKwDX8="},{"Name":"label","Value":"js/drawingCanvas.js"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"3737"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00228OhBZqdQTG5Nom/pjI9NsEAAYr85MLElvefxqnKwDX8=\u0022"},{"Name":"Last-Modified","Value":"Sun, 05 Jan 2025 03:28:35 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="js/drawingCanvas.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\drawingCanvas.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-MzHwPoR4gk0w\u002BB/QYOsHPMqMRQ\u002BHkO3nwgkIzlOn4Uc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"7128"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022MzHwPoR4gk0w\u002BB/QYOsHPMqMRQ\u002BHkO3nwgkIzlOn4Uc=\u0022"},{"Name":"Last-Modified","Value":"Sat, 04 Jan 2025 15:38:15 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="js/drawingCanvas.reudqfi13b.js">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\drawingCanvas.js'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"reudqfi13b"},{"Name":"integrity","Value":"sha256-MzHwPoR4gk0w\u002BB/QYOsHPMqMRQ\u002BHkO3nwgkIzlOn4Uc="},{"Name":"label","Value":"js/drawingCanvas.js"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"7128"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u0022MzHwPoR4gk0w\u002BB/QYOsHPMqMRQ\u002BHkO3nwgkIzlOn4Uc=\u0022"},{"Name":"Last-Modified","Value":"Sat, 04 Jan 2025 15:38:15 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8OhBZqdQTG5Nom/pjI9NsEAAYr85MLElvefxqnKwDX8="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"3737"},{"Name":"Content-Type","Value":"text/javascript"},{"Name":"ETag","Value":"\u00228OhBZqdQTG5Nom/pjI9NsEAAYr85MLElvefxqnKwDX8=\u0022"},{"Name":"Last-Modified","Value":"Sun, 05 Jan 2025 03:28:35 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="js/print.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\print.js'))</AssetFile>

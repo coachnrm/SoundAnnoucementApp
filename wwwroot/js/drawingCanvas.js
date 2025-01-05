@@ -1,129 +1,3 @@
-// window.initDrawingCanvas = (canvasId) => {
-//     const canvas = document.getElementById(canvasId);
-//     const context = canvas.getContext("2d");
-
-//     let isDrawing = false;
-
-//     const startDrawing = (event) => {
-//         isDrawing = true;
-//         const { x, y } = getCanvasCoordinates(event, canvas);
-//         context.beginPath();
-//         context.moveTo(x, y);
-//     };
-
-//     const draw = (event) => {
-//         if (!isDrawing) return;
-//         const { x, y } = getCanvasCoordinates(event, canvas);
-//         context.lineTo(x, y);
-//         context.stroke();
-//     };
-
-//     const stopDrawing = () => {
-//         isDrawing = false;
-//         context.closePath();
-//     };
-
-//     const getCanvasCoordinates = (event, canvas) => {
-//         const rect = canvas.getBoundingClientRect();
-//         const x = (event.clientX || event.touches[0].clientX) - rect.left;
-//         const y = (event.clientY || event.touches[0].clientY) - rect.top;
-//         return { x, y };
-//     };
-
-//     // Mouse events
-//     canvas.addEventListener("mousedown", startDrawing);
-//     canvas.addEventListener("mousemove", draw);
-//     canvas.addEventListener("mouseup", stopDrawing);
-
-//     // Touch events for iPad
-//     canvas.addEventListener("touchstart", startDrawing);
-//     canvas.addEventListener("touchmove", draw);
-//     canvas.addEventListener("touchend", stopDrawing);
-// };
-
-// window.clearCanvas = (canvasId) => {
-//     const canvas = document.getElementById(canvasId);
-//     const context = canvas.getContext("2d");
-//     context.clearRect(0, 0, canvas.width, canvas.height);
-// };
-
-// window.initDrawingCanvas = (canvasId) => {
-//     const canvas = document.getElementById(canvasId);
-//     const context = canvas.getContext("2d");
-
-//     let isDrawing = false;
-//     let mode = "draw"; // Modes: 'draw', 'type'
-//     let typing = false;
-
-//     // Set mode
-//     window.setCanvasMode = (newMode) => {
-//         mode = newMode;
-//     };
-
-//     // Start drawing or typing
-//     const startAction = (event) => {
-//         if (mode === "draw") {
-//             isDrawing = true;
-//             const { x, y } = getCanvasCoordinates(event, canvas);
-//             context.beginPath();
-//             context.moveTo(x, y);
-//         } else if (mode === "type" && !typing) {
-//             typing = true;
-//             const { x, y } = getCanvasCoordinates(event, canvas);
-//             addTextPrompt(x, y);
-//         }
-//     };
-
-//     // Draw line
-//     const draw = (event) => {
-//         if (!isDrawing || mode !== "draw") return;
-//         const { x, y } = getCanvasCoordinates(event, canvas);
-//         context.lineTo(x, y);
-//         context.stroke();
-//     };
-
-//     const stopAction = () => {
-//         if (mode === "draw") {
-//             isDrawing = false;
-//             context.closePath();
-//         } else if (mode === "type") {
-//             typing = false;
-//         }
-//     };
-
-//     const addTextPrompt = (x, y) => {
-//         const text = prompt("Enter text:");
-//         if (text) {
-//             context.font = "16px Arial";
-//             context.fillText(text, x, y);
-//         }
-//         typing = false;
-//     };
-
-//     const getCanvasCoordinates = (event, canvas) => {
-//         const rect = canvas.getBoundingClientRect();
-//         const x = (event.clientX || event.touches?.[0]?.clientX) - rect.left;
-//         const y = (event.clientY || event.touches?.[0]?.clientY) - rect.top;
-//         return { x, y };
-//     };
-
-//     // Mouse events
-//     canvas.addEventListener("mousedown", startAction);
-//     canvas.addEventListener("mousemove", draw);
-//     canvas.addEventListener("mouseup", stopAction);
-
-//     // Touch events for iPad
-//     canvas.addEventListener("touchstart", startAction);
-//     canvas.addEventListener("touchmove", draw);
-//     canvas.addEventListener("touchend", stopAction);
-// };
-
-// window.clearCanvas = (canvasId) => {
-//     const canvas = document.getElementById(canvasId);
-//     const context = canvas.getContext("2d");
-//     context.clearRect(0, 0, canvas.width, canvas.height);
-// };
-
 window.initDrawingCanvas = (canvasId) => {
     const canvas = document.getElementById(canvasId);
     const context = canvas.getContext("2d");
@@ -222,4 +96,25 @@ window.clearCanvas = (canvasId) => {
     context.clearRect(0, 0, canvas.width, canvas.height);
 };
 
+window.saveCanvasAsFile = (canvasId, fileName) => {
+    const canvas = document.getElementById(canvasId);
 
+    // Convert canvas content to Blob
+    canvas.toBlob((blob) => {
+        // Create a URL for the Blob
+        const url = URL.createObjectURL(blob);
+
+        // Create a temporary anchor element for download
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = fileName;
+
+        // Trigger the download
+        document.body.appendChild(link);
+        link.click();
+
+        // Cleanup: Remove the link and revoke the Blob URL
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    }, "image/png"); // Save as PNG. Change to "image/jpeg" if JPEG is needed.
+};

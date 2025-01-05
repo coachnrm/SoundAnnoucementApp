@@ -192,8 +192,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>reudqfi13b</Fingerprint>
-      <Integrity>MzHwPoR4gk0w+B/QYOsHPMqMRQ+HkO3nwgkIzlOn4Uc=</Integrity>
+      <Fingerprint>cpqjzm4ykt</Fingerprint>
+      <Integrity>8OhBZqdQTG5Nom/pjI9NsEAAYr85MLElvefxqnKwDX8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\drawingCanvas.js'))</OriginalItemSpec>

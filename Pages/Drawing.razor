@@ -1,28 +1,4 @@
-﻿@* @page "/drawing"
-@inject IJSRuntime JSRuntime
-
-<h3>Drawing Canvas</h3>
-
-<canvas id="drawingCanvas" width="800" height="600" style="border:1px solid black;"></canvas>
-
-<button @onclick="ClearCanvas" class="btn btn-danger">Clear</button>
-
-@code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JSRuntime.InvokeVoidAsync("initDrawingCanvas", "drawingCanvas");
-        }
-    }
-
-    private async Task ClearCanvas()
-    {
-        await JSRuntime.InvokeVoidAsync("clearCanvas", "drawingCanvas");
-    }
-} *@
-
-@page "/drawing"
+﻿@page "/drawing"
 @inject IJSRuntime JSRuntime
 
 <h3>Drawing Canvas</h3>
@@ -35,6 +11,7 @@
 </div>
 
 <canvas id="drawingCanvas" width="800" height="600" style="border:1px solid black;"></canvas>
+<button @onclick="SaveToLocal" class="btn btn-success">Save</button>
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -50,11 +27,6 @@
         await JSRuntime.InvokeVoidAsync("setCanvasMode", mode);
     }
 
-    @* private async Task ClearCanvas()
-    {
-        await JSRuntime.InvokeVoidAsync("clearCanvas", "drawingCanvas");
-    } *@
-
     private async Task ClearCanvas()
     {
         await JSRuntime.InvokeVoidAsync("clearCanvas", "drawingCanvas");
@@ -63,6 +35,11 @@
     private async Task Undo()
     {
         await JSRuntime.InvokeVoidAsync("undoCanvasAction", "drawingCanvas");
+    }
+
+    private async Task SaveToLocal()
+    {
+        await JSRuntime.InvokeVoidAsync("saveCanvasAsFile", "drawingCanvas", "drawing.png");
     }
 }
 
