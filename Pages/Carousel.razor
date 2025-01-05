@@ -1,0 +1,78 @@
+﻿@page "/carousel"
+
+<h3>Carousel</h3>
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+        @for (int i = 0; i < items.Count; i++)
+        {
+            <button type="button" 
+                    data-bs-target="#carouselExampleCaptions" 
+                    data-bs-slide-to="@i" 
+                    class="@(i == 0 ? "active" : "")" 
+                    aria-current="@(i == 0 ? "true" : "false")" 
+                    aria-label="Slide @(i + 1)">
+            </button>
+        }
+    </div>
+    <div class="carousel-inner">
+        @for (int i = 0; i < items.Count; i++)
+        {
+            <div class="carousel-item @(i == 0 ? "active" : "")">
+                <img src="@items[i].Source" class="d-block w-100 carousel-image" alt="@items[i].Alt" />
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>@items[i].Header</h5>
+                    <p>@items[i].Caption</p>
+                </div>
+            </div>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<style>
+    .carousel-image {
+        width: 100%;
+        height: 500px; /* Adjust the height as needed */
+        object-fit: cover; /* Ensures the image covers the specified dimensions while maintaining aspect ratio */
+    }
+</style>
+
+@code {
+    IList<Item> items = new List<Item>
+    {
+        new Item{
+            Source="/images/1.jpg", 
+            Alt="First Slide",
+            Caption="Slide 1", 
+            Header="Slide 1 Header"
+        },
+        new Item{
+            Source="/images/2.jpg", 
+            Alt="Second Slide",
+            Caption="Slide 2", 
+            Header="Slide 2 Header"
+        },
+        new Item{
+            Source="/images/3.jpg", 
+            Alt="Third Slide",
+            Caption="Slide 3", 
+            Header="Slide 3 Header"
+        },
+    };
+
+    class Item 
+    {
+        public string Source { get; set; } = "";
+        public string Alt { get; set; } = "";
+        public string Caption { get; set; } = "";
+        public string Header { get; set; } = "";
+    }
+}

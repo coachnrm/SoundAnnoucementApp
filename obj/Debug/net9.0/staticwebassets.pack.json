@@ -41,6 +41,18 @@
       "PackagePath": "staticwebassets/icon-192.png"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/images/1.jpg",
+      "PackagePath": "staticwebassets/images/1.jpg"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/images/2.jpg",
+      "PackagePath": "staticwebassets/images/2.jpg"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/images/3.jpg",
+      "PackagePath": "staticwebassets/images/3.jpg"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
     },
