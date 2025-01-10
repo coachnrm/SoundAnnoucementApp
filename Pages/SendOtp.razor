@@ -1,0 +1,176 @@
+﻿@page "/sendotp"
+@using SoundAnnoucementApp.Models
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@using System.Net.Http.Json
+
+<h3>Send OTP</h3>
+
+@if (!ShowOtpInput)
+{
+    <div>
+        <label for="cids">กรอกเลขบัตรประชาชน:</label>
+        <input id="cids" @bind="CidInput" />
+    </div>
+
+    <button @onclick="SendOtpAsync">Send OTP</button>
+}
+else
+{
+    <div>
+        <label for="otp">กรอกเลข OTP</label>
+        <input id="otp" @bind="OtpInput" placeholder="Enter OTP" />
+    </div>
+
+    <div>
+        <p>Time remaining: @Countdown seconds</p>
+    </div>
+
+    <button @onclick="SubmitOtpAsync" disabled="@IsSubmitDisabled">Submit OTP</button>
+}
+
+<p>@Message</p>
+
+@code {
+    private string CidInput { get; set; } = string.Empty;
+    private string OtpInput { get; set; } = string.Empty;
+    private string Message { get; set; } = string.Empty;
+    private bool ShowOtpInput { get; set; } = false;
+    private int Countdown { get; set; } = 60; // Countdown duration in seconds
+    private bool IsSubmitDisabled { get; set; } = false;
+
+    private async Task SendOtpAsync()
+    {
+        if (string.IsNullOrWhiteSpace(CidInput))
+        {
+            Message = "กรุณากรอกเลขบัตรประชาชน";
+            return;
+        }
+
+        // Split CIDs by comma and trim whitespace
+        var cids = CidInput.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                           .Select(cid => cid.Trim())
+                           .ToArray();
+
+        if (cids.Length == 0)
+        {
+            Message = "Invalid input. Please provide valid CIDs.";
+            return;
+        }
+
+        try
+        {
+            // Call the API
+            var response = await Http.PostAsJsonAsync("/api/Moph/SendOtpWithRedis2", cids);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Message = "กรุณากรอก OTP ที่ได้รับทาง line หมอพร้อม";
+                ShowOtpInput = true; // Show OTP input field
+                StartCountdown(); // Start the countdown timer
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                Message = $"Error: {response.StatusCode} - {error}";
+            }
+        }
+        catch (Exception ex)
+        {
+            Message = $"An error occurred: {ex.Message}";
+        }
+    }
+
+    @* private async Task SubmitOtpAsync()
+    {
+        if (string.IsNullOrWhiteSpace(OtpInput))
+        {
+            Message = "Please enter the OTP.";
+            return;
+        }
+
+        // Handle OTP submission logic here
+        Message = $"You entered OTP: {OtpInput}";
+
+        // Reset state after submission
+        ResetState();
+    } *@
+
+    private async void StartCountdown()
+    {
+        Countdown = 60; // Reset countdown to 60 seconds
+        IsSubmitDisabled = false;
+
+        while (Countdown > 0)
+        {
+            await Task.Delay(1000);
+            Countdown--;
+
+            // If countdown reaches zero, reset state
+            if (Countdown == 0)
+            {
+                ResetState();
+                Message = "OTP expired. Please request a new OTP.";
+            }
+
+            StateHasChanged(); // Notify the UI to re-render
+        }
+    }
+
+    private void ResetState()
+    {
+        ShowOtpInput = false;
+        CidInput = string.Empty;
+        OtpInput = string.Empty;
+        IsSubmitDisabled = true;
+    }
+
+    private async Task SubmitOtpAsync()
+    {
+        if (string.IsNullOrWhiteSpace(CidInput) || string.IsNullOrWhiteSpace(OtpInput))
+        {
+            Message = "Please enter both CID and OTP.";
+            return;
+        }
+
+        try
+        {
+            // Call the API to get OTP details
+            var response = await Http.GetAsync($"/api/Moph/UserOtpInRedis/{CidInput}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Parse the response
+                var otpCid = await response.Content.ReadFromJsonAsync<OtpCid>();
+
+                if (otpCid != null && otpCid.Cid == CidInput && otpCid.Otp == OtpInput)
+                {
+                    Message = "OTP verified successfully!";
+                    NavigationManager.NavigateTo("/"); // Navigate to the home page
+                    return;
+                }
+                else
+                {
+                    Message = "รหัส OTP ไม่ถูกต้อง กรุณากรอกอีกครั้ง";
+                }
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                Message = "No OTP found for the given CID.";
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                Message = $"Error: {response.StatusCode} - {error}";
+            }
+        }
+        catch (Exception ex)
+        {
+            Message = $"An error occurred: {ex.Message}";
+        }
+    }
+
+}
+
+
+

@@ -64,6 +64,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmljaFRleHRCb3gucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/SendOtp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2VuZE90cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/UsbDetect.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNiRGV0ZWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
