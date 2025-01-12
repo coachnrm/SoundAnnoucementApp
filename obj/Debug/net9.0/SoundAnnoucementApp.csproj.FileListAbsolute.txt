@@ -2105,10 +2105,10 @@ D:/SoundAnnoucementApp/obj/Debug/net9.0/compressed/7sqo05pfmo-1wmc0mnwuh.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/z360cmiten-m2s2cnu0o1.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/cj64uvvk9c-ukk3gvz4st.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/4mem5znvxx-6sfrsc1pw7.gz
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.mtunpaooiv.pdb
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.yo16c9ds61.wasm
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.yo16c9ds61.wasm.gz
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.mtunpaooiv.pdb.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-yo16c9ds61.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-mtunpaooiv.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-93q0gb4rt0.gz
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.xloux47cbn.pdb
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.s6ysshfr7p.wasm
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.s6ysshfr7p.wasm.gz
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.xloux47cbn.pdb.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-s6ysshfr7p.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-xloux47cbn.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-vxewwl0235.gz
