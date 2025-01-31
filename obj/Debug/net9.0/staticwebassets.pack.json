@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets/js/rtfConvert.js"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/usb.js",
       "PackagePath": "staticwebassets/js/usb.js"
     },

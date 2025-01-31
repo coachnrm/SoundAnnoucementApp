@@ -40,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/Draggable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRHJhZ2dhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/Drawing.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRHJhd2luZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/QueueCounter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUXVldWVDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/RecordMove.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVjb3JkTW92ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/RichTextBox.razor]

@@ -1,0 +1,67 @@
+﻿@inject IJSRuntime JS
+
+@page "/draggable"
+
+<h3>Draggable List</h3>
+
+<div>
+    <ul class="draggable-list">
+        @foreach (var record in Records)
+        {
+            <li @ondragstart="() => DragStart(record.Id)"
+                @ondragover="DragOver"
+                @ondrop="() => Drop(record.Id)"
+                draggable="true">
+                @record.Name
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+    private List<Record> Records = new List<Record>
+    {
+        new Record { Id = 1, Name = "Item 1" },
+        new Record { Id = 2, Name = "Item 2" },
+        new Record { Id = 3, Name = "Item 3" },
+        new Record { Id = 4, Name = "Item 4" }
+    };
+
+    private int draggedItemId;
+
+    private void DragStart(int id)
+    {
+        draggedItemId = id;
+    }
+
+    private async Task DragOver(DragEventArgs e)
+    {
+        await JS.InvokeVoidAsync("preventDefault", (object)null); // Call JavaScript function
+    }
+
+    private void Drop(int targetId)
+    {
+        if (draggedItemId == targetId) return;
+
+        var draggedItem = Records.FirstOrDefault(r => r.Id == draggedItemId);
+        var targetItem = Records.FirstOrDefault(r => r.Id == targetId);
+
+        if (draggedItem != null && targetItem != null)
+        {
+            var draggedIndex = Records.IndexOf(draggedItem);
+            var targetIndex = Records.IndexOf(targetItem);
+
+            Records.Remove(draggedItem);
+            Records.Insert(targetIndex, draggedItem);
+        }
+    }
+
+    public class Record
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+}
+
+
+

@@ -1,0 +1,76 @@
+﻿@page "/recordmove"
+
+<h3>Queue List</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order</th>
+            <th>Name</th>
+            <th>Qn</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Records.OrderBy(r => r.Order))
+        {
+            <tr>
+                <td>@record.Order</td>
+                <td>@record.Name</td>
+                <td>@record.Qn</td>
+                <td>
+                    <button @onclick="() => MoveUp(record)" disabled="@(record.Order == 1)">Move Up</button>
+                    <button @onclick="() => MoveDown(record)" disabled="@(record.Order == Records.Count)">Move Down</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<MyRecord> Records = new List<MyRecord>();
+
+    protected override void OnInitialized()
+    {
+        // Initialize sample data
+        Records = new List<MyRecord>
+        {
+            new MyRecord { Id = 1, Name = "Record A", Qn = "842", Order = 1 },
+            new MyRecord { Id = 2, Name = "Record B", Qn = "102", Order = 2 },
+            new MyRecord { Id = 3, Name = "Record C", Qn = "45", Order = 3 },
+            new MyRecord { Id = 4, Name = "Record D", Qn = "645", Order = 4 }
+        };
+    }
+
+    private void MoveUp(MyRecord record)
+    {
+        var previousRecord = Records.FirstOrDefault(r => r.Order == record.Order - 1);
+        if (previousRecord != null)
+        {
+            // Swap order values
+            previousRecord.Order++;
+            record.Order--;
+        }
+    }
+
+    private void MoveDown(MyRecord record)
+    {
+        var nextRecord = Records.FirstOrDefault(r => r.Order == record.Order + 1);
+        if (nextRecord != null)
+        {
+            // Swap order values
+            nextRecord.Order--;
+            record.Order++;
+        }
+    }
+
+    public class MyRecord
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Qn { get; set; }
+    public int Order { get; set; }  // Determines the order in the list
+}
+
+}
+
