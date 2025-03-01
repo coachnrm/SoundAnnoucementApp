@@ -1,0 +1,63 @@
+﻿@page "/imageedit"
+@inject IJSRuntime JSRuntime
+
+<h3>Upload, Edit & Save Image</h3>
+
+<InputFile OnChange="UploadImage" accept="image/*" />
+
+<div>
+    <button @onclick='() => SetMode("draw")' class="btn btn-primary">Draw</button>
+    <button @onclick='() => SetMode("type")' class="btn btn-primary">Type</button>
+    <button @onclick="Undo" class="btn btn-warning">Undo</button>
+    <button @onclick="ClearCanvas" class="btn btn-danger">Clear</button>
+</div>
+
+<canvas id="drawingCanvas" width="800" height="600" style="border:1px solid black;"></canvas>
+<button @onclick="SaveToLocal" class="btn btn-success">Save Image</button>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initDrawingCanvas", "drawingCanvas");
+        }
+    }
+
+
+    // file js อยู่ใน wwwroot/site.js
+    private async Task UploadImage(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            var buffer = new byte[file.Size];
+            await file.OpenReadStream().ReadAsync(buffer);
+            string imageDataUrl = $"data:{file.ContentType};base64,{Convert.ToBase64String(buffer)}";
+
+            // ✅ Load image onto canvas
+            await JSRuntime.InvokeVoidAsync("loadImageOnCanvas", "drawingCanvas", imageDataUrl);
+        }
+    }
+
+    private async Task SetMode(string mode)
+    {
+        await JSRuntime.InvokeVoidAsync("setCanvasMode", mode);
+    }
+
+    private async Task ClearCanvas()
+    {
+        await JSRuntime.InvokeVoidAsync("clearCanvas", "drawingCanvas");
+    }
+
+    private async Task Undo()
+    {
+        await JSRuntime.InvokeVoidAsync("undoCanvasAction", "drawingCanvas");
+    }
+
+    private async Task SaveToLocal()
+    {
+        await JSRuntime.InvokeVoidAsync("saveCanvasAsFile", "drawingCanvas", "edited-image.png");
+    }
+}
+

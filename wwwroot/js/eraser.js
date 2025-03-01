@@ -1,100 +1,100 @@
-window.preventDefault = function (event) {
-    event = event || window.event; // Ensure event is defined
-    if (event.preventDefault) {
-        event.preventDefault();
-    }
-};
-
-
 let canvas, ctx, drawingMode = "draw";
 let isDrawing = false;
+let isErasing = false;
 let typing = false;
 let history = [];
 let historyIndex = -1;
+let eraserSize = { width: 30, height: 30 };
 
 function initDrawingCanvas(canvasId) {
     canvas = document.getElementById(canvasId);
     ctx = canvas.getContext("2d");
+
+    ctx.lineWidth = 3; // Default drawing line width
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = "black"; // Default color
 
     canvas.addEventListener("mousedown", startAction);
     canvas.addEventListener("mousemove", draw);
     canvas.addEventListener("mouseup", stopAction);
     canvas.addEventListener("mouseout", stopAction);
 
-    canvas.addEventListener("touchstart", startAction);
-    canvas.addEventListener("touchmove", draw);
-    canvas.addEventListener("touchend", stopAction);
-
+    canvas.addEventListener("mousemove", showEraserCursor);
+    
     saveState(); // Save initial blank state
 }
 
-// ✅ Function to Load Image onto Canvas
-function loadImageOnCanvas(canvasId, imageUrl) {
-    let img = new Image();
-    img.src = imageUrl;
-    img.onload = function () {
-        let canvas = document.getElementById(canvasId);
-        let ctx = canvas.getContext("2d");
-
-        let maxWidth = 800;  // Set fixed canvas width
-        let maxHeight = 600; // Set fixed canvas height
-        let scale = Math.min(maxWidth / img.width, maxHeight / img.height);
-
-        let newWidth = img.width * scale;
-        let newHeight = img.height * scale;
-
-        // Resize canvas to maintain aspect ratio
-        canvas.width = maxWidth;
-        canvas.height = maxHeight;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Center image in canvas
-        let xOffset = (canvas.width - newWidth) / 2;
-        let yOffset = (canvas.height - newHeight) / 2;
-        
-        ctx.drawImage(img, xOffset, yOffset, newWidth, newHeight);
-        
-        saveState();
-    };
-}
-
-// ✅ Function to set the mode
+// ✅ Function to set the mode (draw, erase, type)
 function setCanvasMode(mode) {
     drawingMode = mode;
+    if (mode === "erase") {
+        canvas.style.cursor = "none"; // Hide default cursor when erasing
+    } else {
+        canvas.style.cursor = "default"; // Reset cursor for other modes
+    }
 }
 
-// ✅ Function to start drawing or typing
+// ✅ Function to start drawing, erasing, or typing
 function startAction(event) {
-    saveState(); // Save state before making changes
+    saveState(); // Save current state before modifying canvas
 
     let { x, y } = getCanvasCoordinates(event, canvas);
 
     if (drawingMode === "draw") {
         isDrawing = true;
+        ctx.globalCompositeOperation = "source-over"; // Normal drawing mode
         ctx.beginPath();
         ctx.moveTo(x, y);
+    } else if (drawingMode === "erase") {
+        isErasing = true;
+        ctx.globalCompositeOperation = "destination-out"; // Erase mode
+        ctx.beginPath();
+        ctx.fillRect(x - eraserSize.width / 2, y - eraserSize.height / 2, eraserSize.width, eraserSize.height);
     } else if (drawingMode === "type" && !typing) {
         typing = true;
         addTextPrompt(x, y);
     }
 }
 
-// ✅ Function to draw on the canvas
+// ✅ Function to draw or erase
 function draw(event) {
-    if (!isDrawing || drawingMode !== "draw") return;
+    if (!isDrawing && !isErasing) return;
     let { x, y } = getCanvasCoordinates(event, canvas);
-    ctx.lineTo(x, y);
-    ctx.stroke();
+
+    if (drawingMode === "draw") {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+    } else if (drawingMode === "erase") {
+        ctx.fillRect(x - eraserSize.width / 2, y - eraserSize.height / 2, eraserSize.width, eraserSize.height);
+    }
 }
 
-// ✅ Function to stop drawing or typing
+// ✅ Function to stop drawing or erasing
 function stopAction() {
-    if (drawingMode === "draw") {
+    if (isDrawing) {
         isDrawing = false;
         ctx.closePath();
-    } else if (drawingMode === "type") {
-        typing = false;
     }
+    if (isErasing) {
+        isErasing = false;
+        ctx.globalCompositeOperation = "source-over"; // Reset to normal mode
+    }
+}
+
+// ✅ Function to show the eraser cursor as a rectangle
+function showEraserCursor(event) {
+    if (drawingMode !== "erase") return;
+
+    let { x, y } = getCanvasCoordinates(event, canvas);
+
+    let tempImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.putImageData(tempImage, 0, 0);
+
+    ctx.strokeStyle = "red"; // Eraser cursor color
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x - eraserSize.width / 2, y - eraserSize.height / 2, eraserSize.width, eraserSize.height);
 }
 
 // ✅ Function to prompt for text input
@@ -146,7 +146,7 @@ function saveCanvasAsFile(canvasId, filename) {
     link.click();
 }
 
-// ✅ Function to save canvas state
+// ✅ Function to save canvas state for undo
 function saveState() {
     historyIndex++;
     history.splice(historyIndex, history.length, canvas.toDataURL());

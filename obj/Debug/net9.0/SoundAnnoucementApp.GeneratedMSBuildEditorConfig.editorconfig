@@ -76,6 +76,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2VuZE90cC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/Upload.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBsb2FkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/UploadEditor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBsb2FkRWRpdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/UploadEraser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXBsb2FkRXJhc2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/UsbDetect.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXNiRGV0ZWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

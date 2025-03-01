@@ -65,6 +65,10 @@
       "PackagePath": "staticwebassets/js/drawingCanvas.js"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/eraser.js",
+      "PackagePath": "staticwebassets/js/eraser.js"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/print.js",
       "PackagePath": "staticwebassets/js/print.js"
     },
