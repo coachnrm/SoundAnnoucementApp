@@ -15,6 +15,8 @@
 
 <canvas id="drawingCanvas" width="800" height="600" style="border:1px solid black;"></canvas>
 <button @onclick="SaveToLocal" class="btn btn-success">Save Image</button>
+<button @onclick="SaveToDatabase" class="btn btn-success">Save Image to Database</button>
+
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -56,5 +58,42 @@
     private async Task SaveToLocal()
     {
         await JSRuntime.InvokeVoidAsync("saveCanvasAsFile", "drawingCanvas", "edited-image.png");
+    }
+
+    private async Task SaveToDatabase()
+    {
+        // Retrieve the canvas image as a Base64 string from JavaScript
+        string base64Image = await JSRuntime.InvokeAsync<string>("getCanvasImage", "drawingCanvas");
+
+        if (string.IsNullOrEmpty(base64Image))
+        {
+            Console.WriteLine("Error: No image data found.");
+            return;
+        }
+
+        // Convert Base64 to byte array
+        byte[] imageBytes = Convert.FromBase64String(base64Image.Split(',')[1]);
+
+        // Create FormData
+        var content = new MultipartFormDataContent();
+        var byteArrayContent = new ByteArrayContent(imageBytes);
+        byteArrayContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
+
+        string an = "P12345"; // Replace with actual `An` identifier (can be user input)
+
+        content.Add(byteArrayContent, "FormFile", "image.png");
+        content.Add(new StringContent(an), "An");
+
+        using var client = new HttpClient();
+        var response = await client.PostAsync("http://localhost:5286/api/Operation/UploadImage", content);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("Image successfully uploaded to database!");
+        }
+        else
+        {
+            Console.WriteLine("Error uploading image: " + await response.Content.ReadAsStringAsync());
+        }
     }
 }
