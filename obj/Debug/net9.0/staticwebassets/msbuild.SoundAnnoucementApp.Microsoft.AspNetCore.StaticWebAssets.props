@@ -210,8 +210,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>56gchwb03y</Fingerprint>
-      <Integrity>3b0hFTAiHfh2xPVneD+Z95sarb9A5nHWWyhp9kvdGmY=</Integrity>
+      <Fingerprint>c5ynuguk56</Fingerprint>
+      <Integrity>oAqKeVTGnBMjvPKtzWM+T6xy716czV2LUEOJfPmpaiQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>
@@ -233,6 +233,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\BlazorQuill.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\canvasHelper.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SoundAnnoucementApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>/</BasePath>
+      <RelativePath>js/canvasHelper.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>vboihp1n7b</Fingerprint>
+      <Integrity>q9BUdOXIlhNdSLcx6LK3B8ewo7pFfoMc3aeIXNyPckI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\canvasHelper.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\drawingCanvas.js'))">
       <SourceType>Package</SourceType>
@@ -264,8 +282,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>xxhqco42aq</Fingerprint>
-      <Integrity>q3bfJuAC3Lbv3RF8GCKqzJCxPKfLiLjSR/PqMOrCxE0=</Integrity>
+      <Fingerprint>59tkc8zc85</Fingerprint>
+      <Integrity>51IS7r0ObK+lJqevfmmgE/DJYbHUqx/UAPleHT2mcVk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\eraser.js'))</OriginalItemSpec>
@@ -336,8 +354,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>nb2kcm1f5l</Fingerprint>
-      <Integrity>w7zZZEbPaNZFoOfGoiwY06P0RxkomQqlS7oeATE9KJA=</Integrity>
+      <Fingerprint>lum81w6drj</Fingerprint>
+      <Integrity>UxnBT88bQJrGQRZbgxRmEq+XkXmv0Qjc4yTFVp5729I=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>

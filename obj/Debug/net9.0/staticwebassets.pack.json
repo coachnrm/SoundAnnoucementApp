@@ -61,6 +61,10 @@
       "PackagePath": "staticwebassets\\js\\BlazorQuill.js"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\canvasHelper.js",
+      "PackagePath": "staticwebassets\\js\\canvasHelper.js"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\drawingCanvas.js",
       "PackagePath": "staticwebassets\\js\\drawingCanvas.js"
     },
