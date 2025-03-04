@@ -1,0 +1,36 @@
+﻿@page "/audiocall"
+@inject IJSRuntime mJS
+
+<PageTitle>Audio Recorder</PageTitle>
+
+
+<h1>Blazor Sound Demo</h1>
+
+<audio id="audioElement" @ref="audioPlayer" src="audio/sample.mp3"></audio>
+<button @onclick="PlayAudio">Play Sound</button>
+
+@code {
+ 
+
+   private ElementReference audioPlayer;
+
+    private async Task PlayAudio()
+    {
+        await mJS.InvokeVoidAsync("eval", "document.getElementById('audioElement').play()");
+    }
+
+    public async Task PauseSound()
+    {
+        await mJS.InvokeAsync<string>("PauseAudio", "roar");
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await mJS.InvokeVoidAsync("BlazorAudioRecorder.Initialize", DotNetObjectReference.Create(this));
+
+    }
+
+
+}
+

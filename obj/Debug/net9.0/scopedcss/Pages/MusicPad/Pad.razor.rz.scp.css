@@ -1,0 +1,30 @@
+.pad[b-nz1olq9wq5]{
+    background-color:#1B1B1B;
+    border-radius:20px;
+    border:2px solid #B2213C;
+    width:150px;
+    height:150px;
+    margin:20px;
+    color:white;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    padding-top:50px;
+}
+
+.pad>h4[b-nz1olq9wq5],.pad>h5[b-nz1olq9wq5]{
+    text-align:center;
+    text-transform:uppercase;
+    text-shadow:0 0 15px #fdffbd;
+}
+
+.pad:hover[b-nz1olq9wq5]{
+    box-shadow: 0 0 15px #EE4352;
+    color:#EE4352;
+    background:radial-gradient(#ffffff, #ff726f);
+}
+
+.highlight[b-nz1olq9wq5] {
+    box-shadow: 0 0 15px #EE4352;
+    color: #EE4352;
+    background: radial-gradient(#ffffff, #ff726f);
+}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Tj45SPez3enKtL/lwAY6AfUS/RrDAo24qtv4YkHSejs=",
+  "Hash": "Ic0sbUOOWtHazHjaZBFQrC5F/ug1p0bCZlBZ6zMePr8=",
   "Source": "SoundAnnoucementApp",
   "BasePath": "/",
   "Mode": "Root",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "u6qmt0ih5j",
-      "Integrity": "6jQ2yVi1K72NEpL/SPDO41nrAlh1SnpEER8mKjyCMbw=",
+      "Fingerprint": "d8wqkzja42",
+      "Integrity": "UyofHjMy2f+lYpDAP3Kj5DSucArFzSjXoOFdSjjlbKA=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\blazor.boot.json"
@@ -997,8 +997,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "oa8jlo4p84",
-      "Integrity": "QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw=",
+      "Fingerprint": "kkoze0g9qy",
+      "Integrity": "JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\SoundAnnoucementApp.pdb"
@@ -1018,8 +1018,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "1eph49jueg",
-      "Integrity": "N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0=",
+      "Fingerprint": "8dnhtc5ghf",
+      "Integrity": "jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\webcil\\SoundAnnoucementApp.wasm"
@@ -4532,6 +4532,27 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Security.Cryptography.Cng.wasm"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\0jxsaywxe2-dfqkkhhffk.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/piano#[.{fingerprint=dfqkkhhffk}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\piano.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "i5mvcc83eq",
+      "Integrity": "5v1SSCNkULYoqc9l02ZtQUHZwn3meBX6Hs5rvoO3qe0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\piano.wav"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\0p4immmnd1-3j494jl6ux.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Discovered",
@@ -4763,6 +4784,27 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\Microsoft.Extensions.Options.wasm"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\1nwbule1pa-sjxke1cpfm.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/bass#[.{fingerprint=sjxke1cpfm}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\bass.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "w1u3zlviu8",
+      "Integrity": "5KH00l7XgY1TDuaBiNsF5CbJbr31nxyNxIX8WxJmfB0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\bass.wav"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\1o3gocq51w-ip8pk4p9ds.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -4826,12 +4868,12 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\BlazorQuill.js"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-ewwlnxy3z8.gz",
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-hgjvm6ncmz.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "index#[.{fingerprint=ewwlnxy3z8}]?.html.gz",
+      "RelativePath": "index#[.{fingerprint=hgjvm6ncmz}]?.html.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -4840,8 +4882,8 @@
       "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\index.html",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "1b9oewjlau",
-      "Integrity": "4/ynhFKZg9vUCYyz6S2zJ0kg9L0xPr8/x67lvD9/nig=",
+      "Fingerprint": "481dfmjpgt",
+      "Integrity": "dD56IKNLThUcYqTULuPuUAwZCJzg5UwtMMonWqMeMLE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\index.html"
@@ -4910,7 +4952,28 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\Microsoft.VisualBasic.wasm"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2wducpxqk8-u6qmt0ih5j.gz",
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2m3f39wis9-rrquf4qis9.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "js/audioplayer#[.{fingerprint=rrquf4qis9}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "d1xl6f0vnr",
+      "Integrity": "gby1UtJIua8JNKDAthsyCyeb8Cdg0cX1P6TlVG0MYfY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2wducpxqk8-d8wqkzja42.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
@@ -4924,8 +4987,8 @@
       "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "u9k61m2nuq",
-      "Integrity": "IkVksikAOON1/uPrpqS2PucSsLWvo60C8iVrwsKneTg=",
+      "Fingerprint": "6drn8thxk1",
+      "Integrity": "StYQtj+Y8SA9cLiyzEA+PUFvFDMBPIUBGqiI7gvgHBE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -5498,6 +5561,27 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Runtime.wasm"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\658hgny5j6-s2m38j427e.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/fx2#[.{fingerprint=s2m38j427e}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "8sael90lyd",
+      "Integrity": "6Jga7gMTJJiS9KknjNN0IzmyBrscGDLpNg1t/aGqqcM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.wav"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\65z3533kax-gkc6u7d6gi.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -5748,6 +5832,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\print.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\85mpqu17cx-c8l6bcmhv3.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/fx3#[.{fingerprint=c8l6bcmhv3}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "0ux8hbfg43",
+      "Integrity": "uPVq5DoAWGqcMDJSSv5wXDZB3cFVWUsGlnxfuFQ0Obw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.wav"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\8b074q7wf2-nhgzf5z28r.gz",
@@ -6296,6 +6401,27 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Data.DataSetExtensions.wasm"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\cl3h83ve93-4jq1om0cig.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/hihat#[.{fingerprint=4jq1om0cig}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "gc3k69vnc3",
+      "Integrity": "8Ic6uOh2ncdkdV1zek83lyLwdYMiEgNATbWl2UWV3KM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.wav"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\cyz2l0k4kz-4e28mmhchr.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -6548,6 +6674,27 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Diagnostics.TraceSource.wasm"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ehi0ikva0q-wd06hrye47.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/snare#[.{fingerprint=wd06hrye47}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "znjpc4dw25",
+      "Integrity": "MeQd49/ajOGgu/JQiGCcqD2wEA2oq/e0s5KngnqGJGo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.wav"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\eiteg7xxyz-kdya8olheb.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -6651,6 +6798,27 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.IO.FileSystem.AccessControl.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ezpcclan9a-j9vxm8cckk.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/strings#[.{fingerprint=j9vxm8cckk}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\strings.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "gwmed0v991",
+      "Integrity": "kDf4ADk5h0ilJsh79+tu6TePZ0g9aMEuQ0zhSaW3m/k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\strings.wav"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\f734zlb2y8-8xxxaqbsnj.gz",
@@ -8207,12 +8375,12 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Security.AccessControl.wasm"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-fkt1bppcs9.gz",
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-emfcyk8xyj.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "audio/AudioRecorder#[.{fingerprint=fkt1bppcs9}]?.js.gz",
+      "RelativePath": "audio/AudioRecorder#[.{fingerprint=emfcyk8xyj}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -8221,8 +8389,8 @@
       "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\AudioRecorder.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "2fs6cgtn2n",
-      "Integrity": "XjGNPJgKQNYfrMANPOtw/c4K1jCLBZXZyuV6amTt9DY=",
+      "Fingerprint": "ddxj53bfw7",
+      "Integrity": "sbBVO/yTAnw++WZnYxTzEiNylLxhD8xJA7o6+tt0sHQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\AudioRecorder.js"
@@ -8249,12 +8417,12 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Runtime.Serialization.Formatters.wasm"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-tokvhn425v.gz",
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-bwhpy1moq2.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "SoundAnnoucementApp#[.{fingerprint=tokvhn425v}]!.bundle.scp.css.gz",
+      "RelativePath": "SoundAnnoucementApp#[.{fingerprint=bwhpy1moq2}]!.bundle.scp.css.gz",
       "AssetKind": "All",
       "AssetMode": "Reference",
       "AssetRole": "Alternative",
@@ -8263,8 +8431,8 @@
       "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\SoundAnnoucementApp.bundle.scp.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "hc0x2dssyb",
-      "Integrity": "AdbnWlM2xd5cnabKIHsK7DbJKMqMxHdDyOPtw8fEML4=",
+      "Fingerprint": "1o9rv2usfv",
+      "Integrity": "T+9+I5fAZj2zJEWHu5qh01WWj8112aVU1K5ULcwqyi8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\SoundAnnoucementApp.bundle.scp.css"
@@ -8331,6 +8499,27 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Net.NameResolution.wasm"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\rrfkc14r4p-8gtm2l3yq8.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/kick#[.{fingerprint=8gtm2l3yq8}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "ahy6kqhuyz",
+      "Integrity": "8j88V549u9vYNUC0Pmsj9YnqsY0koht/m+qXMp8q5Pk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.wav"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\s55suhvmzu-iv1kot37bt.gz",
@@ -8774,12 +8963,12 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\icudt_EFIGS.dat"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-1eph49jueg.gz",
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-8dnhtc5ghf.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/SoundAnnoucementApp#[.{fingerprint=1eph49jueg}]!.wasm.gz",
+      "RelativePath": "_framework/SoundAnnoucementApp#[.{fingerprint=8dnhtc5ghf}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -8788,8 +8977,8 @@
       "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SoundAnnoucementApp.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "p5mg98vjk8",
-      "Integrity": "07KSWv1u39+3A8F4v2sUEg3TxG1RGg9QnegfaljqMEY=",
+      "Fingerprint": "tooxpsa0yx",
+      "Integrity": "w7vwLn8LpEeAG1LF83U0zUQ1RxDxm2KndgRI0UnO6wU=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SoundAnnoucementApp.wasm"
@@ -8942,12 +9131,12 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Diagnostics.Contracts.wasm"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-oa8jlo4p84.gz",
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-kkoze0g9qy.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/SoundAnnoucementApp#[.{fingerprint=oa8jlo4p84}]!.pdb.gz",
+      "RelativePath": "_framework/SoundAnnoucementApp#[.{fingerprint=kkoze0g9qy}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -8956,8 +9145,8 @@
       "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SoundAnnoucementApp.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "y0bcm4q6zf",
-      "Integrity": "0kjzgad70oR9rLpPEQETmtLLomMGh+OR/Gv569cZxfg=",
+      "Fingerprint": "t5lce6pttz",
+      "Integrity": "IWw+am/7Tz1MSxUgax+Fr7ke+H/eQVxdeXMrkLKhaXk=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SoundAnnoucementApp.pdb"
@@ -9152,6 +9341,27 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Xml.XDocument.wasm"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\y2bfkgz4st-4piqfwv7ua.gz",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "/",
+      "RelativePath": "audio/fx1#[.{fingerprint=4piqfwv7ua}]?.wav.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.wav",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "844b2v25b9",
+      "Integrity": "aJhWxna3G7rrKVzwyHK5/LzlSr/GuVQFh2Yhal1AOUw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.wav"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\y5hu282ugu-42czujeagm.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
@@ -9236,12 +9446,12 @@
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Drawing.wasm"
     },
     {
-      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-ehfbqr5gvy.gz",
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-uucyill51f.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "SoundAnnoucementApp#[.{fingerprint=ehfbqr5gvy}]?.styles.css.gz",
+      "RelativePath": "SoundAnnoucementApp#[.{fingerprint=uucyill51f}]?.styles.css.gz",
       "AssetKind": "All",
       "AssetMode": "CurrentProject",
       "AssetRole": "Alternative",
@@ -9250,8 +9460,8 @@
       "RelatedAsset": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "jc6lfxk76a",
-      "Integrity": "nVmCWWvAvYnpJOclIGh9OjO0yRIq+OW+d3RjXv12+c0=",
+      "Fingerprint": "toelxgp5jv",
+      "Integrity": "nQ5GQOIf4u9VENE0xOOibONiTDGoIRFy6rcDnpOJnIY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css"
@@ -9376,8 +9586,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "ehfbqr5gvy",
-      "Integrity": "3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8=",
+      "Fingerprint": "uucyill51f",
+      "Integrity": "ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css"
@@ -9397,8 +9607,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "tokvhn425v",
-      "Integrity": "faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4=",
+      "Fingerprint": "bwhpy1moq2",
+      "Integrity": "JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\SoundAnnoucementApp.bundle.scp.css"
@@ -9418,11 +9628,95 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "fkt1bppcs9",
-      "Integrity": "ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY=",
+      "Fingerprint": "emfcyk8xyj",
+      "Integrity": "Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\audio\\AudioRecorder.js"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\bass.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/bass#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sjxke1cpfm",
+      "Integrity": "2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\bass.wav"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/fx1#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4piqfwv7ua",
+      "Integrity": "2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\fx1.wav"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/fx2#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s2m38j427e",
+      "Integrity": "fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\fx2.wav"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/fx3#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "c8l6bcmhv3",
+      "Integrity": "BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\fx3.wav"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audioHelper.js",
@@ -9446,6 +9740,27 @@
       "OriginalItemSpec": "wwwroot\\audioHelper.js"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/hihat#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "4jq1om0cig",
+      "Integrity": "cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\hihat.wav"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio.js",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Discovered",
@@ -9467,6 +9782,48 @@
       "OriginalItemSpec": "wwwroot\\audio.js"
     },
     {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/kick#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8gtm2l3yq8",
+      "Integrity": "mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\kick.wav"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\piano.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/piano#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "dfqkkhhffk",
+      "Integrity": "yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\piano.wav"
+    },
+    {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.mp3",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Discovered",
@@ -9486,6 +9843,69 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\audio\\sample.mp3"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.ogg",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/sample#[.{fingerprint}]?.ogg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1fskbn7akw",
+      "Integrity": "3WN5IYvoAgI0rWoWKRTVSdAksN0mti/l89QrzGWH1EQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\sample.ogg"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/snare#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "wd06hrye47",
+      "Integrity": "jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\snare.wav"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\strings.wav",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "audio/strings#[.{fingerprint}]?.wav",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "j9vxm8cckk",
+      "Integrity": "h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\audio\\strings.wav"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\app.css",
@@ -9712,11 +10132,32 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ewwlnxy3z8",
-      "Integrity": "zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4=",
+      "Fingerprint": "hgjvm6ncmz",
+      "Integrity": "QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js",
+      "SourceId": "SoundAnnoucementApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "js/audioplayer#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rrquf4qis9",
+      "Integrity": "BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\audioplayer.js"
     },
     {
       "Identity": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\BlazorQuill.js",
@@ -10197,13 +10638,13 @@
       ]
     },
     {
-      "Route": "audio/AudioRecorder.fkt1bppcs9.js",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-fkt1bppcs9.gz",
+      "Route": "audio/AudioRecorder.emfcyk8xyj.js",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-emfcyk8xyj.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001194743130"
+          "Quality": "0.001137656428"
         }
       ],
       "ResponseHeaders": [
@@ -10213,15 +10654,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "836"
+          "Value": "878"
         },
         {
           "Name": "ETag",
-          "Value": "\"XjGNPJgKQNYfrMANPOtw/c4K1jCLBZXZyuV6amTt9DY=\""
+          "Value": "\"sbBVO/yTAnw++WZnYxTzEiNylLxhD8xJA7o6+tt0sHQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:29:02 GMT"
+          "Value": "Tue, 04 Mar 2025 13:22:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10241,13 +10682,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY=\""
+          "Value": "W/\"Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fkt1bppcs9"
+          "Value": "emfcyk8xyj"
         },
         {
           "Name": "label",
@@ -10255,12 +10696,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY="
+          "Value": "sha256-Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4="
         }
       ]
     },
     {
-      "Route": "audio/AudioRecorder.fkt1bppcs9.js",
+      "Route": "audio/AudioRecorder.emfcyk8xyj.js",
       "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\AudioRecorder.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -10270,7 +10711,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2365"
+          "Value": "2555"
         },
         {
           "Name": "Content-Type",
@@ -10278,11 +10719,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY=\""
+          "Value": "\"Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:29:02 GMT"
+          "Value": "Tue, 04 Mar 2025 13:22:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10292,7 +10733,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fkt1bppcs9"
+          "Value": "emfcyk8xyj"
         },
         {
           "Name": "label",
@@ -10300,13 +10741,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY="
+          "Value": "sha256-Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4="
         }
       ]
     },
     {
-      "Route": "audio/AudioRecorder.fkt1bppcs9.js.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-fkt1bppcs9.gz",
+      "Route": "audio/AudioRecorder.emfcyk8xyj.js.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-emfcyk8xyj.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10315,7 +10756,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "836"
+          "Value": "878"
         },
         {
           "Name": "Content-Type",
@@ -10323,11 +10764,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XjGNPJgKQNYfrMANPOtw/c4K1jCLBZXZyuV6amTt9DY=\""
+          "Value": "\"sbBVO/yTAnw++WZnYxTzEiNylLxhD8xJA7o6+tt0sHQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:29:02 GMT"
+          "Value": "Tue, 04 Mar 2025 13:22:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10345,7 +10786,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fkt1bppcs9"
+          "Value": "emfcyk8xyj"
         },
         {
           "Name": "label",
@@ -10353,18 +10794,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-XjGNPJgKQNYfrMANPOtw/c4K1jCLBZXZyuV6amTt9DY="
+          "Value": "sha256-sbBVO/yTAnw++WZnYxTzEiNylLxhD8xJA7o6+tt0sHQ="
         }
       ]
     },
     {
       "Route": "audio/AudioRecorder.js",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-fkt1bppcs9.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-emfcyk8xyj.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001194743130"
+          "Quality": "0.001137656428"
         }
       ],
       "ResponseHeaders": [
@@ -10374,15 +10815,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "836"
+          "Value": "878"
         },
         {
           "Name": "ETag",
-          "Value": "\"XjGNPJgKQNYfrMANPOtw/c4K1jCLBZXZyuV6amTt9DY=\""
+          "Value": "\"sbBVO/yTAnw++WZnYxTzEiNylLxhD8xJA7o6+tt0sHQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:29:02 GMT"
+          "Value": "Tue, 04 Mar 2025 13:22:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10402,13 +10843,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY=\""
+          "Value": "W/\"Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY="
+          "Value": "sha256-Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4="
         }
       ]
     },
@@ -10423,7 +10864,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2365"
+          "Value": "2555"
         },
         {
           "Name": "Content-Type",
@@ -10431,11 +10872,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY=\""
+          "Value": "\"Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:29:02 GMT"
+          "Value": "Tue, 04 Mar 2025 13:22:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10445,13 +10886,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ETUHx0DZcA6A07qMKRL4ARkmzQaAYi/6qCZed5XKDLY="
+          "Value": "sha256-Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4="
         }
       ]
     },
     {
       "Route": "audio/AudioRecorder.js.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-fkt1bppcs9.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qtencwcv52-emfcyk8xyj.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10460,7 +10901,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "836"
+          "Value": "878"
         },
         {
           "Name": "Content-Type",
@@ -10468,11 +10909,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"XjGNPJgKQNYfrMANPOtw/c4K1jCLBZXZyuV6amTt9DY=\""
+          "Value": "\"sbBVO/yTAnw++WZnYxTzEiNylLxhD8xJA7o6+tt0sHQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:29:02 GMT"
+          "Value": "Tue, 04 Mar 2025 13:22:42 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10490,7 +10931,1199 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-XjGNPJgKQNYfrMANPOtw/c4K1jCLBZXZyuV6amTt9DY="
+          "Value": "sha256-sbBVO/yTAnw++WZnYxTzEiNylLxhD8xJA7o6+tt0sHQ="
+        }
+      ]
+    },
+    {
+      "Route": "audio/bass.sjxke1cpfm.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\1nwbule1pa-sjxke1cpfm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000001002685"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "997321"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5KH00l7XgY1TDuaBiNsF5CbJbr31nxyNxIX8WxJmfB0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:43:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sjxke1cpfm"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/bass.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo="
+        }
+      ]
+    },
+    {
+      "Route": "audio/bass.sjxke1cpfm.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\bass.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2844864"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:43:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sjxke1cpfm"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/bass.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo="
+        }
+      ]
+    },
+    {
+      "Route": "audio/bass.sjxke1cpfm.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\1nwbule1pa-sjxke1cpfm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "997321"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5KH00l7XgY1TDuaBiNsF5CbJbr31nxyNxIX8WxJmfB0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:43:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sjxke1cpfm"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/bass.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5KH00l7XgY1TDuaBiNsF5CbJbr31nxyNxIX8WxJmfB0="
+        }
+      ]
+    },
+    {
+      "Route": "audio/bass.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\1nwbule1pa-sjxke1cpfm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000001002685"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "997321"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5KH00l7XgY1TDuaBiNsF5CbJbr31nxyNxIX8WxJmfB0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:43:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo="
+        }
+      ]
+    },
+    {
+      "Route": "audio/bass.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\bass.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2844864"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:43:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2FiQSZJ0a1Iil8potrsLPJCxV4KYIDeNINVYIwlqRTo="
+        }
+      ]
+    },
+    {
+      "Route": "audio/bass.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\1nwbule1pa-sjxke1cpfm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "997321"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5KH00l7XgY1TDuaBiNsF5CbJbr31nxyNxIX8WxJmfB0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:43:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5KH00l7XgY1TDuaBiNsF5CbJbr31nxyNxIX8WxJmfB0="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx1.4piqfwv7ua.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\y2bfkgz4st-4piqfwv7ua.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000047132017"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21216"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aJhWxna3G7rrKVzwyHK5/LzlSr/GuVQFh2Yhal1AOUw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4piqfwv7ua"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx1.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx1.4piqfwv7ua.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22964"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4piqfwv7ua"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx1.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx1.4piqfwv7ua.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\y2bfkgz4st-4piqfwv7ua.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21216"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aJhWxna3G7rrKVzwyHK5/LzlSr/GuVQFh2Yhal1AOUw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4piqfwv7ua"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx1.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aJhWxna3G7rrKVzwyHK5/LzlSr/GuVQFh2Yhal1AOUw="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx1.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\y2bfkgz4st-4piqfwv7ua.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000047132017"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21216"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aJhWxna3G7rrKVzwyHK5/LzlSr/GuVQFh2Yhal1AOUw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx1.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "22964"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-2H87+MagUVOy11/DOj1tK2lgfwp296lPTd8nw4abXQA="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx1.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\y2bfkgz4st-4piqfwv7ua.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21216"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aJhWxna3G7rrKVzwyHK5/LzlSr/GuVQFh2Yhal1AOUw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aJhWxna3G7rrKVzwyHK5/LzlSr/GuVQFh2Yhal1AOUw="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx2.s2m38j427e.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\658hgny5j6-s2m38j427e.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000007324719"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "136523"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6Jga7gMTJJiS9KknjNN0IzmyBrscGDLpNg1t/aGqqcM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s2m38j427e"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx2.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx2.s2m38j427e.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "147086"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s2m38j427e"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx2.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx2.s2m38j427e.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\658hgny5j6-s2m38j427e.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "136523"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6Jga7gMTJJiS9KknjNN0IzmyBrscGDLpNg1t/aGqqcM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s2m38j427e"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx2.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6Jga7gMTJJiS9KknjNN0IzmyBrscGDLpNg1t/aGqqcM="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx2.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\658hgny5j6-s2m38j427e.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000007324719"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "136523"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6Jga7gMTJJiS9KknjNN0IzmyBrscGDLpNg1t/aGqqcM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx2.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "147086"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fHmueN5QxWy98t/wcAizRbX6JpsHHYho4jkTOxD2Lzc="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx2.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\658hgny5j6-s2m38j427e.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "136523"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6Jga7gMTJJiS9KknjNN0IzmyBrscGDLpNg1t/aGqqcM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:08 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6Jga7gMTJJiS9KknjNN0IzmyBrscGDLpNg1t/aGqqcM="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx3.c8l6bcmhv3.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\85mpqu17cx-c8l6bcmhv3.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000001535959"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "651058"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uPVq5DoAWGqcMDJSSv5wXDZB3cFVWUsGlnxfuFQ0Obw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c8l6bcmhv3"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx3.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx3.c8l6bcmhv3.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "841100"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c8l6bcmhv3"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx3.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx3.c8l6bcmhv3.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\85mpqu17cx-c8l6bcmhv3.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "651058"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uPVq5DoAWGqcMDJSSv5wXDZB3cFVWUsGlnxfuFQ0Obw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "c8l6bcmhv3"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/fx3.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uPVq5DoAWGqcMDJSSv5wXDZB3cFVWUsGlnxfuFQ0Obw="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx3.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\85mpqu17cx-c8l6bcmhv3.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000001535959"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "651058"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uPVq5DoAWGqcMDJSSv5wXDZB3cFVWUsGlnxfuFQ0Obw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx3.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "841100"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BBQ5fOHbNKLpohp9dw9LgTxL3f5VHeNAO7qBp2UKpSY="
+        }
+      ]
+    },
+    {
+      "Route": "audio/fx3.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\85mpqu17cx-c8l6bcmhv3.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "651058"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uPVq5DoAWGqcMDJSSv5wXDZB3cFVWUsGlnxfuFQ0Obw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:13 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-uPVq5DoAWGqcMDJSSv5wXDZB3cFVWUsGlnxfuFQ0Obw="
         }
       ]
     },
@@ -10793,6 +12426,304 @@
       ]
     },
     {
+      "Route": "audio/hihat.4jq1om0cig.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\cl3h83ve93-4jq1om0cig.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000066260270"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15091"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Ic6uOh2ncdkdV1zek83lyLwdYMiEgNATbWl2UWV3KM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4jq1om0cig"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/hihat.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE="
+        }
+      ]
+    },
+    {
+      "Route": "audio/hihat.4jq1om0cig.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19780"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4jq1om0cig"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/hihat.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE="
+        }
+      ]
+    },
+    {
+      "Route": "audio/hihat.4jq1om0cig.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\cl3h83ve93-4jq1om0cig.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15091"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Ic6uOh2ncdkdV1zek83lyLwdYMiEgNATbWl2UWV3KM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4jq1om0cig"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/hihat.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8Ic6uOh2ncdkdV1zek83lyLwdYMiEgNATbWl2UWV3KM="
+        }
+      ]
+    },
+    {
+      "Route": "audio/hihat.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\cl3h83ve93-4jq1om0cig.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000066260270"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15091"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Ic6uOh2ncdkdV1zek83lyLwdYMiEgNATbWl2UWV3KM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE="
+        }
+      ]
+    },
+    {
+      "Route": "audio/hihat.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19780"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cJNgzYXYexPyHWpAM3CZhIqIiW1r0aSBsWix8DIuInE="
+        }
+      ]
+    },
+    {
+      "Route": "audio/hihat.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\cl3h83ve93-4jq1om0cig.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "15091"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8Ic6uOh2ncdkdV1zek83lyLwdYMiEgNATbWl2UWV3KM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:17 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8Ic6uOh2ncdkdV1zek83lyLwdYMiEgNATbWl2UWV3KM="
+        }
+      ]
+    },
+    {
       "Route": "audio.js",
       "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\jcucg1vntd-6pwo593279.gz",
       "Selectors": [
@@ -10930,6 +12861,647 @@
       ]
     },
     {
+      "Route": "audio/kick.8gtm2l3yq8.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\rrfkc14r4p-8gtm2l3yq8.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000027443124"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36438"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8j88V549u9vYNUC0Pmsj9YnqsY0koht/m+qXMp8q5Pk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8gtm2l3yq8"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/kick.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y="
+        }
+      ]
+    },
+    {
+      "Route": "audio/kick.8gtm2l3yq8.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "44300"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8gtm2l3yq8"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/kick.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y="
+        }
+      ]
+    },
+    {
+      "Route": "audio/kick.8gtm2l3yq8.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\rrfkc14r4p-8gtm2l3yq8.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36438"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8j88V549u9vYNUC0Pmsj9YnqsY0koht/m+qXMp8q5Pk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8gtm2l3yq8"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/kick.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8j88V549u9vYNUC0Pmsj9YnqsY0koht/m+qXMp8q5Pk="
+        }
+      ]
+    },
+    {
+      "Route": "audio/kick.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\rrfkc14r4p-8gtm2l3yq8.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000027443124"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36438"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8j88V549u9vYNUC0Pmsj9YnqsY0koht/m+qXMp8q5Pk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y="
+        }
+      ]
+    },
+    {
+      "Route": "audio/kick.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "44300"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mKTOve5kuW98S1/6QCQDGuaKBMBGIAUHWks/bWb9Q8Y="
+        }
+      ]
+    },
+    {
+      "Route": "audio/kick.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\rrfkc14r4p-8gtm2l3yq8.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "36438"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8j88V549u9vYNUC0Pmsj9YnqsY0koht/m+qXMp8q5Pk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:22 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8j88V549u9vYNUC0Pmsj9YnqsY0koht/m+qXMp8q5Pk="
+        }
+      ]
+    },
+    {
+      "Route": "audio/piano.dfqkkhhffk.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\0jxsaywxe2-dfqkkhhffk.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000000528665"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1891555"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5v1SSCNkULYoqc9l02ZtQUHZwn3meBX6Hs5rvoO3qe0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dfqkkhhffk"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/piano.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4="
+        }
+      ]
+    },
+    {
+      "Route": "audio/piano.dfqkkhhffk.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\piano.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2844866"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dfqkkhhffk"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/piano.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4="
+        }
+      ]
+    },
+    {
+      "Route": "audio/piano.dfqkkhhffk.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\0jxsaywxe2-dfqkkhhffk.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1891555"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5v1SSCNkULYoqc9l02ZtQUHZwn3meBX6Hs5rvoO3qe0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dfqkkhhffk"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/piano.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5v1SSCNkULYoqc9l02ZtQUHZwn3meBX6Hs5rvoO3qe0="
+        }
+      ]
+    },
+    {
+      "Route": "audio/piano.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\0jxsaywxe2-dfqkkhhffk.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000000528665"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1891555"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5v1SSCNkULYoqc9l02ZtQUHZwn3meBX6Hs5rvoO3qe0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4="
+        }
+      ]
+    },
+    {
+      "Route": "audio/piano.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\piano.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2844866"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yQqJDCrN/xk+zdHdM+tSAE/dNp1e4vm0L0alKQcUnD4="
+        }
+      ]
+    },
+    {
+      "Route": "audio/piano.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\0jxsaywxe2-dfqkkhhffk.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1891555"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5v1SSCNkULYoqc9l02ZtQUHZwn3meBX6Hs5rvoO3qe0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5v1SSCNkULYoqc9l02ZtQUHZwn3meBX6Hs5rvoO3qe0="
+        }
+      ]
+    },
+    {
+      "Route": "audio/sample.1fskbn7akw.ogg",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.ogg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "585707"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/ogg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3WN5IYvoAgI0rWoWKRTVSdAksN0mti/l89QrzGWH1EQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:24:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1fskbn7akw"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/sample.ogg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3WN5IYvoAgI0rWoWKRTVSdAksN0mti/l89QrzGWH1EQ="
+        }
+      ]
+    },
+    {
       "Route": "audio/sample.8hhh7oyg53.mp3",
       "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.mp3",
       "Selectors": [],
@@ -11008,6 +13580,639 @@
         {
           "Name": "integrity",
           "Value": "sha256-RKb7uetJHwaaNe12hV8MWtxdDD6InmPGF2vGlCUV5Fg="
+        }
+      ]
+    },
+    {
+      "Route": "audio/sample.ogg",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.ogg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "585707"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "video/ogg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3WN5IYvoAgI0rWoWKRTVSdAksN0mti/l89QrzGWH1EQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:24:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3WN5IYvoAgI0rWoWKRTVSdAksN0mti/l89QrzGWH1EQ="
+        }
+      ]
+    },
+    {
+      "Route": "audio/snare.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ehi0ikva0q-wd06hrye47.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000058302239"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17151"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MeQd49/ajOGgu/JQiGCcqD2wEA2oq/e0s5KngnqGJGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0="
+        }
+      ]
+    },
+    {
+      "Route": "audio/snare.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19252"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0="
+        }
+      ]
+    },
+    {
+      "Route": "audio/snare.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ehi0ikva0q-wd06hrye47.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17151"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MeQd49/ajOGgu/JQiGCcqD2wEA2oq/e0s5KngnqGJGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MeQd49/ajOGgu/JQiGCcqD2wEA2oq/e0s5KngnqGJGo="
+        }
+      ]
+    },
+    {
+      "Route": "audio/snare.wd06hrye47.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ehi0ikva0q-wd06hrye47.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000058302239"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17151"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MeQd49/ajOGgu/JQiGCcqD2wEA2oq/e0s5KngnqGJGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wd06hrye47"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/snare.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0="
+        }
+      ]
+    },
+    {
+      "Route": "audio/snare.wd06hrye47.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "19252"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wd06hrye47"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/snare.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jBvhDLspJDKgQ0yhRQ8InuIU3sIeB18MYMQj6xOFda0="
+        }
+      ]
+    },
+    {
+      "Route": "audio/snare.wd06hrye47.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ehi0ikva0q-wd06hrye47.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "17151"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MeQd49/ajOGgu/JQiGCcqD2wEA2oq/e0s5KngnqGJGo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wd06hrye47"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/snare.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MeQd49/ajOGgu/JQiGCcqD2wEA2oq/e0s5KngnqGJGo="
+        }
+      ]
+    },
+    {
+      "Route": "audio/strings.j9vxm8cckk.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ezpcclan9a-j9vxm8cckk.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000000577524"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1731530"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kDf4ADk5h0ilJsh79+tu6TePZ0g9aMEuQ0zhSaW3m/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j9vxm8cckk"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/strings.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc="
+        }
+      ]
+    },
+    {
+      "Route": "audio/strings.j9vxm8cckk.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\strings.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2844868"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j9vxm8cckk"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/strings.wav"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc="
+        }
+      ]
+    },
+    {
+      "Route": "audio/strings.j9vxm8cckk.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ezpcclan9a-j9vxm8cckk.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1731530"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kDf4ADk5h0ilJsh79+tu6TePZ0g9aMEuQ0zhSaW3m/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "j9vxm8cckk"
+        },
+        {
+          "Name": "label",
+          "Value": "audio/strings.wav.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kDf4ADk5h0ilJsh79+tu6TePZ0g9aMEuQ0zhSaW3m/k="
+        }
+      ]
+    },
+    {
+      "Route": "audio/strings.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ezpcclan9a-j9vxm8cckk.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000000577524"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1731530"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kDf4ADk5h0ilJsh79+tu6TePZ0g9aMEuQ0zhSaW3m/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc="
+        }
+      ]
+    },
+    {
+      "Route": "audio/strings.wav",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\strings.wav",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2844868"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-h9J0OWV3eY8KCGvw7grvUeJNJrGEh5aeYP4o43seFFc="
+        }
+      ]
+    },
+    {
+      "Route": "audio/strings.wav.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\ezpcclan9a-j9vxm8cckk.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1731530"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "audio/wav"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kDf4ADk5h0ilJsh79+tu6TePZ0g9aMEuQ0zhSaW3m/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:44:43 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kDf4ADk5h0ilJsh79+tu6TePZ0g9aMEuQ0zhSaW3m/k="
         }
       ]
     },
@@ -13296,11 +16501,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"6jQ2yVi1K72NEpL/SPDO41nrAlh1SnpEER8mKjyCMbw=\""
+          "Value": "\"UyofHjMy2f+lYpDAP3Kj5DSucArFzSjXoOFdSjjlbKA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13310,18 +16515,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6jQ2yVi1K72NEpL/SPDO41nrAlh1SnpEER8mKjyCMbw="
+          "Value": "sha256-UyofHjMy2f+lYpDAP3Kj5DSucArFzSjXoOFdSjjlbKA="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2wducpxqk8-u6qmt0ih5j.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2wducpxqk8-d8wqkzja42.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000078851916"
+          "Quality": "0.000078858134"
         }
       ],
       "ResponseHeaders": [
@@ -13331,15 +16536,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12681"
+          "Value": "12680"
         },
         {
           "Name": "ETag",
-          "Value": "\"IkVksikAOON1/uPrpqS2PucSsLWvo60C8iVrwsKneTg=\""
+          "Value": "\"StYQtj+Y8SA9cLiyzEA+PUFvFDMBPIUBGqiI7gvgHBE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:26:39 GMT"
+          "Value": "Tue, 04 Mar 2025 14:24:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13359,19 +16564,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"6jQ2yVi1K72NEpL/SPDO41nrAlh1SnpEER8mKjyCMbw=\""
+          "Value": "W/\"UyofHjMy2f+lYpDAP3Kj5DSucArFzSjXoOFdSjjlbKA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-6jQ2yVi1K72NEpL/SPDO41nrAlh1SnpEER8mKjyCMbw="
+          "Value": "sha256-UyofHjMy2f+lYpDAP3Kj5DSucArFzSjXoOFdSjjlbKA="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2wducpxqk8-u6qmt0ih5j.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2wducpxqk8-d8wqkzja42.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -13380,7 +16585,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12681"
+          "Value": "12680"
         },
         {
           "Name": "Content-Type",
@@ -13388,11 +16593,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"IkVksikAOON1/uPrpqS2PucSsLWvo60C8iVrwsKneTg=\""
+          "Value": "\"StYQtj+Y8SA9cLiyzEA+PUFvFDMBPIUBGqiI7gvgHBE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:26:39 GMT"
+          "Value": "Tue, 04 Mar 2025 14:24:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13410,7 +16615,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-IkVksikAOON1/uPrpqS2PucSsLWvo60C8iVrwsKneTg="
+          "Value": "sha256-StYQtj+Y8SA9cLiyzEA+PUFvFDMBPIUBGqiI7gvgHBE="
         }
       ]
     },
@@ -26664,7 +29869,7 @@
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.1eph49jueg.wasm",
+      "Route": "_framework/SoundAnnoucementApp.8dnhtc5ghf.wasm",
       "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SoundAnnoucementApp.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -26674,7 +29879,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "91925"
+          "Value": "101653"
         },
         {
           "Name": "Content-Type",
@@ -26682,11 +29887,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0=\""
+          "Value": "\"jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:13 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -26696,7 +29901,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "1eph49jueg"
+          "Value": "8dnhtc5ghf"
         },
         {
           "Name": "label",
@@ -26704,18 +29909,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0="
+          "Value": "sha256-jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE="
         }
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.1eph49jueg.wasm",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-1eph49jueg.gz",
+      "Route": "_framework/SoundAnnoucementApp.8dnhtc5ghf.wasm",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-8dnhtc5ghf.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000027680128"
+          "Quality": "0.000024988755"
         }
       ],
       "ResponseHeaders": [
@@ -26725,15 +29930,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "36126"
+          "Value": "40017"
         },
         {
           "Name": "ETag",
-          "Value": "\"07KSWv1u39+3A8F4v2sUEg3TxG1RGg9QnegfaljqMEY=\""
+          "Value": "\"w7vwLn8LpEeAG1LF83U0zUQ1RxDxm2KndgRI0UnO6wU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -26753,13 +29958,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0=\""
+          "Value": "W/\"jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "1eph49jueg"
+          "Value": "8dnhtc5ghf"
         },
         {
           "Name": "label",
@@ -26767,13 +29972,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0="
+          "Value": "sha256-jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE="
         }
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.1eph49jueg.wasm.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-1eph49jueg.gz",
+      "Route": "_framework/SoundAnnoucementApp.8dnhtc5ghf.wasm.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-8dnhtc5ghf.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -26782,7 +29987,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "36126"
+          "Value": "40017"
         },
         {
           "Name": "Content-Type",
@@ -26790,11 +29995,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"07KSWv1u39+3A8F4v2sUEg3TxG1RGg9QnegfaljqMEY=\""
+          "Value": "\"w7vwLn8LpEeAG1LF83U0zUQ1RxDxm2KndgRI0UnO6wU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -26812,7 +30017,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "1eph49jueg"
+          "Value": "8dnhtc5ghf"
         },
         {
           "Name": "label",
@@ -26820,12 +30025,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-07KSWv1u39+3A8F4v2sUEg3TxG1RGg9QnegfaljqMEY="
+          "Value": "sha256-w7vwLn8LpEeAG1LF83U0zUQ1RxDxm2KndgRI0UnO6wU="
         }
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.oa8jlo4p84.pdb",
+      "Route": "_framework/SoundAnnoucementApp.kkoze0g9qy.pdb",
       "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\SoundAnnoucementApp.pdb",
       "Selectors": [],
       "ResponseHeaders": [
@@ -26835,7 +30040,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "71596"
+          "Value": "80176"
         },
         {
           "Name": "Content-Type",
@@ -26843,11 +30048,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw=\""
+          "Value": "\"JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:13 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -26857,7 +30062,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "oa8jlo4p84"
+          "Value": "kkoze0g9qy"
         },
         {
           "Name": "label",
@@ -26865,18 +30070,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw="
+          "Value": "sha256-JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE="
         }
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.oa8jlo4p84.pdb",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-oa8jlo4p84.gz",
+      "Route": "_framework/SoundAnnoucementApp.kkoze0g9qy.pdb",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-kkoze0g9qy.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000017839304"
+          "Quality": "0.000016241676"
         }
       ],
       "ResponseHeaders": [
@@ -26886,15 +30091,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "56055"
+          "Value": "61569"
         },
         {
           "Name": "ETag",
-          "Value": "\"0kjzgad70oR9rLpPEQETmtLLomMGh+OR/Gv569cZxfg=\""
+          "Value": "\"IWw+am/7Tz1MSxUgax+Fr7ke+H/eQVxdeXMrkLKhaXk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -26914,13 +30119,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw=\""
+          "Value": "W/\"JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "oa8jlo4p84"
+          "Value": "kkoze0g9qy"
         },
         {
           "Name": "label",
@@ -26928,13 +30133,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw="
+          "Value": "sha256-JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE="
         }
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.oa8jlo4p84.pdb.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-oa8jlo4p84.gz",
+      "Route": "_framework/SoundAnnoucementApp.kkoze0g9qy.pdb.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-kkoze0g9qy.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -26943,7 +30148,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "56055"
+          "Value": "61569"
         },
         {
           "Name": "Content-Type",
@@ -26951,11 +30156,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0kjzgad70oR9rLpPEQETmtLLomMGh+OR/Gv569cZxfg=\""
+          "Value": "\"IWw+am/7Tz1MSxUgax+Fr7ke+H/eQVxdeXMrkLKhaXk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -26973,7 +30178,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "oa8jlo4p84"
+          "Value": "kkoze0g9qy"
         },
         {
           "Name": "label",
@@ -26981,7 +30186,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-0kjzgad70oR9rLpPEQETmtLLomMGh+OR/Gv569cZxfg="
+          "Value": "sha256-IWw+am/7Tz1MSxUgax+Fr7ke+H/eQVxdeXMrkLKhaXk="
         }
       ]
     },
@@ -26996,7 +30201,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "71596"
+          "Value": "80176"
         },
         {
           "Name": "Content-Type",
@@ -27004,11 +30209,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw=\""
+          "Value": "\"JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:13 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27018,18 +30223,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw="
+          "Value": "sha256-JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE="
         }
       ]
     },
     {
       "Route": "_framework/SoundAnnoucementApp.pdb",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-oa8jlo4p84.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-kkoze0g9qy.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000017839304"
+          "Quality": "0.000016241676"
         }
       ],
       "ResponseHeaders": [
@@ -27039,15 +30244,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "56055"
+          "Value": "61569"
         },
         {
           "Name": "ETag",
-          "Value": "\"0kjzgad70oR9rLpPEQETmtLLomMGh+OR/Gv569cZxfg=\""
+          "Value": "\"IWw+am/7Tz1MSxUgax+Fr7ke+H/eQVxdeXMrkLKhaXk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27067,19 +30272,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw=\""
+          "Value": "W/\"JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-QDrA/EtpENmZYuZmKyt6YK1y4GL7PF9zNk8TOFiaGVw="
+          "Value": "sha256-JHWTEaKWfCRufzfx5ONmYBzQqm/Sr6Quy8KvhBXU3WE="
         }
       ]
     },
     {
       "Route": "_framework/SoundAnnoucementApp.pdb.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-oa8jlo4p84.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\wtlmy325bf-kkoze0g9qy.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -27088,7 +30293,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "56055"
+          "Value": "61569"
         },
         {
           "Name": "Content-Type",
@@ -27096,11 +30301,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"0kjzgad70oR9rLpPEQETmtLLomMGh+OR/Gv569cZxfg=\""
+          "Value": "\"IWw+am/7Tz1MSxUgax+Fr7ke+H/eQVxdeXMrkLKhaXk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27118,7 +30323,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-0kjzgad70oR9rLpPEQETmtLLomMGh+OR/Gv569cZxfg="
+          "Value": "sha256-IWw+am/7Tz1MSxUgax+Fr7ke+H/eQVxdeXMrkLKhaXk="
         }
       ]
     },
@@ -27133,7 +30338,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "91925"
+          "Value": "101653"
         },
         {
           "Name": "Content-Type",
@@ -27141,11 +30346,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0=\""
+          "Value": "\"jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:13 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27155,18 +30360,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0="
+          "Value": "sha256-jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE="
         }
       ]
     },
     {
       "Route": "_framework/SoundAnnoucementApp.wasm",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-1eph49jueg.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-8dnhtc5ghf.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000027680128"
+          "Quality": "0.000024988755"
         }
       ],
       "ResponseHeaders": [
@@ -27176,15 +30381,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "36126"
+          "Value": "40017"
         },
         {
           "Name": "ETag",
-          "Value": "\"07KSWv1u39+3A8F4v2sUEg3TxG1RGg9QnegfaljqMEY=\""
+          "Value": "\"w7vwLn8LpEeAG1LF83U0zUQ1RxDxm2KndgRI0UnO6wU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27204,19 +30409,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0=\""
+          "Value": "W/\"jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-N221sI3GCamuuPO2Evzo9xRPLZdZryPxflLyKyeCmW0="
+          "Value": "sha256-jM1vos2bd/ADTTUuv8FWRlOx8ynRfh7zK6aINTu+9oE="
         }
       ]
     },
     {
       "Route": "_framework/SoundAnnoucementApp.wasm.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-1eph49jueg.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\vvsbcnnopr-8dnhtc5ghf.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -27225,7 +30430,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "36126"
+          "Value": "40017"
         },
         {
           "Name": "Content-Type",
@@ -27233,11 +30438,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"07KSWv1u39+3A8F4v2sUEg3TxG1RGg9QnegfaljqMEY=\""
+          "Value": "\"w7vwLn8LpEeAG1LF83U0zUQ1RxDxm2KndgRI0UnO6wU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:30:14 GMT"
+          "Value": "Tue, 04 Mar 2025 14:27:32 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -27255,7 +30460,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-07KSWv1u39+3A8F4v2sUEg3TxG1RGg9QnegfaljqMEY="
+          "Value": "sha256-w7vwLn8LpEeAG1LF83U0zUQ1RxDxm2KndgRI0UnO6wU="
         }
       ]
     },
@@ -75864,13 +79069,13 @@
       ]
     },
     {
-      "Route": "index.ewwlnxy3z8.html",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-ewwlnxy3z8.gz",
+      "Route": "index.hgjvm6ncmz.html",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-hgjvm6ncmz.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001434720230"
+          "Quality": "0.001422475107"
         }
       ],
       "ResponseHeaders": [
@@ -75880,15 +79085,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "696"
+          "Value": "702"
         },
         {
           "Name": "ETag",
-          "Value": "\"4/ynhFKZg9vUCYyz6S2zJ0kg9L0xPr8/x67lvD9/nig=\""
+          "Value": "\"dD56IKNLThUcYqTULuPuUAwZCJzg5UwtMMonWqMeMLE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:28:23 GMT"
+          "Value": "Tue, 04 Mar 2025 13:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -75908,13 +79113,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4=\""
+          "Value": "W/\"QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ewwlnxy3z8"
+          "Value": "hgjvm6ncmz"
         },
         {
           "Name": "label",
@@ -75922,12 +79127,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4="
+          "Value": "sha256-QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk="
         }
       ]
     },
     {
-      "Route": "index.ewwlnxy3z8.html",
+      "Route": "index.hgjvm6ncmz.html",
       "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\index.html",
       "Selectors": [],
       "ResponseHeaders": [
@@ -75937,7 +79142,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2068"
+          "Value": "2115"
         },
         {
           "Name": "Content-Type",
@@ -75945,11 +79150,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4=\""
+          "Value": "\"QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:28:23 GMT"
+          "Value": "Tue, 04 Mar 2025 13:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -75959,7 +79164,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ewwlnxy3z8"
+          "Value": "hgjvm6ncmz"
         },
         {
           "Name": "label",
@@ -75967,13 +79172,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4="
+          "Value": "sha256-QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk="
         }
       ]
     },
     {
-      "Route": "index.ewwlnxy3z8.html.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-ewwlnxy3z8.gz",
+      "Route": "index.hgjvm6ncmz.html.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-hgjvm6ncmz.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -75982,7 +79187,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "696"
+          "Value": "702"
         },
         {
           "Name": "Content-Type",
@@ -75990,11 +79195,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4/ynhFKZg9vUCYyz6S2zJ0kg9L0xPr8/x67lvD9/nig=\""
+          "Value": "\"dD56IKNLThUcYqTULuPuUAwZCJzg5UwtMMonWqMeMLE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:28:23 GMT"
+          "Value": "Tue, 04 Mar 2025 13:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -76012,7 +79217,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ewwlnxy3z8"
+          "Value": "hgjvm6ncmz"
         },
         {
           "Name": "label",
@@ -76020,18 +79225,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-4/ynhFKZg9vUCYyz6S2zJ0kg9L0xPr8/x67lvD9/nig="
+          "Value": "sha256-dD56IKNLThUcYqTULuPuUAwZCJzg5UwtMMonWqMeMLE="
         }
       ]
     },
     {
       "Route": "index.html",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-ewwlnxy3z8.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-hgjvm6ncmz.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001434720230"
+          "Quality": "0.001422475107"
         }
       ],
       "ResponseHeaders": [
@@ -76041,15 +79246,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "696"
+          "Value": "702"
         },
         {
           "Name": "ETag",
-          "Value": "\"4/ynhFKZg9vUCYyz6S2zJ0kg9L0xPr8/x67lvD9/nig=\""
+          "Value": "\"dD56IKNLThUcYqTULuPuUAwZCJzg5UwtMMonWqMeMLE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:28:23 GMT"
+          "Value": "Tue, 04 Mar 2025 13:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -76069,13 +79274,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4=\""
+          "Value": "W/\"QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4="
+          "Value": "sha256-QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk="
         }
       ]
     },
@@ -76090,7 +79295,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2068"
+          "Value": "2115"
         },
         {
           "Name": "Content-Type",
@@ -76098,11 +79303,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4=\""
+          "Value": "\"QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:28:23 GMT"
+          "Value": "Tue, 04 Mar 2025 13:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -76112,13 +79317,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-zhSKNiqCywRm/34E+KNRTVaZYJL6KgU1hPOyO79HKS4="
+          "Value": "sha256-QZIRNJpCnZBc54LbycM1qdCZ6oXVRDPzbCcAu16yJGk="
         }
       ]
     },
     {
       "Route": "index.html.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-ewwlnxy3z8.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\21k7zv2b9f-hgjvm6ncmz.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -76127,7 +79332,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "696"
+          "Value": "702"
         },
         {
           "Name": "Content-Type",
@@ -76135,11 +79340,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4/ynhFKZg9vUCYyz6S2zJ0kg9L0xPr8/x67lvD9/nig=\""
+          "Value": "\"dD56IKNLThUcYqTULuPuUAwZCJzg5UwtMMonWqMeMLE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 04 Mar 2025 09:28:23 GMT"
+          "Value": "Tue, 04 Mar 2025 13:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -76157,7 +79362,305 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-4/ynhFKZg9vUCYyz6S2zJ0kg9L0xPr8/x67lvD9/nig="
+          "Value": "sha256-dD56IKNLThUcYqTULuPuUAwZCJzg5UwtMMonWqMeMLE="
+        }
+      ]
+    },
+    {
+      "Route": "js/audioplayer.js",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2m3f39wis9-rrquf4qis9.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003610108303"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "276"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gby1UtJIua8JNKDAthsyCyeb8Cdg0cX1P6TlVG0MYfY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 14:11:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94="
+        }
+      ]
+    },
+    {
+      "Route": "js/audioplayer.js",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "774"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 14:11:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94="
+        }
+      ]
+    },
+    {
+      "Route": "js/audioplayer.js.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2m3f39wis9-rrquf4qis9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "276"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gby1UtJIua8JNKDAthsyCyeb8Cdg0cX1P6TlVG0MYfY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 14:11:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gby1UtJIua8JNKDAthsyCyeb8Cdg0cX1P6TlVG0MYfY="
+        }
+      ]
+    },
+    {
+      "Route": "js/audioplayer.rrquf4qis9.js",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2m3f39wis9-rrquf4qis9.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003610108303"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "276"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gby1UtJIua8JNKDAthsyCyeb8Cdg0cX1P6TlVG0MYfY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 14:11:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rrquf4qis9"
+        },
+        {
+          "Name": "label",
+          "Value": "js/audioplayer.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94="
+        }
+      ]
+    },
+    {
+      "Route": "js/audioplayer.rrquf4qis9.js",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "774"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 14:11:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rrquf4qis9"
+        },
+        {
+          "Name": "label",
+          "Value": "js/audioplayer.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94="
+        }
+      ]
+    },
+    {
+      "Route": "js/audioplayer.rrquf4qis9.js.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\2m3f39wis9-rrquf4qis9.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "276"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gby1UtJIua8JNKDAthsyCyeb8Cdg0cX1P6TlVG0MYfY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 14:11:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rrquf4qis9"
+        },
+        {
+          "Name": "label",
+          "Value": "js/audioplayer.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gby1UtJIua8JNKDAthsyCyeb8Cdg0cX1P6TlVG0MYfY="
         }
       ]
     },
@@ -79143,12 +82646,12 @@
     },
     {
       "Route": "SoundAnnoucementApp.bundle.scp.css",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-tokvhn425v.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-bwhpy1moq2.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000714285714"
+          "Quality": "0.000579038796"
         }
       ],
       "ResponseHeaders": [
@@ -79158,15 +82661,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1399"
+          "Value": "1726"
         },
         {
           "Name": "ETag",
-          "Value": "\"AdbnWlM2xd5cnabKIHsK7DbJKMqMxHdDyOPtw8fEML4=\""
+          "Value": "\"T+9+I5fAZj2zJEWHu5qh01WWj8112aVU1K5ULcwqyi8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -79186,13 +82689,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4=\""
+          "Value": "W/\"JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4="
+          "Value": "sha256-JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8="
         }
       ]
     },
@@ -79207,7 +82710,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4653"
+          "Value": "5840"
         },
         {
           "Name": "Content-Type",
@@ -79215,11 +82718,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4=\""
+          "Value": "\"JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -79229,13 +82732,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4="
+          "Value": "sha256-JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8="
         }
       ]
     },
     {
       "Route": "SoundAnnoucementApp.bundle.scp.css.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-tokvhn425v.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-bwhpy1moq2.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -79244,7 +82747,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1399"
+          "Value": "1726"
         },
         {
           "Name": "Content-Type",
@@ -79252,11 +82755,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AdbnWlM2xd5cnabKIHsK7DbJKMqMxHdDyOPtw8fEML4=\""
+          "Value": "\"T+9+I5fAZj2zJEWHu5qh01WWj8112aVU1K5ULcwqyi8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -79274,18 +82777,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-AdbnWlM2xd5cnabKIHsK7DbJKMqMxHdDyOPtw8fEML4="
+          "Value": "sha256-T+9+I5fAZj2zJEWHu5qh01WWj8112aVU1K5ULcwqyi8="
         }
       ]
     },
     {
-      "Route": "SoundAnnoucementApp.ehfbqr5gvy.styles.css",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-ehfbqr5gvy.gz",
+      "Route": "SoundAnnoucementApp.bwhpy1moq2.bundle.scp.css",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-bwhpy1moq2.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000695410292"
+          "Quality": "0.000579038796"
         }
       ],
       "ResponseHeaders": [
@@ -79295,15 +82798,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1437"
+          "Value": "1726"
         },
         {
           "Name": "ETag",
-          "Value": "\"nVmCWWvAvYnpJOclIGh9OjO0yRIq+OW+d3RjXv12+c0=\""
+          "Value": "\"T+9+I5fAZj2zJEWHu5qh01WWj8112aVU1K5ULcwqyi8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -79323,327 +82826,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8=\""
-        },
-        {
-          "Name": "Link",
-          "Value": "<_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+          "Value": "W/\"JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "ehfbqr5gvy"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8="
-        },
-        {
-          "Name": "label",
-          "Value": "SoundAnnoucementApp.styles.css"
-        }
-      ]
-    },
-    {
-      "Route": "SoundAnnoucementApp.ehfbqr5gvy.styles.css",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4726"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
-        },
-        {
-          "Name": "Link",
-          "Value": "<_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css>; rel=\"preload\"; as=\"style\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ehfbqr5gvy"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8="
-        },
-        {
-          "Name": "label",
-          "Value": "SoundAnnoucementApp.styles.css"
-        }
-      ]
-    },
-    {
-      "Route": "SoundAnnoucementApp.ehfbqr5gvy.styles.css.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-ehfbqr5gvy.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1437"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nVmCWWvAvYnpJOclIGh9OjO0yRIq+OW+d3RjXv12+c0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ehfbqr5gvy"
-        },
-        {
-          "Name": "label",
-          "Value": "SoundAnnoucementApp.styles.css.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-nVmCWWvAvYnpJOclIGh9OjO0yRIq+OW+d3RjXv12+c0="
-        }
-      ]
-    },
-    {
-      "Route": "SoundAnnoucementApp.styles.css",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-ehfbqr5gvy.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000695410292"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1437"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nVmCWWvAvYnpJOclIGh9OjO0yRIq+OW+d3RjXv12+c0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8=\""
-        },
-        {
-          "Name": "Link",
-          "Value": "<_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css>; rel=\"preload\"; as=\"style\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8="
-        }
-      ]
-    },
-    {
-      "Route": "SoundAnnoucementApp.styles.css",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4726"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
-        },
-        {
-          "Name": "Link",
-          "Value": "<_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css>; rel=\"preload\"; as=\"style\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-3ubHIeC5TSX9dxizU69fqnBy19l1wuE3qJcqRfHeKR8="
-        }
-      ]
-    },
-    {
-      "Route": "SoundAnnoucementApp.styles.css.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-ehfbqr5gvy.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1437"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nVmCWWvAvYnpJOclIGh9OjO0yRIq+OW+d3RjXv12+c0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-nVmCWWvAvYnpJOclIGh9OjO0yRIq+OW+d3RjXv12+c0="
-        }
-      ]
-    },
-    {
-      "Route": "SoundAnnoucementApp.tokvhn425v.bundle.scp.css",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-tokvhn425v.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000714285714"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1399"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"AdbnWlM2xd5cnabKIHsK7DbJKMqMxHdDyOPtw8fEML4=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "tokvhn425v"
+          "Value": "bwhpy1moq2"
         },
         {
           "Name": "label",
@@ -79651,12 +82840,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4="
+          "Value": "sha256-JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8="
         }
       ]
     },
     {
-      "Route": "SoundAnnoucementApp.tokvhn425v.bundle.scp.css",
+      "Route": "SoundAnnoucementApp.bwhpy1moq2.bundle.scp.css",
       "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\projectbundle\\SoundAnnoucementApp.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -79666,7 +82855,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4653"
+          "Value": "5840"
         },
         {
           "Name": "Content-Type",
@@ -79674,11 +82863,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4=\""
+          "Value": "\"JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -79688,7 +82877,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "tokvhn425v"
+          "Value": "bwhpy1moq2"
         },
         {
           "Name": "label",
@@ -79696,13 +82885,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-faeoAvUnO7EKim/J74xpIgwFFP/aVyjVYeAKUFvpuz4="
+          "Value": "sha256-JXNoc5vL45PDXI2V6EdCOmxwTGV+75idcMX/WMGdnf8="
         }
       ]
     },
     {
-      "Route": "SoundAnnoucementApp.tokvhn425v.bundle.scp.css.gz",
-      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-tokvhn425v.gz",
+      "Route": "SoundAnnoucementApp.bwhpy1moq2.bundle.scp.css.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\qz8dum9bjy-bwhpy1moq2.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -79711,7 +82900,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1399"
+          "Value": "1726"
         },
         {
           "Name": "Content-Type",
@@ -79719,11 +82908,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"AdbnWlM2xd5cnabKIHsK7DbJKMqMxHdDyOPtw8fEML4=\""
+          "Value": "\"T+9+I5fAZj2zJEWHu5qh01WWj8112aVU1K5ULcwqyi8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 14:48:15 GMT"
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -79741,7 +82930,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "tokvhn425v"
+          "Value": "bwhpy1moq2"
         },
         {
           "Name": "label",
@@ -79749,7 +82938,321 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-AdbnWlM2xd5cnabKIHsK7DbJKMqMxHdDyOPtw8fEML4="
+          "Value": "sha256-T+9+I5fAZj2zJEWHu5qh01WWj8112aVU1K5ULcwqyi8="
+        }
+      ]
+    },
+    {
+      "Route": "SoundAnnoucementApp.styles.css",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-uucyill51f.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000565930956"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1766"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nQ5GQOIf4u9VENE0xOOibONiTDGoIRFy6rcDnpOJnIY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY=\""
+        },
+        {
+          "Name": "Link",
+          "Value": "<_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY="
+        }
+      ]
+    },
+    {
+      "Route": "SoundAnnoucementApp.styles.css",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5913"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
+        },
+        {
+          "Name": "Link",
+          "Value": "<_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY="
+        }
+      ]
+    },
+    {
+      "Route": "SoundAnnoucementApp.styles.css.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-uucyill51f.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1766"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nQ5GQOIf4u9VENE0xOOibONiTDGoIRFy6rcDnpOJnIY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nQ5GQOIf4u9VENE0xOOibONiTDGoIRFy6rcDnpOJnIY="
+        }
+      ]
+    },
+    {
+      "Route": "SoundAnnoucementApp.uucyill51f.styles.css",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-uucyill51f.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000565930956"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1766"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nQ5GQOIf4u9VENE0xOOibONiTDGoIRFy6rcDnpOJnIY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY=\""
+        },
+        {
+          "Name": "Link",
+          "Value": "<_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uucyill51f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY="
+        },
+        {
+          "Name": "label",
+          "Value": "SoundAnnoucementApp.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "SoundAnnoucementApp.uucyill51f.styles.css",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "5913"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
+        },
+        {
+          "Name": "Link",
+          "Value": "<_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css>; rel=\"preload\"; as=\"style\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uucyill51f"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY="
+        },
+        {
+          "Name": "label",
+          "Value": "SoundAnnoucementApp.styles.css"
+        }
+      ]
+    },
+    {
+      "Route": "SoundAnnoucementApp.uucyill51f.styles.css.gz",
+      "AssetFile": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\compressed\\z360cmiten-uucyill51f.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1766"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nQ5GQOIf4u9VENE0xOOibONiTDGoIRFy6rcDnpOJnIY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Mar 2025 13:54:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uucyill51f"
+        },
+        {
+          "Name": "label",
+          "Value": "SoundAnnoucementApp.styles.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nQ5GQOIf4u9VENE0xOOibONiTDGoIRFy6rcDnpOJnIY="
         }
       ]
     }

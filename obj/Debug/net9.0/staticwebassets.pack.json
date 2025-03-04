@@ -21,8 +21,48 @@
       "PackagePath": "staticwebassets\\audio\\AudioRecorder.js"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\bass.wav",
+      "PackagePath": "staticwebassets\\audio\\bass.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.wav",
+      "PackagePath": "staticwebassets\\audio\\fx1.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.wav",
+      "PackagePath": "staticwebassets\\audio\\fx2.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.wav",
+      "PackagePath": "staticwebassets\\audio\\fx3.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.wav",
+      "PackagePath": "staticwebassets\\audio\\hihat.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.wav",
+      "PackagePath": "staticwebassets\\audio\\kick.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\piano.wav",
+      "PackagePath": "staticwebassets\\audio\\piano.wav"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.mp3",
       "PackagePath": "staticwebassets\\audio\\sample.mp3"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.ogg",
+      "PackagePath": "staticwebassets\\audio\\sample.ogg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.wav",
+      "PackagePath": "staticwebassets\\audio\\snare.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\strings.wav",
+      "PackagePath": "staticwebassets\\audio\\strings.wav"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\app.css",
@@ -71,6 +111,10 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\BlazorQuill.js",
       "PackagePath": "staticwebassets\\js\\BlazorQuill.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js",
+      "PackagePath": "staticwebassets\\js\\audioplayer.js"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\canvasHelper.js",

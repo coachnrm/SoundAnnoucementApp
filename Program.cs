@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using SoundAnnoucementApp;
+using SoundAnnoucementApp.Pages.MusicPad;
 using SoundAnnoucementApp.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -18,5 +19,6 @@ builder.Services.AddHttpClient("OpNoteApi", client =>
 });
 
 builder.Services.AddSingleton<QueueService>();
+builder.Services.AddScoped<ISoundPlayer, SoundPlayer>();
 
 await builder.Build().RunAsync();

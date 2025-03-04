@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/User/Desktop/SoundAnnoucementApp/Pages/AudioCall.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaW9DYWxsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/User/Desktop/SoundAnnoucementApp/Pages/Calendar.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsZW5kYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -111,3 +115,11 @@ build_metadata.AdditionalFiles.CssScope = b-eaitrgb9r4
 [C:/Users/User/Desktop/SoundAnnoucementApp/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-pdnfuziggc
+
+[C:/Users/User/Desktop/SoundAnnoucementApp/Pages/MusicPad/Pad.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-nz1olq9wq5
+
+[C:/Users/User/Desktop/SoundAnnoucementApp/Pages/MusicPad/PadController.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkQ29udHJvbGxlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-rhkae1j2hq

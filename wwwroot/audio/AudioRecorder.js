@@ -73,3 +73,11 @@ var BlazorAudioRecorder = {};
         document.body.removeChild(link);
     };
 })();
+
+window.PlayAudio = (elementName) => {
+    document.getElementById(elementName).play();
+}
+
+window.PauseAudio = (elementName) => {
+    document.getElementById(elementName).pause();
+}
