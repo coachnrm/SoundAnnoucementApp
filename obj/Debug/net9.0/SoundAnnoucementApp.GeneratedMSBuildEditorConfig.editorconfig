@@ -28,6 +28,14 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/User/Desktop/SoundAnnoucementApp/Pages/Animal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5pbWFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/SoundAnnoucementApp/Pages/AnimalSound.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5pbWFsU291bmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/User/Desktop/SoundAnnoucementApp/Pages/Audio.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

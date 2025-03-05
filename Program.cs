@@ -22,3 +22,4 @@ builder.Services.AddSingleton<QueueService>();
 builder.Services.AddScoped<ISoundPlayer, SoundPlayer>();
 
 await builder.Build().RunAsync();
+

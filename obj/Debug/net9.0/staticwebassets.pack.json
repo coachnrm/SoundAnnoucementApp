@@ -25,6 +25,26 @@
       "PackagePath": "staticwebassets\\audio\\bass.wav"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\cat.wav",
+      "PackagePath": "staticwebassets\\audio\\cat.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\chicken.wav",
+      "PackagePath": "staticwebassets\\audio\\chicken.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\cow.wav",
+      "PackagePath": "staticwebassets\\audio\\cow.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\dog.wav",
+      "PackagePath": "staticwebassets\\audio\\dog.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\donkey.wav",
+      "PackagePath": "staticwebassets\\audio\\donkey.wav"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.wav",
       "PackagePath": "staticwebassets\\audio\\fx1.wav"
     },
@@ -41,6 +61,10 @@
       "PackagePath": "staticwebassets\\audio\\hihat.wav"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\horse.wav",
+      "PackagePath": "staticwebassets\\audio\\horse.wav"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.wav",
       "PackagePath": "staticwebassets\\audio\\kick.wav"
     },
@@ -49,12 +73,24 @@
       "PackagePath": "staticwebassets\\audio\\piano.wav"
     },
     {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\pig.wav",
+      "PackagePath": "staticwebassets\\audio\\pig.wav"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\rooster.wav",
+      "PackagePath": "staticwebassets\\audio\\rooster.wav"
+    },
+    {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.mp3",
       "PackagePath": "staticwebassets\\audio\\sample.mp3"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.ogg",
       "PackagePath": "staticwebassets\\audio\\sample.ogg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sheep.wav",
+      "PackagePath": "staticwebassets\\audio\\sheep.wav"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.wav",
@@ -103,6 +139,42 @@
     {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\images\\3.jpg",
       "PackagePath": "staticwebassets\\images\\3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\cat.png",
+      "PackagePath": "staticwebassets\\img\\cat.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\chicken.png",
+      "PackagePath": "staticwebassets\\img\\chicken.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\cow.png",
+      "PackagePath": "staticwebassets\\img\\cow.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\dog.png",
+      "PackagePath": "staticwebassets\\img\\dog.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\donkey.png",
+      "PackagePath": "staticwebassets\\img\\donkey.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\horse.png",
+      "PackagePath": "staticwebassets\\img\\horse.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\pig.png",
+      "PackagePath": "staticwebassets\\img\\pig.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\rooster.png",
+      "PackagePath": "staticwebassets\\img\\rooster.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\sheep.png",
+      "PackagePath": "staticwebassets\\img\\sheep.png"
     },
     {
       "Id": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\wwwroot\\index.html",
