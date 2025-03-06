@@ -3218,10 +3218,10 @@ C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\0hvvyrst2o
 C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\dn73o6ltuq-y99fr3vnnm.gz
 C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\r2npbklw2z-qh9oz43llh.gz
 C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\jfp0co7lko-7gg0o386w6.gz
-C:\Users\User\Desktop\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.0l6xcmxqvm.pdb
-C:\Users\User\Desktop\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.o3vfu8o3mm.wasm
-C:\Users\User\Desktop\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.o3vfu8o3mm.wasm.gz
-C:\Users\User\Desktop\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.0l6xcmxqvm.pdb.gz
-C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\vvsbcnnopr-o3vfu8o3mm.gz
-C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\wtlmy325bf-0l6xcmxqvm.gz
-C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-oi35mt8aap.gz
+C:\Users\User\Desktop\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.58gu83kgz4.pdb
+C:\Users\User\Desktop\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.72t2a5g9go.wasm
+C:\Users\User\Desktop\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.72t2a5g9go.wasm.gz
+C:\Users\User\Desktop\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.58gu83kgz4.pdb.gz
+C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\vvsbcnnopr-72t2a5g9go.gz
+C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\wtlmy325bf-58gu83kgz4.gz
+C:\Users\User\Desktop\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-qwmq2pawk0.gz
