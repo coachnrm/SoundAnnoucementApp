@@ -1,5 +1,6 @@
 ﻿@page "/imageremove"
 @inject IJSRuntime JSRuntime
+@inject IHttpClientFactory _httpClientFactory;
 
 <h3>Upload, Edit & Save Image</h3>
 
@@ -8,13 +9,13 @@
 <div>
     <button @onclick='() => SetMode("draw")' class="btn btn-primary">Draw</button>
     <button @onclick='() => SetMode("type")' class="btn btn-primary">Type</button>
-    <button @onclick='() => SetMode("erase")' class="btn btn-secondary">Erase</button>
     <button @onclick="Undo" class="btn btn-warning">Undo</button>
     <button @onclick="ClearCanvas" class="btn btn-danger">Clear</button>
 </div>
 
 <canvas id="drawingCanvas" width="800" height="600" style="border:1px solid black;"></canvas>
 <button @onclick="SaveToLocal" class="btn btn-success">Save Image</button>
+<button @onclick="SaveToDatabase" class="btn btn-success">Save Image to Database</button>
 
 @code {
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -25,13 +26,31 @@
         }
     }
 
-    private async Task UploadImage(InputFileChangeEventArgs e)
+    @* private async Task UploadImage(InputFileChangeEventArgs e)
     {
         var file = e.File;
         if (file != null)
         {
             var buffer = new byte[file.Size];
             await file.OpenReadStream().ReadAsync(buffer);
+            string imageDataUrl = $"data:{file.ContentType};base64,{Convert.ToBase64String(buffer)}";
+
+            await JSRuntime.InvokeVoidAsync("loadImageOnCanvas", "drawingCanvas", imageDataUrl);
+        }
+    } *@
+    private async Task UploadImage(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        if (file != null)
+        {
+            // Increase max file size limit to 5MB
+            const long maxFileSize = 5 * 1024 * 1024; // 5MB
+
+            var buffer = new byte[file.Size];
+
+            // Read stream with increased max allowed size
+            await file.OpenReadStream(maxFileSize).ReadAsync(buffer);
+
             string imageDataUrl = $"data:{file.ContentType};base64,{Convert.ToBase64String(buffer)}";
 
             await JSRuntime.InvokeVoidAsync("loadImageOnCanvas", "drawingCanvas", imageDataUrl);
@@ -57,4 +76,59 @@
     {
         await JSRuntime.InvokeVoidAsync("saveCanvasAsFile", "drawingCanvas", "edited-image.png");
     }
+
+    private async Task SaveToDatabase()
+    {
+        try
+        {
+            // js at erasor.js
+            // Retrieve the canvas image as a Base64 string from JavaScript
+            string base64Image = await JSRuntime.InvokeAsync<string>("canvasHelper.getCanvasImage", "drawingCanvas");
+
+            if (string.IsNullOrEmpty(base64Image))
+            {
+                Console.WriteLine("Error: No image data found.");
+                return;
+            }
+
+            // Convert Base64 to byte array (skip "data:image/png;base64," part)
+            byte[] imageBytes = Convert.FromBase64String(base64Image.Split(',')[1]);
+
+            using var content = new MultipartFormDataContent();
+            
+            // Create ByteArrayContent with appropriate headers
+            var byteArrayContent = new ByteArrayContent(imageBytes);
+            byteArrayContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
+
+            // Ensure the filename matches the one in the `curl` request
+            content.Add(byteArrayContent, "FormFile", "edited-image.png");
+
+            // Ensure the `An` parameter matches the `curl` request
+            string an = "6645721455"; // Replace this with the actual identifier
+            content.Add(new StringContent(an), "An");
+
+            @* using var client = new HttpClient();
+            
+            // Set base address and headers if needed
+            client.BaseAddress = new Uri("http://localhost:5286"); *@
+            var client = _httpClientFactory.CreateClient("OpNoteApi");
+            
+            // Execute POST request
+            var response = await client.PostAsync("api/Operation/UploadImage", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine("Image successfully uploaded to the database!");
+            }
+            else
+            {
+                Console.WriteLine("Error uploading image: " + await response.Content.ReadAsStringAsync());
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}");
+        }
+    }
+
 }

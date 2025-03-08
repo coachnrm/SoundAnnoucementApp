@@ -28,6 +28,22 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/Animal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQW5pbWFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/AnimalSound.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQW5pbWFsU291bmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/Audio.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXVkaW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/AudioCall.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXVkaW9DYWxsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/Calendar.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2FsZW5kYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,6 +66,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/OrderPost.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvT3JkZXJQb3N0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/Print.razor]
@@ -107,3 +127,11 @@ build_metadata.AdditionalFiles.CssScope = b-5dammzdwpc
 [/Users/home/Desktop/SoundAnnoucementApp/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L05hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-l72vqjlho6
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/MusicPad/Pad.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTXVzaWNQYWQvUGFkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-noprl7njcy
+
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/MusicPad/PadController.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTXVzaWNQYWQvUGFkQ29udHJvbGxlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-8he9814jrq

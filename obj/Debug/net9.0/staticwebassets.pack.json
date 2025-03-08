@@ -13,6 +13,90 @@
       "PackagePath": "staticwebassets/audio.js"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/AudioRecorder.js",
+      "PackagePath": "staticwebassets/audio/AudioRecorder.js"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/bass.mp3",
+      "PackagePath": "staticwebassets/audio/bass.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/cat.mp3",
+      "PackagePath": "staticwebassets/audio/cat.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/chicken.mp3",
+      "PackagePath": "staticwebassets/audio/chicken.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/cow.mp3",
+      "PackagePath": "staticwebassets/audio/cow.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/dog.mp3",
+      "PackagePath": "staticwebassets/audio/dog.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/donkey.mp3",
+      "PackagePath": "staticwebassets/audio/donkey.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/fx1.mp3",
+      "PackagePath": "staticwebassets/audio/fx1.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/fx2.mp3",
+      "PackagePath": "staticwebassets/audio/fx2.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/fx3.mp3",
+      "PackagePath": "staticwebassets/audio/fx3.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/hihat.mp3",
+      "PackagePath": "staticwebassets/audio/hihat.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/horse.mp3",
+      "PackagePath": "staticwebassets/audio/horse.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/kick.mp3",
+      "PackagePath": "staticwebassets/audio/kick.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/piano.mp3",
+      "PackagePath": "staticwebassets/audio/piano.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/pig.mp3",
+      "PackagePath": "staticwebassets/audio/pig.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/rooster.mp3",
+      "PackagePath": "staticwebassets/audio/rooster.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/sample.mp3",
+      "PackagePath": "staticwebassets/audio/sample.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/sheep.mp3",
+      "PackagePath": "staticwebassets/audio/sheep.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/snare.mp3",
+      "PackagePath": "staticwebassets/audio/snare.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audio/strings.mp3",
+      "PackagePath": "staticwebassets/audio/strings.mp3"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/audioHelper.js",
+      "PackagePath": "staticwebassets/audioHelper.js"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/css/app.css",
       "PackagePath": "staticwebassets/css/app.css"
     },
@@ -53,12 +137,56 @@
       "PackagePath": "staticwebassets/images/3.jpg"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/cat.png",
+      "PackagePath": "staticwebassets/img/cat.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/chicken.png",
+      "PackagePath": "staticwebassets/img/chicken.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/cow.png",
+      "PackagePath": "staticwebassets/img/cow.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/dog.png",
+      "PackagePath": "staticwebassets/img/dog.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/donkey.png",
+      "PackagePath": "staticwebassets/img/donkey.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/horse.png",
+      "PackagePath": "staticwebassets/img/horse.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/pig.png",
+      "PackagePath": "staticwebassets/img/pig.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/rooster.png",
+      "PackagePath": "staticwebassets/img/rooster.png"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/img/sheep.png",
+      "PackagePath": "staticwebassets/img/sheep.png"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/index.html",
       "PackagePath": "staticwebassets/index.html"
     },
     {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/BlazorQuill.js",
       "PackagePath": "staticwebassets/js/BlazorQuill.js"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/audioplayer.js",
+      "PackagePath": "staticwebassets/js/audioplayer.js"
+    },
+    {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/canvasHelper.js",
+      "PackagePath": "staticwebassets/js/canvasHelper.js"
     },
     {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/drawingCanvas.js",

@@ -162,3 +162,57 @@ main[b-eaitrgb9r4] {
         overflow-y: auto;
     }
 }
+/* /Pages/MusicPad/Pad.razor.rz.scp.css */
+.pad[b-nz1olq9wq5]{
+    background-color:#1B1B1B;
+    border-radius:20px;
+    border:2px solid #B2213C;
+    width:150px;
+    height:150px;
+    margin:20px;
+    color:white;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    padding-top:50px;
+}
+
+.pad>h4[b-nz1olq9wq5],.pad>h5[b-nz1olq9wq5]{
+    text-align:center;
+    text-transform:uppercase;
+    text-shadow:0 0 15px #fdffbd;
+}
+
+.pad:hover[b-nz1olq9wq5]{
+    box-shadow: 0 0 15px #EE4352;
+    color:#EE4352;
+    background:radial-gradient(#ffffff, #ff726f);
+}
+
+.highlight[b-nz1olq9wq5] {
+    box-shadow: 0 0 15px #EE4352;
+    color: #EE4352;
+    background: radial-gradient(#ffffff, #ff726f);
+}
+/* /Pages/MusicPad/PadController.razor.rz.scp.css */
+.main[b-rhkae1j2hq]{
+    margin-left:auto;
+    margin-right:auto;
+    width:600px;
+    height:600px;
+}
+
+.surface[b-rhkae1j2hq]{
+    background-color:#0C0E0C;
+    display:flex;
+    flex-flow:row wrap;
+    justify-content:center;
+    align-content:center;
+    margin-left:auto;
+    margin-right:auto;
+    outline:none;
+    border-radius:20px;
+}
+
+h1[b-rhkae1j2hq]{
+    color:white;
+}

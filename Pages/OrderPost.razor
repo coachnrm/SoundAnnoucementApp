@@ -1,0 +1,112 @@
+﻿@page "/orderpost"
+
+<h3>Order Form</h3>
+
+<EditForm Model="@orderRequest">
+    <DataAnnotationsValidator />
+
+    <div>
+        <label>AN:</label>
+        <InputText @bind-Value="orderRequest.An" />
+    </div>
+
+    <div>
+        <label>Login Name:</label>
+        <InputText @bind-Value="orderRequest.LoginName" />
+    </div>
+
+    <div>
+        <label>Order Doctor:</label>
+        <InputText @bind-Value="orderRequest.OrderDoctor" />
+    </div>
+
+    <h4>One-Day Orders</h4>
+    <div>
+        <button type="button" @onclick="AddOneDayOrder">Add Order</button>
+        <ul>
+            @foreach (var order in orderRequest.OnedayOrders)
+            {
+                <li>
+                    <InputText @bind-Value="order.OrderItemType" placeholder="Order Type" />
+                    <InputText @bind-Value="order.OrderItemDetail" placeholder="Order Detail" />
+                    <InputText @bind-Value="order.Stat" placeholder="Stat" />
+                    <InputText @bind-Value="order.Icode" placeholder="Icode" />
+                    <button type="button" @onclick="() => RemoveOneDayOrder(order)">Remove</button>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <h4>Continuous Orders</h4>
+    <div>
+        <button type="button" @onclick="AddContinuousOrder">Add Order</button>
+        <ul>
+            @foreach (var order in orderRequest.ContinousOrders)
+            {
+                <li>
+                    <InputText @bind-Value="order.OrderItemType" placeholder="Order Type" />
+                    <InputText @bind-Value="order.OrderItemDetail" placeholder="Order Detail" />
+                    <InputText @bind-Value="order.Stat" placeholder="Stat" />
+                    <InputText @bind-Value="order.Icode" placeholder="Icode" />
+                    <button type="button" @onclick="() => RemoveContinuousOrder(order)">Remove</button>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <button type="submit">Submit Order</button>
+
+    <p>@responseMessage</p>
+</EditForm>
+
+@code {
+    private OrderRequest orderRequest = new OrderRequest
+    {
+        An = "",
+        LoginName = "",
+        OrderDoctor = "",
+        OnedayOrders = new List<OrderItem>(),
+        ContinousOrders = new List<OrderItem>()
+    };
+
+    private string responseMessage = "";
+
+    private void AddOneDayOrder()
+    {
+        orderRequest.OnedayOrders.Add(new OrderItem());
+    }
+
+    private void RemoveOneDayOrder(OrderItem order)
+    {
+        orderRequest.OnedayOrders.Remove(order);
+    }
+
+    private void AddContinuousOrder()
+    {
+        orderRequest.ContinousOrders.Add(new OrderItem());
+    }
+
+    private void RemoveContinuousOrder(OrderItem order)
+    {
+        orderRequest.ContinousOrders.Remove(order);
+    }
+
+    public class OrderRequest
+    {
+        public string An { get; set; }
+        public string LoginName { get; set; }
+        public string OrderDoctor { get; set; }
+        public List<OrderItem> OnedayOrders { get; set; }
+        public List<OrderItem> ContinousOrders { get; set; }
+    }
+
+    public class OrderItem
+    {
+        public string OrderItemType { get; set; } = "";
+        public string OrderItemDetail { get; set; } = "";
+        public string Stat { get; set; } = "";
+        public string Icode { get; set; } = "";
+    }
+}
+
+

@@ -153,3 +153,33 @@ function saveState() {
 }
 
 
+// function initAudio(element, reference){
+//     element.addEventListener("ended", async e => {
+//         await reference.invokeMethodAsync("OnEnd");
+//     });
+// }
+
+// function playAudio(element) {
+//     stopAudio(element);
+//     element.play();
+// }
+
+// function stopAudio(element) {
+//     element.pause();
+//     element.currentTime = 0;
+// }
+
+window.playAudio = (audioElement) => {
+    audioElement.play();
+};
+
+window.stopAudio = (audioElement) => {
+    audioElement.pause();
+    audioElement.currentTime = 0;
+};
+
+window.initAudio = (audioElement, dotNetHelper) => {
+    audioElement.onended = () => {
+        dotNetHelper.invokeMethodAsync("OnEnd");
+    };
+};
