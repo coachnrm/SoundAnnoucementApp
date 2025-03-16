@@ -44,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXVkaW9DYWxsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/home/Desktop/SoundAnnoucementApp/Pages/BarcodeGenerator.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQmFyY29kZUdlbmVyYXRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/home/Desktop/SoundAnnoucementApp/Pages/Calendar.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2FsZW5kYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

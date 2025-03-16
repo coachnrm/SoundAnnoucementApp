@@ -1,0 +1,21 @@
+﻿@page "/barcode"
+@inject IJSRuntime JS
+
+<h3>Barcode Generator</h3>
+<input @bind="BarcodeValue" placeholder="Enter Barcode" />
+<button @onclick="GenerateBarcode">Generate Barcode</button>
+
+<svg id="barcode"></svg>
+
+@code {
+    private string BarcodeValue = "0524789"; // Default value
+
+    private async Task GenerateBarcode()
+    {
+        await JS.InvokeVoidAsync("JsBarcode", "#barcode", BarcodeValue, new
+        {
+            format = "CODE128",
+            displayValue = true
+        });
+    }
+}

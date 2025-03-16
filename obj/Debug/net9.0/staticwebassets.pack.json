@@ -185,6 +185,10 @@
       "PackagePath": "staticwebassets/js/audioplayer.js"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/barcode.js",
+      "PackagePath": "staticwebassets/js/barcode.js"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/canvasHelper.js",
       "PackagePath": "staticwebassets/js/canvasHelper.js"
     },
