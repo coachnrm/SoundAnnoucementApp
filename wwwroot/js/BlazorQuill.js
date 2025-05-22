@@ -7,10 +7,21 @@ window.BlazorQuill = {
     init: function (elementId) {
         var container = document.querySelector(elementId);
         if (container) {
+            var Size = Quill.import('formats/size');
+            Size.whitelist = ['small', false, 'large', 'huge'];
+            Quill.register(Size, true);
+
             this.quillInstance = new Quill(container, {
                 theme: 'snow', // Choose theme (snow or bubble)
                 modules: {
-                    toolbar: [['bold', 'italic'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['link']] // Example toolbar
+                    // toolbar: [['bold', 'italic'], [{ 'list': 'ordered' }, { 'list': 'bullet' }], ['link']] // Example toolbar
+                    toolbar: [
+                        [{ 'size': ['small', false, 'large', 'huge'] }], // Add this line
+                        ['bold', 'italic'],
+                        [{ 'color': [] }, { 'background': [] }],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        ['link']
+                    ]
                 }
             });
         }
