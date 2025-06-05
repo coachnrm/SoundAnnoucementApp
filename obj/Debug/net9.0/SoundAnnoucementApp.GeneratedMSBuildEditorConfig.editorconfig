@@ -84,6 +84,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpbnRTaWxlbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Admin/Desktop/SoundAnnoucementApp/Pages/QrGenerator.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXJHZW5lcmF0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/Desktop/SoundAnnoucementApp/Pages/QueueCounter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
