@@ -225,6 +225,14 @@
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
     {
+      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\videos\\ER.mp4",
+      "PackagePath": "staticwebassets\\videos\\ER.mp4"
+    },
+    {
+      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\videos\\sample.mp4",
+      "PackagePath": "staticwebassets\\videos\\sample.mp4"
+    },
+    {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.SoundAnnoucementApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },

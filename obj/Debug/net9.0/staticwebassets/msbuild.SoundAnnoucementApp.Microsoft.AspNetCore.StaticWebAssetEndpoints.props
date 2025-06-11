@@ -660,6 +660,30 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"uucyill51f"},{"Name":"integrity","Value":"sha256-ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY="},{"Name":"label","Value":"SoundAnnoucementApp.styles.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"5913"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 22 May 2025 03:03:18 GMT"},{"Name":"Link","Value":"\u003C_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="videos/ER.mp4">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\videos\ER.mp4'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-YQo1C3HB5tGWtJkyhsh0rBVN/NC4jGWZ3vuJ5zbaxoM="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"628924736"},{"Name":"Content-Type","Value":"video/mp4"},{"Name":"ETag","Value":"\u0022YQo1C3HB5tGWtJkyhsh0rBVN/NC4jGWZ3vuJ5zbaxoM=\u0022"},{"Name":"Last-Modified","Value":"Wed, 04 Jun 2025 02:55:08 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="videos/ER.rhehiwkybg.mp4">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\videos\ER.mp4'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"rhehiwkybg"},{"Name":"integrity","Value":"sha256-YQo1C3HB5tGWtJkyhsh0rBVN/NC4jGWZ3vuJ5zbaxoM="},{"Name":"label","Value":"videos/ER.mp4"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"628924736"},{"Name":"Content-Type","Value":"video/mp4"},{"Name":"ETag","Value":"\u0022YQo1C3HB5tGWtJkyhsh0rBVN/NC4jGWZ3vuJ5zbaxoM=\u0022"},{"Name":"Last-Modified","Value":"Wed, 04 Jun 2025 02:55:08 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="videos/sample.mp4">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\videos\sample.mp4'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-VQXMQeCUYLQMyxEHpFJa8g5yc4knnfxC7kY5PIN\u002BJIU="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"8481074"},{"Name":"Content-Type","Value":"video/mp4"},{"Name":"ETag","Value":"\u0022VQXMQeCUYLQMyxEHpFJa8g5yc4knnfxC7kY5PIN\u002BJIU=\u0022"},{"Name":"Last-Modified","Value":"Wed, 11 Jun 2025 04:25:37 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="videos/sample.t6y12cz2gn.mp4">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\videos\sample.mp4'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"t6y12cz2gn"},{"Name":"integrity","Value":"sha256-VQXMQeCUYLQMyxEHpFJa8g5yc4knnfxC7kY5PIN\u002BJIU="},{"Name":"label","Value":"videos/sample.mp4"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"8481074"},{"Name":"Content-Type","Value":"video/mp4"},{"Name":"ETag","Value":"\u0022VQXMQeCUYLQMyxEHpFJa8g5yc4knnfxC7kY5PIN\u002BJIU=\u0022"},{"Name":"Last-Modified","Value":"Wed, 11 Jun 2025 04:25:37 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_framework/blazor.webassembly.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\_framework\blazor.webassembly.js'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
