@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>6pwo593279</Fingerprint>
-      <Integrity>dqtpnofJ8jrK9WWkS+x6mKBndKMWaK7cV7uewjUVhlg=</Integrity>
+      <Fingerprint>owhk7gphne</Fingerprint>
+      <Integrity>qA5WcYDLtx9YhmhyNqK7HPxC3H2AWLEMD9sG8M+pzGI=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\audio.js'))</OriginalItemSpec>
@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>emfcyk8xyj</Fingerprint>
-      <Integrity>Fsyx0+oGil9MOhuxg8Pu+kcRNGIKGZo3bXc253N9kf4=</Integrity>
+      <Fingerprint>02o5ia3ijn</Fingerprint>
+      <Integrity>CHOo8cXbd9JeIIsgp0lOgwolVuq84Xr7WmHWSkGJnGE=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\audio\AudioRecorder.js'))</OriginalItemSpec>
@@ -390,8 +390,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>wcl3h4zfg9</Fingerprint>
-      <Integrity>IEC2ZVo+aOnEUr8AbiFoUISdAqxFVImOKxitg39NxUA=</Integrity>
+      <Fingerprint>cweekveybk</Fingerprint>
+      <Integrity>7BIXB0JIzyZZgldx1Z0V75Y/2JaaSkQgAAzrqepd1Og=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\audioHelper.js'))</OriginalItemSpec>
@@ -426,8 +426,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>6gzpyzhau4</Fingerprint>
-      <Integrity>SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=</Integrity>
+      <Fingerprint>bpk8xqwxhs</Fingerprint>
+      <Integrity>z8OR40MowJ8GgK6P89Y+hiJK5+cclzFHzLhFQLL92bg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\bootstrap\bootstrap.min.css'))</OriginalItemSpec>
@@ -462,8 +462,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>3j494jl6ux</Fingerprint>
-      <Integrity>L/96HRD+myZNFo+fWSjU2czZvxm2tossxwzRFHqZQmI=</Integrity>
+      <Fingerprint>0sn6tfwn2k</Fingerprint>
+      <Integrity>IKlojDBhPWr/J8BDa6SdJst82PB5NiaTNDVgHcNl/OY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\print.css'))</OriginalItemSpec>
@@ -768,8 +768,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rrquf4qis9</Fingerprint>
-      <Integrity>BwLJSmLRVZRhanP1mwsf4mLWYhhVdVgKnSCxmxUQe94=</Integrity>
+      <Fingerprint>nn82r8x7ws</Fingerprint>
+      <Integrity>U4MPdcHrjTgnenyXOM2pLkbh7Xvv6sXbd8YV807DuLg=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\audioplayer.js'))</OriginalItemSpec>
@@ -786,8 +786,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>mx9sd6awv7</Fingerprint>
-      <Integrity>SsYaEeEmWeF7V5t7YwwFcdRzkj0Y7utFMIq4eHtNO3A=</Integrity>
+      <Fingerprint>s1xtumes0l</Fingerprint>
+      <Integrity>cN25/n/Fyp7UOxFV2GIlGfvWVrEIP9iuvawXdPMdUsM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\barcode.js'))</OriginalItemSpec>
@@ -804,8 +804,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>y6a92r9r78</Fingerprint>
-      <Integrity>2nlIXwxiXHk8GVsdMC2tP7U4NfFLJ+v8Besq8jbZauA=</Integrity>
+      <Fingerprint>g945ce39ux</Fingerprint>
+      <Integrity>1JgbfATYR4FNcJqAQaWhmSjK6S2sAyEZH3kmcjIJMm4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\BlazorQuill.js'))</OriginalItemSpec>
@@ -822,8 +822,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vboihp1n7b</Fingerprint>
-      <Integrity>q9BUdOXIlhNdSLcx6LK3B8ewo7pFfoMc3aeIXNyPckI=</Integrity>
+      <Fingerprint>z2qp6jxu8z</Fingerprint>
+      <Integrity>S9K2LK/oP+0ak1lWBUb2vD5/a6UPhsSEUtTu8/QVkSc=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\canvasHelper.js'))</OriginalItemSpec>
@@ -840,8 +840,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>mb4b3q50at</Fingerprint>
-      <Integrity>osVSLSqhl1AOKSPzoeZGk8WOdHDxolHlQy6wmfntrUM=</Integrity>
+      <Fingerprint>cpqjzm4ykt</Fingerprint>
+      <Integrity>8OhBZqdQTG5Nom/pjI9NsEAAYr85MLElvefxqnKwDX8=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\drawingCanvas.js'))</OriginalItemSpec>
@@ -858,8 +858,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>59tkc8zc85</Fingerprint>
-      <Integrity>51IS7r0ObK+lJqevfmmgE/DJYbHUqx/UAPleHT2mcVk=</Integrity>
+      <Fingerprint>gzu788ey7u</Fingerprint>
+      <Integrity>nCCeipj1kIZU/M5o5STQu5fP9W3ZPH3pIUzOF4MJWzo=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\eraser.js'))</OriginalItemSpec>
@@ -876,8 +876,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>1wmc0mnwuh</Fingerprint>
-      <Integrity>4YaXEIMpMzpbgQ88EVccpje3AoAdf8AEAK77CXUCDvk=</Integrity>
+      <Fingerprint>tjqhyp2ur4</Fingerprint>
+      <Integrity>V1k9FAAx4e+NfdLXv6raSI8zgWHSdM/XlP9VsREQQDw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\print.js'))</OriginalItemSpec>
@@ -894,8 +894,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>26wi1u0290</Fingerprint>
-      <Integrity>WszbxFjV4O09M3+ssIUojrY1BUDfkp6rVjog19baFW4=</Integrity>
+      <Fingerprint>36o3c550hp</Fingerprint>
+      <Integrity>G62bp8nonlJ3P70dexoqh2l8qkH6BsyMuAwCKdAQ9cU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\printsilent.js'))</OriginalItemSpec>
@@ -912,8 +912,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>jh837vymlo</Fingerprint>
-      <Integrity>tzBeanXn+OcPwZ1/pgHD7X0SfVZp0F+d5vxHcmzb10c=</Integrity>
+      <Fingerprint>cu662xj4ro</Fingerprint>
+      <Integrity>3AEXf1wtcQTwZRNc1+HLKBOP4tMVB2Z9ZCd2lSIrx1s=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\rtfConvert.js'))</OriginalItemSpec>
@@ -930,8 +930,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>efzh139b2k</Fingerprint>
-      <Integrity>ZlVjfzGbJ/OxCXIMytNg9WM2xERP5Gj3oy0MbIoM5JI=</Integrity>
+      <Fingerprint>a0khddjmbi</Fingerprint>
+      <Integrity>irAeBXdO6E0N3a0hkcTs1+JfuA9J51c/lCZfLe1Ir8Y=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</OriginalItemSpec>
@@ -948,8 +948,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>penbsqz0ru</Fingerprint>
-      <Integrity>Qb+MRtOE985KyaU854VAVI7Gr9gVKsvuxkh6wvrgHdQ=</Integrity>
+      <Fingerprint>cij19dadm5</Fingerprint>
+      <Integrity>/AlE1K6iFLrTrW/sYBzQvw9qpJMgTLSJ44QizRWLCLw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\usb.js'))</OriginalItemSpec>
@@ -984,29 +984,11 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>uucyill51f</Fingerprint>
-      <Integrity>ajS6wxam3taeZxXOB3/YndzoFuRFSD0qBqVmIVCk3xY=</Integrity>
+      <Fingerprint>0n9v1dduy7</Fingerprint>
+      <Integrity>dHgYoywp9Fau4RkQlPQ8BgackOi+X1a5NVwBnAGpP0g=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SoundAnnoucementApp.styles.css'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\videos\ER.mp4'))">
-      <SourceType>Package</SourceType>
-      <SourceId>SoundAnnoucementApp</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>/</BasePath>
-      <RelativePath>videos/ER.mp4</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rhehiwkybg</Fingerprint>
-      <Integrity>YQo1C3HB5tGWtJkyhsh0rBVN/NC4jGWZ3vuJ5zbaxoM=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\videos\ER.mp4'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\videos\sample.mp4'))">
       <SourceType>Package</SourceType>
