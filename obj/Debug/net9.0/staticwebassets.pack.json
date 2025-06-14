@@ -221,6 +221,10 @@
       "PackagePath": "staticwebassets/js/usb.js"
     },
     {
+      "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/youtubeplayer.js",
+      "PackagePath": "staticwebassets/js/youtubeplayer.js"
+    },
+    {
       "Id": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/sample-data/weather.json",
       "PackagePath": "staticwebassets/sample-data/weather.json"
     },
