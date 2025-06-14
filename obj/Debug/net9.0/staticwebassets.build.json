@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "btVGBDNuw7IxX5xZo15bzUZtxnSTuB04pCm/JSh43ng=",
+  "Hash": "bbBSApqmNMUPkI4/XjdhR+j8FfnWVY3zZQa02yFmigw=",
   "Source": "SoundAnnoucementApp",
   "BasePath": "/",
   "Mode": "Root",
@@ -136,8 +136,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "puxh5bak77",
-      "Integrity": "X2lXAnkjcTL6VkFeEn7zRQ9lxE8sZndcCss2meitm38=",
+      "Fingerprint": "b31y2bfw1b",
+      "Integrity": "+Yf452fTnP2Qj3z1Hde/ccMoSVE+wfZTtMnTom3THGY=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj/Debug/net9.0/blazor.boot.json"
@@ -1123,8 +1123,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "ffunawgt88",
-      "Integrity": "ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY=",
+      "Fingerprint": "vxq6p8vasm",
+      "Integrity": "4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj/Debug/net9.0/SoundAnnoucementApp.pdb"
@@ -1144,8 +1144,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "hzh14hl0il",
-      "Integrity": "szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc=",
+      "Fingerprint": "fxrsz3q2x5",
+      "Integrity": "Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/webcil/SoundAnnoucementApp.wasm"
@@ -5057,7 +5057,7 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/wwwroot/js/audioplayer.js"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-puxh5bak77.gz",
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-b31y2bfw1b.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/",
@@ -5071,8 +5071,8 @@
       "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "g4eaw0hmb4",
-      "Integrity": "ABYAIJR98YczeHF7D2jktgBaUzXGD4vAEsV4U5FPH4A=",
+      "Fingerprint": "7nq5m5mvte",
+      "Integrity": "I0DHJDGc5x9MolvVrTqUXALgb3X1ErrdfzBJBbsn8zE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/blazor.boot.json"
@@ -8984,12 +8984,12 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/icudt_EFIGS.dat"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-hzh14hl0il.gz",
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-fxrsz3q2x5.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/",
       "BasePath": "/",
-      "RelativePath": "_framework/SoundAnnoucementApp#[.{fingerprint=hzh14hl0il}]!.wasm.gz",
+      "RelativePath": "_framework/SoundAnnoucementApp#[.{fingerprint=fxrsz3q2x5}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -8998,8 +8998,8 @@
       "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "y6tmhpcfed",
-      "Integrity": "SnK6TcROnnJgG87djeIGMWVS1G/BZasbfuoCAOhqQEQ=",
+      "Fingerprint": "mre4ca9fad",
+      "Integrity": "PpjT1nlO/nzajKYIvKib3Z/OoAIL5DoJUq6CwLHWC4s=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.wasm"
@@ -9152,12 +9152,12 @@
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/System.Diagnostics.Contracts.wasm"
     },
     {
-      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-ffunawgt88.gz",
+      "Identity": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-vxq6p8vasm.gz",
       "SourceId": "SoundAnnoucementApp",
       "SourceType": "Computed",
       "ContentRoot": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/",
       "BasePath": "/",
-      "RelativePath": "_framework/SoundAnnoucementApp#[.{fingerprint=ffunawgt88}]!.pdb.gz",
+      "RelativePath": "_framework/SoundAnnoucementApp#[.{fingerprint=vxq6p8vasm}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -9166,8 +9166,8 @@
       "RelatedAsset": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "qfq4ssvhoj",
-      "Integrity": "KuV7EB0FyW2RWiF12fpiMtGlP2x+TO7QM2Fbntr1iIQ=",
+      "Fingerprint": "mbebb7yp61",
+      "Integrity": "QuS6/HRgjkoji0Dtsv586ukJqvdJx9yoNpJOtq9TPtM=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.pdb"
@@ -11720,7 +11720,46 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"X2lXAnkjcTL6VkFeEn7zRQ9lxE8sZndcCss2meitm38=\""
+          "Value": "\"+Yf452fTnP2Qj3z1Hde/ccMoSVE+wfZTtMnTom3THGY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+Yf452fTnP2Qj3z1Hde/ccMoSVE+wfZTtMnTom3THGY="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/blazor.boot.json",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-b31y2bfw1b.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000078523753"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "12734"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"I0DHJDGc5x9MolvVrTqUXALgb3X1ErrdfzBJBbsn8zE=\""
         },
         {
           "Name": "Last-Modified",
@@ -11729,45 +11768,6 @@
         {
           "Name": "Cache-Control",
           "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-X2lXAnkjcTL6VkFeEn7zRQ9lxE8sZndcCss2meitm38="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/blazor.boot.json",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-puxh5bak77.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000078536087"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "12732"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ABYAIJR98YczeHF7D2jktgBaUzXGD4vAEsV4U5FPH4A=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:19:29 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -11783,19 +11783,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"X2lXAnkjcTL6VkFeEn7zRQ9lxE8sZndcCss2meitm38=\""
+          "Value": "W/\"+Yf452fTnP2Qj3z1Hde/ccMoSVE+wfZTtMnTom3THGY=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-X2lXAnkjcTL6VkFeEn7zRQ9lxE8sZndcCss2meitm38="
+          "Value": "sha256-+Yf452fTnP2Qj3z1Hde/ccMoSVE+wfZTtMnTom3THGY="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-puxh5bak77.gz",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-b31y2bfw1b.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11804,7 +11804,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12732"
+          "Value": "12734"
         },
         {
           "Name": "Content-Type",
@@ -11812,11 +11812,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ABYAIJR98YczeHF7D2jktgBaUzXGD4vAEsV4U5FPH4A=\""
+          "Value": "\"I0DHJDGc5x9MolvVrTqUXALgb3X1ErrdfzBJBbsn8zE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:19:29 GMT"
+          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11834,7 +11834,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ABYAIJR98YczeHF7D2jktgBaUzXGD4vAEsV4U5FPH4A="
+          "Value": "sha256-I0DHJDGc5x9MolvVrTqUXALgb3X1ErrdfzBJBbsn8zE="
         }
       ]
     },
@@ -25386,168 +25386,7 @@
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.ffunawgt88.pdb",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.pdb",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "94796"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:31 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ffunawgt88"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/SoundAnnoucementApp.pdb"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/SoundAnnoucementApp.ffunawgt88.pdb",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-ffunawgt88.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000013654114"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "73237"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KuV7EB0FyW2RWiF12fpiMtGlP2x+TO7QM2Fbntr1iIQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ffunawgt88"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/SoundAnnoucementApp.pdb"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/SoundAnnoucementApp.ffunawgt88.pdb.gz",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-ffunawgt88.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "73237"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"KuV7EB0FyW2RWiF12fpiMtGlP2x+TO7QM2Fbntr1iIQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ffunawgt88"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/SoundAnnoucementApp.pdb.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-KuV7EB0FyW2RWiF12fpiMtGlP2x+TO7QM2Fbntr1iIQ="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/SoundAnnoucementApp.hzh14hl0il.wasm",
+      "Route": "_framework/SoundAnnoucementApp.fxrsz3q2x5.wasm",
       "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -25565,11 +25404,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc=\""
+          "Value": "\"Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:31 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25579,7 +25418,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "hzh14hl0il"
+          "Value": "fxrsz3q2x5"
         },
         {
           "Name": "label",
@@ -25587,18 +25426,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc="
+          "Value": "sha256-Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U="
         }
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.hzh14hl0il.wasm",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-hzh14hl0il.gz",
+      "Route": "_framework/SoundAnnoucementApp.fxrsz3q2x5.wasm",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-fxrsz3q2x5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000020694508"
+          "Quality": "0.000020691938"
         }
       ],
       "ResponseHeaders": [
@@ -25608,15 +25447,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "48321"
+          "Value": "48327"
         },
         {
           "Name": "ETag",
-          "Value": "\"SnK6TcROnnJgG87djeIGMWVS1G/BZasbfuoCAOhqQEQ=\""
+          "Value": "\"PpjT1nlO/nzajKYIvKib3Z/OoAIL5DoJUq6CwLHWC4s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25636,13 +25475,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc=\""
+          "Value": "W/\"Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "hzh14hl0il"
+          "Value": "fxrsz3q2x5"
         },
         {
           "Name": "label",
@@ -25650,13 +25489,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc="
+          "Value": "sha256-Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U="
         }
       ]
     },
     {
-      "Route": "_framework/SoundAnnoucementApp.hzh14hl0il.wasm.gz",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-hzh14hl0il.gz",
+      "Route": "_framework/SoundAnnoucementApp.fxrsz3q2x5.wasm.gz",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-fxrsz3q2x5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -25665,7 +25504,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "48321"
+          "Value": "48327"
         },
         {
           "Name": "Content-Type",
@@ -25673,11 +25512,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SnK6TcROnnJgG87djeIGMWVS1G/BZasbfuoCAOhqQEQ=\""
+          "Value": "\"PpjT1nlO/nzajKYIvKib3Z/OoAIL5DoJUq6CwLHWC4s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25695,7 +25534,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "hzh14hl0il"
+          "Value": "fxrsz3q2x5"
         },
         {
           "Name": "label",
@@ -25703,7 +25542,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-SnK6TcROnnJgG87djeIGMWVS1G/BZasbfuoCAOhqQEQ="
+          "Value": "sha256-PpjT1nlO/nzajKYIvKib3Z/OoAIL5DoJUq6CwLHWC4s="
         }
       ]
     },
@@ -25718,7 +25557,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "94796"
+          "Value": "94800"
         },
         {
           "Name": "Content-Type",
@@ -25726,11 +25565,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY=\""
+          "Value": "\"4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:31 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:46 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25740,18 +25579,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY="
+          "Value": "sha256-4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA="
         }
       ]
     },
     {
       "Route": "_framework/SoundAnnoucementApp.pdb",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-ffunawgt88.gz",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-vxq6p8vasm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000013654114"
+          "Quality": "0.000013654300"
         }
       ],
       "ResponseHeaders": [
@@ -25761,15 +25600,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "73237"
+          "Value": "73236"
         },
         {
           "Name": "ETag",
-          "Value": "\"KuV7EB0FyW2RWiF12fpiMtGlP2x+TO7QM2Fbntr1iIQ=\""
+          "Value": "\"QuS6/HRgjkoji0Dtsv586ukJqvdJx9yoNpJOtq9TPtM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25789,19 +25628,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY=\""
+          "Value": "W/\"4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-ywP8v8laMgAY/ZrtsLhNQHVu8jHYczcKjLoo8BGUOxY="
+          "Value": "sha256-4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA="
         }
       ]
     },
     {
       "Route": "_framework/SoundAnnoucementApp.pdb.gz",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-ffunawgt88.gz",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-vxq6p8vasm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -25810,7 +25649,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "73237"
+          "Value": "73236"
         },
         {
           "Name": "Content-Type",
@@ -25818,11 +25657,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KuV7EB0FyW2RWiF12fpiMtGlP2x+TO7QM2Fbntr1iIQ=\""
+          "Value": "\"QuS6/HRgjkoji0Dtsv586ukJqvdJx9yoNpJOtq9TPtM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25840,7 +25679,168 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KuV7EB0FyW2RWiF12fpiMtGlP2x+TO7QM2Fbntr1iIQ="
+          "Value": "sha256-QuS6/HRgjkoji0Dtsv586ukJqvdJx9yoNpJOtq9TPtM="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/SoundAnnoucementApp.vxq6p8vasm.pdb",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.pdb",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94800"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 14 Jun 2025 10:39:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxq6p8vasm"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/SoundAnnoucementApp.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/SoundAnnoucementApp.vxq6p8vasm.pdb",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-vxq6p8vasm.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000013654300"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73236"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QuS6/HRgjkoji0Dtsv586ukJqvdJx9yoNpJOtq9TPtM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxq6p8vasm"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/SoundAnnoucementApp.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4xYgL1TurMN5+9qRVMA1tx1ym3PyLE2Rq+HQfHPcjUA="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/SoundAnnoucementApp.vxq6p8vasm.pdb.gz",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-vxq6p8vasm.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73236"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QuS6/HRgjkoji0Dtsv586ukJqvdJx9yoNpJOtq9TPtM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vxq6p8vasm"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/SoundAnnoucementApp.pdb.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QuS6/HRgjkoji0Dtsv586ukJqvdJx9yoNpJOtq9TPtM="
         }
       ]
     },
@@ -25863,11 +25863,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc=\""
+          "Value": "\"Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:31 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25877,18 +25877,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc="
+          "Value": "sha256-Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U="
         }
       ]
     },
     {
       "Route": "_framework/SoundAnnoucementApp.wasm",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-hzh14hl0il.gz",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-fxrsz3q2x5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000020694508"
+          "Quality": "0.000020691938"
         }
       ],
       "ResponseHeaders": [
@@ -25898,15 +25898,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "48321"
+          "Value": "48327"
         },
         {
           "Name": "ETag",
-          "Value": "\"SnK6TcROnnJgG87djeIGMWVS1G/BZasbfuoCAOhqQEQ=\""
+          "Value": "\"PpjT1nlO/nzajKYIvKib3Z/OoAIL5DoJUq6CwLHWC4s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25926,19 +25926,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc=\""
+          "Value": "W/\"Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-szbxVdljLWmBWe1oIgLjakiv1HhQ8wg0OOVApfMjFAc="
+          "Value": "sha256-Y4uuq1WLHo9/PQdZKhRjQTWXHuPT4Y/JAs9TR8XE41U="
         }
       ]
     },
     {
       "Route": "_framework/SoundAnnoucementApp.wasm.gz",
-      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-hzh14hl0il.gz",
+      "AssetFile": "/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-fxrsz3q2x5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -25947,7 +25947,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "48321"
+          "Value": "48327"
         },
         {
           "Name": "Content-Type",
@@ -25955,11 +25955,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"SnK6TcROnnJgG87djeIGMWVS1G/BZasbfuoCAOhqQEQ=\""
+          "Value": "\"PpjT1nlO/nzajKYIvKib3Z/OoAIL5DoJUq6CwLHWC4s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 14 Jun 2025 10:22:34 GMT"
+          "Value": "Sat, 14 Jun 2025 10:39:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -25977,7 +25977,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-SnK6TcROnnJgG87djeIGMWVS1G/BZasbfuoCAOhqQEQ="
+          "Value": "sha256-PpjT1nlO/nzajKYIvKib3Z/OoAIL5DoJUq6CwLHWC4s="
         }
       ]
     },

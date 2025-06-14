@@ -4350,10 +4350,10 @@ C:/Users/Admin/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/6kpgnqtvqo-jqr4n2c9hc.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/21k7zv2b9f-y1srnfhx6k.gz
 /Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/81ksd87khg-nvg7d07csv.gz
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.ffunawgt88.pdb
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.hzh14hl0il.wasm
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.hzh14hl0il.wasm.gz
-/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.ffunawgt88.pdb.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-hzh14hl0il.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-ffunawgt88.gz
-/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-puxh5bak77.gz
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.vxq6p8vasm.pdb
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.fxrsz3q2x5.wasm
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.fxrsz3q2x5.wasm.gz
+/Users/home/Desktop/SoundAnnoucementApp/bin/Debug/net9.0/wwwroot/_framework/SoundAnnoucementApp.vxq6p8vasm.pdb.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/vvsbcnnopr-fxrsz3q2x5.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/wtlmy325bf-vxq6p8vasm.gz
+/Users/home/Desktop/SoundAnnoucementApp/obj/Debug/net9.0/compressed/2wducpxqk8-b31y2bfw1b.gz
