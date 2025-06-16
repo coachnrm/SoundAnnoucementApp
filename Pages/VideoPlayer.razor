@@ -1,4 +1,5 @@
 ﻿@page "/videoplayer"
+@using System.Globalization
 
 <h3>🎬 Video Player</h3>
 
@@ -14,7 +15,7 @@
         allowfullscreen>
 </iframe> *@
 
-<div class="d-flex flex-row m-0" style="height: 100vh; width: 100vw;">
+@* <div class="d-flex flex-row m-0" style="height: 100vh; width: 100vw;">
     <!-- Left: Full-screen video -->
     <div style="flex: 1 1 60%; height: 100%; overflow: hidden;">
     <video style="width: 100%; height: 100%; object-fit: contain; background-color: black;" controls autoplay muted loop>
@@ -64,6 +65,71 @@
                     }
                 </tbody>
             </table>
+        </div>
+    </div>
+</div> *@
+
+<h3 class="bg-dark text-white p-3 text-center rounded shadow mt-4">
+    🎬 Video Player & ข้อมูลผู้ป่วย
+    <br />
+    <div class="fs-6 fw-light">
+        วันที่ @DateTime.Now.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("th-TH"))
+        เวลา @DateTime.Now.ToString("HH:mm") น.
+    </div>
+</h3>
+
+<div class="container-fluid m-0 p-0">
+    <div class="row g-0" style="height: 100vh;">
+        <!-- Left: Full-screen video -->
+        <div class="col-lg-8 col-md-7 col-sm-12" style="height: 100vh; overflow: hidden;">
+            <video style="width: 100%; height: 100%; object-fit: contain; background-color: black;" controls autoplay muted loop>
+                <source src="videos/sample.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Right: Patient Table -->
+        <div class="col-lg-4 col-md-5 col-sm-12 bg-white p-3" style="height: 100vh; overflow-y: auto;">
+            <h4 class="text-center mb-3">ข้อมูลผู้ป่วยตัวอย่าง</h4>
+            <div class="table-responsive">
+                <table class="table table-bordered text-center align-middle">
+                    <thead class="table-light">
+                        <tr class="table-primary">
+                            <th>No.</th>
+                            <th class="text-start">ชื่อ-สกุล</th>
+                            <th>ความเร่งด่วน</th>
+                            <th>สถานะ</th>
+                            <th>เวลา</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in CurrentPagePatients.Select((p, i) => new { Index = i + 1, Data = p }))
+                        {
+                            var typeKey = string.IsNullOrWhiteSpace(item.Data.EmergencyType)
+                                ? "N"
+                                : item.Data.EmergencyType.Trim()[0].ToString().ToUpper();
+
+                            var urgencyColor = typeKey switch
+                            {
+                                "R" => "#dc3545",   // Red
+                                "E" => "#d63384",   // Pink
+                                "U" => "#ffc107",   // Yellow
+                                "S" => "#198754",   // Green
+                                "N" => "#6c757d",   // Gray
+                                _ => "#212529"
+                            };
+
+                            <tr>
+                                <td>@item.Index</td>
+                                <td class="text-start">@($"{item.Data.Pname}{item.Data.Fname} {item.Data.Lname}")</td>
+                                <td style="background-color: @urgencyColor;"></td>
+                                <td>@item.Data.CurrentStatus</td>
+                                <td>@item.Data.StatusUpdatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
