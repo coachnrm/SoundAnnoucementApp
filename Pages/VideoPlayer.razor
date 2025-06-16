@@ -2,15 +2,91 @@
 
 <h3>🎬 Video Player</h3>
 
-<video width="640" height="360" controls>
+@* <video width="640" height="360" controls>
     <source src="videos/sample.mp4" type="video/mp4">
     Your browser does not support the video tag.
-</video>
+</video> *@
 
-<iframe width="560" height="315"
+@* <iframe width="560" height="315"
         src="https://www.youtube.com/embed/zMDtThZnTWc?autoplay=0&loop=1&playlist=zMDtThZnTWc"
         frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
-</iframe>
+</iframe> *@
+
+<div class="d-flex flex-row m-0" style="height: 100vh; width: 100vw;">
+    <!-- Left: Full-screen video -->
+    <div style="flex: 1 1 60%; height: 100%; overflow: hidden;">
+    <video style="width: 100%; height: 100%; object-fit: contain; background-color: black;" controls autoplay muted loop>
+        <source src="videos/sample.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+    <!-- Right: Table -->
+    <div style="flex: 1 1 40%; height: 100%; overflow-y: auto;" class="p-3 bg-white">
+        <h4 class="mb-3 text-center">ข้อมูลผู้ป่วยตัวอย่าง</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+                <thead class="table-light">
+                    <tr class="table-primary">
+                        <th>No.</th>
+                        <th class="text-start">ชื่อ-สกุล</th>
+                        <th>ความเร่งด่วน</th>
+                        <th>สถานะ</th>
+                        <th>เวลา</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in CurrentPagePatients.Select((p, i) => new { Index = i + 1, Data = p }))
+                    {
+                        var typeKey = string.IsNullOrWhiteSpace(item.Data.EmergencyType)
+                            ? "N"
+                            : item.Data.EmergencyType.Trim()[0].ToString().ToUpper();
+
+                        var urgencyColor = typeKey switch
+                        {
+                            "R" => "#dc3545",   // Red
+                            "E" => "#d63384",   // Pink
+                            "U" => "#ffc107",   // Yellow
+                            "S" => "#198754",   // Green
+                            "N" => "#6c757d",   // Gray
+                            _ => "#212529"      // Default
+                        };
+
+                        <tr>
+                            <td>@item.Index</td>
+                            <td class="text-start">@($"{item.Data.Pname}{item.Data.Fname} {item.Data.Lname}")</td>
+                            <td style="background-color: @urgencyColor;"></td>
+                            <td>@item.Data.CurrentStatus</td>
+                            <td>@item.Data.StatusUpdatedAt.ToString("dd/MM/yyyy HH:mm")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@code {
+    public class Patient
+    {
+        public string Pname { get; set; } = "";
+        public string Fname { get; set; } = "";
+        public string Lname { get; set; } = "";
+        public string EmergencyType { get; set; } = "";
+        public string CurrentStatus { get; set; } = "";
+        public DateTime StatusUpdatedAt { get; set; }
+    }
+
+    List<Patient> CurrentPagePatients = new()
+    {
+        new() { Pname = "นาย", Fname = "สมชาย", Lname = "ใจดี", EmergencyType = "R", CurrentStatus = "รอตรวจ", StatusUpdatedAt = DateTime.Now.AddMinutes(-5) },
+        new() { Pname = "นางสาว", Fname = "สวย", Lname = "จริง", EmergencyType = "E", CurrentStatus = "กำลังให้การรักษา", StatusUpdatedAt = DateTime.Now.AddMinutes(-10) },
+        new() { Pname = "นาง", Fname = "มะลิ", Lname = "ขาว", EmergencyType = "U", CurrentStatus = "รอตรวจ", StatusUpdatedAt = DateTime.Now.AddMinutes(-15) },
+        new() { Pname = "เด็กชาย", Fname = "ทดสอบ", Lname = "นามสมมติ", EmergencyType = "S", CurrentStatus = "ตรวจเสร็จแล้ว", StatusUpdatedAt = DateTime.Now.AddMinutes(-20) },
+        new() { Pname = "นาย", Fname = "ชาย", Lname = "ดี", EmergencyType = "N", CurrentStatus = "กำลังให้การรักษา", StatusUpdatedAt = DateTime.Now.AddMinutes(-30) },
+    };
+}
+
 
