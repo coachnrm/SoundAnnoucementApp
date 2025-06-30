@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj": {}
+    "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj": {}
   },
   "projects": {
-    "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj": {
+    "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
         "projectName": "SoundAnnoucementApp",
-        "projectPath": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\SoundAnnoucementApp\\obj\\",
+        "projectPath": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\SoundAnnoucementApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -98,20 +98,12 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[9.0.5, 9.0.5]"
-            },
-            {
               "name": "Microsoft.NETCore.App.Ref",
               "version": "[9.0.6, 9.0.6]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
               "version": "[9.0.6, 9.0.6]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[9.0.5, 9.0.5]"
             }
           ],
           "frameworkReferences": {
