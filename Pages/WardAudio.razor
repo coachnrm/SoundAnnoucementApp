@@ -19,10 +19,10 @@ else
         @foreach (var w in wards)
         {
             <tr>
-                <td>@w.WardName (@w.WardCode)</td>
+                <td>@w.name (@w.ward1)</td>
                 <td>
                     <button class="btn btn-success"
-                            @onclick="() => Announce(w.WardName)">
+                            @onclick="() => Announce(w.name)">
                         🔊 เรียกวอร์ด
                     </button>
                 </td>
@@ -43,7 +43,7 @@ else
     private async Task Announce(string? wardName)
     {
         if (!string.IsNullOrWhiteSpace(wardName))
-            await JS.InvokeVoidAsync("audioHelper.announceWard", wardName);
+            await JS.InvokeVoidAsync("audioHelper2.announceWard", wardName);
     }
 }
 

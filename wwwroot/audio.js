@@ -15,8 +15,8 @@ window.audioHelper = {
 };
 
 window.audioHelper2 = {
-    announceWard: function (wardName) {
-        const text = `ผู้ป่วยจากวอร์ด ${wardName} ครับ`;
+    announceWard: function (name) {
+        const text = `ผู้ป่วยจากวอร์ด ${name}`;
         const utt  = new SpeechSynthesisUtterance(text);
         utt.lang   = "th-TH";
         window.speechSynthesis.speak(utt);
