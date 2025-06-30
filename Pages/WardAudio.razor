@@ -1,0 +1,49 @@
+﻿@page "/wards"
+@using SoundAnnoucementApp.Dtos
+@using SoundAnnoucementApp.Services
+
+@inject IpdService Ipd
+@inject IJSRuntime JS
+
+<h3>รายการวอร์ด</h3>
+
+@if (wards is null)
+{
+    <p><em>กำลังโหลด...</em></p>
+}
+else
+{
+    <table class="table table-hover">
+        <thead><tr><th>Ward</th><th>Action</th></tr></thead>
+        <tbody>
+        @foreach (var w in wards)
+        {
+            <tr>
+                <td>@w.WardName (@w.WardCode)</td>
+                <td>
+                    <button class="btn btn-success"
+                            @onclick="() => Announce(w.WardName)">
+                        🔊 เรียกวอร์ด
+                    </button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IReadOnlyList<WardDto>? wards;
+
+    protected override async Task OnInitializedAsync()
+    {
+        wards = await Ipd.GetWardsAsync();
+    }
+
+    private async Task Announce(string? wardName)
+    {
+        if (!string.IsNullOrWhiteSpace(wardName))
+            await JS.InvokeVoidAsync("audioHelper.announceWard", wardName);
+    }
+}
+

@@ -12,8 +12,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>6pwo593279</Fingerprint>
-      <Integrity>dqtpnofJ8jrK9WWkS+x6mKBndKMWaK7cV7uewjUVhlg=</Integrity>
+      <Fingerprint>zcyz8jzerg</Fingerprint>
+      <Integrity>TYPNIme1w0OzkY4njqecty/puHpVahP+KoptINXqm64=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\audio.js'))</OriginalItemSpec>

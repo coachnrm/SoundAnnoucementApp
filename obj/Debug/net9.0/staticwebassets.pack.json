@@ -1,235 +1,235 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
       "PackagePath": "staticwebassets\\SoundAnnoucementApp.styles.css"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio.js",
       "PackagePath": "staticwebassets\\audio.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audioHelper.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audioHelper.js",
       "PackagePath": "staticwebassets\\audioHelper.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\AudioRecorder.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\AudioRecorder.js",
       "PackagePath": "staticwebassets\\audio\\AudioRecorder.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\bass.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\bass.mp3",
       "PackagePath": "staticwebassets\\audio\\bass.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\cat.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\cat.mp3",
       "PackagePath": "staticwebassets\\audio\\cat.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\chicken.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\chicken.mp3",
       "PackagePath": "staticwebassets\\audio\\chicken.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\cow.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\cow.mp3",
       "PackagePath": "staticwebassets\\audio\\cow.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\dog.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\dog.mp3",
       "PackagePath": "staticwebassets\\audio\\dog.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\donkey.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\donkey.mp3",
       "PackagePath": "staticwebassets\\audio\\donkey.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.mp3",
       "PackagePath": "staticwebassets\\audio\\fx1.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.mp3",
       "PackagePath": "staticwebassets\\audio\\fx2.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.mp3",
       "PackagePath": "staticwebassets\\audio\\fx3.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.mp3",
       "PackagePath": "staticwebassets\\audio\\hihat.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\horse.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\horse.mp3",
       "PackagePath": "staticwebassets\\audio\\horse.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\kick.mp3",
       "PackagePath": "staticwebassets\\audio\\kick.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\piano.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\piano.mp3",
       "PackagePath": "staticwebassets\\audio\\piano.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\pig.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\pig.mp3",
       "PackagePath": "staticwebassets\\audio\\pig.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\rooster.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\rooster.mp3",
       "PackagePath": "staticwebassets\\audio\\rooster.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sample.mp3",
       "PackagePath": "staticwebassets\\audio\\sample.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sheep.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\sheep.mp3",
       "PackagePath": "staticwebassets\\audio\\sheep.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\snare.mp3",
       "PackagePath": "staticwebassets\\audio\\snare.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\strings.mp3",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\audio\\strings.mp3",
       "PackagePath": "staticwebassets\\audio\\strings.mp3"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\print.css",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\css\\print.css",
       "PackagePath": "staticwebassets\\css\\print.css"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\favicon.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\fonts\\NotoSans-Regular.ttf",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\fonts\\NotoSans-Regular.ttf",
       "PackagePath": "staticwebassets\\fonts\\NotoSans-Regular.ttf"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\icon-192.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\icon-192.png",
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\images\\1.jpg",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\images\\1.jpg",
       "PackagePath": "staticwebassets\\images\\1.jpg"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\images\\2.jpg",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\images\\2.jpg",
       "PackagePath": "staticwebassets\\images\\2.jpg"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\images\\3.jpg",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\images\\3.jpg",
       "PackagePath": "staticwebassets\\images\\3.jpg"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\cat.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\cat.png",
       "PackagePath": "staticwebassets\\img\\cat.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\chicken.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\chicken.png",
       "PackagePath": "staticwebassets\\img\\chicken.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\cow.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\cow.png",
       "PackagePath": "staticwebassets\\img\\cow.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\dog.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\dog.png",
       "PackagePath": "staticwebassets\\img\\dog.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\donkey.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\donkey.png",
       "PackagePath": "staticwebassets\\img\\donkey.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\horse.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\horse.png",
       "PackagePath": "staticwebassets\\img\\horse.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\pig.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\pig.png",
       "PackagePath": "staticwebassets\\img\\pig.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\rooster.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\rooster.png",
       "PackagePath": "staticwebassets\\img\\rooster.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\sheep.png",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\img\\sheep.png",
       "PackagePath": "staticwebassets\\img\\sheep.png"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\index.html",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\BlazorQuill.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\BlazorQuill.js",
       "PackagePath": "staticwebassets\\js\\BlazorQuill.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js",
       "PackagePath": "staticwebassets\\js\\audioplayer.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\barcode.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\barcode.js",
       "PackagePath": "staticwebassets\\js\\barcode.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\canvasHelper.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\canvasHelper.js",
       "PackagePath": "staticwebassets\\js\\canvasHelper.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\drawingCanvas.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\drawingCanvas.js",
       "PackagePath": "staticwebassets\\js\\drawingCanvas.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\eraser.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\eraser.js",
       "PackagePath": "staticwebassets\\js\\eraser.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\print.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\print.js",
       "PackagePath": "staticwebassets\\js\\print.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\printsilent.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\printsilent.js",
       "PackagePath": "staticwebassets\\js\\printsilent.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\rtfConvert.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\rtfConvert.js",
       "PackagePath": "staticwebassets\\js\\rtfConvert.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\usb.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\usb.js",
       "PackagePath": "staticwebassets\\js\\usb.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\youtubeplayer.js",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\js\\youtubeplayer.js",
       "PackagePath": "staticwebassets\\js\\youtubeplayer.js"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\sample-data\\weather.json",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },
     {
-      "Id": "C:\\Users\\Admin\\Desktop\\SoundAnnoucementApp\\wwwroot\\videos\\sample.mp4",
+      "Id": "C:\\Users\\HP\\Desktop\\SoundAnnoucementApp\\wwwroot\\videos\\sample.mp4",
       "PackagePath": "staticwebassets\\videos\\sample.mp4"
     },
     {
