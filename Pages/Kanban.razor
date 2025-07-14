@@ -1,0 +1,62 @@
+﻿@page "/kanban"
+@inject IJSRuntime JS
+
+<h3>📝 Blazor Trello-Style Kanban</h3>
+
+<div class="d-flex gap-4">
+    @foreach (var column in Columns)
+    {
+        <div class="border p-2 rounded" style="width: 250px;">
+            <h5>@column</h5>
+            <div id="@column" data-column="@column" class="card-container">
+                @foreach (var card in Cards.Where(c => c.Column == column))
+                {
+                    <div class="card mb-2 p-2" draggable="true" data-card="@card.Id">
+                        @card.Title
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    public List<string> Columns = new() { "To Do", "In Progress", "Done" };
+
+    public List<CardItem> Cards = new()
+    {
+        new CardItem { Id = "1", Title = "Setup Project", Column = "To Do" },
+        new CardItem { Id = "2", Title = "Build UI", Column = "To Do" },
+        new CardItem { Id = "3", Title = "Test Drag", Column = "In Progress" }
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            foreach (var column in Columns)
+            {
+                await JS.InvokeVoidAsync("initializeSortable", column, DotNetObjectReference.Create(this));
+            }
+        }
+    }
+
+    [JSInvokable]
+    public async Task OnCardDropped(string fromColumn, string toColumn, string cardId)
+    {
+        var card = Cards.FirstOrDefault(c => c.Id == cardId);
+        if (card != null)
+        {
+            card.Column = toColumn;
+            StateHasChanged();
+        }
+    }
+
+    public class CardItem
+    {
+        public string Id { get; set; }
+        public string Title { get; set; }
+        public string Column { get; set; }
+    }
+}
+
