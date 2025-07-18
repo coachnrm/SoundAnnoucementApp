@@ -1,0 +1,145 @@
+@page "/console"
+@inject IJSRuntime JS
+
+<div class="console-container">
+    <div class="console-output" @ref="outputDiv">
+        @foreach (var line in consoleLines)
+        {
+            <div class="console-line">@line</div>
+        }
+    </div>
+
+    <div class="input-line">
+        <span class="prompt">C:\></span>
+        <input @bind="userInput"
+               @bind:event="oninput"
+               @onkeypress="@HandleKeyPress"
+               class="console-input"
+               spellcheck="false"
+               autocomplete="off" />
+    </div>
+</div>
+
+<style>
+    .console-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        background-color: #000;
+        color: #ccc;
+        font-family: 'Consolas', 'Lucida Console', monospace;
+        padding: 10px;
+        overflow: hidden;
+    }
+
+    .console-output {
+        flex-grow: 1;
+        overflow-y: auto;
+        white-space: pre-wrap;
+        margin-bottom: 10px;
+    }
+
+    .console-line {
+        line-height: 1.3;
+    }
+
+    .input-line {
+        display: flex;
+        align-items: center;
+    }
+
+    .prompt {
+        color: #0f0;
+        margin-right: 5px;
+    }
+
+    .console-input {
+        background-color: transparent;
+        color: #fff;
+        border: none;
+        padding: 5px;
+        font-family: inherit;
+        font-size: 1rem;
+        flex-grow: 1;
+        outline: none;
+        caret-color: #0f0;
+    }
+
+    /* Scrollbar styling */
+    .console-output::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .console-output::-webkit-scrollbar-track {
+        background: #1a1a1a;
+    }
+
+    .console-output::-webkit-scrollbar-thumb {
+        background: #333;
+    }
+
+    .console-output::-webkit-scrollbar-thumb:hover {
+        background: #444;
+    }
+</style>
+
+@code {
+    private List<string> consoleLines = new();
+    private string userInput = string.Empty;
+    private ElementReference outputDiv;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            consoleLines.Add("Microsoft Windows [Version 10.0.19042.1237]");
+            consoleLines.Add("(c) Microsoft Corporation. All rights reserved.");
+            consoleLines.Add("");
+            await ScrollToBottom();
+        }
+    }
+
+    private async Task SubmitCommand()
+    {
+        if (!string.IsNullOrWhiteSpace(userInput))
+        {
+            consoleLines.Add($"C:\\> {userInput}");
+            // Simulate command execution result
+            consoleLines.Add(ExecuteCommand(userInput));
+            userInput = string.Empty;
+            await ScrollToBottom();
+        }
+    }
+
+    private string ExecuteCommand(string command)
+    {
+        return command.ToLower() switch
+        {
+            "help" => "For more information on a specific command, type HELP command-name",
+            "dir" => " Volume in drive C has no label.\n Directory of C:\\\n\n05/01/2023  12:00 PM    <DIR>          Program Files\n05/01/2023  12:00 PM    <DIR>          Users",
+            "cls" => ClearConsole(),
+            _ => $"'{command}' is not recognized as an internal or external command,\noperable program or batch file."
+        };
+    }
+
+    private string ClearConsole()
+    {
+        consoleLines.Clear();
+        return string.Empty;
+    }
+
+    private async Task ScrollToBottom()
+    {
+        await JS.InvokeVoidAsync("scrollConsoleToBottom", outputDiv);
+    }
+
+    private async Task HandleKeyPress(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SubmitCommand();
+        }
+    }
+}
+
+ 
