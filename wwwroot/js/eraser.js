@@ -10,6 +10,10 @@ function initDrawingCanvas(canvasId) {
     canvas = document.getElementById(canvasId);
     ctx = canvas.getContext("2d");
 
+    // Set canvas background to white
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     ctx.lineWidth = 3; // Default drawing line width
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
@@ -146,15 +150,11 @@ function saveCanvasAsFile(canvasId, filename) {
     link.click();
 }
 
+
 // ✅ Function to save canvas state for undo
 function saveState() {
     historyIndex++;
     history.splice(historyIndex, history.length, canvas.toDataURL());
 }
 
-
-// function getCanvasImage(canvasId) {
-//     let canvas = document.getElementById(canvasId);
-//     return canvas.toDataURL("image/png"); // Returns Base64 image string
-// }
 

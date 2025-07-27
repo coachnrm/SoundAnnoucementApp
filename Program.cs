@@ -32,5 +32,6 @@ builder.Services.AddHttpClient<IpdService>(client =>
     client.BaseAddress = new Uri("http://172.16.200.202:8089/");
 });
 
+
 await builder.Build().RunAsync();
 

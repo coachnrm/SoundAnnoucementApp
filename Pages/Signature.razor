@@ -1,0 +1,47 @@
+﻿@page "/signature"
+@using SigPad
+@inject IJSRuntime JSRuntime
+
+<h3>Sign Below</h3>
+
+<SignaturePad @ref="signaturePad"
+              Width="600"
+              Height="300"
+              CssClass="border"
+              BackgroundColor="lightyellow"
+              PenColor="black" />
+
+<div class="mt-3">
+    <button class="btn btn-primary" @onclick="SaveSignature">Save</button>
+    <button class="btn btn-danger" @onclick="ClearSignature">Clear</button>
+</div>
+
+@if (!string.IsNullOrEmpty(SavedImage))
+{
+    <h4 class="mt-3">Saved Signature:</h4>
+    <img src="@SavedImage" alt="Saved signature" class="border" />
+}
+
+@code {
+    private SignaturePad? signaturePad;
+    private string? SavedImage;
+
+    private async Task SaveSignature()
+    {
+        if (signaturePad is not null)
+        {
+            await signaturePad.Clear();
+            SavedImage = null;
+        }
+    }
+
+    private async Task ClearSignature()
+    {
+        if (signaturePad is not null)
+        {
+            await signaturePad.Clear();
+            SavedImage = null;
+        }
+    }
+}
+
