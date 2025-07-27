@@ -1,0 +1,78 @@
+﻿@page "/signature2"
+@using Microsoft.JSInterop
+@inject IJSRuntime JSRuntime
+
+<h3>Sign Below</h3>
+
+<div @ref="signaturePad" class="signature-pad border" style="width:600px; height:300px; background-color:lightyellow;"></div>
+
+<div class="mt-3">
+    @* <button class="btn btn-primary" @onclick="SaveSignature">Save</button> *@
+    <button class="btn btn-secondary" @onclick="DownloadSignature">Download</button>
+    <button class="btn btn-danger" @onclick="ClearSignature">Clear</button>
+</div>
+
+@* @if (!string.IsNullOrEmpty(SavedImage))
+{
+    <h4 class="mt-3">Saved Signature:</h4>
+    <img src="@SavedImage" alt="Saved signature" class="border" />
+} *@
+
+@code {
+    private ElementReference signaturePad;
+    private string? SavedImage;
+    private MyInput inputModel = new MyInput();
+    private IJSObjectReference? signatureModule;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            signatureModule = await JSRuntime.InvokeAsync<IJSObjectReference>(
+                "import", "./js/signaturePad.js");
+            await signatureModule.InvokeVoidAsync("initialize", signaturePad);
+        }
+    }
+
+    private async Task SaveSignature()
+    {
+        if (signatureModule is not null)
+        {
+            SavedImage = await signatureModule.InvokeAsync<string>("saveSignature");
+            var base64Data = SavedImage.Split(',')[1];
+            inputModel.Signature = Convert.FromBase64String(base64Data);
+        }
+    }
+
+    private async Task DownloadSignature()
+    {
+        if (signatureModule is not null)
+        {
+            await signatureModule.InvokeVoidAsync("downloadSignature");
+        }
+    }
+
+    private async Task ClearSignature()
+    {
+        if (signatureModule is not null)
+        {
+            await signatureModule.InvokeVoidAsync("clearSignature");
+            SavedImage = null;
+            inputModel.Signature = Array.Empty<byte>();
+        }
+    }
+
+    public class MyInput
+    {
+        public byte[] Signature { get; set; } = Array.Empty<byte>();
+        public string SignatureAsBase64 => Convert.ToBase64String(Signature);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (signatureModule is not null)
+        {
+            await signatureModule.DisposeAsync();
+        }
+    }
+}

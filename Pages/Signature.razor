@@ -25,6 +25,8 @@
 @code {
     private SignaturePad? signaturePad;
     private string? SavedImage;
+    private MyInput inputModel = new MyInput();
+
 
     private async Task SaveSignature()
     {
@@ -42,6 +44,12 @@
             await signaturePad.Clear();
             SavedImage = null;
         }
+    }
+
+    public class MyInput
+    {
+        public byte[] Signature { get; set; } = Array.Empty<byte>();
+        public string SignatureAsBase64 => Convert.ToBase64String(Signature);
     }
 }
 
