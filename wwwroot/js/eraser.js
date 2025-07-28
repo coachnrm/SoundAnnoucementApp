@@ -121,10 +121,17 @@ function getCanvasCoordinates(event, canvas) {
 }
 
 // ✅ Function to clear the canvas
-function clearCanvas(canvasId) {
-    let canvas = document.getElementById(canvasId);
-    let ctx = canvas.getContext("2d");
+// function clearCanvas(canvasId) {
+//     let canvas = document.getElementById(canvasId);
+//     let ctx = canvas.getContext("2d");
+//     ctx.clearRect(0, 0, canvas.width, canvas.height);
+//     saveState();
+// }
+function clearCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Set background back to white after clearing
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     saveState();
 }
 
@@ -142,8 +149,14 @@ function undoCanvasAction(canvasId) {
 }
 
 // ✅ Function to save canvas as file
-function saveCanvasAsFile(canvasId, filename) {
-    let canvas = document.getElementById(canvasId);
+// function saveCanvasAsFile(canvasId, filename) {
+//     let canvas = document.getElementById(canvasId);
+//     let link = document.createElement("a");
+//     link.href = canvas.toDataURL("image/png");
+//     link.download = filename;
+//     link.click();
+// }
+function saveCanvasAsFile(filename) {
     let link = document.createElement("a");
     link.href = canvas.toDataURL("image/png");
     link.download = filename;

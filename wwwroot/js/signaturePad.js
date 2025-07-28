@@ -1,43 +1,59 @@
-let canvas;
-let ctx;
+let canvas2;
+let ctx2;
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 
 export function initialize(element) {
     // Create canvas element
-    canvas = document.createElement('canvas');
-    canvas.width = element.offsetWidth;
-    canvas.height = element.offsetHeight;
-    canvas.style.backgroundColor = 'white';
-    element.appendChild(canvas);
+    canvas2 = document.createElement('canvas');
+    canvas2.width = element.offsetWidth;
+    canvas2.height = element.offsetHeight;
+    canvas2.style.backgroundColor = 'white';
+    element.appendChild(canvas2);
     
-    ctx = canvas.getContext('2d');
+    ctx2 = canvas2.getContext('2d');
     // Set initial white background
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 2;
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
+    ctx2.fillStyle = 'white';
+    ctx2.fillRect(0, 0, canvas2.width, canvas2.height);
+    ctx2.strokeStyle = 'black';
+    ctx2.lineWidth = 2;
+    ctx2.lineJoin = 'round';
+    ctx2.lineCap = 'round';
     
     // Event listeners
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mouseup', stopDrawing);
-    canvas.addEventListener('mouseout', stopDrawing);
+    canvas2.addEventListener('mousedown', startDrawing);
+    canvas2.addEventListener('mousemove', draw);
+    canvas2.addEventListener('mouseup', stopDrawing);
+    canvas2.addEventListener('mouseout', stopDrawing);
     
     // Touch support
-    canvas.addEventListener('touchstart', handleTouchStart);
-    canvas.addEventListener('touchmove', handleTouchMove);
-    canvas.addEventListener('touchend', stopDrawing);
+    canvas2.addEventListener('touchstart', handleTouchStart);
+    canvas2.addEventListener('touchmove', handleTouchMove);
+    canvas2.addEventListener('touchend', stopDrawing);
 }
+
+// export function saveSignature() {
+//     // Create a temporary canvas to ensure white background
+//     const tempCanvas = document.createElement('canvas');
+//     tempCanvas.width = canvas2.width;
+//     tempCanvas.height = canvas2.height;
+//     const tempCtx = tempCanvas.getContext('2d');
+    
+//     // Fill with white background first
+//     tempCtx.fillStyle = 'white';
+//     tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+    
+//     // Draw the original canvas content
+//     tempCtx.drawImage(canvas2, 0, 0);
+//     return canvastoDataURL('image/png');
+// }
 
 export function saveSignature() {
     // Create a temporary canvas to ensure white background
     const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = canvas.width;
-    tempCanvas.height = canvas.height;
+    tempCanvas.width = canvas2.width;
+    tempCanvas.height = canvas2.height;
     const tempCtx = tempCanvas.getContext('2d');
     
     // Fill with white background first
@@ -45,8 +61,8 @@ export function saveSignature() {
     tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
     
     // Draw the original canvas content
-    tempCtx.drawImage(canvas, 0, 0);
-    return canvas.toDataURL('image/png');
+    tempCtx.drawImage(canvas2, 0, 0);
+    return tempCanvas.toDataURL('image/png');  // Fixed: Added the dot between tempCanvas and toDataURL
 }
 
 // export function downloadSignature() {
@@ -63,8 +79,8 @@ export function saveSignature() {
 export function downloadSignature() {
     // Create a temporary canvas to ensure white background
     const tempCanvas = document.createElement('canvas');
-    tempCanvas.width = canvas.width;
-    tempCanvas.height = canvas.height;
+    tempCanvas.width = canvas2.width;
+    tempCanvas.height = canvas2.height;
     const tempCtx = tempCanvas.getContext('2d');
     
     // Fill with white background first
@@ -72,7 +88,7 @@ export function downloadSignature() {
     tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
     
     // Draw the original canvas content
-    tempCtx.drawImage(canvas, 0, 0);
+    tempCtx.drawImage(canvas2, 0, 0);
     
     // Create a temporary link element
     const link = document.createElement('a');
@@ -90,10 +106,11 @@ export function downloadSignature() {
 // }
 export function clearSignature() {
     // Clear and set white background
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = 'black'; // Reset stroke style after clear
+    ctx2.fillStyle = 'white';
+    ctx2.fillRect(0, 0, canvas2.width, canvas2.height);
+    ctx2.strokeStyle = 'black'; // Reset stroke style after clear
 }
+
 
 function startDrawing(e) {
     isDrawing = true;
@@ -103,11 +120,11 @@ function startDrawing(e) {
 function draw(e) {
     if (!isDrawing) return;
     
-    ctx.beginPath();
-    ctx.moveTo(lastX, lastY);
+    ctx2.beginPath();
+    ctx2.moveTo(lastX, lastY);
     const [x, y] = getPosition(e);
-    ctx.lineTo(x, y);
-    ctx.stroke();
+    ctx2.lineTo(x, y);
+    ctx2.stroke();
     
     lastX = x;
     lastY = y;
@@ -124,7 +141,7 @@ function handleTouchStart(e) {
         clientX: touch.clientX,
         clientY: touch.clientY
     });
-    canvas.dispatchEvent(mouseEvent);
+    canvas2.dispatchEvent(mouseEvent);
 }
 
 function handleTouchMove(e) {
@@ -134,11 +151,11 @@ function handleTouchMove(e) {
         clientX: touch.clientX,
         clientY: touch.clientY
     });
-    canvas.dispatchEvent(mouseEvent);
+    canvas2.dispatchEvent(mouseEvent);
 }
 
 function getPosition(e) {
-    const rect = canvas.getBoundingClientRect();
+    const rect = canvas2.getBoundingClientRect();
     return [
         e.clientX - rect.left,
         e.clientY - rect.top
