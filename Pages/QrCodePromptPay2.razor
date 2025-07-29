@@ -1,0 +1,102 @@
+@page "/qrpromptpay2"
+@using QRCoder
+@using System.Drawing
+
+<div class="text-center">
+    <h3>สร้าง QR Code รับเงิน</h3>
+    
+    <div class="mb-3">
+        <label>เลือกประเภท:</label>
+        <select @bind="accountType" class="form-control">
+            <option value="bank">เลขบัญชีธนาคาร</option>
+            <option value="idcard">เลขบัตรประชาชน</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>กรอกข้อมูล:</label>
+        <input @bind="accountNumber" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>จำนวนเงิน (บาท):</label>
+        <input type="number" @bind="amount" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary" @onclick="GenerateQR">สร้าง QR Code</button>
+
+    @if (!string.IsNullOrEmpty(qrCodeImage))
+    {
+        <div class="mt-4">
+            <img src="@qrCodeImage" alt="QR Code" style="width: 300px; height: 300px;" />
+            <p class="mt-2">สแกนเพื่อชำระเงิน @amount.ToString("N2") บาท</p>
+        </div>
+    }
+</div>
+
+@code {
+    private string accountType = "bank";
+    private string accountNumber = "";
+    private decimal amount;
+    private string qrCodeImage = "";
+
+    private void GenerateQR()
+    {
+        if (string.IsNullOrEmpty(accountNumber))
+        {
+            return;
+        }
+
+        var payload = GeneratePromptPayPayload();
+        using (var qrGenerator = new QRCodeGenerator())
+        {
+            var qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
+            var qrCode = new PngByteQRCode(qrCodeData);
+            var qrCodeBytes = qrCode.GetGraphic(20);
+            qrCodeImage = $"data:image/png;base64,{Convert.ToBase64String(qrCodeBytes)}";
+        }
+    }
+
+    private string GeneratePromptPayPayload()
+    {
+        // กรุงไทย Merchant ID
+        string merchantId = "A000000677010111";
+        
+        // ตรวจสอบประเภทข้อมูล
+        string accountInfo = accountType == "bank" 
+            ? $"0016{merchantId}0113{accountNumber}" 
+            : $"0016{merchantId}0213{accountNumber}";
+
+        // สร้าง payload ตามมาตรฐาน PromptPay
+        string payload = 
+            "000201" + // Payload Format Indicator
+            "010211" + // Point of Initiation Method (11 = static)
+            accountInfo.Length.ToString("D2") + accountInfo + // Merchant Account Info
+            "5802TH" + // Country Code (TH)
+            "5303764" + // Transaction Currency (764 = THB)
+            (amount > 0 ? "54" + amount.ToString("0.00").Replace(".", "").Length.ToString("D2") + 
+              amount.ToString("0.00").Replace(".", "") : "") + // Amount (ถ้ามี)
+            "6304"; // CRC16 Placeholder
+
+        // คำนวณ CRC16
+        string checksum = CalculateCRC16(payload);
+        return payload + checksum;
+    }
+
+    private string CalculateCRC16(string data)
+    {
+        ushort crc = 0xFFFF;
+        for (int i = 0; i < data.Length; i++)
+        {
+            crc ^= (ushort)(data[i] << 8);
+            for (int j = 0; j < 8; j++)
+            {
+                if ((crc & 0x8000) > 0)
+                    crc = (ushort)((crc << 1) ^ 0x1021);
+                else
+                    crc <<= 1;
+            }
+        }
+        return crc.ToString("X4");
+    }
+}

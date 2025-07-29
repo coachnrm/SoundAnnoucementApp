@@ -98,8 +98,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpbnRTaWxlbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/User/Desktop/SoundAnnoucementApp/Pages/QrCodePromptPay2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXJDb2RlUHJvbXB0UGF5Mi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/User/Desktop/SoundAnnoucementApp/Pages/QrGenerator.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXJHZW5lcmF0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/Desktop/SoundAnnoucementApp/Pages/QrPromptPay.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXJQcm9tcHRQYXkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/Desktop/SoundAnnoucementApp/Pages/QueueCounter.razor]

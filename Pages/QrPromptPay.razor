@@ -1,0 +1,50 @@
+@page "/qrpromptpay"
+@inject IJSRuntime JSRuntime
+
+<div class="qr-container">
+    <div id="qrCode"></div>
+</div>
+
+<button class="btn btn-primary" @onclick="GenerateQR">Generate QR Code</button>
+
+@code {
+    private string promptPayId = "0851872015"; // Your Krungthai Bank PromptPay ID
+    private decimal amount = 100.50m; // Fixed amount
+    
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await LoadQRScript();
+        }
+    }
+    
+    private async Task LoadQRScript()
+    {
+        await JSRuntime.InvokeVoidAsync("eval", 
+            "if (typeof QRCode === 'undefined') {" +
+            "  var script = document.createElement('script');" +
+            "  script.src = 'https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js';" +
+            "  document.head.appendChild(script);" +
+            "}");
+    }
+    
+    private async Task GenerateQR()
+    {
+        try
+        {
+            var qrData = GeneratePromptPayPayload();
+            await JSRuntime.InvokeVoidAsync("generateQR", "qrCode", qrData);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error generating QR: {ex.Message}");
+        }
+    }
+    
+    private string GeneratePromptPayPayload()
+    {
+        string amountStr = ((int)(amount * 100)).ToString();
+        return $"0002010102115303{amountStr}5802TH29370016A00000067701011101130066{promptPayId}5802TH6304";
+    }
+}
