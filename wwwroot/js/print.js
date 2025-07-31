@@ -196,3 +196,245 @@ window.renderChart = () => {
     };
     new Chart(ctx, config);
 };
+
+// window.generateXRayRequestPDF = function (patientData) {
+//     return new Promise((resolve, reject) => {
+//         if (!window.jspdf) {
+//             reject("jsPDF is not loaded!");
+//             return;
+//         }
+
+//         const { jsPDF } = window.jspdf;
+//         const doc = new jsPDF();
+
+//         // Load both Regular and Bold Thai fonts
+//         Promise.all([
+//             fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+//             fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer())
+//         ]).then(([regularFont, boldFont]) => {
+//             // Convert fonts to Base64
+//             const base64Regular = arrayBufferToBase64(regularFont);
+//             const base64Bold = arrayBufferToBase64(boldFont);
+
+//             // Add fonts to jsPDF virtual file system
+//             doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+//             doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+//             doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+//             doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+
+//             // Set Font to Bold for Title
+//             doc.setFont('THSarabunNew', 'bold');
+//             doc.setFontSize(14);
+//             doc.text("ศูนย์รังสีวินิจฉัย โรงพยาบาลสมุทรสาคร", 105, 15, { align: 'center' });
+//             doc.text("(DIAGNOSIS CENTER SAMUTSAKHON HOSPITAL)", 105, 20, { align: 'center' });
+            
+//             doc.setFontSize(16);
+//             doc.text("X - RAY REQUEST", 105, 30, { align: 'center' });
+//             doc.text("CLINICAL INFORMATION & DIAGNOSIS", 105, 35, { align: 'center' });
+
+//             // Add patient data
+//             doc.setFont('THSarabunNew', 'normal');
+//             doc.setFontSize(12);
+//             doc.text(`วันที่: ${patientData.date || ''}`, 20, 45);
+//             doc.text(`ชื่อ: ${patientData.name || ''}`, 20, 50);
+//             doc.text("______________________________", 25, 50.3);
+//             doc.text(`อายุ: ${patientData.age || ''}    HN: ${patientData.hn || ''}`, 20, 55);
+//             doc.text(`OPD: ${patientData.opd || ''}    WARD: ${patientData.ward || ''}`, 20, 60);
+
+//             // Add checkboxes and other elements
+//             doc.setFont('THSarabunNew', 'bold');
+//             doc.text("TYPE OF CASE:", 20, 70);
+//             doc.setFont('THSarabunNew', 'normal');
+//             doc.rect(20, 75, 5, 5); // Emergency checkbox
+//             doc.text("EMERGENCY ☑", 27, 78);
+//             doc.rect(60, 75, 5, 5); // Urgent checkbox
+//             doc.text("URGENT □", 67, 78);
+//             doc.rect(100, 75, 5, 5); // Elective checkbox
+//             doc.text("ELECTIVE □", 107, 78);
+
+//             doc.setFont('THSarabunNew', 'bold');
+//             doc.text("TYPE OF EXAMINATION:", 20, 90);
+//             doc.setFont('THSarabunNew', 'normal');
+//             doc.text("X - RAY ______", 20, 95);
+
+//             // Add other sections
+//             doc.setFont('THSarabunNew', 'bold');
+//             doc.text("ULTRASOUND ______", 20, 105);
+//             doc.text("CT ______", 20, 115);
+//             doc.text("SPECIAL □ IVP:", 20, 125);
+//             doc.text("OTHERS ......", 20, 135);
+
+//             // Add request by and allergy information
+//             doc.text("REQUEST BY", 20, 145);
+//             doc.setFont('THSarabunNew', 'normal');
+//             doc.text("1uw.nlgwsrf ร่วมใน นักพบบพทย์ครั้งต่อไป ......", 20, 150);
+
+//             doc.setFont('THSarabunNew', 'bold');
+//             doc.text("HISTORY OF ALLERGY", 20, 160);
+//             doc.setFont('THSarabunNew', 'normal');
+//             doc.text("NO", 20, 165);
+//             doc.text("YES (ระบุ) ......", 60, 165);
+
+//             // Add underlying diseases
+//             doc.setFont('THSarabunNew', 'bold');
+//             doc.text("โรคประจ าตัว (ระบุ):", 20, 175);
+//             doc.setFont('THSarabunNew', 'normal');
+//             doc.text(patientData.underlyingDiseases || "DM.HT_DLP", 60, 175);
+
+//             // Add footer
+//             doc.setFont('THSarabunNew', 'normal');
+//             doc.setFontSize(10);
+//             doc.text("ศูนย์รังสิริปัจจัย วท.สมุทรสาคร (034) 427099 – 105 ต่อ 6119 หรือ 6120 (รายงานผลอยู่ด้านหลัง)", 
+//                     105, 285, { align: 'center' });
+
+//             // Generate the PDF as Blob
+//             const pdfBlob = doc.output('blob');
+//             resolve(URL.createObjectURL(pdfBlob));
+//         }).catch(error => {
+//             console.error("Error loading fonts:", error);
+//             reject(error);
+//         });
+//     });
+// };
+
+window.generateXRayRequestPDF = function (patientData) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer())
+        ]).then(([regularFont, boldFont]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(14);
+            doc.text("ศูนย์รังสีวินิจฉัย โรงพยาบาลสมุทรสาคร", 105, 15, { align: 'center' });
+            doc.text("(DIAGNOSIS CENTER SAMUTSAKHON HOSPITAL)", 105, 20, { align: 'center' });
+            
+            doc.setFontSize(16);
+            doc.text("X - RAY REQUEST", 105, 30, { align: 'center' });
+            doc.text("CLINICAL INFORMATION & DIAGNOSIS", 105, 35, { align: 'center' });
+
+            // ===== TWO COLUMN LAYOUT =====
+            // Left column starting position
+            const leftColX = 20;
+            let leftColY = 45;
+            
+            // Right column starting position
+            const rightColX = 100;
+            let rightColY = 45;
+
+            // ===== LEFT COLUMN CONTENT =====
+            // Patient information
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(12);
+            doc.text("วันที่:", leftColX, leftColY);
+            doc.text(`${patientData.date || ''}`, leftColX + 7, leftColY);
+            doc.text("___________________________", leftColX + 7, leftColY + 0.3);
+            doc.text(`ชื่อ: ${patientData.name || ''}`, leftColX, leftColY + 5);
+            doc.text("___________________________", leftColX + 5, leftColY + 5.3);
+            doc.text(`อายุ:      ${patientData.age || ''}    HN: ${patientData.hn || ''}`, leftColX, leftColY + 10);
+            doc.text("________", leftColX + 5, leftColY + 10.3);
+            doc.text(`OPD: ${patientData.opd || ''}    WARD: ${patientData.ward || ''}`, leftColX, leftColY + 15);
+            leftColY += 25;
+
+            // Type of case
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("TYPE OF CASE:", leftColX, leftColY);
+            doc.setFont('THSarabunNew', 'normal');
+            doc.rect(leftColX, leftColY + 5, 5, 5); // Emergency checkbox
+            doc.text("EMERGENCY ☑", leftColX + 7, leftColY + 8);
+            doc.rect(leftColX + 25, leftColY + 5, 5, 5); // Urgent checkbox
+            doc.text("URGENT □", leftColX + 31, leftColY + 8);
+            doc.rect(leftColX + 45, leftColY + 5, 5, 5); // Elective checkbox
+            doc.text("ELECTIVE □", leftColX + 51, leftColY + 8);
+            leftColY += 20;
+
+            // Type of examination
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("TYPE OF EXAMINATION:", leftColX, leftColY);
+            doc.setFont('THSarabunNew', 'normal');
+            doc.text("X - RAY ______", leftColX, leftColY + 5);
+            leftColY += 15;
+
+            // Other sections
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("ULTRASOUND ______", leftColX, leftColY);
+            leftColY += 10;
+            doc.text("CT ______", leftColX, leftColY);
+            leftColY += 10;
+            doc.text("SPECIAL □ IVP:", leftColX, leftColY);
+            leftColY += 10;
+            doc.text("OTHERS ......", leftColX, leftColY);
+
+            // ===== RIGHT COLUMN CONTENT =====
+            // Request by
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("CLINICAL INFORMATION & DIAGNOSIS", rightColX, rightColY);
+            doc.setFont('THSarabunNew', 'normal');
+            doc.text("________________________________________", rightColX, rightColY + 5);
+            doc.text("________________________________________", rightColX, rightColY + 10);
+            doc.text("________________________________________", rightColX, rightColY + 15);
+            doc.text("________________________________________", rightColX, rightColY + 20);
+            doc.text("________________________________________", rightColX, rightColY + 25);
+            doc.text("________________________________________", rightColX, rightColY + 30);
+            doc.text("________________________________________", rightColX, rightColY + 35);
+            doc.text("________________________________________", rightColX, rightColY + 40);
+            // rightColY += 15;
+            
+            // Request by
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("REQUEST BY", rightColX, rightColY + 45);
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("นัดพบบพทย์ครั้งต่อไป ......", rightColX, rightColY + 50);
+            // rightColY += 15;
+
+            // Allergy information
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("HISTORY OF ALLERGY", rightColX, rightColY + 55);
+            doc.setFont('THSarabunNew', 'normal');
+            doc.text("NO", rightColX + 20, rightColY + 60);
+            doc.text("YES (ระบุ) ......", rightColX + 20, rightColY + 65);
+            // rightColY += 15;
+
+            // Underlying diseases
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("โรคประจำตัว (ระบุ):", rightColX, rightColY + 70);
+            doc.setFont('THSarabunNew', 'normal');
+            doc.text(patientData.underlyingDiseases || "DM,HT,DLP", rightColX + 25, rightColY + 70);
+            doc.text("_____________________", rightColX + 25, rightColY + 70.2);
+
+            // ===== FOOTER =====
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(10);
+            doc.text("ศูนย์รังสีวินิจฉัย รพ.สมุทรสาคร (034) 427099 – 105 ต่อ 6119 หรือ 6120 (รายงานผลอยู่ด้านหลัง)", 
+                    105, 140, { align: 'center' });
+
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};

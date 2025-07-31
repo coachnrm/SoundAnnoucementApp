@@ -1,0 +1,37 @@
+﻿@page "/xray-request"
+@inject IJSRuntime JSRuntime
+
+<h3>X-Ray Request Form</h3>
+
+<button @onclick="GeneratePdf" class="btn btn-primary">Generate X-Ray Request PDF</button>
+
+@code {
+    private async Task GeneratePdf()
+    {
+        // Prepare patient data
+        var patientData = new
+        {
+            date = DateTime.Now.ToString("dd/MM/yyyy"),
+            name = "นางไพ โสนาชัย",
+            age = "66",
+            hn = "0884669",
+            opd = "OPD_GVT",
+            ward = "WARD_sx.uqb"
+        };
+
+        try
+        {
+            // Call the JavaScript function
+            var pdfUrl = await JSRuntime.InvokeAsync<string>(
+                "generateXRayRequestPDF", 
+                patientData);
+
+            // Open the PDF in a new tab
+            await JSRuntime.InvokeVoidAsync("open", pdfUrl, "_blank");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error generating PDF: {ex.Message}");
+        }
+    }
+}
