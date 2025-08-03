@@ -613,7 +613,7 @@ window.generateOperativeNotePDF = function (patientData2) {
             doc.rect(155, 87, 5, 5); doc.text("Other", 162, 90); doc.text("........................................", 170, 90.3);
             
             // Inclusion checkboxes
-            doc.text("Inclusion", 10, 97);
+            doc.text("Incision", 10, 97);
             doc.rect(30, 94, 5, 5); doc.text("Midline", 37, 97);
             doc.rect(55, 94, 5, 5); doc.text("Upper midline", 61, 97);
             doc.rect(80, 94, 5, 5); doc.text("Lower midline", 86, 97);
@@ -627,7 +627,15 @@ window.generateOperativeNotePDF = function (patientData2) {
 
             doc.setDrawColor(0); // Set border color (black)
             doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(8, 112, 70, 152); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
             doc.rect(78, 104, 128, 8); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(78, 112, 128, 152); // x, y, width, height
             
             // Description of operation
             doc.setFont('THSarabunNew', 'bold');
@@ -652,29 +660,30 @@ window.generateOperativeNotePDF = function (patientData2) {
             
             let yPos = 116;
             operationText.forEach(line => {
-                doc.text(line, 110, yPos);
+                doc.text(line, 80, yPos);
                 yPos += 7;
             });
             
-            // Additional info at bottom
-            doc.text("bypass time", 20, yPos + 5);
-            doc.text("clamp time", 60, yPos + 5);
+            doc.text("Patho", 10, 255);
+            doc.text("right clavicle", 30, 255);
+            doc.text("..............................................................................", 20, 255.4);
             
-            doc.text("Patho", 100, yPos + 5);
-            doc.text("right clavicle", 115, yPos + 5);
+            doc.text("Estimated blood loss", 10, 260);
+            doc.text(patientData2.bloodLoss, 50, 260);
+            doc.text("..............................................", 38, 260.3);
+            doc.text("ml", 70, 260);
             
-            doc.text("Estimated blood loss", 20, yPos + 15);
-            doc.text(patientData2.bloodLoss, 60, yPos + 15);
+            doc.text("Skin", 80, 260);
+            doc.rect(88, 257, 5, 5, 'F'); doc.text("Primary closure", 96, 260);
+            doc.rect(118, 257, 5, 5); doc.text("Delayed primary closure", 126, 260);
             
-            doc.text("Skin", 100, yPos + 15);
-            doc.rect(115, yPos + 13, 5, 5, 'F'); doc.text("Primary closure", 122, yPos + 16);
-            doc.rect(150, yPos + 13, 5, 5); doc.text("Delayed primary closure", 157, yPos + 16);
+            doc.text("Immediate complication", 10, 268);
+            doc.rect(60, 265, 5, 5, 'F'); doc.text("No", 67, 268);
+            doc.rect(80, 265, 5, 5); doc.text("Yes", 87, 268);
             
-            doc.text("Immediate complication", 20, yPos + 25);
-            doc.rect(60, yPos + 23, 5, 5, 'F'); doc.text("No", 67, yPos + 26);
-            doc.rect(80, yPos + 23, 5, 5); doc.text("Yes", 87, yPos + 26);
+            doc.text("Doctor signature", 150, 268);
+            doc.text(patientData2.surgeon, 150, 274);
             
-            doc.text("Doctor signature", 150, yPos + 25);
 
             // Generate the PDF as Blob
             const pdfBlob = doc.output('blob');
