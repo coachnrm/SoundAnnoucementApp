@@ -438,3 +438,250 @@ window.generateXRayRequestPDF = function (patientData) {
         });
     });
 };
+
+window.generateOperativeNotePDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer())
+        ]).then(([regularFont, boldFont]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(16);
+            doc.text("OPERATIVE NOTE", 105, 15, { align: 'center' });
+            doc.text("Samutsakhon hospital", 105, 20, { align: 'center' });
+            
+            doc.setFontSize(14);
+            doc.text("Form No.6", 10, 24, { align: 'left' });
+            doc.text("รบ.2ต.05", 190, 24);
+
+            // ===== PATIENT INFORMATION SECTION =====
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(12);
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(8, 26, 140, 32); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(148, 26, 18, 32); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(148, 26, 18, 5); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(166, 26, 20, 32); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(166, 26, 20, 5); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(186, 26, 20, 32); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(186, 26, 20, 5); // x, y, width, height
+            
+            // First line
+            doc.text("Date", 10, 29);
+            doc.text("............................................", 16, 29.3);
+            doc.text(patientData2.date, 25, 29);
+            doc.text("Start time", 47, 29);
+            doc.text("...........................................................", 55, 29.3);
+            doc.text(patientData2.starttime, 70, 29);
+            doc.text("End time", 95, 29);
+            doc.text(".......................................................................", 96, 29.3);
+            doc.text(patientData2.endtime, 115, 29);
+            
+            // Second line
+            doc.text("Patient", 10, 34);
+            doc.text(".........................................................................................", 19, 34.3);
+            doc.text(patientData2.name, 45, 34);
+            doc.text("Age", 80, 34);
+            doc.text("..................................", 83, 34.3);
+            doc.text(patientData2.age, 95, 34);
+            doc.text("Ward", 105, 34);
+            doc.text(".....................................................", 108, 34.3);
+            doc.text(patientData2.ward, 115, 34);
+            
+            // Third line
+            doc.text("H.N.", 10, 39);
+            doc.text("..............................................................................................", 15, 39.3);
+            doc.text(patientData2.hn, 40, 39);
+            doc.text("A.N.", 80, 39);
+            doc.text("........................................................................................", 85, 39.3);
+            doc.text(patientData2.an, 105, 39);
+            
+            // Fourth line - Staff
+            doc.text("Surgeon", 10, 44);
+            doc.text("........................................................................................", 20, 44.3);
+            doc.text(patientData2.surgeon, 25, 44);
+            doc.text("Assistant", 80, 44);
+            doc.text(".................................................................................", 90, 44.3);
+            doc.text(patientData2.assistant, 95, 44);
+            
+            // Fifth line - Nurses
+            doc.text("Scrub nurse", 10, 49);
+            doc.text("...............................................................................", 25, 49.3);
+            doc.text(patientData2.scrubNurse, 30, 49);
+            doc.text("Circulate nurse", 80, 49);
+            doc.text("..................................................................", 100, 49.3);
+            doc.text(patientData2.circulateNurse, 100, 49);
+            
+            // Sixth line - Anesthesia
+            doc.text("Anesthesiologist", 10, 54);
+            doc.text(".........................................................................", 30, 54.3);
+            doc.text(patientData2.anesthesiologist, 34, 54);
+            doc.text("Nurse anesthetist", 80, 54);
+            doc.text(".............................................................", 103, 54.3);
+            doc.text(patientData2.anesthetist, 104, 54);
+            
+            // Counted items
+            doc.text("Counted", 150, 29);
+            doc.text("Pre-op", 170, 29);
+            doc.text("Post-op", 190, 29);
+            doc.text("Swab", 150, 35);
+            doc.text("5", 173, 35);
+            doc.text("5", 193, 35);
+            doc.text("Gauze", 150, 40);
+            doc.text("5", 173, 40);
+            doc.text("5", 193, 40);
+            doc.text("Sponge", 150, 45);
+            doc.text("3", 173, 45);
+            doc.text("3", 193, 45);
+            doc.text("ลงชื่อ", 150, 50);
+            doc.text(patientData2.scrubNurse.split(' ')[0], 170, 50);
+            doc.text(patientData2.scrubNurse.split(' ')[0], 190, 50);
+            
+            // Diagnosis section
+            doc.text("Preoperative diagnosis", 10, 62);
+            doc.text("..............................................................................................................................................................................................................................................", 39, 62.3);
+            doc.text(patientData2.preOpDiagnosis, 60, 62);
+            doc.text("Postoperative diagnosis", 10, 67);
+            doc.text("...........................................................................................................................................................................................................................................", 41, 67.3);
+            doc.text(patientData2.postOpDiagnosis, 60, 67);
+            
+            // Operation
+            doc.text("Operation", 10, 72);
+            doc.text(".......................................................................................................................................................................................................................................................................", 22, 72.3);
+            doc.text(patientData2.operation, 40, 72);
+            
+            // Anesthesia checkboxes
+            doc.text("Anaesthesis", 10, 77);
+            doc.rect(30, 74, 5, 5); doc.text("Local", 37, 77);
+            doc.rect(55, 74, 5, 5, 'F'); doc.text("GA", 61, 77);
+            doc.rect(80, 74, 5, 5); doc.text("Spinal block", 86, 77);
+            doc.rect(105, 74, 5, 5); doc.text("Epidural block", 112, 77);
+            doc.rect(131, 74, 5, 5); doc.text("Brachial block", 137, 77);
+            doc.rect(30, 80, 5, 5); doc.text("Ankle block", 37, 83);
+            doc.rect(55, 80, 5, 5); doc.text("IV", 61, 83);
+            doc.rect(80, 80, 5, 5); doc.text("MAC", 86, 83);
+            doc.rect(105, 80, 5, 5); doc.text("Other", 112, 83); doc.text("........................................", 120, 83.3);
+            
+            // Position checkboxes
+            doc.text("Position", 10, 90);
+            doc.rect(30, 87, 5, 5, 'F'); doc.text("Supine", 37, 90);
+            doc.rect(55, 87, 5, 5); doc.text("Prone", 61, 90);
+            doc.rect(80, 87, 5, 5); doc.text("Lithotomy", 86, 90);
+            doc.rect(105, 87, 5, 5); doc.text("Lt lateral", 112, 90);
+            doc.rect(131, 87, 5, 5); doc.text("Rt lateral", 137, 90);
+            doc.rect(155, 87, 5, 5); doc.text("Other", 162, 90); doc.text("........................................", 170, 90.3);
+            
+            // Inclusion checkboxes
+            doc.text("Inclusion", 10, 97);
+            doc.rect(30, 94, 5, 5); doc.text("Midline", 37, 97);
+            doc.rect(55, 94, 5, 5); doc.text("Upper midline", 61, 97);
+            doc.rect(80, 94, 5, 5); doc.text("Lower midline", 86, 97);
+            doc.rect(105, 94, 5, 5); doc.text("Grid iron", 112, 97);
+            doc.rect(131, 94, 5, 5); doc.text("Lance", 137, 97);
+            doc.rect(155, 94, 5, 5, 'F'); doc.text("Other transverse incision", 162, 97);
+            
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(8, 104, 70, 8); // x, y, width, height
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.5); // Set border thickness
+            doc.rect(78, 104, 128, 8); // x, y, width, height
+            
+            // Description of operation
+            doc.setFont('THSarabunNew', 'bold');
+            doc.text("DESCRIPTION OF OPERATION", 105, 103, { align: 'center' });
+            doc.text("OPERATIVE FINDINGS", 45, 109, { align: 'center' });
+            doc.text("PROCEDURE", 145, 109, { align: 'center' });
+            doc.setFont('THSarabunNew', 'normal');
+            
+            const operationText = [
+                "- soft tissue mass origin from pectoralis major and invade right clavicle",
+                "- The patient was placed in supine position",
+                "- The transverse incision was done",
+                "- The muscle was incised to the right clavicle",
+                "- The finding was described as shown",
+                "- The soft tissue mass was removed",
+                "- The space was irrigated with water",
+                "- The bleeding was checked",
+                "- The muscle was sutured with vicryl 2-0",
+                "- The subcutaneous tissue was suture with vicryl 2-0",
+                "- The skin was closed with stapler"
+            ];
+            
+            let yPos = 116;
+            operationText.forEach(line => {
+                doc.text(line, 110, yPos);
+                yPos += 7;
+            });
+            
+            // Additional info at bottom
+            doc.text("bypass time", 20, yPos + 5);
+            doc.text("clamp time", 60, yPos + 5);
+            
+            doc.text("Patho", 100, yPos + 5);
+            doc.text("right clavicle", 115, yPos + 5);
+            
+            doc.text("Estimated blood loss", 20, yPos + 15);
+            doc.text(patientData2.bloodLoss, 60, yPos + 15);
+            
+            doc.text("Skin", 100, yPos + 15);
+            doc.rect(115, yPos + 13, 5, 5, 'F'); doc.text("Primary closure", 122, yPos + 16);
+            doc.rect(150, yPos + 13, 5, 5); doc.text("Delayed primary closure", 157, yPos + 16);
+            
+            doc.text("Immediate complication", 20, yPos + 25);
+            doc.rect(60, yPos + 23, 5, 5, 'F'); doc.text("No", 67, yPos + 26);
+            doc.rect(80, yPos + 23, 5, 5); doc.text("Yes", 87, yPos + 26);
+            
+            doc.text("Doctor signature", 150, yPos + 25);
+
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
