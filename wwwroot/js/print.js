@@ -501,11 +501,11 @@ window.generateOperativeNotePDF = function (patientData2) {
 
             doc.setDrawColor(0); // Set border color (black)
             doc.setLineWidth(0.5); // Set border thickness
-            doc.rect(186, 26, 20, 32); // x, y, width, height
+            doc.rect(186, 26, 18, 32); // x, y, width, height
 
             doc.setDrawColor(0); // Set border color (black)
             doc.setLineWidth(0.5); // Set border thickness
-            doc.rect(186, 26, 20, 5); // x, y, width, height
+            doc.rect(186, 26, 18, 5); // x, y, width, height
             
             // First line
             doc.text("Date", 10, 29);
@@ -631,11 +631,11 @@ window.generateOperativeNotePDF = function (patientData2) {
 
             doc.setDrawColor(0); // Set border color (black)
             doc.setLineWidth(0.5); // Set border thickness
-            doc.rect(78, 104, 128, 8); // x, y, width, height
+            doc.rect(78, 104, 126, 8); // x, y, width, height
 
             doc.setDrawColor(0); // Set border color (black)
             doc.setLineWidth(0.5); // Set border thickness
-            doc.rect(78, 112, 128, 152); // x, y, width, height
+            doc.rect(78, 112, 126, 152); // x, y, width, height
             
             // Description of operation
             doc.setFont('THSarabunNew', 'bold');
