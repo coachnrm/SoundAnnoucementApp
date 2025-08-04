@@ -5,7 +5,7 @@
 <h3>Operative Note</h3>
 
 <button class="btn btn-primary" @onclick="GenerateOperativeNote">Generate Operative Note PDF</button>
-
+<button class="btn btn-primary" @onclick="GenerateOperativeNurseNote">Generate Operative Nurse Note PDF</button>
 @code {
     private async Task GenerateOperativeNote()
     {
@@ -34,6 +34,43 @@
         try
         {
             var pdfUrl = await JSRuntime.InvokeAsync<string>("generateOperativeNotePDF", patientData2);
+            @* await JSRuntime.InvokeVoidAsync("openPdfInNewTab", pdfUrl); *@
+            await JSRuntime.InvokeVoidAsync("open", pdfUrl, "_blank");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error generating PDF: {ex.Message}");
+        }
+    }
+
+    //generateOperativeNurseNotePDF
+    private async Task GenerateOperativeNurseNote()
+    {
+        var patientData2 = new
+        {
+            date = "16/12/2022",
+            starttime = "09:00",
+            endtime = "12:00",
+            name = "นางไพ โสนาชัย",
+            age = "66",
+            hn = "0884669",
+            an = "6700140975",
+            ward = "ศัลยกรรมหญิง",
+            surgeon = "นพ.ณัฐพงศ์ รั้วมั่น",
+            assistant = "พว.สมหญิง แข็งแรง",
+            scrubNurse = "พว.สมหญิง แข็งแรง",
+            circulateNurse = "พว.สมหญิง แข็งแรง",
+            anesthesiologist = "นพ.สมชาย แข็งแรง",
+            anesthetist = "พว.สมหญิง แข็งแรง",
+            preOpDiagnosis = "mass at head of right clavicle",
+            postOpDiagnosis = "mass at head of right clavicle",
+            operation = "excision mass",
+            bloodLoss = "200"
+        };
+
+        try
+        {
+            var pdfUrl = await JSRuntime.InvokeAsync<string>("generateOperativeNurseNotePDF", patientData2);
             @* await JSRuntime.InvokeVoidAsync("openPdfInNewTab", pdfUrl); *@
             await JSRuntime.InvokeVoidAsync("open", pdfUrl, "_blank");
         }

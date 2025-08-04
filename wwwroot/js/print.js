@@ -694,3 +694,191 @@ window.generateOperativeNotePDF = function (patientData2) {
         });
     });
 };
+
+window.generateOperativeNurseNotePDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer())
+        ]).then(([regularFont, boldFont]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(16);
+            doc.text("SKH-NUR-IPD13_OR", 10, 15);doc.text("แผ่นที่......", 180, 15);
+            
+            doc.setFontSize(16);
+            doc.text("แบบบันทึกการพยาบาลสำหรับผู้ป่วยผ่าตัด โรงพยาบาลสมุทรสาคร", 105, 22, { align: 'center' });
+
+            doc.setFontSize(14);
+
+            //กล่อง Date/time
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 26, 24, 5); // x, y, width, height
+
+            //กล่อง สัญญาณชีพ
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(32, 26, 24, 5); // x, y, width, height
+
+            //กล่อง อื่นๆ
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(56, 26, 18, 5); // x, y, width, height
+
+            //กล่องกิจกรรมการพยาบาล
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(74, 26, 81, 25); // x, y, width, height
+
+            //กล่องประเมินผล
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(155, 26, 45, 25); // x, y, width, height
+
+            doc.text("Date/time", 10, 30);doc.text("สัญญาณชีพ", 37, 30);doc.text("อื่นๆ", 63, 30);
+            //กล่องเล็ก P, R, BP, FHS
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(32, 31, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(40, 31, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(48, 31, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(56, 31, 9, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(65, 31, 9, 5); // x, y, width, height
+            doc.text("P", 36, 35);doc.text("R", 42, 35);doc.text("BP", 49, 35);doc.text("FHS", 57, 35);
+            
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 31, 24, 10); // x, y, width, height
+            //กล่องเล็กล่าง P, R, BP, FHS
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(32, 36, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(40, 36, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(48, 36, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(56, 36, 9, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(65, 36, 9, 5); // x, y, width, height
+
+            doc.text(patientData2.date, 10, 37);doc.text("กิจกรรมการพยาบาล", 105, 37);doc.text("ประเมินผล", 170, 37);
+            //กล่องข้อมูล/ปัญหา
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 41, 66, 10); // x, y, width, height
+            doc.text("ข้อมูล/ปัญหา", 35, 47);
+
+            //กล่อง Sign in (ก่อนดมยาสลบ)
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 51, 66, 8); // x, y, width, height
+            doc.rect(10, 54, 2, 2, 'F'); doc.text("Sign in (ก่อนดมยาสลบ)", 15, 56);
+
+            //กล่องตรวจสอบใบเซ็นต์ยินยอมผ่าตัด
+            doc.rect(74, 51, 81, 8); // x, y, width, height
+            doc.rect(77, 54, 2, 2, 'F'); doc.text("ตรวจสอบใบเซ็นต์ยินยอมผ่าตัด", 80, 56);
+
+            //กล่องล่างประเมินผล
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(155, 51, 45, 8); // x, y, width, height
+            doc.rect(158, 54, 2, 2); doc.text("มี", 163, 56);doc.rect(167, 54, 2, 2); doc.text("ไม่มี..........................", 172, 56);
+
+            //กล่อง Sign in (ก่อนดมยาสลบ)
+            // doc.setDrawColor(0); // Set border color (black)
+            // doc.setLineWidth(0.1); // Set border thickness
+            // doc.rect(8, 59, 66, 8); // x, y, width, height
+            // doc.text("อาการแรกรับ", 10, 64);doc.text("ผู้ป่วยรู้สึกตัวดี ช่วยเหลือตนเองได้ มีก้อนที่ไหปลาร้าข้างขวา on IVF แขนซ้าย", 30, 64);
+
+            // Define the rectangle dimensions
+            const rectX = 8;
+            const rectY = 59;
+            const rectWidth = 66;
+            const rectHeight = 32;
+
+            // Draw the rectangle
+            doc.setDrawColor(0);
+            doc.setLineWidth(0.1);
+            doc.rect(rectX, rectY, rectWidth, rectHeight);
+
+            // The label and text you want to display
+            const label = "อาการแรกรับ";
+            const text = "ผู้ป่วยรู้สึกตัวดี ช่วยเหลือตนเองได้ มีก้อนที่ไหปลาร้าข้างขวา on IVF แขนซ้าย ผู้ป่วยตื่นดี ไม่เหนื่อย หายใจ";
+
+            // First write the label at a fixed position
+            doc.text(label, rectX + 2, rectY + 6); // Positioned slightly below top
+
+            // Calculate available width for the text (accounting for label width)
+            const labelWidth = doc.getStringUnitWidth(label) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+            const availableWidth = rectWidth - 6 - labelWidth; // 6 = padding (2 left + 4 right)
+
+            // Split the text into lines that fit within the available width
+            const splitText = doc.splitTextToSize(text, availableWidth);
+
+            // Calculate starting Y position (start below the label)
+            const lineHeight = 5;
+            const startY = rectY + 6; // Start below the label
+
+            // Add each line of text, indented after the label
+            splitText.forEach((line, i) => {
+                // For first line, position after the label
+                if (i === 0) {
+                    doc.text(line, rectX + 4 + labelWidth, startY);
+                } 
+                // For subsequent lines, align with the text (not the label)
+                else {
+                    doc.text(line, rectX + 4, startY + (i * lineHeight));
+                }
+            });
+
+            
+            doc.rect(74, 59, 81, 8); // x, y, width, height
+            doc.rect(77, 62, 2, 2, 'F'); doc.text("ยืนยันชื่อ การผ่าตัด ตำแหน่งที่จะทำการผ่าตัด", 80, 64);
+
+            doc.rect(155, 59, 45, 8); // x, y, width, height
+            doc.rect(158, 62, 2, 2); doc.text("ถูกต้อง", 163, 64);doc.rect(174, 62, 2, 2); doc.text("ไม่ถูกต้อง", 178, 64);
+        
+            
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
