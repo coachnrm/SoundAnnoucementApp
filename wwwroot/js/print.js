@@ -819,51 +819,51 @@ window.generateOperativeNurseNotePDF = function (patientData2) {
             doc.rect(158, 54, 2, 2); doc.text("มี", 163, 56);doc.rect(167, 54, 2, 2); doc.text("ไม่มี..........................", 172, 56);
 
             //กล่อง Sign in (ก่อนดมยาสลบ)
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.1); // Set border thickness
-            // doc.rect(8, 59, 66, 8); // x, y, width, height
-            // doc.text("อาการแรกรับ", 10, 64);doc.text("ผู้ป่วยรู้สึกตัวดี ช่วยเหลือตนเองได้ มีก้อนที่ไหปลาร้าข้างขวา on IVF แขนซ้าย", 30, 64);
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 59, 66, 48); // x, y, width, height
+            doc.text("อาการแรกรับ", 10, 64);
 
             // Define the rectangle dimensions
-            const rectX = 8;
-            const rectY = 59;
-            const rectWidth = 66;
-            const rectHeight = 32;
+            // const rectX = 8;
+            // const rectY = 59;
+            // const rectWidth = 66;
+            // const rectHeight = 32;
 
-            // Draw the rectangle
-            doc.setDrawColor(0);
-            doc.setLineWidth(0.1);
-            doc.rect(rectX, rectY, rectWidth, rectHeight);
+            // // Draw the rectangle
+            // doc.setDrawColor(0);
+            // doc.setLineWidth(0.1);
+            // doc.rect(rectX, rectY, rectWidth, rectHeight);
 
-            // The label and text you want to display
-            const label = "อาการแรกรับ";
-            const text = "ผู้ป่วยรู้สึกตัวดี ช่วยเหลือตนเองได้ มีก้อนที่ไหปลาร้าข้างขวา on IVF แขนซ้าย ผู้ป่วยตื่นดี ไม่เหนื่อย หายใจ";
+            // // The label and text you want to display
+            // const label = "อาการแรกรับ";
+            // const text = "ผู้ป่วยรู้สึกตัวดี ช่วยเหลือตนเองได้ มีก้อนที่ไหปลาร้าข้างขวา on IVF แขนซ้าย ผู้ป่วยตื่นดี ไม่เหนื่อย หายใจ";
 
-            // First write the label at a fixed position
-            doc.text(label, rectX + 2, rectY + 6); // Positioned slightly below top
+            // // First write the label at a fixed position
+            // doc.text(label, rectX + 2, rectY + 6); // Positioned slightly below top
 
-            // Calculate available width for the text (accounting for label width)
-            const labelWidth = doc.getStringUnitWidth(label) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-            const availableWidth = rectWidth - 6 - labelWidth; // 6 = padding (2 left + 4 right)
+            // // Calculate available width for the text (accounting for label width)
+            // const labelWidth = doc.getStringUnitWidth(label) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+            // const availableWidth = rectWidth - 6 - labelWidth; // 6 = padding (2 left + 4 right)
 
-            // Split the text into lines that fit within the available width
-            const splitText = doc.splitTextToSize(text, availableWidth);
+            // // Split the text into lines that fit within the available width
+            // const splitText = doc.splitTextToSize(text, availableWidth);
 
-            // Calculate starting Y position (start below the label)
-            const lineHeight = 5;
-            const startY = rectY + 6; // Start below the label
+            // // Calculate starting Y position (start below the label)
+            // const lineHeight = 5;
+            // const startY = rectY + 6; // Start below the label
 
-            // Add each line of text, indented after the label
-            splitText.forEach((line, i) => {
-                // For first line, position after the label
-                if (i === 0) {
-                    doc.text(line, rectX + 4 + labelWidth, startY);
-                } 
-                // For subsequent lines, align with the text (not the label)
-                else {
-                    doc.text(line, rectX + 4, startY + (i * lineHeight));
-                }
-            });
+            // // Add each line of text, indented after the label
+            // splitText.forEach((line, i) => {
+            //     // For first line, position after the label
+            //     if (i === 0) {
+            //         doc.text(line, rectX + 4 + labelWidth, startY);
+            //     } 
+            //     // For subsequent lines, align with the text (not the label)
+            //     else {
+            //         doc.text(line, rectX + 4, startY + (i * lineHeight));
+            //     }
+            // });
 
             
             doc.rect(74, 59, 81, 8); // x, y, width, height
@@ -871,8 +871,64 @@ window.generateOperativeNurseNotePDF = function (patientData2) {
 
             doc.rect(155, 59, 45, 8); // x, y, width, height
             doc.rect(158, 62, 2, 2); doc.text("ถูกต้อง", 163, 64);doc.rect(174, 62, 2, 2); doc.text("ไม่ถูกต้อง", 178, 64);
+
+            doc.rect(74, 67, 81, 8); // x, y, width, height
+            doc.rect(77, 70, 2, 2, 'F'); doc.text("ตำแหน่งที่ mark site", 80, 72);
+
+            doc.rect(155, 67, 45, 8); // x, y, width, height
+            doc.rect(158, 70, 2, 2); doc.text("ถูกต้อง", 163, 72);doc.rect(174, 70, 2, 2); doc.text("ไม่ถูกต้อง", 178, 72);
         
-            
+            doc.rect(74, 75, 81, 16); // x, y, width, height
+            doc.rect(77, 78, 2, 2, 'F'); doc.text("ตรวจสอบการ NPO", 80, 80);
+
+            doc.rect(155, 75, 45, 16); // x, y, width, height
+            doc.rect(158, 78, 2, 2); doc.text("ครบ", 163, 80);doc.rect(174, 78, 2, 2); doc.text("ไม่ครบ", 178, 80);
+            doc.rect(158, 85, 2, 2); doc.text("ไม่ต้อง NPO", 163, 87);
+
+            doc.rect(74, 91, 81, 16); // x, y, width, height
+            doc.rect(77, 94, 2, 2, 'F'); doc.text("ตรวจสอบป้ายข้อมือ", 80, 96);
+
+            doc.rect(155, 91, 45, 16); // x, y, width, height
+            doc.rect(158, 94, 2, 2); doc.text("มีถูกต้อง", 163, 96);doc.rect(176, 94, 2, 2); doc.text("ไม่มี", 180, 96);
+            doc.rect(158, 101, 2, 2); doc.text("มีแต่ไม่ถูกต้อง", 163, 103);
+
+            //กล่อง Time out (ก่อนลงมีดผ่าตัด)
+            doc.rect(8, 107, 66, 8); // x, y, width, height
+            doc.rect(10, 110, 2, 2, 'F'); doc.text("Time out (ก่อนลงมีดผ่าตัด)", 15, 112);
+
+            doc.rect(74, 107, 81, 16); // x, y, width, height
+            doc.text("ชนิดของการดมยาสลบ", 77, 112);
+            doc.rect(77, 116, 2, 2); doc.text("GA", 80, 118);doc.rect(88, 116, 2, 2); doc.text("SA", 91, 118);doc.rect(98, 116, 2, 2); doc.text("LA", 102, 118);
+            doc.rect(108, 116, 2, 2); doc.text("IV", 113, 118);doc.rect(119, 116, 2, 2); doc.text("ฺฺBB", 123, 118);doc.rect(130, 116, 2, 2); doc.text("ฺฺอื่นๆ", 133, 118);
+
+            doc.rect(155, 107, 45, 16); // x, y, width, height
+
+            //กล่องเริ่มผ่าตัดเวลา
+            doc.rect(8, 115, 66, 8); // x, y, width, height
+            doc.text("เริ่มผ่าตัดเวลา", 10, 120);doc.text(patientData2.starttime, 30, 120);doc.text("น.", 40, 120);
+
+            //กล่องเริ่มผ่าตัดเวลา
+            doc.rect(8, 123, 66, 8); // x, y, width, height
+            doc.text("แพทย์", 10, 128);doc.text(patientData2.surgeon, 20, 128);
+
+            doc.rect(74, 123, 81, 16); // x, y, width, height
+            doc.rect(77, 126, 2, 2);doc.text("ยืนยันชื่่อผู้ป่วย / นามสกุล ป้ายข้อมือ ชื่อโรค หัตถการ", 80, 128);
+            doc.text("ตำแหน่งผ่าตัด ข้างที่ผ่าตัด", 77, 135);
+
+            doc.rect(155, 123, 45, 16); // x, y, width, height
+            doc.rect(158, 126, 2, 2); doc.text("มีถูกต้อง", 163, 128);doc.rect(176, 126, 2, 2); doc.text("ไม่ถูกต้อง", 180, 128);
+
+            //กล่องผู้ช่วยผ่าตัด
+            doc.rect(8, 131, 66, 8); // x, y, width, height
+            doc.text("Assistant", 10, 136);doc.text(patientData2.assistant, 25, 136);
+
+            //กล่อง scrubnurse
+            doc.rect(8, 139, 66, 8); // x, y, width, height
+            doc.text("Scrub", 10, 144);doc.text(patientData2.scrubNurse, 20, 144);
+
+            doc.rect(74, 139, 81, 8); // x, y, width, height
+            doc.rect(77, 142, 2, 2);doc.text("ยืนยันชื่่อผู้ป่วย / นามสกุล ป้ายข้อมือ ชื่อโรค หัตถการ", 80, 144);
+
             // Generate the PDF as Blob
             const pdfBlob = doc.output('blob');
             resolve(URL.createObjectURL(pdfBlob));
