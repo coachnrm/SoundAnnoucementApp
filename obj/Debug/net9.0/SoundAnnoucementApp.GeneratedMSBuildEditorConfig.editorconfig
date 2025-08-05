@@ -4,8 +4,6 @@ build_property.EnableSingleFileAnalyzer =
 build_property.EnableTrimAnalyzer = false
 build_property.IncludeAllContentForSelfExtract = 
 build_property.TargetFramework = net9.0
-build_property.TargetFrameworkIdentifier = .NETCoreApp
-build_property.TargetFrameworkVersion = v9.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
 build_property.ProjectTypeGuids = 
@@ -92,6 +90,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/SoundAnnoucementApp/Pages/OpNotePdf.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3BOb3RlUGRmLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/OpNotePdfProlab.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3BOb3RlUGRmUHJvbGFiLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoundAnnoucementApp/Pages/OrderPost.razor]
