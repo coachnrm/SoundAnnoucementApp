@@ -153,6 +153,10 @@
       "PackagePath": "staticwebassets\\images\\3.jpg"
     },
     {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\GarudaEmblem.png",
+      "PackagePath": "staticwebassets\\images\\GarudaEmblem.png"
+    },
+    {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\logoprolab.jpg",
       "PackagePath": "staticwebassets\\images\\logoprolab.jpg"
     },

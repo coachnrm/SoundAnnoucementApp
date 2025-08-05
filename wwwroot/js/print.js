@@ -757,11 +757,6 @@ window.generateProlabNotePDF = function (patientData2) {
             doc.setFont('THSarabunNew', 'bold');
             doc.setFontSize(14);
             doc.text("FM-REQ-004 : REV.01", 170, 14);
-            // doc.setFontSize(16);
-            // doc.text("OPERATIVE NOTE", 105, 15, { align: 'center' });
-            // doc.text("Samutsakhon hospital", 105, 20, { align: 'center' });
-            // doc.text("Form No.6", 10, 24, { align: 'left' });
-            
 
             // ===== PATIENT INFORMATION SECTION =====
             doc.setFont('THSarabunNew', 'normal');
@@ -774,26 +769,6 @@ window.generateProlabNotePDF = function (patientData2) {
             doc.setDrawColor(0); // Set border color (black)
             doc.setLineWidth(0.3); // Set border thickness
             doc.rect(109, 16, 93, 34); // x, y, width, height
-
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(148, 26, 18, 5); // x, y, width, height
-
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(166, 26, 20, 32); // x, y, width, height
-
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(166, 26, 20, 5); // x, y, width, height
-
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(186, 26, 18, 32); // x, y, width, height
-
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(186, 26, 18, 5); // x, y, width, height
             
             // First line
             doc.text("บริษัทใปรเฟสชั่นเนล ลาโบราทอรี่ แมเนจเม้นท์ คอร์ป จำกัด", 10, 22);
@@ -809,14 +784,6 @@ window.generateProlabNotePDF = function (patientData2) {
             doc.text("www.prolab.co.th", 36, 42);
             doc.setFontSize(14);
             doc.text("พัฒนาอย่างต่อเนื่อง ปราชญ์เปรื่องเรื่องบริการ มาตรฐานงานตรวจวิเคราะห์", 10, 47);
-            // doc.text("............................................", 16, 29.3);
-            // doc.text(patientData2.date, 25, 29);
-            // doc.text("Start time", 47, 29);
-            // doc.text("...........................................................", 55, 29.3);
-            // doc.text(patientData2.starttime, 70, 29);
-            // doc.text("End time", 95, 29);
-            // doc.text(".......................................................................", 96, 29.3);
-            // doc.text(patientData2.endtime, 115, 29);
             
             // Second line
             doc.text("Name", 113, 23);
@@ -825,12 +792,6 @@ window.generateProlabNotePDF = function (patientData2) {
             doc.text("Age", 170, 23);
             doc.text("........................", 176, 23.3);
             doc.text(patientData2.age, 185, 23);
-            // doc.text("Age", 80, 34);
-            // doc.text("..................................", 83, 34.3);
-            // doc.text(patientData2.age, 95, 34);
-            // doc.text("Ward", 105, 34);
-            // doc.text(".....................................................", 108, 34.3);
-            // doc.text(patientData2.ward, 115, 34);
             
             // Third line
             doc.text("Hn", 113, 29);
@@ -951,153 +912,100 @@ window.generateProlabNotePDF = function (patientData2) {
             doc.setLineWidth(0.2); // Set border thickness
             doc.rect(75, 135, 127, 154); // x, y, width, height
             doc.text("Signiticant Fingings", 130, 140);
+            
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
 
-            // // Fourth line - Staff
-            // doc.text("Surgeon", 10, 44);
-            // doc.text("........................................................................................", 20, 44.3);
-            // doc.text(patientData2.surgeon, 25, 44);
-            // doc.text("Assistant", 80, 44);
-            // doc.text(".................................................................................", 90, 44.3);
-            // doc.text(patientData2.assistant, 95, 44);
-            
-            // // Fifth line - Nurses
-            // doc.text("Scrub nurse", 10, 49);
-            // doc.text("...............................................................................", 25, 49.3);
-            // doc.text(patientData2.scrubNurse, 30, 49);
-            // doc.text("Circulate nurse", 80, 49);
-            // doc.text("..................................................................", 100, 49.3);
-            // doc.text(patientData2.circulateNurse, 100, 49);
-            
-            // // Sixth line - Anesthesia
-            // doc.text("Anesthesiologist", 10, 54);
-            // doc.text(".........................................................................", 30, 54.3);
-            // doc.text(patientData2.anesthesiologist, 34, 54);
-            // doc.text("Nurse anesthetist", 80, 54);
-            // doc.text(".............................................................", 103, 54.3);
-            // doc.text(patientData2.anesthetist, 104, 54);
-            
-            // Counted items
-            // doc.text("Counted", 150, 29);
-            // doc.text("Pre-op", 170, 29);
-            // doc.text("Post-op", 190, 29);
-            // doc.text("Swab", 150, 35);
-            // doc.text("5", 173, 35);
-            // doc.text("5", 193, 35);
-            // doc.text("Gauze", 150, 40);
-            // doc.text("5", 173, 40);
-            // doc.text("5", 193, 40);
-            // doc.text("Sponge", 150, 45);
-            // doc.text("3", 173, 45);
-            // doc.text("3", 193, 45);
-            // doc.text("ลงชื่อ", 150, 50);
-            // doc.text(patientData2.scrubNurse.split(' ')[0], 170, 50);
-            // doc.text(patientData2.scrubNurse.split(' ')[0], 190, 50);
-            
-            // Diagnosis section
-            // doc.text("Preoperative diagnosis", 10, 62);
-            // doc.text("..............................................................................................................................................................................................................................................", 39, 62.3);
-            // doc.text(patientData2.preOpDiagnosis, 60, 62);
-            // doc.text("Postoperative diagnosis", 10, 67);
-            // doc.text("...........................................................................................................................................................................................................................................", 41, 67.3);
-            // doc.text(patientData2.postOpDiagnosis, 60, 67);
-            
-            // Operation
-            // doc.text("Operation", 10, 72);
-            // doc.text(".......................................................................................................................................................................................................................................................................", 22, 72.3);
-            // doc.text(patientData2.operation, 40, 72);
-            
-            // // Anesthesia checkboxes
-            // doc.text("Anaesthesis", 10, 77);
-            // doc.rect(30, 74, 5, 5); doc.text("Local", 37, 77);
-            // doc.rect(55, 74, 5, 5, 'F'); doc.text("GA", 61, 77);
-            // doc.rect(80, 74, 5, 5); doc.text("Spinal block", 86, 77);
-            // doc.rect(105, 74, 5, 5); doc.text("Epidural block", 112, 77);
-            // doc.rect(131, 74, 5, 5); doc.text("Brachial block", 137, 77);
-            // doc.rect(30, 80, 5, 5); doc.text("Ankle block", 37, 83);
-            // doc.rect(55, 80, 5, 5); doc.text("IV", 61, 83);
-            // doc.rect(80, 80, 5, 5); doc.text("MAC", 86, 83);
-            // doc.rect(105, 80, 5, 5); doc.text("Other", 112, 83); doc.text("........................................", 120, 83.3);
-            
-            // // Position checkboxes
-            // doc.text("Position", 10, 90);
-            // doc.rect(30, 87, 5, 5, 'F'); doc.text("Supine", 37, 90);
-            // doc.rect(55, 87, 5, 5); doc.text("Prone", 61, 90);
-            // doc.rect(80, 87, 5, 5); doc.text("Lithotomy", 86, 90);
-            // doc.rect(105, 87, 5, 5); doc.text("Lt lateral", 112, 90);
-            // doc.rect(131, 87, 5, 5); doc.text("Rt lateral", 137, 90);
-            // doc.rect(155, 87, 5, 5); doc.text("Other", 162, 90); doc.text("........................................", 170, 90.3);
-            
-            // // Inclusion checkboxes
-            // doc.text("Incision", 10, 97);
-            // doc.rect(30, 94, 5, 5); doc.text("Midline", 37, 97);
-            // doc.rect(55, 94, 5, 5); doc.text("Upper midline", 61, 97);
-            // doc.rect(80, 94, 5, 5); doc.text("Lower midline", 86, 97);
-            // doc.rect(105, 94, 5, 5); doc.text("Grid iron", 112, 97);
-            // doc.rect(131, 94, 5, 5); doc.text("Lance", 137, 97);
-            // doc.rect(155, 94, 5, 5, 'F'); doc.text("Other transverse incision", 162, 97);
-            
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(8, 104, 70, 8); // x, y, width, height
 
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(8, 112, 70, 152); // x, y, width, height
 
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(78, 104, 126, 8); // x, y, width, height
+window.generateSaveNotePDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+        
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // ฟังก์ชันโหลดฟอนต์
+        function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+        
+        // ฟังก์ชันโหลดรูปแบบ Promise
+        function getBase64FromImageUrl(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function () {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0);
+                    resolve(canvas.toDataURL("image/png"));
+                };
+                img.onerror = reject;
+                img.src = url;
+            });
+        }
+        
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer()),
+            getBase64FromImageUrl('/images/GarudaEmblem.png')
+        ]).then(([regularFont, boldFont, imgData]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+            
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
 
-            // doc.setDrawColor(0); // Set border color (black)
-            // doc.setLineWidth(0.5); // Set border thickness
-            // doc.rect(78, 112, 126, 152); // x, y, width, height
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
             
-            // Description of operation
-            // doc.setFont('THSarabunNew', 'bold');
-            // doc.text("DESCRIPTION OF OPERATION", 105, 103, { align: 'center' });
-            // doc.text("OPERATIVE FINDINGS", 45, 109, { align: 'center' });
-            // doc.text("PROCEDURE", 145, 109, { align: 'center' });
-            // doc.setFont('THSarabunNew', 'normal');
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(27);
+            doc.text("บันทึกข้อความ", 85, 35);
+            // แทรกรูปโลโก้
+            doc.addImage(imgData, 'PNG', 30, 15, 25, 18);
             
-            // const operationText = [
-            //     "- soft tissue mass origin from pectoralis major and invade right clavicle",
-            //     "- The patient was placed in supine position",
-            //     "- The transverse incision was done",
-            //     "- The muscle was incised to the right clavicle",
-            //     "- The finding was described as shown",
-            //     "- The soft tissue mass was removed",
-            //     "- The space was irrigated with water",
-            //     "- The bleeding was checked",
-            //     "- The muscle was sutured with vicryl 2-0",
-            //     "- The subcutaneous tissue was suture with vicryl 2-0",
-            //     "- The skin was closed with stapler"
-            // ];
+            doc.setFontSize(18);
+            doc.text("ส่วนราชการ.......................................................................................................................", 32, 45.3);
+            doc.text(patientData2.governmentagency, 56, 45);
+            doc.text("ที่...................................................................วันที่..............................................................", 32, 52.3);
+            doc.text(patientData2.no, 38, 52);
+            doc.text(patientData2.datenow, 120, 52);
+            doc.text("เรื่อง...................................................................................................................................", 32, 59.3);
+            doc.text(patientData2.subject, 45, 59);
+            doc.text("เรียน...................................................................................................................................", 32, 70.3);
+            doc.text(patientData2.learn, 45, 70);
+
+
+            doc.text("ขอแสดงความนับถือ", 140, 250);
+            doc.text("(..................................................)", 130, 270.3);
+            doc.text(patientData2.surgeon, 142, 270);
+            doc.text("", 142, 278.3);
+            doc.text(patientData2.branch, 142, 278);
             
-            // let yPos = 116;
-            // operationText.forEach(line => {
-            //     doc.text(line, 80, yPos);
-            //     yPos += 7;
-            // });
-            
-            // doc.text("Patho", 10, 255);
-            // doc.text("right clavicle", 30, 255);
-            // doc.text("..............................................................................", 20, 255.4);
-            
-            // doc.text("Estimated blood loss", 10, 260);
-            // doc.text(patientData2.bloodLoss, 50, 260);
-            // doc.text("..............................................", 38, 260.3);
-            // doc.text("ml", 70, 260);
-            
-            // doc.text("Skin", 80, 260);
-            // doc.rect(88, 257, 5, 5, 'F'); doc.text("Primary closure", 96, 260);
-            // doc.rect(118, 257, 5, 5); doc.text("Delayed primary closure", 126, 260);
-            
-            // doc.text("Immediate complication", 10, 268);
-            // doc.rect(60, 265, 5, 5, 'F'); doc.text("No", 67, 268);
-            // doc.rect(80, 265, 5, 5); doc.text("Yes", 87, 268);
-            
-            // doc.text("Doctor signature", 150, 268);
-            // doc.text(patientData2.surgeon, 150, 274);
             
 
             // Generate the PDF as Blob
