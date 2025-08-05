@@ -1,0 +1,54 @@
+@page "/prolab-note"
+@inject IJSRuntime JSRuntime
+@using System.Text.Json
+
+<h3>ProLab Note</h3>
+
+<button class="btn btn-primary" @onclick="GenerateProlabNote">Generate ProLab Note PDF</button>
+
+@code {
+    private async Task GenerateProlabNote()
+    {
+        var patientData2 = new
+        {
+            date = "16/12/2022",
+            starttime = "09:00",
+            endtime = "12:00",
+            name = "นางไพ โสนาชัย",
+            age = "66",
+            hn = "0884669",
+            an = "6700140975",
+            ward = "ศัลยกรรมหญิง",
+            hospital = "โรงพยาบาลสมุทรสาคร",
+            surgeon = "นพ.ณัฐพงศ์ รั้วมั่น",
+            assistant = "พว.สมหญิง แข็งแรง",
+            scrubNurse = "พว.สมหญิง แข็งแรง",
+            circulateNurse = "พว.สมหญิง แข็งแรง",
+            anesthesiologist = "นพ.สมชาย แข็งแรง",
+            anesthetist = "พว.สมหญิง แข็งแรง",
+            preOpDiagnosis = "mass at head of right clavicle",
+            postOpDiagnosis = "mass at head of right clavicle",
+            operation = "excision mass",
+            bloodLoss = "200",
+            piece = "200",
+            bottle = "20",
+            bag = "20",
+            clinicaldiagnosis1 = "ผู้หญิง 66 ปี u/d DM, HT, DLP มาด้วย mass at right head of clavicle มาทำ excisional mass with under GA",
+            clinicaldiagnosis2 = "",
+            clinicaldiagnosis3 = "",
+            other = "right clvicle and soft tissue mass",
+            remark = ""
+        };
+
+        try
+        {
+            var pdfUrl = await JSRuntime.InvokeAsync<string>("generateProlabNotePDF", patientData2);
+            @* await JSRuntime.InvokeVoidAsync("openPdfInNewTab", pdfUrl); *@
+            await JSRuntime.InvokeVoidAsync("open", pdfUrl, "_blank");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error generating PDF: {ex.Message}");
+        }
+    }
+}

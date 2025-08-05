@@ -1065,7 +1065,7 @@ window.generateOperativeNurseNotePDF = function (patientData2) {
     });
 };
 
-window.generateProlabNotePDF = function (patientData2) {
+window.generateInterventionRequestPDF = function (patientData2) {
     return new Promise((resolve, reject) => {
         if (!window.jspdf) {
             reject("jsPDF is not loaded!");
@@ -1091,11 +1091,99 @@ window.generateProlabNotePDF = function (patientData2) {
             doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
             doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
 
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(14);
+            doc.text("ชื่อ-สกุลผู้ป่วย", 160, 16);
+            doc.text("รบ.2ต.05", 190, 20);
+
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(16);
+            doc.text("ใบปรึกษาทำหัตถการ รังสีร่วมรักษาระบบลำตัว (Body Intervention)", 105, 24, { align: 'center' });
+            doc.text("หน่วยงานรังสีวิทยา โรงพยาบาลสมุทรสาคร", 105, 28, { align: 'center' });
+            doc.text("Non Vascular procedure", 105, 32, { align: 'center' });
+            
+            
+
+            // ===== PATIENT INFORMATION SECTION =====
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(12);
+
+           
+
+            
+            
+
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
+
+window.generateProlabNotePDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+         // ฟังก์ชันโหลดฟอนต์
+         function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        // ฟังก์ชันโหลดรูปแบบ Promise
+        function getBase64FromImageUrl(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function () {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0);
+                    resolve(canvas.toDataURL("image/jpeg"));
+                };
+                img.onerror = reject;
+                img.src = url;
+            });
+        }
+
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer()),
+            getBase64FromImageUrl('/images/logoprolab.jpg')
+        ]).then(([regularFont, boldFont, imgData]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+
             // ===== HEADER SECTION =====
             doc.setFont('THSarabunNew', 'bold');
             doc.setFontSize(14);
             doc.text("FM-REQ-004 : REV.01", 170, 14);
-            
 
             // ===== PATIENT INFORMATION SECTION =====
             doc.setFont('THSarabunNew', 'normal');
@@ -1112,13 +1200,17 @@ window.generateProlabNotePDF = function (patientData2) {
             // First line
             doc.text("บริษัทใปรเฟสชั่นเนล ลาโบราทอรี่ แมเนจเม้นท์ คอร์ป จำกัด", 10, 22);
             doc.setFontSize(12);
-            doc.text("เลขที่ 2 ซอยโพธิ์แก้ว 3 แยก 2 ถนนโพธิ์แก้ว", 32, 27);
-            doc.text("แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ 10245", 32, 32);
-            doc.text("โทร.02-770-8795 แฟกซ์ 02-770-8795", 32, 37);
-            doc.text("www.prolab.co.th", 32, 42);
+            // แทรกรูปโลโก้
+            doc.addImage(imgData, 'JPEG', 10, 25, 24, 16);
+            
+            // const imgData = 'data:image/jpg;base64,/images/logoprolab.jpg'; // แปลงรูปเป็น Base64 D:\SoundAnnoucementApp\wwwroot\images\logoprolab.jpg
+            // doc.addImage(imgData, 'jpg', 10, 50, 50, 50); // (x, y, width, height)
+            doc.text("เลขที่ 2 ซอยโพธิ์แก้ว 3 แยก 2 ถนนโพธิ์แก้ว", 36, 27);
+            doc.text("แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ 10245", 36, 32);
+            doc.text("โทร.02-770-8795 แฟกซ์ 02-770-8795", 36, 37);
+            doc.text("www.prolab.co.th", 36, 42);
             doc.setFontSize(14);
             doc.text("พัฒนาอย่างต่อเนื่อง ปราชญ์เปรื่องเรื่องบริการ มาตรฐานงานตรวจวิเคราะห์", 10, 47);
-        
             
             // Second line
             doc.text("Name", 113, 23);
@@ -1248,7 +1340,6 @@ window.generateProlabNotePDF = function (patientData2) {
             doc.rect(75, 135, 127, 154); // x, y, width, height
             doc.text("Signiticant Fingings", 130, 140);
             
-
             // Generate the PDF as Blob
             const pdfBlob = doc.output('blob');
             resolve(URL.createObjectURL(pdfBlob));
@@ -1259,3 +1350,97 @@ window.generateProlabNotePDF = function (patientData2) {
     });
 };
 
+
+
+window.generateSaveNotePDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+        
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // ฟังก์ชันโหลดฟอนต์
+        function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+        
+        // ฟังก์ชันโหลดรูปแบบ Promise
+        function getBase64FromImageUrl(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function () {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0);
+                    resolve(canvas.toDataURL("image/png"));
+                };
+                img.onerror = reject;
+                img.src = url;
+            });
+        }
+        
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer()),
+            getBase64FromImageUrl('/images/GarudaEmblem.png')
+        ]).then(([regularFont, boldFont, imgData]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+            
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+            
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(27);
+            doc.text("บันทึกข้อความ", 85, 35);
+            // แทรกรูปโลโก้
+            doc.addImage(imgData, 'PNG', 30, 15, 25, 18);
+            
+            doc.setFontSize(18);
+            doc.text("ส่วนราชการ.......................................................................................................................", 32, 45.3);
+            doc.text(patientData2.governmentagency, 56, 45);
+            doc.text("ที่...................................................................วันที่..............................................................", 32, 52.3);
+            doc.text(patientData2.no, 38, 52);
+            doc.text(patientData2.datenow, 120, 52);
+            doc.text("เรื่อง...................................................................................................................................", 32, 59.3);
+            doc.text(patientData2.subject, 45, 59);
+            doc.text("เรียน...................................................................................................................................", 32, 70.3);
+            doc.text(patientData2.learn, 45, 70);
+
+
+            doc.text("ขอแสดงความนับถือ", 140, 250);
+            doc.text("(..................................................)", 130, 270.3);
+            doc.text(patientData2.surgeon, 142, 270);
+            doc.text("", 142, 278.3);
+            doc.text(patientData2.branch, 142, 278);
+            
+            
+
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
