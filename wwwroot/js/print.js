@@ -707,11 +707,41 @@ window.generateProlabNotePDF = function (patientData2) {
         const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
+         // ฟังก์ชันโหลดฟอนต์
+         function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        // ฟังก์ชันโหลดรูปแบบ Promise
+        function getBase64FromImageUrl(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function () {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0);
+                    resolve(canvas.toDataURL("image/jpeg"));
+                };
+                img.onerror = reject;
+                img.src = url;
+            });
+        }
+
         // Load both Regular and Bold Thai fonts
         Promise.all([
             fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
-            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer())
-        ]).then(([regularFont, boldFont]) => {
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer()),
+            getBase64FromImageUrl('/images/logoprolab.jpg')
+        ]).then(([regularFont, boldFont, imgData]) => {
             // Convert fonts to Base64
             const base64Regular = arrayBufferToBase64(regularFont);
             const base64Bold = arrayBufferToBase64(boldFont);
@@ -768,10 +798,15 @@ window.generateProlabNotePDF = function (patientData2) {
             // First line
             doc.text("บริษัทใปรเฟสชั่นเนล ลาโบราทอรี่ แมเนจเม้นท์ คอร์ป จำกัด", 10, 22);
             doc.setFontSize(12);
-            doc.text("เลขที่ 2 ซอยโพธิ์แก้ว 3 แยก 2 ถนนโพธิ์แก้ว", 32, 27);
-            doc.text("แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ 10245", 32, 32);
-            doc.text("โทร.02-770-8795 แฟกซ์ 02-770-8795", 32, 37);
-            doc.text("www.prolab.co.th", 32, 42);
+            // แทรกรูปโลโก้
+            doc.addImage(imgData, 'JPEG', 10, 25, 24, 16);
+            
+            // const imgData = 'data:image/jpg;base64,/images/logoprolab.jpg'; // แปลงรูปเป็น Base64 D:\SoundAnnoucementApp\wwwroot\images\logoprolab.jpg
+            // doc.addImage(imgData, 'jpg', 10, 50, 50, 50); // (x, y, width, height)
+            doc.text("เลขที่ 2 ซอยโพธิ์แก้ว 3 แยก 2 ถนนโพธิ์แก้ว", 36, 27);
+            doc.text("แขวงคลองจั่น เขตบางกะปิ กรุงเทพฯ 10245", 36, 32);
+            doc.text("โทร.02-770-8795 แฟกซ์ 02-770-8795", 36, 37);
+            doc.text("www.prolab.co.th", 36, 42);
             doc.setFontSize(14);
             doc.text("พัฒนาอย่างต่อเนื่อง ปราชญ์เปรื่องเรื่องบริการ มาตรฐานงานตรวจวิเคราะห์", 10, 47);
             // doc.text("............................................", 16, 29.3);

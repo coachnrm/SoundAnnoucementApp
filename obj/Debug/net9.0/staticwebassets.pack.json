@@ -153,6 +153,10 @@
       "PackagePath": "staticwebassets\\images\\3.jpg"
     },
     {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\logoprolab.jpg",
+      "PackagePath": "staticwebassets\\images\\logoprolab.jpg"
+    },
+    {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\cat.png",
       "PackagePath": "staticwebassets\\img\\cat.png"
     },

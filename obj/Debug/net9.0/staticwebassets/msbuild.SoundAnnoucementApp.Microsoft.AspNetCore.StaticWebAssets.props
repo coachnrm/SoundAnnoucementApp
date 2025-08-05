@@ -648,6 +648,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\3.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\logoprolab.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SoundAnnoucementApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>/</BasePath>
+      <RelativePath>images/logoprolab.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>19hhyvwjp0</Fingerprint>
+      <Integrity>a5CoteUp2iHZJVWMG3TlsYIchZd/Ubz70g6ag7Aikdo=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\logoprolab.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\img\cat.png'))">
       <SourceType>Package</SourceType>
       <SourceId>SoundAnnoucementApp</SourceId>
@@ -948,8 +966,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>i76vb2zr1p</Fingerprint>
-      <Integrity>LlR6LW2VQvwSTBeOib6OB1s8NxuBWhmOcNHYTbT6VJc=</Integrity>
+      <Fingerprint>ynje5zxh3w</Fingerprint>
+      <Integrity>8sMa2oEdoGznrpCXiqJUanZOUXgWMwguqB336abMA8Y=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\eraser.js'))</OriginalItemSpec>
@@ -966,8 +984,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>viqvq2lko8</Fingerprint>
-      <Integrity>B4qXfrkI2g4tj0bWc3ROLMtQzc7aqn7exYYdJ8SqiV4=</Integrity>
+      <Fingerprint>rw3de7niat</Fingerprint>
+      <Integrity>9XBcyZ94bnqIoHtKQ0THc2igRwODa9AtRcKgFJPzcs4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\print.js'))</OriginalItemSpec>

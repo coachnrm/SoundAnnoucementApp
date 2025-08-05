@@ -6,6 +6,7 @@ let history = [];
 let historyIndex = -1;
 let eraserSize = { width: 30, height: 30 };
 
+
 function initDrawingCanvas(canvasId) {
     canvas = document.getElementById(canvasId);
     ctx = canvas.getContext("2d");
