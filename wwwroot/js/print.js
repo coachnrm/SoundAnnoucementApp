@@ -1093,26 +1093,21 @@ window.generateInterventionRequestPDF = function (patientData2) {
 
             doc.setFont('THSarabunNew', 'bold');
             doc.setFontSize(14);
-            doc.text("ชื่อ-สกุลผู้ป่วย", 160, 16);
-            doc.text("รบ.2ต.05", 190, 20);
+            doc.text("ชื่อ-สกุลผู้ป่วย", 100, 16);doc.text("...........................................................", 120, 16.3);doc.text("อายุ", 170, 16);doc.text("..........................", 176, 16.3);
+            doc.text("HN", 100, 21);doc.text(".............................................", 105, 21.3);doc.text("OPD/Ward", 143, 21);doc.text("............................................", 160, 21.3);
 
             // ===== HEADER SECTION =====
             doc.setFont('THSarabunNew', 'bold');
             doc.setFontSize(16);
-            doc.text("ใบปรึกษาทำหัตถการ รังสีร่วมรักษาระบบลำตัว (Body Intervention)", 105, 24, { align: 'center' });
-            doc.text("หน่วยงานรังสีวิทยา โรงพยาบาลสมุทรสาคร", 105, 28, { align: 'center' });
-            doc.text("Non Vascular procedure", 105, 32, { align: 'center' });
-            
+            doc.text("ใบปรึกษาทำหัตถการ รังสีร่วมรักษาระบบลำตัว (Body Intervention)", 105, 27, { align: 'center' });
+            doc.text("หน่วยงานรังสีวิทยา โรงพยาบาลสมุทรสาคร", 105, 32, { align: 'center' });
+            doc.text("Non Vascular procedure", 105, 37, { align: 'center' });
             
 
-            // ===== PATIENT INFORMATION SECTION =====
             doc.setFont('THSarabunNew', 'normal');
-            doc.setFontSize(12);
-
-           
-
-            
-            
+            doc.setFontSize(14);
+            doc.rect(10, 43, 3, 3);doc.text("US / CT guided biopsy", 14, 46);doc.text("Location", 80, 46);doc.text("...............................", 93, 46.3);
+            doc.rect(140, 43, 3, 3);doc.text("PTBD", 145, 46);doc.ellipse(165, 45, 2, 2);doc.text("Left", 168, 46);
 
             // Generate the PDF as Blob
             const pdfBlob = doc.output('blob');
