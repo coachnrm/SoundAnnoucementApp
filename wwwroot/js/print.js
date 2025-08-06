@@ -1005,8 +1005,150 @@ window.generateSaveNotePDF = function (patientData2) {
             doc.text(patientData2.surgeon, 142, 270);
             doc.text("", 142, 278.3);
             doc.text(patientData2.branch, 142, 278);
-              
             
+            
+            
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
+
+
+window.generateInterventionRequestPDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+        
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        function drawUnderlinedText(doc, text, x, y) {
+            doc.text(text, x, y);
+            const textWidth = doc.getTextWidth(text);
+            // doc.setLineWidth(0.5);
+            doc.line(x, y + 0.5, x + textWidth, y + 0.5);
+        }
+        
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer())
+        ]).then(([regularFont, boldFont]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+            
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+            
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+            
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(14);
+            doc.text("ชื่อ-สกุลผู้ป่วย", 100, 16);doc.text("...........................................................", 120, 16.3);doc.text("อายุ", 170, 16);doc.text("..........................", 176, 16.3);
+            doc.text(patientData2.name, 127, 16);
+            doc.text(patientData2.age, 182, 16);
+            doc.text("HN", 100, 21);doc.text(".............................................", 105, 21.3);doc.text("OPD/Ward", 143, 21);doc.text("............................................", 160, 21.3);
+            doc.text(patientData2.hn, 112, 21);
+            doc.text(patientData2.sex, 165, 21);
+            
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(16);
+            doc.text("ใบปรึกษาทำหัตถการ รังสีร่วมรักษาระบบลำตัว (Body Intervention)", 105, 28, { align: 'center' });
+            doc.text("หน่วยงานรังสีวิทยา โรงพยาบาลสมุทรสาคร", 105, 34, { align: 'center' });
+            // วาดเส้นใต้ (เริ่มที่ x=20 และ y=30.5)
+            doc.setLineWidth(0.2);
+            drawUnderlinedText(doc, "Non Vascular procedure", 84, 39, { align: 'center' });
+            // doc.line(105, 39, 105 + "Non Vascular procedure", 39, { align: 'center' });
+            // doc.text("Non Vascular procedure", 105, 39, { align: 'center' });
+            
+
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(14);
+            doc.rect(10, 43, 3, 3);doc.text("US / CT guided biopsy", 14, 46);doc.text("Location", 80, 46);doc.text("...............................", 93, 46.3);
+            doc.rect(140, 43, 3, 3);doc.text("PTBD", 145, 46);doc.ellipse(165, 45, 2, 2);doc.text("Left", 168, 46);doc.ellipse(178, 45, 2, 2);doc.text("Right", 181, 46);
+
+            doc.rect(10, 50, 3, 3);doc.text("FNA / Aspiration", 14, 53);doc.text("Location", 80, 53);doc.text("...............................", 93, 53.3);
+            doc.rect(140, 50, 3, 3);doc.text("PCN", 145, 53);doc.ellipse(165, 52, 2, 2);doc.text("Left", 168, 53);doc.ellipse(178, 52, 2, 2);doc.text("Right", 181, 53);
+
+            doc.rect(10, 57, 3, 3);doc.text("Percutaneous drainage (PCD)", 14, 60);doc.text("Location", 80, 60);doc.text("...............................", 93, 60.3);
+            doc.rect(140, 57, 3, 3);doc.text("Cholecystostomy", 145, 60);
+
+            doc.rect(10, 64, 3, 3);doc.text("Needle localization", 14, 67);doc.text("Location", 80, 67);doc.text("...............................", 93, 67.3);
+            doc.rect(140, 64, 3, 3);doc.text("Check / Exchange PCD/PTBD/PCN", 145, 67);
+
+            doc.rect(10, 71, 3, 3);doc.text("RFA / MWA / Alcohol ablation", 14, 74);doc.text("Location", 80, 74);doc.text("...............................", 93, 74.3);
+            doc.rect(140, 71, 3, 3);doc.text("Cholangioplasty", 145, 74);
+
+            doc.setFontSize(16);
+            drawUnderlinedText(doc, "Vascular procedure", 88, 82, { align: 'center' });
+            doc.setFontSize(14);
+            doc.rect(10, 85, 3, 3);doc.text("Paripheral inserted central catheter (PICC)", 14, 88);doc.rect(140, 85, 3, 3);doc.text("Double lumen catheter insertion", 145, 88);
+
+            doc.rect(10, 92, 3, 3);doc.text("Permanent tunneled cathetar insertion (PERM)", 14, 95);doc.rect(140, 92, 3, 3);doc.text("Subcutaneous lmplantable port", 145, 95);
+
+            doc.rect(10, 99, 3, 3);doc.text("Transarterial chemoembolization (TACE)", 14, 102);doc.rect(140, 99, 3, 3);doc.text("Angiogram with embolization", 145, 102);
+            
+            doc.rect(10, 106, 3, 3);doc.text("Femoral run off", 14, 109);doc.ellipse(80, 108, 2, 2);doc.text("Left", 83, 109);doc.ellipse(95, 108, 2, 2);doc.text("Right", 98, 109);
+            doc.rect(140, 106, 3, 3);doc.text("Angiogram", 145, 109);doc.text("Part", 170, 109);doc.text(".......................", 175, 109.3);
+
+            doc.rect(10, 113, 3, 3);doc.text("Angioplasty", 14, 116);doc.rect(140, 113, 3, 3);doc.text("Venoplasty", 145, 116);
+
+            doc.rect(10, 120, 3, 3);doc.text("IVC filter", 14, 123);doc.rect(140, 120, 3, 3);doc.text("อื่น ๆ", 145, 123);doc.text("..................................................", 152, 123.3);
+
+            drawUnderlinedText(doc, "ประวัติและผลเลือดที่สำคัญ", 10, 131, { align: 'center' });
+            doc.text("........................................................................................................................................................................................", 45, 131.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 138.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 145.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 152.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 159.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 166.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 174.3);
+
+            doc.text("การใช้ยา Antiplatelet / Anticoagulant", 10, 184);doc.rect(70, 181, 3, 3);doc.text("ไม่มี", 75, 184);doc.rect(83, 181, 3, 3);doc.text("มี", 88, 184);
+            doc.text("ระบุ", 96, 184);doc.text("..................................................................................................................", 102 , 184.3);
+
+            doc.text("ประวัติแพ้ยาฝสารทึบรังสี/อาหาร", 10, 191);doc.rect(70, 188, 3, 3);doc.text("ไม่มี", 75, 191);doc.rect(83, 188, 3, 3);doc.text("มี", 88, 191);
+            doc.text("ระบุ", 96, 191);doc.text("..................................................................................................................", 102 , 191.3);
+            
+            doc.text("ลงชื่อแพทย์ผู้ขอ", 50, 198);
+            doc.text("......................................................................", 71 , 198.3);
+            doc.text(patientData2.surgeon, 76, 198);
+            doc.text("วันที่", 127, 198);
+            doc.text("........................................", 133 , 198.3);
+            doc.text(patientData2.date, 138, 198);
+            doc.text("เวลา", 165, 198);
+            doc.text("............................", 171 , 198.3);
+            doc.text(patientData2.starttime, 176, 198);
+
+            drawUnderlinedText(doc, "ความเห็นแพทย์ผู้รับปรึกษา", 10, 205, { align: 'center' });
+            doc.text(".....................................................................................................................................................................................................................................", 10, 212.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 219.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 226.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 233.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 240.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 247.3);
+            doc.text(".....................................................................................................................................................................................................................................", 10, 254.3);
+
+            doc.text("ลงชื่อแพทย์ผู้ขอ", 50, 263);
+            doc.text("......................................................................", 71 , 263.3);
+            doc.text(patientData2.surgeon, 76, 263);
+            doc.text("วันที่", 127, 263);
+            doc.text("........................................", 133 , 263.3);
+            doc.text(patientData2.date, 138, 263);
+            doc.text("เวลา", 165, 263);
+            doc.text("............................", 171 , 263.3);
+            doc.text(patientData2.starttime, 176, 263);
 
             // Generate the PDF as Blob
             const pdfBlob = doc.output('blob');
