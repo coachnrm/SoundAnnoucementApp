@@ -4,6 +4,8 @@ build_property.EnableSingleFileAnalyzer =
 build_property.EnableTrimAnalyzer = false
 build_property.IncludeAllContentForSelfExtract = 
 build_property.TargetFramework = net9.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v9.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
 build_property.ProjectTypeGuids = 
@@ -13,189 +15,189 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = SoundAnnoucementApp
 build_property.RootNamespace = SoundAnnoucementApp
-build_property.ProjectDir = C:\Users\HP\Desktop\SoundAnnoucementApp\
+build_property.ProjectDir = D:\SoundAnnoucementApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\HP\Desktop\SoundAnnoucementApp
+build_property.MSBuildProjectDirectory = D:\SoundAnnoucementApp
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/App.razor]
+[D:/SoundAnnoucementApp/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Animal.razor]
+[D:/SoundAnnoucementApp/Pages/Animal.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5pbWFsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/AnimalSound.razor]
+[D:/SoundAnnoucementApp/Pages/AnimalSound.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5pbWFsU291bmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Audio.razor]
+[D:/SoundAnnoucementApp/Pages/Audio.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/AudioCall.razor]
+[D:/SoundAnnoucementApp/Pages/AudioCall.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaW9DYWxsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/BarcodeGenerator.razor]
+[D:/SoundAnnoucementApp/Pages/BarcodeGenerator.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFyY29kZUdlbmVyYXRvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Calendar.razor]
+[D:/SoundAnnoucementApp/Pages/Calendar.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FsZW5kYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Carousel.razor]
+[D:/SoundAnnoucementApp/Pages/Carousel.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fyb3VzZWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/ConsoleScreen.razor]
+[D:/SoundAnnoucementApp/Pages/ConsoleScreen.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc29sZVNjcmVlbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Counter.razor]
+[D:/SoundAnnoucementApp/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Draggable.razor]
+[D:/SoundAnnoucementApp/Pages/Draggable.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJhZ2dhYmxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Drawing.razor]
+[D:/SoundAnnoucementApp/Pages/Drawing.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJhd2luZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Home.razor]
+[D:/SoundAnnoucementApp/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/ImagingRequestPdf.razor]
+[D:/SoundAnnoucementApp/Pages/ImagingRequestPdf.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW1hZ2luZ1JlcXVlc3RQZGYucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Kanban.razor]
+[D:/SoundAnnoucementApp/Pages/Kanban.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS2FuYmFuLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/OpNoteImageUpload.razor]
+[D:/SoundAnnoucementApp/Pages/OpNoteImageUpload.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3BOb3RlSW1hZ2VVcGxvYWQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/OpNotePdf.razor]
+[D:/SoundAnnoucementApp/Pages/OpNotePdf.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3BOb3RlUGRmLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/OpNotePdfProlab.razor]
+[D:/SoundAnnoucementApp/Pages/OpNotePdfProlab.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3BOb3RlUGRmUHJvbGFiLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/OpNotePdfSave.razor]
+[D:/SoundAnnoucementApp/Pages/OpNotePdfSave.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3BOb3RlUGRmU2F2ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/OrderPost.razor]
+[D:/SoundAnnoucementApp/Pages/OrderPost.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJQb3N0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Print.razor]
+[D:/SoundAnnoucementApp/Pages/Print.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/PrintSilent.razor]
+[D:/SoundAnnoucementApp/Pages/PrintSilent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpbnRTaWxlbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/QrCodePromptPay2.razor]
+[D:/SoundAnnoucementApp/Pages/QrCodePromptPay2.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXJDb2RlUHJvbXB0UGF5Mi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/QrGenerator.razor]
+[D:/SoundAnnoucementApp/Pages/QrGenerator.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXJHZW5lcmF0b3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/QrPromptPay.razor]
+[D:/SoundAnnoucementApp/Pages/QrPromptPay.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXJQcm9tcHRQYXkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/QueueCounter.razor]
+[D:/SoundAnnoucementApp/Pages/QueueCounter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/RecordMove.razor]
+[D:/SoundAnnoucementApp/Pages/RecordMove.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjb3JkTW92ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/RichTextBox.razor]
+[D:/SoundAnnoucementApp/Pages/RichTextBox.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmljaFRleHRCb3gucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/SendOtp.razor]
+[D:/SoundAnnoucementApp/Pages/SendOtp.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VuZE90cC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Signature.razor]
+[D:/SoundAnnoucementApp/Pages/Signature.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbmF0dXJlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Signature2.razor]
+[D:/SoundAnnoucementApp/Pages/Signature2.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbmF0dXJlMi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Upload.razor]
+[D:/SoundAnnoucementApp/Pages/Upload.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBsb2FkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/UploadEditor.razor]
+[D:/SoundAnnoucementApp/Pages/UploadEditor.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBsb2FkRWRpdG9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/UploadEraser.razor]
+[D:/SoundAnnoucementApp/Pages/UploadEraser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXBsb2FkRXJhc2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/UsbDetect.razor]
+[D:/SoundAnnoucementApp/Pages/UsbDetect.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNiRGV0ZWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/VideoPlayer.razor]
+[D:/SoundAnnoucementApp/Pages/VideoPlayer.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlkZW9QbGF5ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/WardAudio.razor]
+[D:/SoundAnnoucementApp/Pages/WardAudio.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2FyZEF1ZGlvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/Weather.razor]
+[D:/SoundAnnoucementApp/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/YoutubeVideo.razor]
+[D:/SoundAnnoucementApp/Pages/YoutubeVideo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcWW91dHViZVZpZGVvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/_Imports.razor]
+[D:/SoundAnnoucementApp/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Layout/MainLayout.razor]
+[D:/SoundAnnoucementApp/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-eaitrgb9r4
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Layout/NavMenu.razor]
+[D:/SoundAnnoucementApp/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-pdnfuziggc
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/MusicPad/Pad.razor]
+[D:/SoundAnnoucementApp/Pages/MusicPad/Pad.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-nz1olq9wq5
 
-[C:/Users/HP/Desktop/SoundAnnoucementApp/Pages/MusicPad/PadController.razor]
+[D:/SoundAnnoucementApp/Pages/MusicPad/PadController.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkQ29udHJvbGxlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-rhkae1j2hq
