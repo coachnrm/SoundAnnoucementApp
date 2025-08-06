@@ -9,7 +9,7 @@
 <button class="btn btn-primary" @onclick="GenerateOperativeNurseNote">Generate Operative Nurse Note PDF</button>
 <button class="btn btn-primary" @onclick="GenerateProlabNote">Generate PathoRequest Note PDF</button>
 @code {
-    private async Task GenerateInterventionNote()
+   private async Task GenerateInterventionNote()
     {
         var patientData2 = new
         {
@@ -20,6 +20,7 @@
             age = "66",
             hn = "0884669",
             an = "6700140975",
+            sex = "หญิง",
             ward = "ศัลยกรรมหญิง",
             surgeon = "นพ.ณัฐพงศ์ รั้วมั่น",
             assistant = "พว.สมหญิง แข็งแรง",
@@ -43,7 +44,7 @@
         {
             Console.WriteLine($"Error generating PDF: {ex.Message}");
         }
-    }
+    }    
 
     private async Task GenerateOperativeNote()
     {
