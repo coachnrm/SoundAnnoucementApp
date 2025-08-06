@@ -1005,7 +1005,7 @@ window.generateSaveNotePDF = function (patientData2) {
             doc.text(patientData2.surgeon, 142, 270);
             doc.text("", 142, 278.3);
             doc.text(patientData2.branch, 142, 278);
-            
+              
             
 
             // Generate the PDF as Blob
