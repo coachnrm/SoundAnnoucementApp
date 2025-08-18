@@ -1,5 +1,6 @@
 ﻿@page "/"
 @inject NavigationManager uriHelper;
+@inject NavigationManager navigationManager;
 
 <PageTitle>Home</PageTitle>
 
@@ -10,18 +11,10 @@
 
 Welcome to your new app.
 
-@* @code {
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (firstRender)
-        {
-            var timer = new Timer(new TimerCallback(_ =>
-            {
-                uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
-            }), null, 5000, 5000);
-        }
-    }
-} *@
+<div class="mt-4">
+    <a class="btn btn-primary m-2" href="/queue" target="_blank">Go to Queue</a>
+    <a class="btn btn-primary m-2" href="/queuemoph" target="_blank">Go to Queue MOPH</a>
+</div>
 
 @code {
     private string inputText = string.Empty;
@@ -53,6 +46,7 @@ Welcome to your new app.
                 uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true); // Full page reload
             }), null, 5000, 5000); // Timer with a 5-second delay
     }
+
 
 
 }
