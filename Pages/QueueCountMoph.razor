@@ -67,7 +67,7 @@
     private async Task AnnounceQueue(string queueNumber, string name, string channel)
     {
         string formattedQueueNumber = FormatQueueNumber(queueNumber);
-        await JS.InvokeVoidAsync("audioHelper3.announceQueue", formattedQueueNumber, name, channel);
+        await JS.InvokeVoidAsync("audioHelper3.announceQueue2", formattedQueueNumber, name, channel);
     }
 
     private string FormatQueueNumber(string queueNumber)
