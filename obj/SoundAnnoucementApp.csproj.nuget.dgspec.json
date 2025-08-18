@@ -10,17 +10,16 @@
         "projectUniqueName": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
         "projectName": "SoundAnnoucementApp",
         "projectPath": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "D:\\SoundAnnoucementApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -98,10 +97,6 @@
             {
               "name": "Microsoft.AspNetCore.App.Ref",
               "version": "[9.0.5, 9.0.5]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[9.0.6, 9.0.6]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",

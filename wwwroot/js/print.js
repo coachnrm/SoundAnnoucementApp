@@ -1581,3 +1581,467 @@ window.generateInterventionRequestPDF = function (patientData2) {
         });
     });
 };
+
+
+
+
+
+
+window.generateCytologyPDF = {
+  // เปลี่ยนให้รับพารามิเตอร์ data (optional)
+  generate: async function (data = {}) {
+    try {
+      if (!window.jspdf) throw new Error("jsPDF not loaded");
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF({ unit: "mm", format: "a4" });
+
+      // --- helper: ArrayBuffer -> base64 ---
+      function toB64(ab) {
+        let binary = "";
+        const bytes = new Uint8Array(ab);
+        const chunk = 0x8000;
+        for (let i = 0; i < bytes.length; i += chunk) {
+          binary += String.fromCharCode.apply(null, bytes.subarray(i, i + chunk));
+        }
+        return btoa(binary);
+      }
+      // เลี่ยง undefined/null
+      const val = (v) => (v == null ? "" : String(v));
+
+      // --- fonts ---
+      const base = document.baseURI;
+      const [regBuf, boldBuf] = await Promise.all([
+        fetch(base + "fonts/THSarabunNew.ttf").then(r => r.arrayBuffer()),
+        fetch(base + "fonts/THSarabunNew-Bold.ttf").then(r => r.arrayBuffer())
+      ]);
+      doc.addFileToVFS("THSarabunNew.ttf", toB64(regBuf));
+      doc.addFileToVFS("THSarabunNew-Bold.ttf", toB64(boldBuf));
+      doc.addFont("THSarabunNew.ttf", "Sarabun", "normal");
+      doc.addFont("THSarabunNew-Bold.ttf", "Sarabun", "bold");
+      doc.setFont("Sarabun", "normal");
+
+      // --- page & margins ---
+      const m = { top: 14, left: 13, right: 13, bottom: 14 };
+      const pageW = doc.internal.pageSize.getWidth();
+
+      /* ===== Header: Hospital logo + texts ===== */
+      const logoBuf = await fetch(base + encodeURI("images/SAMUTSAKHON HOSPITAL.jpg")).then(r => r.arrayBuffer());
+      const logoB64 = "data:image/jpeg;base64," + toB64(logoBuf);
+
+      const logoX = m.left;
+      const logoY = m.top;
+      const logoW = 28;
+      const logoH = 12;
+      doc.addImage(logoB64, "JPEG", logoX, logoY, logoW, logoH);
+
+      // ข้อความข้างโลโก้
+      const hx = logoX + logoW + 2;
+      const hy = logoY + 5;
+      const lineGap = 3.5;
+
+      const lines = [
+        { text: "โรงพยาบาลสมุทรสาคร", style: "bold" },
+        { text: "Tel. 40524", style: "normal" },
+        { text: "หรือ 034-497366 ต่อ 3001, 3024", style: "normal" }
+      ];
+
+      doc.setFontSize(10);
+      let maxWidth = 0;
+      lines.forEach(ln => {
+        doc.setFont("Sarabun", ln.style);
+        maxWidth = Math.max(maxWidth, doc.getTextWidth(ln.text));
+      });
+      lines.forEach((ln, i) => {
+        doc.setFont("Sarabun", ln.style);
+        const w = doc.getTextWidth(ln.text);
+        const x = hx + (maxWidth - w) / 2;
+        const y = hy + i * lineGap;
+        doc.text(ln.text, x, y);
+      });
+
+      // ===== คำนวณตำแหน่งกล่อง =====
+      const gapBox = 2;
+      const box2 = { w: 68, h: 25 };
+      const box3 = { w: 49, h: 25 };
+      box3.x = pageW - m.right - box3.w; box3.y = m.top;
+      box2.x = box3.x - gapBox - box2.w; box2.y = m.top;
+
+      // ===== ส่วนที่ 1 : หัวข้อ =====
+      const baselineY = box2.y + box2.h;
+      doc.setFont("Sarabun","bold");
+      doc.setFontSize(19.2);
+      doc.text("ใบส่งตรวจเซลล์วิทยาระบบอื่นๆ", m.left, baselineY - 6);
+      doc.setFontSize(13.3);
+      doc.text("(Non-gynecologic Cytology Request Form)", m.left, baselineY);
+
+      // ===== วาดกล่อง 2 และ 3 =====
+      doc.rect(box2.x, box2.y, box2.w, box2.h);
+      doc.rect(box3.x, box3.y, box3.w, box3.h);
+
+      // ===== ส่วนที่ 2 : กล่องซ้าย =====
+      doc.setFont("Sarabun","normal"); doc.setFontSize(9);
+      doc.text("โปรดติดสติ๊กเกอร์", box2.x + box2.w/2, box2.y + 4, { align:"center" });
+      doc.setFontSize(14);
+      const innerMarginX = 5;
+      const textStartX = box2.x + innerMarginX;
+      const textMaxWidth = box2.w - (innerMarginX * 2);
+
+      // บรรทัด label เดิม
+      const nameLabel = "ชื่อ-สกุล";
+      const ageLabel  = "อายุ";
+      const hnLabel   = "HN";
+      const wardLabel = "แผนก";
+
+      doc.text(nameLabel + "..........................................................", textStartX, box2.y + 10, { maxWidth: textMaxWidth });
+      doc.text("อายุ...............................HN............................", textStartX, box2.y + 16, { maxWidth: textMaxWidth });
+      doc.text(wardLabel + "..............................................................", textStartX, box2.y + 22, { maxWidth: textMaxWidth });
+
+      // >>> filled from data (overlay บนจุดไข่ปลา)
+      doc.setFontSize(12.5);
+      // ชื่อ-สกุล
+      let xField = textStartX + doc.getTextWidth(nameLabel) + 1.5;
+      doc.text(val(data.name), xField, box2.y + 10);
+      // อายุ / HN
+      const ageLineY = box2.y + 16;
+      const afterAgeDotsX = textStartX + doc.getTextWidth("อายุ...............................");
+      const hnStartX = afterAgeDotsX;
+      const ageStartX = textStartX + doc.getTextWidth(ageLabel) + 1.5;
+      doc.text(val(data.age), ageStartX, ageLineY);
+      const hnValueX = hnStartX + doc.getTextWidth(hnLabel) + 1.5;
+      doc.text(val(data.hn), hnValueX, ageLineY);
+      // แผนก
+      const wardX = textStartX + doc.getTextWidth(wardLabel) + 1.5;
+      doc.text(val(data.ward), wardX, box2.y + 22);
+
+      // ===== ส่วนที่ 3 : กล่องขวา =====
+      doc.setFont("Sarabun","bold"); doc.setFontSize(10);
+      doc.text("LAB NO.", box3.x + 6, box3.y + 4);
+      doc.setFont("Sarabun","normal"); doc.setFontSize(8);
+      const centerX = box3.x + box3.w / 2;
+      const baseY   = box3.y + box3.h - 8;
+      doc.text("สำหรับเจ้าหน้าที่", centerX, baseY + 3, { align: "center" });
+      doc.text("งานพยาธิวิทยากายวิภาค", centerX, baseY + 6, { align: "center" });
+
+      /* ===== ส่วนที่ 4 และ 5 : กล่อง + helpers (เพิ่มเท่าที่จำเป็น) ===== */
+      const yTop45 = box2.y + box2.h + 6;
+      const box4 = { x: m.left, y: yTop45, w: 114, h: 119 };
+      const box5 = { x: box4.x + box4.w + 2, y: yTop45, w: 68, h: 119 };
+      doc.rect(box4.x, box4.y, box4.w, box4.h);
+      doc.rect(box5.x, box5.y, box5.w, box5.h);
+
+      function drawBlackLabel(text, box, offsetX, offsetY) {
+        const padX = 2;
+        const labelX = box.x + offsetX;
+        const labelY = box.y + offsetY;
+        doc.setFont("Sarabun","bold"); doc.setFontSize(10);
+        const textW = doc.getTextWidth(text);
+        const labelW = textW + padX*2, labelH = 5;
+        doc.setFillColor(0,0,0); doc.rect(labelX, labelY, labelW, labelH, "F");
+        doc.setTextColor(255,255,255); doc.text(text, labelX + padX, labelY + 4);
+        doc.setTextColor(0,0,0);
+        return { textStartX: labelX + padX, baseY: labelY + 4, textW };
+      }
+      function dotLine(xStart, yBase, xEnd) {
+        const dotW = doc.getTextWidth(".");
+        const n = Math.max(0, Math.floor((xEnd - xStart) / dotW));
+        if (n > 0) doc.text(".".repeat(n), xStart, yBase);
+      }
+
+      // ===== SECTION 4: Clinical findings (ไม่มีจุดไข่ปลา) =====
+      const sec4Hdr = drawBlackLabel("Clinical findings", box4, 1.5, 2);
+      if (val(data.clinicalFindings)) {
+        doc.setFont("Sarabun","normal"); doc.setFontSize(11);
+        const firstX = sec4Hdr.textStartX + sec4Hdr.textW + 1.5;
+        const rightEdge = box4.x + box4.w - 2;
+        const firstWidth = Math.max(10, rightEdge - firstX);
+        const otherWidth = Math.max(10, rightEdge - (box4.x + 2));
+        const words = val(data.clinicalFindings);
+        const firstLine = doc.splitTextToSize(words, firstWidth)[0] || "";
+        let remainder = words.slice(firstLine.length).trimStart();
+        let yText = sec4Hdr.baseY;
+
+        if (firstLine) doc.text(firstLine, firstX, yText);
+        while (remainder) {
+          yText += 6;
+          const chunk = doc.splitTextToSize(remainder, otherWidth)[0];
+          if (!chunk) break;
+          if (yText <= box4.y + box4.h - 4) doc.text(chunk, box4.x + 2, yText);
+          remainder = remainder.slice(chunk.length).trimStart();
+        }
+      }
+
+      // ===== SECTION 5: Type of specimen (ติ๊กทึบ 2 บรรทัดแรกเท่านั้น) =====
+      (function fillSection5() {
+        const d5 = (data && data.section5) || {};
+        const fna = (data && data.fna) || {};
+
+        const sec5Hdr = drawBlackLabel("ชนิดของสิ่งส่งตรวจ (Type of specimen)", box5, 1.5, 2);
+        const leftX = box5.x + 2;
+        let y = box5.y + 12.5;
+        const lineGap = 6;
+
+        const drawCB = (x, y) => doc.rect(x, y - 2.8, 3, 3);
+        const tickSquare = (x, y) => { doc.setFillColor(0,0,0); doc.rect(x, y - 2.8, 3, 3, "F"); };
+        function dotLeaderFrom(xStart, yBase, xEnd = box5.x + box5.w - 3) {
+          const w = doc.getTextWidth(".");
+          const n = Math.max(0, Math.floor((xEnd - xStart) / w));
+          if (n > 0) doc.text(".".repeat(n), xStart, yBase);
+        }
+        function pairBoxX(labelX, labelStr, a, b) {
+          const after = labelX + doc.getTextWidth(labelStr) + 3;
+          const wBox = doc.getTextWidth("(  )");
+          const wA = doc.getTextWidth(" " + a);
+          const gap = 5;
+          return { rightBoxX: after, leftBoxX: after + wBox + wA + gap, wBox };
+        }
+
+        doc.setFont("Sarabun","normal"); doc.setFontSize(10);
+
+        // 1) Sputum
+        drawCB(leftX, y); doc.text("Sputum", leftX + 4.5, y);
+        if (d5.sputum) tickSquare(leftX, y); y += lineGap;
+
+        // 2) BAL
+        drawCB(leftX, y); doc.text("BAL", leftX + 4.5, y);
+        if (d5.bal) tickSquare(leftX, y); y += lineGap;
+
+        // 3)–8) วาดเฉย ๆ ไม่ติ๊ก
+        drawCB(leftX, y); doc.text("Bronchial brushing", leftX+4.5, y); y+=lineGap;
+
+        drawCB(leftX, y); doc.text("Pleural fluid :", leftX+4.5, y);
+        const pleural = pairBoxX(leftX+6, "Pleural fluid :", "right","left");
+        doc.text("(  ) right", pleural.rightBoxX, y);
+        doc.text("(  ) left",  pleural.leftBoxX,  y);
+        y+=lineGap;
+
+        drawCB(leftX, y); doc.text("Pericardial fluid", leftX+4.5, y); y+=lineGap;
+        drawCB(leftX, y); doc.text("Peritoneal fluid", leftX+4.5, y); y+=lineGap;
+        drawCB(leftX, y); doc.text("CSF", leftX+4.5, y); y+=lineGap;
+        drawCB(leftX, y); doc.text("Synovial fluid", leftX+4.5, y); y+=lineGap;
+
+        // Urine (ไม่ติ๊ก)
+        drawCB(leftX, y); doc.text("Urine :", leftX+4.5, y);
+        const urine = pairBoxX(leftX+6, "Urine :", "void","cath");
+        doc.text("(  ) void", urine.rightBoxX, y);
+        doc.text("(  ) cath", urine.leftBoxX, y);
+        y+=lineGap;
+
+        // Others (specify) – เส้นไข่ปลาตามต้นฉบับ (ไม่เติมข้อความ)
+        drawCB(leftX, y); doc.text("Others (specify):", leftX+4.5, y);
+        dotLeaderFrom(leftX + 6 + doc.getTextWidth("Others (specify):") + 1, y);
+        y += lineGap;
+        dotLeaderFrom(leftX + 6, y);
+
+        // FNA ส่วนล่าง (ไม่ติ๊ก)
+        y += 6.2;
+        drawCB(leftX, y); doc.text("FNA (specify organ/region and side):", leftX+4.5, y); y += lineGap;
+
+        const fnaX = box5.x + 15;
+        drawCB(fnaX-5, y); doc.text("Thyroid :", fnaX, y);
+        const th = pairBoxX(fnaX, "Thyroid :", "right","left");
+        doc.text("(  ) right", th.rightBoxX, y);
+        doc.text("(  ) left",  th.leftBoxX, y);
+        y += lineGap;
+        doc.text("(  ) isthmus", fnaX + 12, y);
+        y += lineGap;
+
+        drawCB(fnaX-5, y); doc.text("Axillary LN :", fnaX, y);
+        const ax = pairBoxX(fnaX, "Axillary LN :", "right","left");
+        doc.text("(  ) right", ax.rightBoxX, y);
+        doc.text("(  ) left",  ax.leftBoxX, y);
+        y += lineGap;
+
+        drawCB(fnaX-5, y); doc.text("Breast :", fnaX, y);
+        const br = pairBoxX(fnaX, "Breast :", "right","left");
+        doc.text("(  ) right", br.rightBoxX, y);
+        doc.text("(  ) left",  br.leftBoxX, y);
+        y += lineGap;
+
+        drawCB(fnaX-5, y); doc.text("Others (specify):", fnaX, y);
+        dotLeaderFrom(fnaX + doc.getTextWidth("Others (specify):") + 1, y);
+        y += lineGap;
+        dotLeaderFrom(fnaX, y);
+      })();
+
+      /* ===== ส่วนที่ 6 ===== */
+      const gap56 = 2;
+      const availW = pageW - m.left - m.right;
+      const box6W  = Math.min(185, availW);
+      const box6 = { x: m.left, y: yTop45 + 119 + gap56, w: box6W, h: 18 };
+      doc.rect(box6.x, box6.y, box6.w, box6.h);
+
+      const sec6Title = "Clinical Diagnosis/Differential diagnosis";
+      const sec6Hdr = drawBlackLabel(sec6Title, box6, 1.5, 2);
+
+      const padX6 = 2;
+      const labelX6 = box6.x + 2;
+      const labelY6 = box6.y + 3;
+      const baseY6  = labelY6 + 4;
+      const text1StartX = labelX6 + padX6;
+      const textW6 = doc.getTextWidth(sec6Title);
+      const rightEnd6 = box6.x + box6.w - 2;
+
+      dotLine(text1StartX + textW6 + 1, baseY6, rightEnd6);
+      dotLine(text1StartX, baseY6 + 6, rightEnd6);
+
+      if (val(data.clinicalDx)) {
+        doc.setFont("Sarabun","normal"); doc.setFontSize(11);
+        const x1 = sec6Hdr.textStartX + sec6Hdr.textW + 1.5;
+        doc.text(val(data.clinicalDx), x1 + 0.5, baseY6);
+      }
+      if (val(data.clinicalDx2)) {
+        doc.setFont("Sarabun","normal"); doc.setFontSize(11);
+        doc.text(val(data.clinicalDx2), text1StartX + 0.5, baseY6 + 6);
+      }
+
+      /* ===== ส่วนที่ 7 ===== */
+      const gap67 = 2;
+      const box7W = Math.min(185, pageW - m.left - m.right);
+      const box7  = { x: m.left, y: box6.y + box6.h + gap67, w: box7W, h: 8 };
+      doc.rect(box7.x, box7.y, box7.w, box7.h);
+
+      const colW7 = box7.w / 3;
+      const leftInfo  = drawBlackLabel("แพทย์ผู้ส่งตรวจ", box7, 1.5, 2);
+      dotLine(leftInfo.textStartX + leftInfo.textW, leftInfo.baseY, box7.x + colW7 + 2);
+
+      const midBox = { x: box7.x + colW7, y: box7.y };
+      const midInfo = drawBlackLabel("Tel.", midBox, 1.5, 2);
+      dotLine(midInfo.textStartX + midInfo.textW, midInfo.baseY, box7.x + colW7 * 2 + 2);
+
+      const rightBox = { x: box7.x + colW7 * 2, y: box7.y };
+      const rightInfo = drawBlackLabel("วันที่เก็บสิ่งส่งตรวจ", rightBox, 1.5, 2);
+      dotLine(rightInfo.textStartX + rightInfo.textW, rightInfo.baseY, box7.x + box7.w - 2);
+
+      doc.setFont("Sarabun","normal"); doc.setFontSize(10.5);
+      if (val(data.physician)) doc.text(val(data.physician), leftInfo.textStartX + leftInfo.textW + 1.5, leftInfo.baseY);
+      if (val(data.tel))       doc.text(val(data.tel),       midInfo.textStartX  + midInfo.textW  + 1.5, midInfo.baseY);
+      if (val(data.collected)) doc.text(val(data.collected), rightInfo.textStartX+ rightInfo.textW+ 1.5, rightInfo.baseY);
+
+      /* ===== ส่วนที่ 8 / 9 (คงเดิม) ===== */
+      const gap78 = 2;
+      const box8W = Math.min(185, pageW - m.left - m.right);
+      const box8  = { x: m.left, y: box7.y + box7.h + gap78, w: box8W, h: 50 };
+      doc.rect(box8.x, box8.y, box8.w, box8.h);
+
+      function drawCB8(x, y) { doc.rect(x, y - 2.5, 3, 3); }
+      function addCB(x, y, label, gap = 8) { drawCB8(x, y); doc.text(label, x + 4, y); return x + 4 + doc.getTextWidth(label) + gap; }
+      function dotsFrom(xStart, yBase, xEnd) { const dotW = doc.getTextWidth("."); const count = Math.max(0, Math.floor((xEnd - xStart) / dotW)); if (count > 0) doc.text(".".repeat(count), xStart, yBase); }
+
+      const left8  = box8.x + 6;
+      const right8 = box8.x + box8.w - 4;
+      const topPad = 2;
+      let y8 = box8.y + topPad + 3;
+
+      doc.setFont("Sarabun","normal"); doc.setFontSize(9.5);
+      doc.text("(ส่วนด้านล่างเป็นพื้นที่กรอกสำหรับห้องปฏิบัติการเซลล์วิทยา)", box8.x + box8.w/2, y8, { align:"center" });
+
+      const regLabel = "วันที่ลงทะเบียน";
+      const regX = box8.x + box8.w - 58;
+      const yReg = y8 + 6;
+      doc.text(regLabel, regX, yReg);
+      dotsFrom(regX + doc.getTextWidth(regLabel) + 1 , yReg, right8);
+
+      const lineGap8 = 6.7;
+      y8 = yReg + lineGap8;
+
+      doc.setFont("Sarabun","bold"); doc.setFontSize(12);
+      doc.text("Gross appearance:", left8 - 3, y8);
+
+      y8 += lineGap8;
+      doc.setFont("Sarabun","bold"); doc.text("Color:", left8 + 5.8, y8);
+      doc.setFont("Sarabun","normal");
+      let x = left8 + 5.2 + doc.getTextWidth("Color:") + 2;
+      x = addCB(x, y8, "colorless", 3);
+      x = addCB(x, y8, "light yellow", 3);
+      x = addCB(x, y8, "yellow", 3);
+      x = addCB(x, y8, "dark yellow", 3);
+      x = addCB(x, y8, "brown", 3);
+      x = addCB(x, y8, "serosanguineous", 3);
+      x = addCB(x, y8, "pale red", 3);
+      x = addCB(x, y8, "red", 3);
+
+      y8 += lineGap8;
+      doc.setFont("Sarabun","bold"); doc.text("Turbidity:", left8 + 5.8, y8);
+      doc.setFont("Sarabun","normal");
+      x = left8 + 5.8 + doc.getTextWidth("Turbidity:") + 2;
+      x = addCB(x, y8, "clear", 3);
+      x = addCB(x, y8, "slightly cloudy", 3);
+      x = addCB(x, y8, "cloudy", 3);
+      x = addCB(x, y8, "turbid", 3);
+
+      const amtLabel = "Amount (ml):";
+      const amtX = box8.x + box8.w * 0.60;
+      doc.setFont("Sarabun","bold"); doc.text(amtLabel, amtX, y8);
+      dotsFrom(amtX + doc.getTextWidth(amtLabel) + 2, y8, right8);
+
+      y8 += lineGap8;
+      doc.setFont("Sarabun","normal"); doc.setFontSize(12);
+
+      x = left8 + 10;
+      drawCB8(x, y8); x += 4;
+      const preSmear = "alcohol-fixed smears x";
+      doc.text(preSmear, x, y8);
+      let dotStart = x + doc.getTextWidth(preSmear) + 1;
+      const smearsRightLimit = amtX - 18;
+      dotsFrom(dotStart, y8, smearsRightLimit);
+      doc.text("slides", smearsRightLimit + 1, y8);
+
+      const otherBoxX = amtX;
+      drawCB8(otherBoxX, y8);
+      const otherTextX = otherBoxX + 4;
+      doc.text("Other", otherTextX, y8);
+      dotsFrom(otherTextX + doc.getTextWidth("Other") + 1, y8, right8);
+
+      y8 += lineGap8;
+      doc.setFont("Sarabun","bold"); doc.text("Performed technique:", left8, y8);
+      doc.setFont("Sarabun","normal");
+      x = left8 + doc.getTextWidth("Performed technique:") + 6;
+      x = addCB(x, y8, "Direct smear", 12);
+      x = addCB(x, y8, "Cytocentrifuge", 12);
+
+      drawCB8(x, y8); x += 4;
+      const cellTxt = "Cell block";
+      doc.text(cellTxt, x, y8);
+      x += doc.getTextWidth(cellTxt) + 3;
+      doc.text("x", x, y8);
+      x += doc.getTextWidth("x") + 1;
+      const tailTxt = " slide(s)";
+      const tailW = doc.getTextWidth(tailTxt);
+      dotsFrom(x, y8, right8 - tailW);
+      doc.text(tailTxt, right8 - tailW, y8);
+
+      /* ===== ส่วนที่ 9 : NOTE ===== */
+      const box9W = Math.min(185, pageW - m.left - m.right);
+      const box9  = { x: m.left, y: box8.y + box8.h, w: box9W, h: 37 };
+      doc.rect(box9.x, box9.y, box9.w, box9.h);
+
+      doc.setFont("Sarabun","bold"); doc.setFontSize(12);
+      const noteX = box9.x + 2;
+      const noteY = box9.y + 8;
+      doc.text("NOTE", noteX, noteY);
+
+      const dotsLeft9  = box9.x + 2;
+      const dotsRight9 = box9.x + box9.w - 2;
+      const yLine1 = noteY + 8;
+      const yLine2 = yLine1 + 6;
+      const yLine3 = yLine2 + 6;
+      function dotsFrom(xStart, yBase, xEnd) { const dotW = doc.getTextWidth("."); const count = Math.max(0, Math.floor((xEnd - xStart) / dotW)); if (count > 0) doc.text(".".repeat(count), xStart, yBase); }
+      dotsFrom(dotsLeft9, yLine1, dotsRight9);
+      dotsFrom(dotsLeft9, yLine2, dotsRight9);
+      dotsFrom(dotsLeft9, yLine3, dotsRight9);
+
+      // ===== preview =====
+      doc.output("dataurlnewwindow");
+    } catch (err) {
+      console.error(err);
+      alert("PDF error: " + (err?.message ?? err));
+    }
+  }
+};
+
+
+
+
+
+
+

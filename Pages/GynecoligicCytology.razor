@@ -1,0 +1,35 @@
+@page "/gynecologic-cytology"
+@inject IJSRuntime JS
+
+<h3>Gynecologic Cytology (Preview)</h3>
+<button class="btn btn-primary" @onclick="PreviewPdf">Preview PDF</button>
+
+@code {
+    private async Task PreviewPdf()
+    {
+        // ตัวอย่างข้อมูล dummy
+        var dummy = new {
+            name = "  น.ส. สมใจ ดีมาก",
+            age = "  45",
+            hn = "   123456",
+            ward = "   สูติ-นรีเวช",
+
+            clinicalFindings = "  Fever with productive cough for 3 days, dyspnea on exertion. No hemoptysis.",
+            clinicalDx = "  Rule out TB, acute bronchitis",
+            clinicalDx2 = "  Consider malignancy if persistent",
+
+            physician = "  นพ. ทดสอบ ระบบ",
+            tel = "  081-2345678",
+            collected = "  18/08/2025",
+
+            // Section 5: Specimen (ติ๊กได้)
+            section5 = new {
+                sputum = true,
+                bal = true,
+
+            }
+        };
+
+        await JS.InvokeVoidAsync("generateCytologyPDF.generate", dummy);
+    }
+}
