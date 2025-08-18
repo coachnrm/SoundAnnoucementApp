@@ -1159,3 +1159,411 @@ window.generateInterventionRequestPDF = function (patientData2) {
         });
     });
 };
+
+window.generatePathoNotePDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+         // ฟังก์ชันโหลดฟอนต์
+         function arrayBufferToBase64(buffer) {
+            let binary = '';
+            const bytes = new Uint8Array(buffer);
+            const len = bytes.byteLength;
+            for (let i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
+
+        // ฟังก์ชันโหลดรูปแบบ Promise
+        function getBase64FromImageUrl(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = 'Anonymous';
+                img.onload = function () {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0);
+                    resolve(canvas.toDataURL("image/jpeg"));
+                };
+                img.onerror = reject;
+                img.src = url;
+            });
+        }
+
+        
+        function highlightInPDF(doc, text, x, y, keywords, color = [255, 255, 0], padding = 1) {
+            const words = text.split(' ');
+            let currentX = x;
+            const fontSize = doc.internal.getFontSize();
+            const lineHeight = fontSize * 0.3; // ความสูงของบรรทัด
+            
+            words.forEach(word => {
+              const isKeyword = keywords.includes(word);
+              const wordWidth = doc.getStringUnitWidth(word) * fontSize / doc.internal.scaleFactor;
+              
+              if (isKeyword) {
+                // ปรับขนาดสี่เหลี่ยมให้ใหญ่ขึ้นด้วย padding
+                doc.setFillColor(...color);
+                doc.rect(
+                  currentX - padding/2, // เพิ่มระยะห่างด้านซ้าย
+                  y - padding/2,       // เพิ่มระยะห่างด้านบน
+                  wordWidth + padding, // เพิ่มความกว้าง
+                  lineHeight + padding, // เพิ่มความสูง
+                  'F'
+                );
+                
+                // เขียนข้อความทับ
+                doc.text(word, currentX, y + fontSize * 0.3);
+              } else {
+                doc.text(word, currentX, y + fontSize * 0.3);
+              }
+              
+              currentX += (doc.getStringUnitWidth(word) * fontSize / doc.internal.scaleFactor);
+            });
+          }
+          function highlightInPDF1(doc, text, x, y, keywords, color = [255, 255, 0], padding = 1) {
+            const fontSize = doc.internal.getFontSize();
+            const lineHeight = fontSize * 0.3;
+            
+            // บันทึกสีเดิม
+            const originalTextColor = doc.getTextColor();
+            
+            // ตรวจสอบทีละคำใน keywords
+            keywords.forEach(keyword => {
+                const startPos = text.indexOf(keyword);
+                if (startPos >= 0) {
+                    // คำนวณความกว้างของ keyword
+                    const wordWidth = doc.getStringUnitWidth(keyword) * fontSize / doc.internal.scaleFactor;
+                    
+                    // คำนวณตำแหน่ง x ของ keyword
+                    const prefix = text.substring(0, startPos);
+                    const prefixWidth = doc.getStringUnitWidth(prefix) * fontSize / doc.internal.scaleFactor;
+                    const keywordX = x + prefixWidth;
+                    
+                    // วาดพื้นหลัง
+                    doc.setFillColor(...color);
+                    doc.rect(
+                        keywordX - padding/2,
+                        y - padding/2,
+                        wordWidth + padding,
+                        lineHeight + padding,
+                        'F'
+                    );
+                }
+            });
+            
+            // เขียนข้อความทั้งหมด
+            doc.setTextColor(originalTextColor);
+            doc.text(text, x, y + lineHeight * 0.7);
+        }
+
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer()),
+            getBase64FromImageUrl('/images/smskhnew.jpg')
+        ]).then(([regularFont, boldFont, imgData]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+
+            // ===== PATIENT INFORMATION SECTION =====
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(16);
+            
+            // doc.setDrawColor(0); // Set border color (black)
+            // doc.setLineWidth(0.3); // Set border thickness
+            // doc.rect(8, 16, 100, 34); // x, y, width, height
+
+           
+            
+            // First line
+            
+            // แทรกรูปโลโก้
+            doc.addImage(imgData, 'JPEG', 8, 13, 33, 15);
+            
+            // const imgData = 'data:image/jpg;base64,/images/logoprolab.jpg'; // แปลงรูปเป็น Base64 D:\SoundAnnoucementApp\wwwroot\images\logoprolab.jpg
+            // doc.addImage(imgData, 'jpg', 10, 50, 50, 50); // (x, y, width, height)
+            doc.setFontSize(12);
+            doc.text("โรงพยาบาลสมุทรสาคร", 46, 21);
+            doc.text("Tel. 40524", 51, 25);
+            doc.text("หรือ 034-497366 ต่อ 3001,3024", 39, 29);
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(20);
+            doc.text("ใบส่งตรวจชิ้นเนื้อทางพยาธิวิทยา", 11, 37);
+            doc.text("(Pathology Request Form)", 14, 42);
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(80, 15, 68, 28); // x, y, width, height
+            
+            // Second line
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(11);
+            doc.text("โปรดติดสติ๊กเกอร์", 102, 20);
+            
+            doc.setFontSize(14);
+            // Third line
+            doc.text("ชื่อ-สกุล", 85, 27);
+            doc.text("...........................................................", 95, 27.3);
+            doc.text(patientData2.name, 101, 27);
+            
+            // Third line
+            doc.text("อายุ", 85, 33);
+            doc.text("...........................", 90, 33.3);
+            doc.text(patientData2.age, 96, 33);
+            // Third line
+            doc.text("HN", 112, 33);
+            doc.text("................................", 116, 33.3);
+            doc.text(patientData2.hn, 120, 33);
+            
+            // Third line
+            doc.text("แผนก", 85, 39);
+            doc.text("..............................................................", 92.5, 39.3);
+            doc.text(patientData2.ward, 101, 39);
+            
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(150, 15, 52, 28); // x, y, width, height
+            
+            doc.setFontSize(12);
+            doc.text("LAB NO.", 154, 20);
+            doc.text("สำหรับเจ้าหน้าที่", 167, 36);
+            doc.text("งานพยาธิวิทยากายวิภาค", 163, 40);
+            
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(8, 47, 121, 10); // x, y, width, height
+            
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15);
+            doc.setTextColor(255, 255, 255); 
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "ส่งตรวจ",  11, 50, ["ส่งตรวจ"],[0, 0, 0], 2 // สีฟ้าอ่อน
+            );
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            const inspection = patientData2.inspection;
+            
+            doc.rect(26, 50, 4.5, 4.5); if (inspection === 1) { doc.setFontSize(18); doc.text("√", 27, 54 ); doc.setFontSize(14); } doc.text("Routine histopathology", 32.5, 53.5);
+            doc.rect(69, 50, 4.5, 4.5); if (inspection === 2) { doc.setFontSize(18); doc.text("√", 70, 54 ); doc.setFontSize(14); } doc.text("Immunotistochemistry", 75.5, 53.5);
+            doc.rect(110, 50, 4.5, 4.5); if (inspection === 3) { doc.setFontSize(18); doc.text("√", 108, 54); doc.setFontSize(14); } doc.text("Review", 116.5, 53.5);
+            
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(131, 47, 71, 10); // x, y, width, height
+            
+            doc.setTextColor(255, 255, 255);
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "วันที่เก็บสิ่งส่งตรวจ",  134, 50, ["วันที่เก็บสิ่งส่งตรวจ"],[0, 0, 0], 2 // สีฟ้าอ่อน
+            );
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text("...........................................", 162.5, 55.3);
+            doc.text(patientData2.inspectiondate, 168, 55);
+
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(8, 60, 194, 17); // x, y, width, height
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            doc.setTextColor(255, 255, 255);
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "Operation",  10.5, 63, ["Operation"],[0, 0, 0], 2 // สีฟ้าอ่อน
+            );
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            const operation = patientData2.operation;
+            
+            doc.rect(30, 63, 4.5, 4.5); if (operation === 1) { doc.setFontSize(18); doc.text("√", 31, 67 ); doc.setFontSize(14); } doc.text("Core needle biopsy", 36, 67.5);
+            doc.rect(69, 63, 4.5, 4.5); if (operation === 2) { doc.setFontSize(18); doc.text("√", 70, 67 ); doc.setFontSize(14); } doc.text("Incisional biopsy", 75, 67.5);
+            doc.rect(103, 63, 4.5, 4.5); if (operation === 3) { doc.setFontSize(18); doc.text("√", 104, 67 ); doc.setFontSize(14); } doc.text("Punch biopsy", 109, 67.5);
+            doc.rect(132, 63, 4.5, 4.5); if (operation === 4) { doc.setFontSize(18); doc.text("√", 133, 67 ); doc.setFontSize(14); } doc.text("Excision", 138, 67.5);
+            doc.rect(152, 63, 4.5, 4.5); if (operation === 5) { doc.setFontSize(18); doc.text("√", 153, 67 ); doc.setFontSize(14); } doc.text("Wide excision", 158, 67.5);
+            doc.rect(181, 63, 4.5, 4.5); if (operation === 6) { doc.setFontSize(18); doc.text("√", 182, 67 ); doc.setFontSize(14); } doc.text("Curettage", 187, 67.5);
+            doc.rect(30, 70, 4.5, 4.5); if (operation === 7) { doc.setFontSize(18); doc.text("√", 31, 67 ); doc.setFontSize(14); } 
+            doc.text("อื่นๆ....................................................................................................................................................................................................", 36, 74.3);
+            
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(8, 80, 121, 120); // x, y, width, height
+            
+            doc.setLineWidth(0.2); // Set border thickness
+            doc.rect(8, 180, 121, 20); // x, y, width, height
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            doc.setTextColor(255, 255, 255);
+            // doc.text("ส่งตรวจ", 10, 53);
+            // highlightInPDF(
+                //     doc, "Suturemark",  11.5, 181, ["Suturemark"],[0, 0, 0], 2 
+                // );
+                // เรียกใช้ฟังก์ชันแบบใหม่
+                highlightInPDF1(
+                    doc, "Suture mark", 11.5, 183, ["Suture mark"], [0, 0, 0],2
+                );
+                doc.setFont('THSarabunNew', 'normal');
+                doc.setTextColor(0, 0, 0); 
+            const suturemark = patientData2.suturemark;
+            doc.rect(35, 183, 4.5, 4.5); if (suturemark === 1) { doc.setFontSize(18); doc.text("√", 36, 186.5 ); doc.setFontSize(14); } doc.text("None", 41, 186.5);
+            doc.rect(50, 183, 4.5, 4.5); if (suturemark === 2) { doc.setFontSize(18); doc.text("√", 51, 186.5 ); doc.setFontSize(14); } doc.text("Short: Superior, Long: Lateral", 56, 186.5);
+            doc.rect(101, 183, 4.5, 4.5); if (suturemark === 3) { doc.setFontSize(18); doc.text("√", 102, 186.5 ); doc.setFontSize(14); } doc.text("Double: Deep", 107, 186.5);
+            doc.rect(11.5, 192, 4.5, 4.5); if (suturemark === 4) { doc.setFontSize(18); doc.text("√", 36, 195.5 ); doc.setFontSize(14); } 
+            doc.text("อื่นๆ...............................................................................................................................", 18, 195.3);
+
+
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            doc.setTextColor(255, 255, 255);
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "Important clinical information",  10.5, 83, ["Important clinical information"],[0, 0, 0], 2 
+            );
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setTextColor(0, 0, 0); 
+
+
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(131, 80, 71, 120); // x, y, width, height
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            doc.setTextColor(255, 255, 255);
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "รายละเอียดสิ่งส่งตรวจ",  136, 83, ["รายละเอียดสิ่งส่งตรวจ"],[0, 0, 0], 2 
+            );
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text("อวัยวะ ระบุข้าง ตำแหน่ง จำนวนชิ้น", 134, 94);
+            const sampledetails = patientData2.sampledetails;
+            
+            doc.text("1)", 133, 100); doc.rect(137.5, 97, 3.5, 3.5); if (sampledetails === 1) { doc.setFontSize(16); doc.text("√", 138.5, 100 ); doc.setFontSize(14); } doc.text("Rigth", 142, 100);
+            doc.rect(152, 97, 3.5, 3.5); if (sampledetails === 2) { doc.setFontSize(16); doc.text("√", 153, 100 ); doc.setFontSize(14); } doc.text("Left", 157, 100);
+            doc.rect(166, 97, 3.5, 3.5); if (sampledetails === 3) { doc.setFontSize(16); doc.text("√", 167, 100 ); doc.setFontSize(14); } doc.text("Unspecified", 171, 100);
+
+            doc.text("................................................................................", 133.5, 106.3);
+            doc.text("................................................................................", 133.5, 113.3);
+
+            const sampledetails1 = patientData2.sampledetails1;
+            
+            doc.text("2)", 133, 121); doc.rect(137.5, 118, 3.5, 3.5); if (sampledetails1 === 1) { doc.setFontSize(16); doc.text("√", 138.5, 121 ); doc.setFontSize(14); } doc.text("Rigth", 142, 121);
+            doc.rect(152, 118, 3.5, 3.5); if (sampledetails1 === 2) { doc.setFontSize(16); doc.text("√", 153, 121 ); doc.setFontSize(14); } doc.text("Left", 157, 121);
+            doc.rect(166, 118, 3.5, 3.5); if (sampledetails1 === 3) { doc.setFontSize(16); doc.text("√", 167, 121 ); doc.setFontSize(14); } doc.text("Unspecified", 171, 121);
+
+            doc.text("................................................................................", 133.5, 128.3);
+            doc.text("................................................................................", 133.5, 135.3);
+            doc.text("................................................................................", 133.5, 142.3);
+            doc.text("................................................................................", 133.5, 149.3);
+            doc.text("................................................................................", 133.5, 156.3);
+            doc.text("................................................................................", 133.5, 163.3);
+            doc.text("................................................................................", 133.5, 170.3);
+            doc.text("................................................................................", 133.5, 177.3);
+            doc.text("................................................................................", 133.5, 184.3);
+            doc.text("................................................................................", 133.5, 191.3);
+            doc.text("รวมจำนวนสิ่งส่งตรวจ................................ถุง/ขวด", 133.5, 198);
+
+
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(8, 203, 194, 18); // x, y, width, height
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            doc.setTextColor(255, 255, 255);
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "Clinical Diagnosis/Differential diagnosis",  11.5, 206, ["Clinical Diagnosis/Differential diagnosis"],[0, 0, 0], 2 
+            );
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text("..........................................................................................................................................................................................................................", 11.5, 218.3);
+
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(8, 224, 194, 12); // x, y, width, height
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            doc.setTextColor(255, 255, 255);
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "Pre-surgical therapy",  11.5, 228, ["Pre-surgical therapy"],[0, 0, 0], 2 
+            );
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            const presurgical = patientData2.presurgical;
+            doc.rect(48, 228, 4.5, 4.5); if (presurgical === 1) { doc.setFontSize(16); doc.text("√", 49, 232 ); doc.setFontSize(14); } doc.text("Chemotherapy", 54, 232);
+            doc.rect(78, 228, 4.5, 4.5); if (presurgical === 2) { doc.setFontSize(16); doc.text("√", 79, 232 ); doc.setFontSize(14); } doc.text("Radiation", 84, 232);
+            doc.rect(100, 228, 4.5, 4.5); if (presurgical === 2) { doc.setFontSize(16); doc.text("√", 101, 232 ); doc.setFontSize(14); } doc.text("อื่นๆ", 106, 232);doc.text("............................................................................................................", 112, 232.3);
+            
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(8, 238, 194, 12); // x, y, width, height
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            doc.setTextColor(255, 255, 255);
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "แพทย์ผู้ส่งตรวจ",  11.5, 242, ["แพทย์ผู้ส่งตรวจ"],[0, 0, 0], 2 
+            );
+            doc.setTextColor(255, 255, 255);
+            // doc.text("ส่งตรวจ", 10, 53);
+            highlightInPDF1(
+                doc, "Tel.",  150, 242, ["Tel."],[0, 0, 0], 2 
+            );
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setTextColor(0, 0, 0); 
+            doc.text(".....................................................................................................................................", 35, 246.3);
+            doc.text(patientData2.surgeon, 43, 246);
+            doc.text("......................................................", 152, 246.3);
+            doc.text(patientData2.tel, 160, 246);
+
+            doc.setLineWidth(0.3); // Set border thickness
+            doc.rect(8, 252, 194, 30); // x, y, width, height
+            doc.setFont('THSarabunNew', "bold");
+            doc.setFontSize(15); 
+            doc.text("NOTE", 11.5, 257);
+            doc.setFont('THSarabunNew', 'normal');
+            doc.text("..........................................................................................................................................................................................................................", 11.5, 264.3);
+            doc.text("..........................................................................................................................................................................................................................", 11.5, 271.3);
+            doc.text("..........................................................................................................................................................................................................................", 11.5, 278.3);
+
+
+
+
+            //ตัวอย่างการใช้งาน
+            // highlightInPDF(
+            //     doc, "ส่งตรวจ และ Ratnology เป็นคำสำคัญ", 10, 60, ["ส่งตรวจ", "Ratnology"],[173, 216, 230],2 // สีฟ้าอ่อน
+            //      // กำหนดค่า padding เพิ่มเติม (optional)
+            // );
+            
+            // doc.setDrawColor(0); // Set border color (black)
+            // doc.setLineWidth(0.3); // Set border thickness
+            // doc.rect(8, 51, 194, 238); // x, y, width, height
+
+            
+            
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
