@@ -134,6 +134,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoundAnnoucementApp/Pages/QueueCountMoph.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudE1vcGgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoundAnnoucementApp/Pages/RecordMove.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjb3JkTW92ZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
