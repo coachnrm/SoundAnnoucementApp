@@ -1,0 +1,227 @@
+﻿@page "/hospital-slots"
+@using SoundAnnoucementApp.Dtos.MophAppoint
+@using SoundAnnoucementApp.Models
+@using SoundAnnoucementApp.Services
+@inject IHospitalSlotService HospitalSlotService
+
+<PageTitle>Hospital Available Slots</PageTitle>
+
+<h3>Hospital Available Slots</h3>
+
+<div class="filter-section">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="hospitalCode">Hospital Code:</label>
+                <input @bind="HospitalCode" class="form-control" id="hospitalCode" 
+                       placeholder="Enter hospital code" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="year">Year:</label>
+                <select @bind="SelectedYear" class="form-control" id="year">
+                    @foreach (var year in AvailableYears)
+                    {
+                        <option value="@year">@year</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="month">Month:</label>
+                <select @bind="SelectedMonth" class="form-control" id="month">
+                    @foreach (var month in AvailableMonths)
+                    {
+                        <option value="@month.Key">@month.Value</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label style="visibility: hidden;">Search</label>
+                <button @onclick="LoadData" class="btn btn-primary form-control" 
+                        disabled="@IsLoading">
+                    @if (IsLoading)
+                    {
+                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                    }
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (SlotsData != null && SlotsData.Result.Any())
+{
+    <div class="results-section mt-4">
+        <h4>Available Slots for @SelectedMonthName @SelectedYear</h4>
+        
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Available Slots</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var slot in SlotsData.Result.OrderBy(s => s.Date))
+                    {
+                        <tr>
+                            <td>@slot.Date.ToString("yyyy-MM-dd")</td>
+                            <td>@slot.Date.ToString("dddd")</td>
+                            <td>
+                                <span class="badge @GetSlotBadgeClass(slot.AvailableSlot)">
+                                    @slot.AvailableSlot
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-3 text-muted">
+            <small>Last updated: @SlotsData.RequestTime.ToString("yyyy-MM-dd HH:mm:ss")</small>
+        </div>
+    </div>
+}
+else if (SlotsData != null && !SlotsData.Result.Any())
+{
+    <div class="alert alert-info mt-4">
+        No available slots found for the selected criteria.
+    </div>
+}
+
+@if (ErrorMessage != null)
+{
+    <div class="alert alert-danger mt-4">
+        @ErrorMessage
+    </div>
+}
+
+<style>
+    .filter-section {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #dee2e6;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .table th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .badge {
+        font-size: 0.9em;
+        padding: 0.5em 0.75em;
+    }
+
+    .spinner-border-sm {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .results-section {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+@code {
+    private string HospitalCode { get; set; } = "10734";
+    private int SelectedYear { get; set; } = DateTime.Now.Year;
+    private int SelectedMonth { get; set; } = DateTime.Now.Month;
+    private HospitalSlotResponse? SlotsData { get; set; }
+    private string? ErrorMessage { get; set; }
+    private bool IsLoading { get; set; }
+
+    private List<int> AvailableYears { get; set; } = new();
+    private Dictionary<int, string> AvailableMonths { get; set; } = new();
+
+    private string SelectedMonthName => 
+        AvailableMonths.ContainsKey(SelectedMonth) ? AvailableMonths[SelectedMonth] : "";
+
+    protected override void OnInitialized()
+    {
+        InitializeYears();
+        InitializeMonths();
+    }
+
+    private void InitializeYears()
+    {
+        var currentYear = DateTime.Now.Year;
+        AvailableYears = Enumerable.Range(currentYear, 3).ToList(); // Current year + 2 years
+    }
+
+    private void InitializeMonths()
+    {
+        AvailableMonths = new Dictionary<int, string>
+        {
+            {1, "January"}, {2, "February"}, {3, "March"}, {4, "April"},
+            {5, "May"}, {6, "June"}, {7, "July"}, {8, "August"},
+            {9, "September"}, {10, "October"}, {11, "November"}, {12, "December"}
+        };
+    }
+
+    private async Task LoadData()
+    {
+        if (string.IsNullOrWhiteSpace(HospitalCode))
+        {
+            ErrorMessage = "Please enter a hospital code";
+            return;
+        }
+
+        IsLoading = true;
+        ErrorMessage = null;
+        SlotsData = null;
+
+        try
+        {
+            SlotsData = await HospitalSlotService.GetHospitalSlotsAsync(HospitalCode, SelectedYear, SelectedMonth);
+            
+            if (SlotsData == null)
+            {
+                ErrorMessage = "Failed to load data. Please try again.";
+            }
+            else if (SlotsData.MessageCode != 200)
+            {
+                ErrorMessage = $"Error: {SlotsData.Message}";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private string GetSlotBadgeClass(int availableSlots)
+    {
+        return availableSlots switch
+        {
+            > 50 => "bg-success",
+            > 20 => "bg-warning",
+            > 0 => "bg-info",
+            _ => "bg-secondary"
+        };
+    }
+}

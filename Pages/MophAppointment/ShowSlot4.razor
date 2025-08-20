@@ -1,0 +1,656 @@
+﻿@page "/hospital-slots4"
+@using SoundAnnoucementApp.Dtos.MophAppoint
+@using SoundAnnoucementApp.Models
+@using SoundAnnoucementApp.Services
+@inject IHospitalSlotService HospitalSlotService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Hospital Available Slots</PageTitle>
+
+<h3>Hospital Available Slots</h3>
+
+<!-- Check Appointment Section -->
+<div class="check-appointment-section mb-4">
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0">Check Existing Appointments</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="checkCid">CID Number:</label>
+                        <input @bind="CheckCid" class="form-control" id="checkCid" 
+                               placeholder="Enter CID number to check appointments" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label style="visibility: hidden;">Check</label>
+                        <button @onclick="CheckAppointments" class="btn btn-info form-control" 
+                                disabled="@IsChecking">
+                            @if (IsChecking)
+                            {
+                                <span class="spinner-border spinner-border-sm" role="status"></span>
+                            }
+                            Check Appointments
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Display Appointments -->
+@if (AppointmentsData != null && AppointmentsData.Result.Appointments.Any())
+{
+    <div class="appointments-section mt-4">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Appointments for CID: @CheckCid</h5>
+            </div>
+            <div class="card-body">
+                <div class="patient-info mb-3">
+                    <h6>Patient Information:</h6>
+                    <p>
+                        <strong>Name:</strong> @AppointmentsData.Result.Person.Prefix @AppointmentsData.Result.Person.FirstName @AppointmentsData.Result.Person.LastName<br>
+                        <strong>Birth Date:</strong> @AppointmentsData.Result.Person.BirthDate<br>
+                        <strong>Phone:</strong> @AppointmentsData.Result.Person.PhoneNumber
+                    </p>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Hospital</th>
+                                <th>Department</th>
+                                <th>Room</th>
+                                <th>Appointment Date</th>
+                                <th>Time</th>
+                                <th>Queue No</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var appointment in AppointmentsData.Result.Appointments.OrderBy(a => a.AppointmentDate).ThenBy(a => a.TimeStart))
+                            {
+                                <tr>
+                                    <td>@appointment.HospitalName</td>
+                                    <td>@appointment.HospitalDepartmentName</td>
+                                    <td>@appointment.HospitalRoomName</td>
+                                    <td>@appointment.AppointmentDate</td>
+                                    <td>@appointment.TimeStart - @appointment.TimeFinish</td>
+                                    <td>
+                                        <span class="badge bg-primary">@appointment.QueueNo</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge @(appointment.HospitalConfirm ? "bg-success" : "bg-warning")">
+                                            @(appointment.HospitalConfirm ? "Confirmed" : "Pending")
+                                        </span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (AppointmentsData != null && !AppointmentsData.Result.Appointments.Any())
+{
+    <div class="alert alert-warning mt-4">
+        No appointments found for CID: @CheckCid
+    </div>
+}
+
+@if (AppointmentError != null)
+{
+    <div class="alert alert-danger mt-4">
+        @AppointmentError
+    </div>
+}
+
+
+<!-- Add Appointment Section -->
+<div class="filter-section">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="hospitalCode">Hospital Code:</label>
+                <input @bind="HospitalCode" class="form-control" id="hospitalCode" 
+                       placeholder="Enter hospital code" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="year">Year:</label>
+                <select @bind="SelectedYear" class="form-control" id="year">
+                    @foreach (var year in AvailableYears)
+                    {
+                        <option value="@year">@year</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="month">Month:</label>
+                <select @bind="SelectedMonth" class="form-control" id="month">
+                    @foreach (var month in AvailableMonths)
+                    {
+                        <option value="@month.Key">@month.Value</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label style="visibility: hidden;">Search</label>
+                <button @onclick="LoadData" class="btn btn-primary form-control" 
+                        disabled="@IsLoading">
+                    @if (IsLoading)
+                    {
+                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                    }
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(SuccessMessage))
+{
+    <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+        <strong>Success!</strong> @SuccessMessage
+        <button type="button" class="btn-close" @onclick="() => SuccessMessage = null"></button>
+    </div>
+}
+
+@if (SlotsData != null && SlotsData.Result.Any())
+{
+    <div class="results-section mt-4">
+        <h4>Available Slots for @SelectedMonthName @SelectedYear</h4>
+        
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>Day</th>
+                        <th>Available Slots</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var slot in SlotsData.Result.OrderBy(s => s.Date))
+                    {
+                        <tr style="cursor: pointer;" @onclick='() => ShowScheduleModal(slot.Date.ToString("yyyy-MM-dd"))'>
+                            <td>@slot.Date.ToString("yyyy-MM-dd")</td>
+                            <td>@slot.Date.ToString("dddd")</td>
+                            <td>
+                                <span class="badge @GetSlotBadgeClass(slot.AvailableSlot)">
+                                    @slot.AvailableSlot
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-3 text-muted">
+            <small>Last updated: @SlotsData.RequestTime.ToString("yyyy-MM-dd HH:mm:ss")</small>
+        </div>
+    </div>
+}
+else if (SlotsData != null && !SlotsData.Result.Any())
+{
+    <div class="alert alert-info mt-4">
+        No available slots found for the selected criteria.
+    </div>
+}
+
+@if (ErrorMessage != null)
+{
+    <div class="alert alert-danger mt-4">
+        @ErrorMessage
+    </div>
+}
+
+<!-- Schedule Modal -->
+@if (ShowModal)
+{
+    <div class="modal fade show" style="display: block; background-color: rgba(0,0,0,0.5);" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Schedules for @SelectedDate</h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    @if (IsLoadingSchedules)
+                    {
+                        <div class="text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p>Loading schedules...</p>
+                        </div>
+                    }
+                    else if (SchedulesData != null && SchedulesData.Result.Any())
+                    {
+                        <div class="mb-3">
+                            <label for="cidInput" class="form-label">CID:</label>
+                            <input @bind="Cid" class="form-control" id="cidInput" 
+                                   placeholder="Enter CID number" />
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Select</th>
+                                        <th>Time</th>
+                                        <th>Department</th>
+                                        <th>Room</th>
+                                        <th>Appointment Type</th>
+                                        <th>Available Slots</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var schedule in SchedulesData.Result.OrderBy(s => s.TimeStart))
+                                    {
+                                        <tr>
+                                            <td>
+                                                <input type="radio" name="selectedSchedule" 
+                                                       value="@schedule.ScheduleId" 
+                                                       @onchange="() => SelectedScheduleId = schedule.ScheduleId" />
+                                            </td>
+                                            <td>@schedule.TimeStart - @schedule.TimeFinish</td>
+                                            <td>@schedule.DepartmentName</td>
+                                            <td>@schedule.RoomName</td>
+                                            <td>@schedule.AppointmentTypeName</td>
+                                            <td>
+                                                <span class="badge @GetSlotBadgeClass(schedule.AvailableSlot)">
+                                                    @schedule.AvailableSlot
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else if (SchedulesData != null && !SchedulesData.Result.Any())
+                    {
+                        <div class="alert alert-warning">
+                            No schedules available for this date.
+                        </div>
+                    }
+                    else if (ScheduleError != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ScheduleError
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Close</button>
+                    @if (SchedulesData != null && SchedulesData.Result.Any())
+                    {
+                        <button type="button" class="btn btn-primary" 
+                                @onclick="SaveAppointment" 
+                                disabled="@(!IsValidForSave || IsSaving)">
+                            @if (IsSaving)
+                            {
+                                <span class="spinner-border spinner-border-sm" role="status"></span>
+                            }
+                            Save Appointment
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Add this alert for save errors -->
+@if (SaveError)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="position: fixed; top: 20px; right: 20px; z-index: 1050;">
+        <strong>Error!</strong> ไม่สามารถบันทึกได้
+        <button type="button" class="btn-close" @onclick="() => SaveError = false"></button>
+    </div>
+}
+
+<style>
+    .filter-section {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #dee2e6;
+    }
+
+    .form-group {
+        margin-bottom: 0;
+    }
+
+    .table th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    .badge {
+        font-size: 0.9em;
+        padding: 0.5em 0.75em;
+    }
+
+    .spinner-border-sm {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .results-section {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    tr:hover {
+        background-color: #f8f9fa !important;
+    }
+
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-content {
+        animation: modalFadeIn 0.3s ease-in;
+    }
+
+    @@keyframes modalFadeIn {
+        from { opacity: 0; transform: translateY(-50px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .alert-dismissible {
+        animation: slideInRight 0.3s ease-in;
+    }
+
+    @@keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+
+    .check-appointment-section {
+        background-color: #e7f3ff;
+        padding: 20px;
+        border-radius: 8px;
+        border: 1px solid #b8daff;
+    }
+
+    .appointments-section {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    .patient-info {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        border-left: 4px solid #007bff;
+    }
+</style>
+
+@code {
+    private string HospitalCode { get; set; } = "10734";
+    private int SelectedYear { get; set; } = DateTime.Now.Year;
+    private int SelectedMonth { get; set; } = DateTime.Now.Month;
+    private string Cid { get; set; } = string.Empty;
+    private int SelectedScheduleId { get; set; }
+    private string SelectedDate { get; set; } = string.Empty;
+    private string? SuccessMessage { get; set; }
+    
+    private HospitalSlotResponse? SlotsData { get; set; }
+    private HospitalScheduleResponse? SchedulesData { get; set; }
+    private string? ErrorMessage { get; set; }
+    private string? ScheduleError { get; set; }
+    private bool IsLoading { get; set; }
+    private bool IsLoadingSchedules { get; set; }
+    private bool ShowModal { get; set; }
+    private bool IsSaving { get; set; }
+    private bool SaveError { get; set; }
+    private string CheckCid { get; set; } = string.Empty;
+    private AppointmentResponse? AppointmentsData { get; set; }
+    private string? AppointmentError { get; set; }
+    private bool IsChecking { get; set; }
+
+    private List<int> AvailableYears { get; set; } = new();
+    private Dictionary<int, string> AvailableMonths { get; set; } = new();
+
+    private string SelectedMonthName => 
+        AvailableMonths.ContainsKey(SelectedMonth) ? AvailableMonths[SelectedMonth] : "";
+
+    private bool IsValidForSave => !string.IsNullOrWhiteSpace(Cid) && SelectedScheduleId > 0;
+
+    protected override void OnInitialized()
+    {
+        InitializeYears();
+        InitializeMonths();
+    }
+
+    private void InitializeYears()
+    {
+        var currentYear = DateTime.Now.Year;
+        AvailableYears = Enumerable.Range(currentYear, 3).ToList();
+    }
+
+    private void InitializeMonths()
+    {
+        AvailableMonths = new Dictionary<int, string>
+        {
+            {1, "January"}, {2, "February"}, {3, "March"}, {4, "April"},
+            {5, "May"}, {6, "June"}, {7, "July"}, {8, "August"},
+            {9, "September"}, {10, "October"}, {11, "November"}, {12, "December"}
+        };
+    }
+
+    private async Task LoadData()
+    {
+        if (string.IsNullOrWhiteSpace(HospitalCode))
+        {
+            ErrorMessage = "Please enter a hospital code";
+            return;
+        }
+
+        IsLoading = true;
+        ErrorMessage = null;
+        SuccessMessage = null;
+        SlotsData = null;
+
+        try
+        {
+            SlotsData = await HospitalSlotService.GetHospitalSlotsAsync(HospitalCode, SelectedYear, SelectedMonth);
+            
+            if (SlotsData == null)
+            {
+                ErrorMessage = "Failed to load data. Please try again.";
+            }
+            else if (SlotsData.MessageCode != 200)
+            {
+                ErrorMessage = $"Error: {SlotsData.Message}";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private async Task ShowScheduleModal(string date)
+    {
+        SelectedDate = date;
+        ShowModal = true;
+        IsLoadingSchedules = true;
+        ScheduleError = null;
+        SchedulesData = null;
+        Cid = string.Empty;
+        SelectedScheduleId = 0;
+
+        try
+        {
+            SchedulesData = await HospitalSlotService.GetHospitalSchedulesAsync(HospitalCode, date);
+            
+            if (SchedulesData == null)
+            {
+                ScheduleError = "Failed to load schedule data.";
+            }
+            else if (SchedulesData.MessageCode != 200)
+            {
+                ScheduleError = SchedulesData.Message;
+            }
+        }
+        catch (Exception ex)
+        {
+            ScheduleError = $"Error loading schedules: {ex.Message}";
+        }
+        finally
+        {
+            IsLoadingSchedules = false;
+        }
+    }
+
+    private void CloseModal()
+    {
+        ShowModal = false;
+        SchedulesData = null;
+        Cid = string.Empty;
+        SelectedScheduleId = 0;
+        ScheduleError = null;
+    }
+
+    private async Task SaveAppointment()
+    {
+        if (!IsValidForSave)
+        {
+            ScheduleError = "Please select a schedule and enter a CID";
+            return;
+        }
+
+        IsSaving = true;
+        SaveError = false;
+        ErrorMessage = null;
+        SuccessMessage = null;
+
+        try
+        {
+            var success = await HospitalSlotService.SaveAppointmentAsync(Cid, SelectedScheduleId);
+            
+            if (success)
+            {
+                // Close the modal first
+                CloseModal();
+                
+                // Refresh the page data by reloading the slots
+                await LoadData();
+                
+                // Show success message
+                SuccessMessage = "Appointment saved successfully!";
+                
+                // Auto-hide the success message after 5 seconds
+                _ = Task.Delay(5000).ContinueWith(_ => 
+                {
+                    SuccessMessage = null;
+                    InvokeAsync(StateHasChanged);
+                });
+            }
+            else
+            {
+                // Show error message in Thai
+                SaveError = true;
+                
+                // Auto-hide the error after 5 seconds
+                _ = Task.Delay(5000).ContinueWith(_ => 
+                {
+                    SaveError = false;
+                    InvokeAsync(StateHasChanged);
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+            SaveError = true;
+            ErrorMessage = $"Error saving appointment: {ex.Message}";
+            Console.WriteLine($"Error saving appointment: {ex.Message}");
+            
+            // Auto-hide the error after 5 seconds
+            _ = Task.Delay(5000).ContinueWith(_ => 
+            {
+                SaveError = false;
+                ErrorMessage = null;
+                InvokeAsync(StateHasChanged);
+            });
+        }
+        finally
+        {
+            IsSaving = false;
+        }
+    }
+
+    private string GetSlotBadgeClass(int availableSlots)
+    {
+        return availableSlots switch
+        {
+            > 50 => "bg-success",
+            > 20 => "bg-warning",
+            > 0 => "bg-info",
+            _ => "bg-secondary"
+        };
+    }
+
+    // Add appointment check method
+    private async Task CheckAppointments()
+    {
+        if (string.IsNullOrWhiteSpace(CheckCid))
+        {
+            AppointmentError = "Please enter a CID number";
+            return;
+        }
+
+        IsChecking = true;
+        AppointmentError = null;
+        AppointmentsData = null;
+
+        try
+        {
+            AppointmentsData = await HospitalSlotService.GetAppointmentsAsync(CheckCid);
+            
+            if (AppointmentsData == null)
+            {
+                AppointmentError = "Failed to load appointment data. Please try again.";
+            }
+            else if (AppointmentsData.MessageCode != 200)
+            {
+                AppointmentError = $"Error: {AppointmentsData.Message}";
+            }
+            else if (!AppointmentsData.Result.Appointments.Any())
+            {
+                AppointmentError = "No appointments found for this CID.";
+            }
+        }
+        catch (Exception ex)
+        {
+            AppointmentError = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            IsChecking = false;
+        }
+    }
+}
