@@ -200,6 +200,14 @@ build_metadata.AdditionalFiles.CssScope = b-eaitrgb9r4
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-pdnfuziggc
 
+[D:/SoundAnnoucementApp/Pages/Aaaa.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWFhYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-tcsymy4wla
+
+[D:/SoundAnnoucementApp/Pages/Bbbb.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmJiYi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-uvutyhv3l3
+
 [D:/SoundAnnoucementApp/Pages/MusicPad/Pad.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-nz1olq9wq5
@@ -207,3 +215,7 @@ build_metadata.AdditionalFiles.CssScope = b-nz1olq9wq5
 [D:/SoundAnnoucementApp/Pages/MusicPad/PadController.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkQ29udHJvbGxlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-rhkae1j2hq
+
+[D:/SoundAnnoucementApp/Pages/Queuelist.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVsaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-6dvgqgbqk4

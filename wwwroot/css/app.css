@@ -101,3 +101,81 @@ a, .btn-link {
 code {
     color: #c02d76;
 }
+
+/* การแจ้งเตือน */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    z-index: 10000;
+    max-width: 350px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideIn 0.3s ease-out;
+}
+
+.notification.success {
+    background-color: #28a745;
+    border-left: 4px solid #218838;
+}
+
+.notification.error {
+    background-color: #dc3545;
+    border-left: 4px solid #c82333;
+}
+
+.notification.warning {
+    background-color: #ffc107;
+    color: #212529;
+    border-left: 4px solid #e0a800;
+}
+
+.notification.info {
+    background-color: #17a2b8;
+    border-left: 4px solid #138496;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+}
+
+.notification-content i {
+    margin-right: 10px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* สถานะคิว */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-waiting {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.status-arrived {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-not-arrived {
+    background-color: #dc3545;
+    color: white;
+}

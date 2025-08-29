@@ -30,12 +30,19 @@ builder.Services.AddHttpClient("OpApi", client =>
     // client.BaseAddress = new Uri("http://10.134.50.175:8000/");
     client.BaseAddress = new Uri("http://localhost:5222/");
 });
+builder.Services.AddHttpClient("QueueApi", client =>
+{
+    // client.BaseAddress = new Uri("http://10.134.50.175:8000/");
+    client.BaseAddress = new Uri("http://localhost:5041/");
+});
+
 builder.Services.AddSingleton<QueueService>();
 builder.Services.AddScoped<ISoundPlayer, SoundPlayer>();
 builder.Services.AddHttpClient<IpdService>(client =>
 {
     client.BaseAddress = new Uri("http://172.16.200.202:8089/");
 });
+
 
 
 await builder.Build().RunAsync();

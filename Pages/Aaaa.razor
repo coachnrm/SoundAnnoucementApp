@@ -1,0 +1,957 @@
+@page "/queuelist1"
+@inject IJSRuntime JSRuntime
+@using System.Text.Json
+@using SoundAnnoucementApp.Dtos
+@using SoundAnnoucementApp.Models
+@using SoundAnnoucementApp.Services
+@inject IHttpClientFactory _httpClientFactory
+@inject NavigationManager NavigationManager
+@inject QueueService QueueService
+
+@* <div class="queue-management-container"> *@
+    <!-- Header Section -->
+    <div class="queue-header">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="page-title mb-1">ระบบจัดการคิวผู้ป่วย</h2>
+                <p class="page-subtitle text-muted">จัดการคิวผู้ป่วยและประกาศเรียกคิว</p>
+            </div>
+            <div class="header-badge">
+                <span class="badge bg-primary">คิวทั้งหมด: @QueueCount</span>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls card">
+            <div class="card-body py-3">
+                <div class="row g-3 align-items-center">
+                    <div class="col-md-5">
+                        <label class="form-label fw-bold">ชื่อผู้ป่วยที่จะประกาศ</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <InputText class="form-control" @bind-Value="userName" placeholder="กรอกชื่อผู้ป่วย" />
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <label class="form-label fw-bold">ห้องตรวจ</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hospital"></i></span>
+                            <select class="form-select" value="selectedDepartment" @onchange="(e) => OnDepartmentChanged(e)">
+                                <option value="">ทั้งหมด</option>
+                                @if (availableDepartments?.Count > 0)
+                                {
+                                    @foreach (var dept in availableDepartments)
+                                    {
+                                        <option value="@dept.Name">@dept.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2 d-flex align-items-end">
+                        @* <button class="btn btn-outline-primary w-100" @onclick="RefreshData">
+                            <i class="fas fa-sync-alt me-1"></i> Refresh
+                        </button> *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Message -->
+    @* @if (!string.IsNullOrEmpty(message))
+    {
+        <div class="alert @alertClass alert-dismissible fade show mt-3" role="alert">
+            <i class="fas @(alertClass.Contains("success") ? "fa-check-circle" : alertClass.Contains("danger") ? "fa-exclamation-circle" : "fa-info-circle") me-2"></i>
+            @message
+            <button type="button" class="btn-close" @onclick="ClearMessage"></button>
+        </div>
+    } *@
+
+    <!-- Queue Content -->
+    <div class="queue-content mt-4">
+        <div class="row">
+            <!-- History Taking Queue Section -->
+            <div class="col-12 mb-4">
+                <div class="section-header mb-3">
+                    <h4 class="section-title"><i class="fas fa-stethoscope me-2"></i>คิวซักประวัติ</h4>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="row">
+                    <!-- Waiting for History Taking -->
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <div class="card queue-card h-100">
+                            <div class="card-header card-header-waiting">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0"><i class="fas fa-list-alt me-2"></i> คิวรอเรียกซักประวัติ</h5>
+                                    <span class="badge bg-waiting">@filteredQueuePatientHxs?.Count คิว</span>
+                                </div>
+                                @if (!string.IsNullOrEmpty(selectedDepartment))
+                                {
+                                    <div class="department-filter-badge mt-1">
+                                        <small class="text-muted"><i class="fas fa-filter me-1"></i>ห้อง: @selectedDepartment</small>
+                                    </div>
+                                }
+                            </div>
+                            <div class="card-body p-0">
+                                @if (filteredQueuePatientHxs?.Count > 0)
+                                {
+                                    <div class="table-container">
+                                        <table class="table table-hover table-queue mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 15%;">HN</th>
+                                                    <th style="width: 30%;">ชื่อ-สกุล</th>
+                                                    <th style="width: 20%;" class="text-center">คิวซักประวัติ</th>
+                                                    <th style="width: 35%;" class="text-center">การดำเนินการ</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var patient in filteredQueuePatientHxs)
+                                                {
+                                                    <tr>
+                                                        <td class="fw-bold patient-hn">@patient.Hn</td>
+                                                        <td class="patient-name">
+                                                            @if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+                                                            {
+                                                                @patientNames[patient.Hn]
+                                                            }
+                                                            else if (!string.IsNullOrEmpty(patient.Hn))
+                                                            {
+                                                                <div class="d-flex align-items-center">
+                                                                    <span>HN: @patient.Hn</span>
+                                                                    <span class="loading-spinner ms-2">
+                                                                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                                                                        <span class="ms-1">กำลังโหลด...</span>
+                                                                    </span>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-muted">ไม่มีข้อมูล HN</span>
+                                                            }
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span class="badge bg-queue-number">@patient.QueueHx</span>
+                                                        </td>
+                                                        <td class="text-center action-buttons">
+                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep)" title="เรียกผู้ป่วย">
+                                                                <i class="fas fa-bullhorn me-1"></i> เรียก
+                                                            </button>
+                                                            <button class="btn btn-arrived me-2" @onclick="() => UpdateStatusHx(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
+                                                                <i class="fas fa-check-circle me-1"></i> มา
+                                                            </button>
+                                                            <button class="btn btn-not-arrived" @onclick="() => UpdateStatusHx(patient.Id, 2, patient.Hn)" title="ผู้ป่วยไม่มา">
+                                                                <i class="fas fa-times-circle me-1"></i> ไม่มา
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="no-data-placeholder">
+                                        @if (isLoading)
+                                        {
+                                            <div class="text-center py-5">
+                                                <div class="spinner-border text-primary mb-3" role="status"></div>
+                                                <p>กำลังโหลดข้อมูล...</p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center py-5">
+                                                <i class="fas fa-inbox no-data-icon"></i>
+                                                <p class="text-muted mt-2">ไม่มีข้อมูลคิวผู้ป่วย</p>
+                                                @if (!string.IsNullOrEmpty(selectedDepartment))
+                                                {
+                                                    <small class="text-muted">สำหรับห้องตรวจ: @selectedDepartment</small>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Not Arrived for History Taking -->
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <div class="card queue-card h-100">
+                            <div class="card-header card-header-not-arrived">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0"><i class="fas fa-user-times me-2"></i> คิวเรียกแล้วไม่มา</h5>
+                                    <span class="badge bg-not-arrived">@filteredQueuePatientHsS2s?.Count คิว</span>
+                                </div>
+                                @if (!string.IsNullOrEmpty(selectedDepartment))
+                                {
+                                    <div class="department-filter-badge mt-1">
+                                        <small class="text-muted"><i class="fas fa-filter me-1"></i>ห้อง: @selectedDepartment</small>
+                                    </div>
+                                }
+                            </div>
+                            <div class="card-body p-0">
+                                @if (filteredQueuePatientHsS2s?.Count > 0)
+                                {
+                                    <div class="table-container">
+                                        <table class="table table-hover table-queue mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 15%;">HN</th>
+                                                    <th style="width: 30%;">ชื่อ-สกุล</th>
+                                                    <th style="width: 20%;" class="text-center">คิวซักประวัติ</th>
+                                                    <th style="width: 35%;" class="text-center">การดำเนินการ</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var patient in filteredQueuePatientHsS2s)
+                                                {
+                                                    <tr>
+                                                        <td class="fw-bold patient-hn">@patient.Hn</td>
+                                                        <td class="patient-name">
+                                                            @if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+                                                            {
+                                                                @patientNames[patient.Hn]
+                                                            }
+                                                            else if (!string.IsNullOrEmpty(patient.Hn))
+                                                            {
+                                                                <div class="d-flex align-items-center">
+                                                                    <span>HN: @patient.Hn</span>
+                                                                    <span class="loading-spinner ms-2">
+                                                                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                                                                        <span class="ms-1">กำลังโหลด...</span>
+                                                                    </span>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-muted">ไม่มีข้อมูล HN</span>
+                                                            }
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span class="badge bg-queue-number">@patient.QueueHx</span>
+                                                        </td>
+                                                        <td class="text-center action-buttons">
+                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep)" title="เรียกผู้ป่วยอีกครั้ง">
+                                                                <i class="fas fa-bullhorn me-1"></i> เรียก
+                                                            </button>
+                                                            <button class="btn btn-arrived" @onclick="() => UpdateStatusHx(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
+                                                                <i class="fas fa-undo me-1"></i> มาแล้ว
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="no-data-placeholder">
+                                        @if (isLoading)
+                                        {
+                                            <div class="text-center py-5">
+                                                <div class="spinner-border text-primary mb-3" role="status"></div>
+                                                <p>กำลังโหลดข้อมูล...</p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center py-5">
+                                                <i class="fas fa-inbox no-data-icon"></i>
+                                                <p class="text-muted mt-2">ไม่มีข้อมูลคิวผู้ป่วย</p>
+                                                @if (!string.IsNullOrEmpty(selectedDepartment))
+                                                {
+                                                    <small class="text-muted">สำหรับห้องตรวจ: @selectedDepartment</small>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Examination Queue Section -->
+            <div class="col-12">
+                <div class="section-header mb-3">
+                    <h4 class="section-title"><i class="fas fa-clipboard-check me-2"></i>คิวตรวจรักษา</h4>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="row">
+                    <!-- Waiting for Examination -->
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <div class="card queue-card h-100">
+                            <div class="card-header card-header-waiting">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0"><i class="fas fa-clock me-2"></i> คิวรอเรียก</h5>
+                                    <span class="badge bg-waiting">@filteredQueuePatients?.Count คิว</span>
+                                </div>
+                                @if (!string.IsNullOrEmpty(selectedDepartment))
+                                {
+                                    <div class="department-filter-badge mt-1">
+                                        <small class="text-muted"><i class="fas fa-filter me-1"></i>ห้อง: @selectedDepartment</small>
+                                    </div>
+                                }
+                            </div>
+                            <div class="card-body p-0">
+                                @if (filteredQueuePatients?.Count > 0)
+                                {
+                                    <div class="table-container">
+                                        <table class="table table-hover table-queue mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 12%;">HN</th>
+                                                    <th style="width: 28%;">ชื่อ-สกุล</th>
+                                                    <th style="width: 20%;">ห้องตรวจ</th>
+                                                    <th style="width: 15%;" class="text-center">คิวห้องตรวจ</th>
+                                                    <th style="width: 25%;" class="text-center">การดำเนินการ</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var patient in filteredQueuePatients)
+                                                {
+                                                    <tr>
+                                                        <td class="fw-bold patient-hn">@patient.Hn</td>
+                                                        <td class="patient-name">
+                                                            @if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+                                                            {
+                                                                @patientNames[patient.Hn]
+                                                            }
+                                                            else if (!string.IsNullOrEmpty(patient.Hn))
+                                                            {
+                                                                <div class="d-flex align-items-center">
+                                                                    <span>HN: @patient.Hn</span>
+                                                                    <span class="loading-spinner ms-2">
+                                                                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                                                                        <span class="ms-1">กำลังโหลด...</span>
+                                                                    </span>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-muted">ไม่มีข้อมูล HN</span>
+                                                            }
+                                                        </td>
+                                                        <td>@patient.QueueNameDep</td>
+                                                        <td class="text-center">
+                                                            <span class="badge bg-queue-number">@patient.QueueDep</span>
+                                                        </td>
+                                                        <td class="text-center action-buttons">
+                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient(patient, patient.QueueDep)" title="เรียกผู้ป่วย">
+                                                                <i class="fas fa-bullhorn me-1"></i> เรียก
+                                                            </button>
+                                                            <button class="btn btn-arrived me-2" @onclick="() => UpdateStatus(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
+                                                                <i class="fas fa-check-circle me-1"></i> มา
+                                                            </button>
+                                                            <button class="btn btn-not-arrived" @onclick="() => UpdateStatus(patient.Id, 2, patient.Hn)" title="ผู้ป่วยไม่มา">
+                                                                <i class="fas fa-times-circle me-1"></i> ไม่มา
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="no-data-placeholder">
+                                        @if (isLoading)
+                                        {
+                                            <div class="text-center py-5">
+                                                <div class="spinner-border text-primary mb-3" role="status"></div>
+                                                <p>กำลังโหลดข้อมูล...</p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center py-5">
+                                                <i class="fas fa-inbox no-data-icon"></i>
+                                                <p class="text-muted mt-2">ไม่มีข้อมูลคิวผู้ป่วย</p>
+                                                @if (!string.IsNullOrEmpty(selectedDepartment))
+                                                {
+                                                    <small class="text-muted">สำหรับห้องตรวจ: @selectedDepartment</small>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Not Arrived for Examination -->
+                    <div class="col-lg-6 col-md-12 mb-4">
+                        <div class="card queue-card h-100">
+                            <div class="card-header card-header-not-arrived">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="card-title mb-0"><i class="fas fa-user-times me-2"></i> คิวเรียกแล้วไม่มา</h5>
+                                    <span class="badge bg-not-arrived">@filteredQueuePatientS2s?.Count คิว</span>
+                                </div>
+                                @if (!string.IsNullOrEmpty(selectedDepartment))
+                                {
+                                    <div class="department-filter-badge mt-1">
+                                        <small class="text-muted"><i class="fas fa-filter me-1"></i>ห้อง: @selectedDepartment</small>
+                                    </div>
+                                }
+                            </div>
+                            <div class="card-body p-0">
+                                @if (filteredQueuePatientS2s?.Count > 0)
+                                {
+                                    <div class="table-container">
+                                        <table class="table table-hover table-queue mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 12%;">HN</th>
+                                                    <th style="width: 28%;">ชื่อ-สกุล</th>
+                                                    <th style="width: 20%;">ห้องตรวจ</th>
+                                                    <th style="width: 15%;" class="text-center">คิวห้องตรวจ</th>
+                                                    <th style="width: 25%;" class="text-center">การดำเนินการ</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var patient in filteredQueuePatientS2s)
+                                                {
+                                                    <tr>
+                                                        <td class="fw-bold patient-hn">@patient.Hn</td>
+                                                        <td class="patient-name">
+                                                            @if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+                                                            {
+                                                                @patientNames[patient.Hn]
+                                                            }
+                                                            else if (!string.IsNullOrEmpty(patient.Hn))
+                                                            {
+                                                                <div class="d-flex align-items-center">
+                                                                    <span>HN: @patient.Hn</span>
+                                                                    <span class="loading-spinner ms-2">
+                                                                        <span class="spinner-border spinner-border-sm" role="status"></span>
+                                                                        <span class="ms-1">กำลังโหลด...</span>
+                                                                    </span>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-muted">ไม่มีข้อมูล HN</span>
+                                                            }
+                                                        </td>
+                                                        <td>@patient.QueueNameDep</td>
+                                                        <td class="text-center">
+                                                            <span class="badge bg-queue-number">@patient.QueueDep</span>
+                                                        </td>
+                                                        <td class="text-center action-buttons">
+                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient(patient, patient.QueueDep)" title="เรียกผู้ป่วยอีกครั้ง">
+                                                                <i class="fas fa-bullhorn me-1"></i> เรียก
+                                                            </button>
+                                                            <button class="btn btn-arrived" @onclick="() => UpdateStatus(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
+                                                                <i class="fas fa-undo me-1"></i> มาแล้ว
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="no-data-placeholder">
+                                        @if (isLoading)
+                                        {
+                                            <div class="text-center py-5">
+                                                <div class="spinner-border text-primary mb-3" role="status"></div>
+                                                <p>กำลังโหลดข้อมูล...</p>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center py-5">
+                                                <i class="fas fa-inbox no-data-icon"></i>
+                                                <p class="text-muted mt-2">ไม่มีข้อมูลคิวผู้ป่วย</p>
+                                                @if (!string.IsNullOrEmpty(selectedDepartment))
+                                                {
+                                                    <small class="text-muted">สำหรับห้องตรวจ: @selectedDepartment</small>
+                                                }
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@* </div> *@
+
+@if (isLoading)
+{
+    <div class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-2">กำลังโหลดข้อมูล...</p>
+    </div>
+}
+
+
+
+@code {
+    // รหัสเดิมทั้งหมดไม่มีการเปลี่ยนแปลง
+    private string userName = string.Empty;
+    private string selectedDepartment = string.Empty;
+    private List<QueuePatient>? queuePatients = new();
+    private List<QueuePatient>? queuePatientS1s = new();
+    private List<QueuePatient>? queuePatientS2s = new();
+    private List<QueuePatient>? filteredQueuePatients = new();
+    private List<QueuePatient>? filteredQueuePatientS2s = new();
+    private List<QueuePatient>? filteredQueuePatientHxs = new();
+    private List<QueuePatient>? filteredQueuePatientHsS2s = new();
+    private List<QueueDepartment>? availableDepartments = new();
+    private string message = string.Empty;
+    private string alertClass = "alert-info";
+    private bool isLoading = false;
+    private string searchHn = string.Empty;
+    private string previousDepartment = string.Empty;
+    private PatientInfo? patientInfo = null;
+    private Dictionary<string, string> patientNames = new Dictionary<string, string>();
+    private CancellationTokenSource _cancellationTokenSource = new CancellationTokenSource();
+
+    private int QueueCount => QueueService.Count();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAvailableDepartments();
+        await LoadData();
+    }
+
+    private void ClearMessage()
+    {
+        message = string.Empty;
+    }
+
+    private async Task LoadAvailableDepartments()
+    {
+        try
+        {
+            Console.WriteLine("กำลังโหลดรายการห้องตรวจ...");
+            
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var departments = await client.GetFromJsonAsync<List<QueueDepartment>>("api/DepartmentName");
+            
+            if (departments != null && departments.Count > 0)
+            {
+                availableDepartments = departments.OrderBy(d => d.Name).ToList();
+                Console.WriteLine($"โหลดห้องตรวจได้ {availableDepartments.Count} รายการ");
+                message = "โหลดรายการห้องตรวจสำเร็จ";
+                alertClass = "alert-success";
+            }
+            else
+            {
+                message = "ไม่พบข้อมูลห้องตรวจ";
+                alertClass = "alert-warning";
+                Console.WriteLine("ไม่พบข้อมูลห้องตรวจ");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading departments: {ex.Message}");
+            message = $"ไม่สามารถโหลดรายการห้องตรวจ: {ex.Message}";
+            alertClass = "alert-danger";
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
+
+    private async Task OnDepartmentChanged(ChangeEventArgs e)
+    {
+        selectedDepartment = e.Value?.ToString() ?? "";
+        Console.WriteLine($"เลือกห้องตรวจ: {selectedDepartment}");
+        await ApplyDepartmentFilter();
+        StateHasChanged();
+    }
+    
+
+   private async Task ApplyDepartmentFilter()
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            var client = _httpClientFactory.CreateClient("QueueApi");
+
+            if (string.IsNullOrEmpty(selectedDepartment))
+            {
+                // แสดงทั้งหมด
+                var tasks = new Task[]
+                {
+                    client.GetFromJsonAsync<List<QueuePatient>>("api/Queue/GetQueueNull")
+                        .ContinueWith(t => filteredQueuePatients = t.Result ?? new List<QueuePatient>()),
+                    client.GetFromJsonAsync<List<QueuePatient>>("api/Queue/GetQueueS2")
+                        .ContinueWith(t => filteredQueuePatientS2s = t.Result ?? new List<QueuePatient>()),
+                    client.GetFromJsonAsync<List<QueuePatient>>("api/Queue/GetQueueHxNull")
+                        .ContinueWith(t => filteredQueuePatientHxs = t.Result ?? new List<QueuePatient>()),
+                    client.GetFromJsonAsync<List<QueuePatient>>("api/Queue/GetQueueHxS2")
+                        .ContinueWith(t => filteredQueuePatientHsS2s = t.Result ?? new List<QueuePatient>())
+                };
+
+                await Task.WhenAll(tasks);
+            }
+            else
+            {
+                // ใช้ API กรองตามห้องตรวจที่เลือก
+                var tasks = new Task[]
+                {
+                    client.GetFromJsonAsync<List<QueuePatient>>($"api/Queue/GetQueueDepartmentbyNameS1/{selectedDepartment}")
+                        .ContinueWith(t => filteredQueuePatients = t.Result ?? new List<QueuePatient>()),
+                    client.GetFromJsonAsync<List<QueuePatient>>($"api/Queue/GetQueueDepartmentbyNameS2/{selectedDepartment}")
+                        .ContinueWith(t => filteredQueuePatientS2s = t.Result ?? new List<QueuePatient>()),
+                    client.GetFromJsonAsync<List<QueuePatient>>($"api/Queue/GetQueueDepartmentbyNameHxS1/{selectedDepartment}")
+                        .ContinueWith(t => filteredQueuePatientHxs = t.Result ?? new List<QueuePatient>()),
+                    client.GetFromJsonAsync<List<QueuePatient>>($"api/Queue/GetQueueDepartmentbyNameHxS2/{selectedDepartment}")
+                        .ContinueWith(t => filteredQueuePatientHsS2s = t.Result ?? new List<QueuePatient>())
+                };
+
+                await Task.WhenAll(tasks);
+            }
+            
+            Console.WriteLine($"กรองข้อมูล: {selectedDepartment}, คิวรอเรียก: {filteredQueuePatients?.Count}, คิวไม่มา: {filteredQueuePatientS2s?.Count}");
+            
+            // โหลดชื่อผู้ป่วยหลังจากกรองข้อมูล
+            await LoadPatientNames();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error applying department filter: {ex.Message}");
+            message = $"เกิดข้อผิดพลาดในการกรองข้อมูล: {ex.Message}";
+            alertClass = "alert-danger";
+            
+            // ตั้งค่า default values เพื่อป้องกัน null reference
+            filteredQueuePatients = new List<QueuePatient>();
+            filteredQueuePatientS2s = new List<QueuePatient>();
+            filteredQueuePatientHxs = new List<QueuePatient>();
+            filteredQueuePatientHsS2s = new List<QueuePatient>();
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task LoadData()
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            // ล้างข้อมูลเก่าก่อนโหลดใหม่
+            patientNames.Clear();
+            
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            
+            // ใช้การกรองข้อมูลแทน
+            await ApplyDepartmentFilter();
+        }
+        catch (Exception ex)
+        {
+            message = $"เกิดข้อผิดพลาดในการโหลดข้อมูล: {ex.Message}";
+            alertClass = "alert-danger";
+            Console.WriteLine($"Error loading data: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task LoadPatientNames()
+    {
+        try
+        {
+            var token = _cancellationTokenSource.Token;
+            var client = _httpClientFactory.CreateClient("BackEnd");
+            var allHns = new List<string>();
+
+            // ใช้ filtered collections แทน
+            if (filteredQueuePatients?.Count > 0)
+                allHns.AddRange(filteredQueuePatients.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
+
+            if (filteredQueuePatientHxs?.Count > 0)
+                allHns.AddRange(filteredQueuePatientHxs.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
+
+            if (filteredQueuePatientS2s?.Count > 0)
+                allHns.AddRange(filteredQueuePatientS2s.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
+
+            if (filteredQueuePatientHsS2s?.Count > 0)
+                allHns.AddRange(filteredQueuePatientHsS2s.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
+
+            var uniqueHns = allHns.Distinct().ToList();
+
+            foreach (var hn in uniqueHns)
+            {
+                if (token.IsCancellationRequested) break;
+                
+                if (!patientNames.ContainsKey(hn) && !string.IsNullOrEmpty(hn))
+                {
+                    try
+                    {
+                        var patient = await client.GetFromJsonAsync<PatientInfo>($"api/IpdVs/GetPatientByHn?hn={hn}");
+                        patientNames[hn] = patient != null ? $"{patient.Fname} {patient.Lname}" : "ไม่พบข้อมูล";
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error loading patient {hn}: {ex.Message}");
+                        patientNames[hn] = "HN: " + hn;
+                    }
+                    
+                    await Task.Delay(30, token);
+                }
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            Console.WriteLine("Patient name loading cancelled");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading patient names: {ex.Message}");
+        }
+    }
+
+    // เพิ่ม method สำหรับยกเลิกการโหลด
+    private void CancelLoading()
+    {
+        _cancellationTokenSource.Cancel();
+        _cancellationTokenSource = new CancellationTokenSource();
+    }
+
+    private async Task RefreshData()
+    {
+        CancelLoading();
+        patientNames.Clear();
+        await LoadData();
+    }
+
+    private async Task UpdateStatus(int patientId, int status, string hn)
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var updateDto = new QueueStatusUpdateDto { Status = status };
+            
+            var response = await client.PutAsJsonAsync($"api/Queue/AddQueueStatus/{patientId}", updateDto);
+
+            if (response.IsSuccessStatusCode)
+            {
+                message = $"อัพเดทสถานะผู้ป่วย HN: {hn} สำเร็จ";
+                alertClass = "alert-success";
+                await Task.Delay(500);
+                await RefreshData();
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                message = $"เกิดข้อผิดพลาด: {response.StatusCode} - {errorContent}";
+                alertClass = "alert-danger";
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"เกิดข้อผิดพลาด: {ex.Message}";
+            alertClass = "alert-danger";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+    
+    private async Task UpdateStatusHx(int patientId, int status, string hn)
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var updateDto = new QueueStatusHxUpdateDto { StatusHx = status };
+            
+            var response = await client.PutAsJsonAsync($"api/Queue/AddQueueStatusHx/{patientId}", updateDto);
+
+            if (response.IsSuccessStatusCode)
+            {
+                message = $"อัพเดทสถานะผู้ป่วย HN: {hn} สำเร็จ";
+                alertClass = "alert-success";
+                await Task.Delay(500);
+                await RefreshData();
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                message = $"เกิดข้อผิดพลาด: {response.StatusCode} - {errorContent}";
+                alertClass = "alert-danger";
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"เกิดข้อผิดพลาด: {ex.Message}";
+            alertClass = "alert-danger";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task CallPatient(QueuePatient patient, int? queueNumber = null)
+    {
+        if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+        {
+            userName = patientNames[patient.Hn];
+            var departmentCode = patient.QueueNameDep?.Split('-')[0] ?? "";
+            var actualQueueNumber = patient.QueueDep ?? 0;
+            await AnnounceQueue1(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);
+        }
+        else
+        {
+            searchHn = patient.Hn;
+            await SearchPatientByHn();
+            if (patientInfo != null)
+            {
+                var departmentCode = patient.QueueNameDep?.Split('-')[0] ?? "";
+                var actualQueueNumber = patient.QueueDep ?? 0;
+                await AnnounceQueue1(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);
+            }
+        }
+    }
+    
+    private async Task CallPatient1(QueuePatient patient, int? queueNumber = null)
+    {
+        if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+        {
+            userName = patientNames[patient.Hn];
+            var departmentCode = patient.QueueName?.Split('-')[0] ?? "";
+            var actualQueueNumber = patient.QueueHx ?? 0;
+            await AnnounceQueue2(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);
+        }
+        else
+        {
+            searchHn = patient.Hn;
+            await SearchPatientByHn();
+            if (patientInfo != null)
+            {
+                var departmentCode = patient.QueueNameDep?.Split('-')[0] ?? "";
+                var actualQueueNumber = patient.QueueHx ?? 0;
+                await AnnounceQueue2(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);
+            }
+        }
+    }
+
+    private async Task SearchPatientByHn()
+    {
+        if (string.IsNullOrWhiteSpace(searchHn))
+        {
+            message = "กรุณากรอก HN เพื่อค้นหา";
+            alertClass = "alert-warning";
+            StateHasChanged();
+            return;
+        }
+
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            var client = _httpClientFactory.CreateClient("BackEnd");
+            patientInfo = await client.GetFromJsonAsync<PatientInfo>($"api/IpdVs/GetPatientByHn?hn={searchHn}");
+
+            if (patientInfo != null)
+            {
+                userName = $"{patientInfo.Pname}{patientInfo.Fname} {patientInfo.Lname}";
+                message = $"พบข้อมูลผู้ป่วย: {userName}";
+                alertClass = "alert-success";
+                
+                if (!patientNames.ContainsKey(searchHn))
+                {
+                    patientNames[searchHn] = userName;
+                }
+            }
+            else
+            {
+                message = "ไม่พบข้อมูลผู้ป่วยด้วย HN นี้";
+                alertClass = "alert-warning";
+                userName = $"ผู้ป่วย HN: {searchHn}";
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"เกิดข้อผิดพลาดในการค้นหา: {ex.Message}";
+            alertClass = "alert-danger";
+            userName = $"ผู้ป่วย HN: {searchHn}";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task AnnounceQueue1(int queueNumber, string name, string channel, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("audioHelper.announceQueue1", 
+                queueNumber, name, channel, rate, pitch, volume);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error announcing queue: {ex.Message}");
+        }
+    }
+    
+    private async Task AnnounceQueue2(int queueNumber, string name, string channel, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("audioHelper.announceQueue2", 
+                queueNumber, name, channel, rate, pitch, volume);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error announcing queue: {ex.Message}");
+        }
+    }
+    
+    protected override async Task OnParametersSetAsync()
+    {
+        if (previousDepartment != selectedDepartment)
+        {
+            previousDepartment = selectedDepartment;
+            Console.WriteLine($"เลือกห้องตรวจ: {selectedDepartment}");
+            await ApplyDepartmentFilter();
+            await LoadPatientNames();
+            StateHasChanged();
+        }
+    }
+}

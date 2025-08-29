@@ -1,0 +1,45 @@
+.queue-container[b-6dvgqgbqk4] {
+    padding: 20px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.page-header[b-6dvgqgbqk4] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.announce-section[b-6dvgqgbqk4] {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+.queue-card[b-6dvgqgbqk4] {
+    margin-bottom: 20px;
+}
+
+.btn-sm[b-6dvgqgbqk4] {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+}
+
+.loading-overlay[b-6dvgqgbqk4] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}

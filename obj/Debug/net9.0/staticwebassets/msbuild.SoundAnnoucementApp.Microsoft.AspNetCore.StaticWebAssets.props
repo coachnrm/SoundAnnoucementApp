@@ -408,8 +408,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>swsybuv5hr</Fingerprint>
-      <Integrity>JOZWd9XYwDyrwjSB0PVTcc602GisYED21qQUCSMlGtI=</Integrity>
+      <Fingerprint>pl1pguigaw</Fingerprint>
+      <Integrity>XTxoDnLHWuRlaqiqD9OlqXfF0b49Tal72nNpjTymu6w=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</OriginalItemSpec>
@@ -1080,6 +1080,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\qrprompt.js'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\queueSignalR.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SoundAnnoucementApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>/</BasePath>
+      <RelativePath>js/queueSignalR.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>maeu7ewk88</Fingerprint>
+      <Integrity>Iv3a05AbG4/dCUqcG+11AJKn300/ug6gxJH/OoHjiHg=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\queueSignalR.js'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\rtfConvert.js'))">
       <SourceType>Package</SourceType>
       <SourceId>SoundAnnoucementApp</SourceId>
@@ -1092,8 +1110,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>jh837vymlo</Fingerprint>
-      <Integrity>tzBeanXn+OcPwZ1/pgHD7X0SfVZp0F+d5vxHcmzb10c=</Integrity>
+      <Fingerprint>asdv58nrw6</Fingerprint>
+      <Integrity>isz+y0h7NqI5Ok60QAjPYiChFQ3/RqNaT4BRhWMQ1hU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\rtfConvert.js'))</OriginalItemSpec>
@@ -1218,8 +1236,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>shox1y98kt</Fingerprint>
-      <Integrity>QPPc86f6EPBb0N51rrLnCBU/PPF+qlcTb7c09w+1nkg=</Integrity>
+      <Fingerprint>vyvaiy64hi</Fingerprint>
+      <Integrity>qcWEjZTqo0yKdyv0d2lBp9qvcBEgkig0CMQUtmt5WTQ=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SoundAnnoucementApp.styles.css'))</OriginalItemSpec>

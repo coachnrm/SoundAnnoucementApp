@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "94fU89vwW0c=",
+  "dgSpecHash": "TEWRcOlom1w=",
   "success": true,
   "projectFilePath": "D:\\SoundAnnoucementApp\\SoundAnnoucementApp.csproj",
   "expectedPackageFiles": [
@@ -14,7 +14,14 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.components.web\\9.0.6\\microsoft.aspnetcore.components.web.9.0.6.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\9.0.0\\microsoft.aspnetcore.components.webassembly.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.devserver\\9.0.0\\microsoft.aspnetcore.components.webassembly.devserver.9.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\9.0.0\\microsoft.aspnetcore.connections.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\9.0.0\\microsoft.aspnetcore.http.connections.client.9.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.http.connections.common\\9.0.0\\microsoft.aspnetcore.http.connections.common.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.metadata\\9.0.6\\microsoft.aspnetcore.metadata.9.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.signalr.client\\9.0.0\\microsoft.aspnetcore.signalr.client.9.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.signalr.client.core\\9.0.0\\microsoft.aspnetcore.signalr.client.core.9.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.signalr.common\\9.0.0\\microsoft.aspnetcore.signalr.common.9.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.signalr.protocols.json\\9.0.0\\microsoft.aspnetcore.signalr.protocols.json.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.0\\microsoft.extensions.configuration.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.0\\microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.0\\microsoft.extensions.configuration.binder.9.0.0.nupkg.sha512",
@@ -24,6 +31,7 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.6\\microsoft.extensions.dependencyinjection.abstractions.9.0.6.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.diagnostics\\9.0.0\\microsoft.extensions.diagnostics.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\9.0.0\\microsoft.extensions.diagnostics.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.features\\9.0.0\\microsoft.extensions.features.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\9.0.0\\microsoft.extensions.fileproviders.abstractions.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\9.0.0\\microsoft.extensions.fileproviders.physical.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\9.0.0\\microsoft.extensions.filesystemglobbing.9.0.0.nupkg.sha512",
@@ -38,6 +46,8 @@
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.net.illink.tasks\\9.0.1\\microsoft.net.illink.tasks.9.0.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.1\\microsoft.net.sdk.webassembly.pack.9.0.1.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\qrcoder\\1.6.0\\qrcoder.1.6.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.net.serversentevents\\9.0.0\\system.net.serversentevents.9.0.0.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\system.threading.channels\\9.0.0\\system.threading.channels.9.0.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\9.0.1\\microsoft.netcore.app.runtime.mono.browser-wasm.9.0.1.nupkg.sha512"
   ],
   "logs": []

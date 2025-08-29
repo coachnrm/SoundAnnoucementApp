@@ -249,6 +249,10 @@
       "PackagePath": "staticwebassets\\js\\qrprompt.js"
     },
     {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\queueSignalR.js",
+      "PackagePath": "staticwebassets\\js\\queueSignalR.js"
+    },
+    {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\rtfConvert.js",
       "PackagePath": "staticwebassets\\js\\rtfConvert.js"
     },
