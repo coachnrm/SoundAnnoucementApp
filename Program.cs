@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using SoundAnnoucementApp;
 using SoundAnnoucementApp.Pages.MusicPad;
 using SoundAnnoucementApp.Services;
+using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.AspNetCore.Components; // เพิ่ม namespace นี้
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -30,10 +32,21 @@ builder.Services.AddHttpClient("OpApi", client =>
     // client.BaseAddress = new Uri("http://10.134.50.175:8000/");
     client.BaseAddress = new Uri("http://localhost:5222/");
 });
+
 builder.Services.AddHttpClient("QueueApi", client =>
 {
     // client.BaseAddress = new Uri("http://10.134.50.175:8000/");
     client.BaseAddress = new Uri("http://localhost:5041/");
+});
+
+// ✅ เพิ่มบริการสำหรับ SignalR HubConnection
+builder.Services.AddSingleton<HubConnection>(sp => 
+{
+    var navigationManager = sp.GetRequiredService<NavigationManager>();
+    return new HubConnectionBuilder()
+        .WithUrl(navigationManager.ToAbsoluteUri("/queuehub"))
+        .WithAutomaticReconnect()
+        .Build();
 });
 
 builder.Services.AddSingleton<QueueService>();
@@ -43,7 +56,7 @@ builder.Services.AddHttpClient<IpdService>(client =>
     client.BaseAddress = new Uri("http://172.16.200.202:8089/");
 });
 
-
+// ✅ เพิ่มบริการสำหรับจัดการ SignalR connection
+builder.Services.AddScoped<SignalRService>();
 
 await builder.Build().RunAsync();
-

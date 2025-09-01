@@ -43,21 +43,21 @@
                 </div>
                 
                 <div class="col-md-3">
-                    <label class="form-label fw-bold">ห้องตรวจ</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-hospital"></i></span>
-                        <select class="form-select" @bind="selectedDepartment">
-                            <option value="">ทั้งหมด</option>
-                            @if (availableDepartments?.Count > 0)
-                            {
-                                @foreach (var dept in availableDepartments)
+                        <label class="form-label fw-bold">ห้องตรวจ</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hospital"></i></span>
+                            <select class="form-select" value="selectedDepartment" @onchange="(e) => OnDepartmentChanged(e)">
+                                <option value="">ทั้งหมด</option>
+                                @if (availableDepartments?.Count > 0)
                                 {
-                                    <option value="@dept.Name">@dept.Name</option>
+                                    @foreach (var dept in availableDepartments)
+                                    {
+                                        <option value="@dept.Name">@dept.Name</option>
+                                    }
                                 }
-                            }
-                        </select>
+                            </select>
+                        </div>
                     </div>
-                </div>
                 
                 <div class="col-md-2 d-flex align-items-end">
                     <button class="btn btn-outline-primary w-100" @onclick="RefreshData">
@@ -70,14 +70,14 @@
 </div>
 
 <!-- Alert Message -->
-@if (!string.IsNullOrEmpty(message))
+@* @if (!string.IsNullOrEmpty(message))
 {
     <div class="alert @alertClass alert-dismissible fade show mt-3" role="alert">
         <i class="fas @(alertClass.Contains("success") ? "fa-check-circle" : alertClass.Contains("danger") ? "fa-exclamation-circle" : "fa-info-circle") me-2"></i>
         @message
         <button type="button" class="btn-close" @onclick="ClearMessage"></button>
     </div>
-}
+} *@
 
     <!-- Queue Content -->
     <div class="queue-content mt-4">
@@ -514,8 +514,9 @@
 }
 
 @code {
-    private HubConnection? hubConnection;
+   private HubConnection? hubConnection;
     private bool isConnected = false;
+    private string connectionStatus = "กำลังเชื่อมต่อ...";
     
     private string userName = string.Empty;
     private string selectedDepartment = string.Empty;
@@ -532,10 +533,11 @@
     private PatientInfo? patientInfo = null;
     private Dictionary<string, string> patientNames = new();
     private CancellationTokenSource _cancellationTokenSource = new();
+    
 
     private int QueueCount => QueueService.Count();
 
-    protected override async Task OnInitializedAsync()
+     protected override async Task OnInitializedAsync()
     {
         await LoadAvailableDepartments();
         await LoadData();
@@ -546,29 +548,28 @@
     {
         try
         {
-            // ใช้ URL ที่ถูกต้องสำหรับ SignalR
-            var hubUrl = NavigationManager.ToAbsoluteUri("/queuehub");
+            // ใช้ URL แบบเต็มและถูกต้อง
+            var hubUrl = "http://localhost:5041/queuehub"; // เปลี่ยนเป็นพอร์ต 5041
             Console.WriteLine($"Connecting to SignalR hub at: {hubUrl}");
             
             hubConnection = new HubConnectionBuilder()
-                .WithUrl(hubUrl)
-                .WithAutomaticReconnect()
+                .WithUrl(hubUrl, options =>
+                {
+                    // ตั้งค่าเพิ่มเติมหากจำเป็น
+                })
+                .WithAutomaticReconnect(new[] {
+                    TimeSpan.Zero,
+                    TimeSpan.FromSeconds(2),
+                    TimeSpan.FromSeconds(5),
+                    TimeSpan.FromSeconds(10)
+                })
                 .Build();
 
-            hubConnection.Closed += async (error) =>
-            {
-                isConnected = false;
-                Console.WriteLine($"SignalR connection closed: {error?.Message}");
-                await InvokeAsync(StateHasChanged);
-                
-                // พยายาม reconnect หลังจาก delay
-                await Task.Delay(3000);
-                await InitializeSignalR();
-            };
-
+            // ตั้งค่า event handlers
             hubConnection.Reconnecting += error =>
             {
                 isConnected = false;
+                connectionStatus = "กำลังเชื่อมต่อใหม่...";
                 Console.WriteLine($"SignalR reconnecting: {error?.Message}");
                 return Task.CompletedTask;
             };
@@ -576,112 +577,142 @@
             hubConnection.Reconnected += connectionId =>
             {
                 isConnected = true;
+                connectionStatus = "เชื่อมต่อเรียบร้อย";
                 Console.WriteLine($"SignalR reconnected: {connectionId}");
                 return Task.CompletedTask;
             };
 
-            // กำหนดการรับข้อมูลจาก Server
-            hubConnection.On<string>("ReceiveQueueUpdate", (message) =>
+            hubConnection.Closed += async error =>
             {
-                Console.WriteLine($"Queue update received: {message}");
-                InvokeAsync(() =>
+                isConnected = false;
+                connectionStatus = "เชื่อมต่อขาด";
+                Console.WriteLine($"SignalR connection closed: {error?.Message}");
+                
+                // พยายาม reconnect หลังจาก delay
+                await Task.Delay(5000);
+                if (!_cancellationTokenSource.Token.IsCancellationRequested)
                 {
-                    this.message = $"อัปเดตล่าสุด: {message}";
+                    await InitializeSignalR();
+                }
+            };
+
+            // กำหนดการรับข้อมูลจาก Server - ใช้ชื่อ method ที่ตรงกับ Server
+            hubConnection.On<object>("NewQueueAdded", async (queueData) =>
+            {
+                Console.WriteLine("New queue added via SignalR");
+                await InvokeAsync(async () =>
+                {
+                    message = "มีคิวใหม่เพิ่มเข้ามาในระบบ";
                     alertClass = "alert-info";
+                    await RefreshData();
+                    StateHasChanged();
+                });
+            });
+
+            hubConnection.On<object>("QueueStatusUpdated", async (queueData) =>
+            {
+                Console.WriteLine("Queue status updated via SignalR");
+                await InvokeAsync(async () =>
+                {
+                    message = "อัปเดตสถานะคิวเรียบร้อย";
+                    alertClass = "alert-info";
+                    await RefreshData();
+                    StateHasChanged();
+                });
+            });
+
+            hubConnection.On<object>("QueueStatusHxUpdated", async (queueData) =>
+            {
+                Console.WriteLine("Queue history status updated via SignalR");
+                await InvokeAsync(async () =>
+                {
+                    message = "อัปเดตสถานะประวัติคิวเรียบร้อย";
+                    alertClass = "alert-info";
+                    await RefreshData();
                     StateHasChanged();
                 });
             });
 
             // เริ่มการเชื่อมต่อ
-            await hubConnection.StartAsync();
+            await hubConnection.StartAsync(_cancellationTokenSource.Token);
             isConnected = true;
+            connectionStatus = "เชื่อมต่อเรียบร้อย";
             Console.WriteLine("SignalR connected successfully");
+            
+            // Join group ทั่วไป
+            await hubConnection.InvokeAsync("JoinAllQueuesGroup");
         }
         catch (Exception ex)
         {
             Console.WriteLine($"SignalR connection error: {ex.Message}");
             isConnected = false;
-            // ลองเชื่อมต่อใหม่หลังจาก delay
-            await Task.Delay(5000);
-            await InitializeSignalR();
+            connectionStatus = "เชื่อมต่อล้มเหลว";
         }
     }
 
 
-    private async Task MonitorConnection()
+      private async Task MonitorConnection()
     {
-        while (true)
+        while (!_cancellationTokenSource.Token.IsCancellationRequested)
         {
-            await Task.Delay(30000); // ตรวจสอบทุก 30 วินาที
+            await Task.Delay(10000); // ตรวจสอบทุก 10 วินาที
             
             if (hubConnection == null || hubConnection.State == HubConnectionState.Disconnected)
             {
                 Console.WriteLine("Connection lost, attempting to reconnect...");
                 await InitializeSignalR();
             }
-            else if (hubConnection.State == HubConnectionState.Connected)
+            else if (hubConnection.State == HubConnectionState.Connected && !isConnected)
             {
                 isConnected = true;
+                connectionStatus = "เชื่อมต่อเรียบร้อย";
                 await InvokeAsync(StateHasChanged);
             }
         }
     }
 
-    private string GetConnectionStatusText()
+     private string GetConnectionStatusText()
     {
-        return isConnected ? "เชื่อมต่อเรียบร้อย" : "กำลังเชื่อมต่อ...";
+        return connectionStatus;
     }
 
     private string GetConnectionStatusClass()
     {
-        return isConnected ? "connection-status connected" : "connection-status connecting";
+        return isConnected ? "connection-status connected" : "connection-status disconnected";
     }
+
     public async ValueTask DisposeAsync()
     {
-        _cancellationTokenSource?.Cancel();
+        _cancellationTokenSource.Cancel();
         
         if (hubConnection != null)
         {
-            await hubConnection.StopAsync();
-            await hubConnection.DisposeAsync();
+            try
+            {
+                // ออกจากกลุ่มทั้งหมดก่อน disconnect
+                if (!string.IsNullOrEmpty(selectedDepartment) && isConnected)
+                {
+                    await hubConnection.InvokeAsync("LeaveDepartmentGroup", selectedDepartment);
+                }
+                
+                if (isConnected)
+                {
+                    await hubConnection.InvokeAsync("LeaveAllQueuesGroup");
+                }
+                
+                await hubConnection.StopAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during dispose: {ex.Message}");
+            }
+            finally
+            {
+                await hubConnection.DisposeAsync();
+            }
         }
         
-        _cancellationTokenSource?.Dispose();
-    }
-
-    private void ClearMessage()
-    {
-        message = string.Empty;
-    }
-
-      private async Task LoadAvailableDepartments()
-    {
-        try
-        {
-            Console.WriteLine("กำลังโหลดรายการห้องตรวจ...");
-            
-            // ตรวจสอบว่าใช้พอร์ตที่ถูกต้อง (5137 แทน 5041)
-            var client = _httpClientFactory.CreateClient("QueueApi");
-            
-            // หรือใช้ HttpClient โดยตรงแทนการใช Named Client
-            // var client = new HttpClient { BaseAddress = new Uri("http://localhost:5137") };
-            
-            var departments = await client.GetFromJsonAsync<List<QueueDepartment>>("api/DepartmentName");
-            
-            if (departments != null && departments.Count > 0)
-            {
-                availableDepartments = departments.OrderBy(d => d.Name).ToList();
-                Console.WriteLine($"โหลดห้องตรวจได้ {availableDepartments.Count} รายการ");
-            }
-            else
-            {
-                Console.WriteLine("ไม่พบข้อมูลห้องตรวจ");
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error loading departments: {ex.Message}");
-        }
+        _cancellationTokenSource.Dispose();
     }
 
     private async Task OnDepartmentChanged(ChangeEventArgs e)
@@ -690,23 +721,160 @@
         var oldDepartment = selectedDepartment;
         selectedDepartment = newDepartment;
         
-        // ออกจากกลุ่มเดิม (ถ้ามี)
-        if (!string.IsNullOrEmpty(oldDepartment) && hubConnection != null && isConnected)
+        try
         {
-            await hubConnection.InvokeAsync("LeaveDepartmentGroup", oldDepartment);
+            // ออกจากกลุ่มเดิม (ถ้ามีและเชื่อมต่ออยู่)
+            if (!string.IsNullOrEmpty(oldDepartment) && hubConnection != null && isConnected)
+            {
+                await hubConnection.InvokeAsync("LeaveDepartmentGroup", oldDepartment);
+                Console.WriteLine($"Left department group: {oldDepartment}");
+            }
+            
+            // เข้าร่วมกลุ่มใหม่ (ถ้ามีและเชื่อมต่ออยู่)
+            if (!string.IsNullOrEmpty(selectedDepartment) && hubConnection != null && isConnected)
+            {
+                await hubConnection.InvokeAsync("JoinDepartmentGroup", selectedDepartment);
+                Console.WriteLine($"Joined department group: {selectedDepartment}");
+            }
         }
-        
-        // เข้าร่วมกลุ่มใหม่ (ถ้ามี)
-        if (!string.IsNullOrEmpty(selectedDepartment) && hubConnection != null && isConnected)
+        catch (Exception ex)
         {
-            await hubConnection.InvokeAsync("JoinDepartmentGroup", selectedDepartment);
+            Console.WriteLine($"Error changing department group: {ex.Message}");
         }
         
         Console.WriteLine($"เลือกห้องตรวจ: {selectedDepartment}");
         await ApplyDepartmentFilter();
-        StateHasChanged();
+        await InvokeAsync(StateHasChanged);
     }
+
+    private void ClearMessage()
+    {
+        message = string.Empty;
+    }
+
+   @* private async Task LoadAvailableDepartments()
+    {
+        try
+        {
+            Console.WriteLine("กำลังโหลดรายการห้องตรวจ...");
+            
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            client.Timeout = TimeSpan.FromSeconds(30);
+            
+            var response = await client.GetAsync("api/DepartmentName");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var departments = JsonConvert.DeserializeObject<List<QueueDepartment>>(json);
+                
+                if (departments != null && departments.Count > 0)
+                {
+                    availableDepartments = departments.OrderBy(d => d.Name).ToList();
+                    Console.WriteLine($"โหลดห้องตรวจได้ {availableDepartments.Count} รายการ");
+                }
+                else
+                {
+                    Console.WriteLine("ไม่พบข้อมูลห้องตรวจ");
+                    LoadFallbackDepartments();
+                }
+            }
+            else
+            {
+                Console.WriteLine($"HTTP error: {response.StatusCode}");
+                LoadFallbackDepartments();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading departments: {ex.Message}");
+            LoadFallbackDepartments();
+        }
+    } *@
+
+    // ✅ เพิ่ม method ที่หายไป
+    @* private void LoadFallbackDepartments()
+    {
+        availableDepartments = new List<QueueDepartment>
+        {
+            new QueueDepartment { Id = 1, Name = "ห้องตรวจทั่วไป" },
+            new QueueDepartment { Id = 2, Name = "ห้องตรวจศัลยกรรม" },
+            new QueueDepartment { Id = 3, Name = "ห้องตรวจกระดูก" },
+            new QueueDepartment { Id = 4, Name = "ห้องตรวจผิวหนัง" }
+        };
+        Console.WriteLine("ใช้ข้อมูลห้องตรวจสำรอง");
+    }
+
+    private async Task LoadAvailableDepartments()
+    {
+        try
+        {
+            Console.WriteLine("กำลังโหลดรายการห้องตรวจ...");
+            
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var response = await client.GetAsync("api/DepartmentName");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var departments = JsonSerializer.Deserialize<List<QueueDepartment>>(json);
+                
+                if (departments != null && departments.Count > 0)
+                {
+                    availableDepartments = departments.OrderBy(d => d.Name).ToList();
+                    Console.WriteLine($"โหลดห้องตรวจได้ {availableDepartments.Count} รายการ");
+                }
+                else
+                {
+                    LoadFallbackDepartments();
+                }
+            }
+            else
+            {
+                LoadFallbackDepartments();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading departments: {ex.Message}");
+            LoadFallbackDepartments();
+        }
+    } *@
     
+    private async Task LoadAvailableDepartments()
+    {
+        try
+        {
+            Console.WriteLine("กำลังโหลดรายการห้องตรวจ...");
+            
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var departments = await client.GetFromJsonAsync<List<QueueDepartment>>("api/DepartmentName");
+            
+            if (departments != null && departments.Count > 0)
+            {
+                availableDepartments = departments.OrderBy(d => d.Name).ToList();
+                Console.WriteLine($"โหลดห้องตรวจได้ {availableDepartments.Count} รายการ");
+                message = "โหลดรายการห้องตรวจสำเร็จ";
+                alertClass = "alert-success";
+            }
+            else
+            {
+                message = "ไม่พบข้อมูลห้องตรวจ";
+                alertClass = "alert-warning";
+                Console.WriteLine("ไม่พบข้อมูลห้องตรวจ");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading departments: {ex.Message}");
+            message = $"ไม่สามารถโหลดรายการห้องตรวจ: {ex.Message}";
+            alertClass = "alert-danger";
+        }
+        finally
+        {
+            StateHasChanged();
+        }
+    }
 
    private async Task ApplyDepartmentFilter()
     {
@@ -804,34 +972,49 @@
         }
     }
 
-    private async Task LoadPatientNames()
+   private async Task LoadPatientNames()
     {
         try
         {
             var allHns = new List<string>();
-            allHns.AddRange(filteredQueuePatients.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
-            allHns.AddRange(filteredQueuePatientHxs.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
-            allHns.AddRange(filteredQueuePatientS2s.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
-            allHns.AddRange(filteredQueuePatientHsS2s.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
+            
+            if (filteredQueuePatients != null)
+                allHns.AddRange(filteredQueuePatients.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
+            
+            if (filteredQueuePatientHxs != null)
+                allHns.AddRange(filteredQueuePatientHxs.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
+            
+            if (filteredQueuePatientS2s != null)
+                allHns.AddRange(filteredQueuePatientS2s.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
+            
+            if (filteredQueuePatientHsS2s != null)
+                allHns.AddRange(filteredQueuePatientHsS2s.Select(p => p.Hn).Where(hn => !string.IsNullOrEmpty(hn))!);
 
-            var uniqueHns = allHns.Distinct().ToList();
+            var uniqueHns = allHns.Distinct().Where(hn => !patientNames.ContainsKey(hn)).ToList();
 
             foreach (var hn in uniqueHns)
             {
-                if (!patientNames.ContainsKey(hn) && !string.IsNullOrEmpty(hn))
+                if (string.IsNullOrEmpty(hn)) continue;
+
+                try
                 {
-                    try
+                    var client = _httpClientFactory.CreateClient("BackEnd");
+                    client.Timeout = TimeSpan.FromSeconds(10);
+                    
+                    var patient = await client.GetFromJsonAsync<PatientInfo>($"api/IpdVs/GetPatientByHn?hn={hn}");
+                    
+                    if (patient != null)
                     {
-                        var client = _httpClientFactory.CreateClient("BackEnd");
-                        client.BaseAddress = new Uri("http://localhost:5137");
-                        
-                        var patient = await client.GetFromJsonAsync<PatientInfo>($"api/IpdVs/GetPatientByHn?hn={hn}");
-                        patientNames[hn] = patient != null ? $"{patient.Fname} {patient.Lname}" : "ไม่พบข้อมูล";
+                        patientNames[hn] = $"{patient.Pname}{patient.Fname} {patient.Lname}";
                     }
-                    catch
+                    else
                     {
-                        patientNames[hn] = "HN: " + hn;
+                        patientNames[hn] = $"HN: {hn}";
                     }
+                }
+                catch
+                {
+                    patientNames[hn] = $"HN: {hn}";
                 }
             }
         }
@@ -872,28 +1055,79 @@
                 message = $"อัพเดทสถานะผู้ป่วย HN: {hn} สำเร็จ";
                 alertClass = "alert-success";
                 
-                // แจ้งเตือนผ่าน SignalR
+                // แจ้งเตือนผ่าน SignalR - ใช้ method name ที่ถูกต้อง
                 if (isConnected && hubConnection != null)
                 {
-                    await hubConnection.SendAsync("SendQueueUpdate", 
-                        $"อัปเดตสถานะคิว HN: {hn} เป็น {GetStatusText(status)}");
+                    try
+                    {
+                        await hubConnection.SendAsync("SendQueueUpdate", 
+                            $"อัปเดตสถานะคิว HN: {hn} เป็น {GetStatusText(status)}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"SignalR send error: {ex.Message}");
+                    }
                 }
                 
                 await Task.Delay(500);
                 await RefreshData();
             }
-            // แจ้งเตือนผ่าน SignalR
-            if (isConnected && hubConnection != null)
+            else
             {
-                try
+                message = $"เกิดข้อผิดพลาด: {response.StatusCode}";
+                alertClass = "alert-danger";
+            }
+        }
+        catch (Exception ex)
+        {
+            message = $"เกิดข้อผิดพลาด: {ex.Message}";
+            alertClass = "alert-danger";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task UpdateStatusHx(int patientId, int status, string hn)
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var updateDto = new QueueStatusHxUpdateDto { StatusHx = status };
+            
+            var response = await client.PutAsJsonAsync($"api/Queue/AddQueueStatusHx/{patientId}", updateDto);
+
+            if (response.IsSuccessStatusCode)
+            {
+                message = $"อัพเดทสถานะผู้ป่วย HN: {hn} สำเร็จ";
+                alertClass = "alert-success";
+                
+                // แจ้งเตือนผ่าน SignalR
+                if (isConnected && hubConnection != null)
                 {
-                    await hubConnection.SendAsync("SendQueueUpdate", 
-                        $"อัปเดตสถานะคิว HN: {hn} เป็น {GetStatusText(status)}");
+                    try
+                    {
+                        await hubConnection.SendAsync("NotifyQueueStatusHxUpdate", 
+                            new { 
+                                Id = patientId, 
+                                Hn = hn, 
+                                StatusHx = status,
+                                UpdatedAt = DateTime.Now 
+                            });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"SignalR send error: {ex.Message}");
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"SignalR send error: {ex.Message}");
-                }
+                
+                await Task.Delay(500);
+                await RefreshData();
             }
             else
             {
@@ -924,51 +1158,7 @@
         };
     }
     
-    private async Task UpdateStatusHx(int patientId, int status, string hn)
-    {
-        try
-        {
-            isLoading = true;
-            StateHasChanged();
-
-            var client = _httpClientFactory.CreateClient("QueueApi");
-            var updateDto = new QueueStatusHxUpdateDto { StatusHx = status };
-            
-            var response = await client.PutAsJsonAsync($"api/Queue/AddQueueStatusHx/{patientId}", updateDto);
-
-            if (response.IsSuccessStatusCode)
-            {
-                message = $"อัพเดทสถานะผู้ป่วย HN: {hn} สำเร็จ";
-                alertClass = "alert-success";
-                
-                // แจ้งเตือนผ่าน SignalR
-                if (isConnected && hubConnection != null)
-                {
-                    await hubConnection.SendAsync("SendQueueUpdate", 
-                        $"อัปเดตสถานะประวัติคิว HN: {hn} เป็น {GetStatusText(status)}");
-                }
-                
-                await Task.Delay(500);
-                await RefreshData();
-            }
-            else
-            {
-                var errorContent = await response.Content.ReadAsStringAsync();
-                message = $"เกิดข้อผิดพลาด: {response.StatusCode} - {errorContent}";
-                alertClass = "alert-danger";
-            }
-        }
-        catch (Exception ex)
-        {
-            message = $"เกิดข้อผิดพลาด: {ex.Message}";
-            alertClass = "alert-danger";
-        }
-        finally
-        {
-            isLoading = false;
-            StateHasChanged();
-        }
-    }
+    
 
     private async Task CallPatient(QueuePatient patient, int? queueNumber = null)
     {
@@ -981,8 +1171,21 @@
             // แจ้งเตือนผ่าน SignalR ว่ามีการเรียกคิว
             if (isConnected && hubConnection != null)
             {
-                await hubConnection.SendAsync("SendQueueUpdate", 
-                    $"เรียกคิว {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode}");
+                try
+                {
+                    await hubConnection.SendAsync("NotifyQueueCall", 
+                        new {
+                            QueueNumber = actualQueueNumber,
+                            PatientName = userName,
+                            Department = departmentCode,
+                            CallType = " examination",
+                            CalledAt = DateTime.Now
+                        });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"SignalR send error: {ex.Message}");
+                }
             }
             
             await AnnounceQueue1(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);

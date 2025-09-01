@@ -282,38 +282,37 @@ animation: fadeInOut-b-uvutyhv3l3 3s ease-in-out;
 100% { opacity: 0; transform: translateY(20px); }
 }
 
+.connection-status-container[b-uvutyhv3l3] {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
 
+.connection-status[b-uvutyhv3l3] {
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-      .connection-status-container[b-uvutyhv3l3] {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        z-index: 1000;
-    }
+.connection-status.connected[b-uvutyhv3l3] {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
 
-    .connection-status[b-uvutyhv3l3] {
-        padding: 0.5rem 1rem;
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        display: flex;
-        align-items: center;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
+.connection-status.disconnected[b-uvutyhv3l3] {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
 
-    .connection-status.connected[b-uvutyhv3l3] {
-        background-color: #d4edda;
-        color: #155724;
-        border: 1px solid #c3e6cb;
-    }
-
-    .connection-status.connecting[b-uvutyhv3l3] {
-        background-color: #fff3cd;
-        color: #856404;
-        border: 1px solid #ffeeba;
-    }
-
-    .connection-status.disconnected[b-uvutyhv3l3] {
-        background-color: #f8d7da;
-        color: #721c24;
-        border: 1px solid #f5c6cb;
-    }
+.connection-status.connecting[b-uvutyhv3l3] {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
