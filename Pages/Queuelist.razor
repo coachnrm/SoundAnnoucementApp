@@ -1,4 +1,4 @@
-@page "/queuelist"
+@page "/queuelist2"
 @inject IJSRuntime JSRuntime
 @using System.Text.Json
 @using Microsoft.AspNetCore.SignalR.Client
@@ -9,14 +9,6 @@
 @inject NavigationManager NavigationManager
 @inject QueueService QueueService
 @implements IAsyncDisposable
-
-@* เพิ่มการแสดงสถานะการเชื่อมต่อ SignalR *@
-<div class="connection-status-container">
-    <div class="@GetConnectionStatusClass()" title="@GetConnectionStatusText()">
-        <i class="fas @(isConnected ? "fa-wifi" : "fa-wifi-slash") me-1"></i>
-        @GetConnectionStatusText()
-    </div>
-</div>
 
 <!-- Header Section -->
 <div class="queue-header">
@@ -69,7 +61,8 @@
                             </select>
                         </div>
                     </div>
-                 <!-- NEW: Spot Place Dropdown -->
+
+                <!-- NEW: Spot Place Dropdown -->
                 <div class="col-md-3">
                     <label class="form-label fw-bold">ช่องซักประวัติ</label>
                     <div class="input-group">
@@ -84,6 +77,7 @@
                         </select>
                     </div>
                 </div>
+                
                 <div class="col-md-2 d-flex align-items-end">
                     @* <button class="btn btn-outline-primary w-100" @onclick="RefreshData">
                         <i class="fas fa-sync-alt me-1"></i> Refresh
@@ -172,7 +166,7 @@
                                                             <span class="badge bg-queue-number">@patient.QueueHx</span>
                                                         </td>
                                                         <td class="text-center action-buttons">
-                                                              <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep, selectedSpotPlace)" title="เรียกผู้ป่วย">
+                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep, selectedSpotPlace)" title="เรียกผู้ป่วย">
                                                                 <i class="fas fa-bullhorn me-1"></i> เรียก
                                                             </button>
                                                             <button class="btn btn-arrived me-2" @onclick="() => UpdateStatusHx(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
@@ -545,6 +539,8 @@
     
     private string userName = string.Empty;
     private string selectedDepartment = string.Empty;
+    
+    // Add this variable to your code section
     private string selectedSpotPlace = "";
     private List<QueuePatient> filteredQueuePatients = new();
     private List<QueuePatient> filteredQueuePatientS2s = new();

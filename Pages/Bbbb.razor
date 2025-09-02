@@ -32,6 +32,60 @@
             </span>
         </div>
     </div>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls card">
+        <div class="card-body py-3">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-5">
+                    <label class="form-label fw-bold">ชื่อผู้ป่วยที่จะประกาศ</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <InputText class="form-control" @bind-Value="userName" placeholder="กรอกชื่อผู้ป่วย" />
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                        <label class="form-label fw-bold">ห้องตรวจ</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-hospital"></i></span>
+                            <select class="form-select" value="selectedDepartment" @onchange="(e) => OnDepartmentChanged(e)">
+                                <option value="">ทั้งหมด</option>
+                                @if (availableDepartments?.Count > 0)
+                                {
+                                    @foreach (var dept in availableDepartments)
+                                    {
+                                        <option value="@dept.Name">@dept.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                <!-- NEW: Spot Place Dropdown -->
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">ช่องซักประวัติ</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                        <select class="form-select" @bind="selectedSpotPlace">
+                            <option value="">เลือกช่องซักประวัติ</option>
+                            <option value="1">ช่องซักประวัติที่ 1</option>
+                            <option value="2">ช่องซักประวัติที่ 2</option>
+                            <option value="3">ช่องซักประวัติที่ 3</option>
+                            <option value="4">ช่องซักประวัติที่ 4</option>
+                            <option value="5">ช่องซักประวัติที่ 5</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 d-flex align-items-end">
+                    @* <button class="btn btn-outline-primary w-100" @onclick="RefreshData">
+                        <i class="fas fa-sync-alt me-1"></i> Refresh
+                    </button> *@
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Alert Message -->
@@ -112,7 +166,7 @@
                                                             <span class="badge bg-queue-number">@patient.QueueHx</span>
                                                         </td>
                                                         <td class="text-center action-buttons">
-                                                              <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep, selectedSpotPlace)" title="เรียกผู้ป่วย">
+                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep, selectedSpotPlace)" title="เรียกผู้ป่วย">
                                                                 <i class="fas fa-bullhorn me-1"></i> เรียก
                                                             </button>
                                                             <button class="btn btn-arrived me-2" @onclick="() => UpdateStatusHx(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
@@ -485,6 +539,8 @@
     
     private string userName = string.Empty;
     private string selectedDepartment = string.Empty;
+    
+    // Add this variable to your code section
     private string selectedSpotPlace = "";
     private List<QueuePatient> filteredQueuePatients = new();
     private List<QueuePatient> filteredQueuePatientS2s = new();
