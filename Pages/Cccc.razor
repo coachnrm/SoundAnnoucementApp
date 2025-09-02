@@ -1,0 +1,72 @@
+@page "/queuedisplay"
+@using Microsoft.AspNetCore.SignalR.Client
+@inject NavigationManager Navigation
+
+<h3>📺 จอแสดงคิว</h3>
+
+@if (currentQueue is not null)
+{
+    <div class="alert alert-info">
+        <h2>📢 คิวปัจจุบัน: @currentQueue.QueueName</h2>
+        <p><b>HN:</b> @currentQueue.Hn</p>
+        <p><b>แผนก:</b> @currentQueue.Department</p>
+        <p><b>เวลา:</b> @currentQueue.CalledAt</p>
+    </div>
+}
+else
+{
+    <p>ยังไม่มีคิวที่ถูกเรียก</p>
+}
+
+<ul>
+    @foreach (var log in logs)
+    {
+        <li>@log</li>
+    }
+</ul>
+
+@code {
+    private HubConnection? hubConnection;
+    private QueueEvent? currentQueue;
+    private List<string> logs = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(Navigation.ToAbsoluteUri("/queuehub"))
+            .WithAutomaticReconnect()
+            .Build();
+
+        // ฟัง Event CallQueue
+        hubConnection.On<QueueEvent>("QueueCalled", (data) =>
+        {
+            currentQueue = data;
+            logs.Add($"📢 เรียกคิว {data.QueueName} HN:{data.Hn}");
+            InvokeAsync(StateHasChanged);
+        });
+
+        // ฟัง Event SkipQueue
+        hubConnection.On<object>("QueueSkipped", (data) =>
+        {
+            logs.Add($"⏭ ข้ามคิว: {System.Text.Json.JsonSerializer.Serialize(data)}");
+            InvokeAsync(StateHasChanged);
+        });
+
+        // ฟัง Event FinishQueue
+        hubConnection.On<object>("QueueFinished", (data) =>
+        {
+            logs.Add($"✅ เสร็จสิ้นคิว: {System.Text.Json.JsonSerializer.Serialize(data)}");
+            InvokeAsync(StateHasChanged);
+        });
+
+        await hubConnection.StartAsync();
+    }
+
+    public class QueueEvent
+    {
+        public string Hn { get; set; } = "";
+        public string QueueName { get; set; } = "";
+        public string Department { get; set; } = "";
+        public DateTime CalledAt { get; set; }
+    }
+}

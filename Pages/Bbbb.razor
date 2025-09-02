@@ -1312,12 +1312,32 @@
             var actualQueueNumber = patient.QueueHx ?? 0;
             
             // แจ้งเตือนผ่าน SignalR ว่ามีการเรียกคิว
-            if (isConnected && hubConnection != null)
+            @* if (isConnected && hubConnection != null)
             {
                 await hubConnection.SendAsync("SendQueueUpdate", 
                     $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode} ช่อง {spotPlace}");
+            } *@
+             // แจ้งเตือนผ่าน SignalR
+            if (isConnected && hubConnection != null)
+            {
+                try
+                {
+                    // ส่งข้อมูลไปยังหน้าจอแสดงผล
+                    await hubConnection.SendAsync("SendToDisplayGroup", 
+                        actualQueueNumber.ToString(), 
+                        userName, 
+                        departmentCode, 
+                        spotPlace,
+                        "history");
+                    
+                    Console.WriteLine($"Sent to display: {actualQueueNumber}, {userName}, {departmentCode}, {spotPlace}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"SignalR send error: {ex.Message}");
+                }
             }
-            
+                
             await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
         }
         else
