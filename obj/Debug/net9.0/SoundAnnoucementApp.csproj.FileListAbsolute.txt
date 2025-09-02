@@ -6621,10 +6621,10 @@ D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\g4w20k2kxu-pl1pguigaw.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\p32xbwlkmx-maeu7ewk88.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\z360cmiten-2eqpbetsfx.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\qz8dum9bjy-eaev1y71dg.gz
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.urpiaiksaa.pdb
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.anqgznq79q.wasm
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.anqgznq79q.wasm.gz
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.urpiaiksaa.pdb.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\vvsbcnnopr-anqgznq79q.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\wtlmy325bf-urpiaiksaa.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-dzy2irz662.gz
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.13j2j3qxg3.pdb
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.og7oes4sv2.wasm
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.og7oes4sv2.wasm.gz
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.13j2j3qxg3.pdb.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\vvsbcnnopr-og7oes4sv2.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\wtlmy325bf-13j2j3qxg3.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-mnkgv2qq7m.gz
