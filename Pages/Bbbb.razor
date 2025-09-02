@@ -1303,40 +1303,13 @@
         }
     }
     
-    private async Task CallPatient1(QueuePatient patient, int? queueNumber = null, string spotPlace = "")
+    @* private async Task CallPatient1(QueuePatient patient, int? queueNumber = null, string spotPlace = "")
     {
         if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
         {
             userName = patientNames[patient.Hn];
             var departmentCode = patient.QueueName?.Split('-')[0] ?? "";
             var actualQueueNumber = patient.QueueHx ?? 0;
-            
-            // แจ้งเตือนผ่าน SignalR ว่ามีการเรียกคิว
-            @* if (isConnected && hubConnection != null)
-            {
-                await hubConnection.SendAsync("SendQueueUpdate", 
-                    $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode} ช่อง {spotPlace}");
-            } *@
-             // แจ้งเตือนผ่าน SignalR
-            if (isConnected && hubConnection != null)
-            {
-                try
-                {
-                    // ส่งข้อมูลไปยังหน้าจอแสดงผล
-                    await hubConnection.SendAsync("SendToDisplayGroup", 
-                        actualQueueNumber.ToString(), 
-                        userName, 
-                        departmentCode, 
-                        spotPlace,
-                        "history");
-                    
-                    Console.WriteLine($"Sent to display: {actualQueueNumber}, {userName}, {departmentCode}, {spotPlace}");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"SignalR send error: {ex.Message}");
-                }
-            }
                 
             await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
         }
@@ -1354,6 +1327,56 @@
                 {
                     await hubConnection.SendAsync("SendQueueUpdate", 
                         $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode} ช่อง {spotPlace}");
+                }
+                
+                await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
+            }
+        }
+    } *@
+
+    private async Task CallPatient1(QueuePatient patient, int? queueDep, string spotPlace = "")
+    {
+        if (string.IsNullOrEmpty(spotPlace))
+        {
+            // Show error or select default spot
+            return;
+        }
+
+        if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+        {
+            userName = patientNames[patient.Hn];
+            var departmentCode = patient.QueueName?.Split('-')[0] ?? "";
+            var actualQueueNumber = patient.QueueHx ?? 0;
+            
+            // Send update via SignalR
+            if (isConnected && hubConnection != null)
+            {
+                await hubConnection.SendAsync("SendQueueUpdate", 
+                    spotPlace, 
+                    actualQueueNumber, 
+                    userName, 
+                    departmentCode);
+            }
+            
+            await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
+        }
+        else
+        {
+            searchHn = patient.Hn;
+            await SearchPatientByHn();
+            if (patientInfo != null)
+            {
+                var departmentCode = patient.QueueNameDep?.Split('-')[0] ?? "";
+                var actualQueueNumber = patient.QueueHx ?? 0;
+                
+                // Send update via SignalR
+                if (isConnected && hubConnection != null)
+                {
+                    await hubConnection.SendAsync("SendQueueUpdate", 
+                        spotPlace, 
+                        actualQueueNumber, 
+                        userName, 
+                        departmentCode);
                 }
                 
                 await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
