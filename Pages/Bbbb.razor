@@ -69,6 +69,22 @@
                             </select>
                         </div>
                     </div>
+
+                <!-- NEW: Spot Place Dropdown -->
+                <div class="col-md-3">
+                    <label class="form-label fw-bold">ช่องซักประวัติ</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                        <select class="form-select" @bind="selectedSpotPlace">
+                            <option value="">เลือกช่องซักประวัติ</option>
+                            <option value="1">ช่องซักประวัติที่ 1</option>
+                            <option value="2">ช่องซักประวัติที่ 2</option>
+                            <option value="3">ช่องซักประวัติที่ 3</option>
+                            <option value="4">ช่องซักประวัติที่ 4</option>
+                            <option value="5">ช่องซักประวัติที่ 5</option>
+                        </select>
+                    </div>
+                </div>
                 
                 <div class="col-md-2 d-flex align-items-end">
                     @* <button class="btn btn-outline-primary w-100" @onclick="RefreshData">
@@ -158,7 +174,7 @@
                                                             <span class="badge bg-queue-number">@patient.QueueHx</span>
                                                         </td>
                                                         <td class="text-center action-buttons">
-                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep)" title="เรียกผู้ป่วย">
+                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep, selectedSpotPlace)" title="เรียกผู้ป่วย">
                                                                 <i class="fas fa-bullhorn me-1"></i> เรียก
                                                             </button>
                                                             <button class="btn btn-arrived me-2" @onclick="() => UpdateStatusHx(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
@@ -531,6 +547,9 @@
     
     private string userName = string.Empty;
     private string selectedDepartment = string.Empty;
+    
+    // Add this variable to your code section
+    private string selectedSpotPlace = "";
     private List<QueuePatient> filteredQueuePatients = new();
     private List<QueuePatient> filteredQueuePatientS2s = new();
     private List<QueuePatient> filteredQueuePatientHxs = new();
@@ -1292,7 +1311,7 @@
         }
     }
     
-    private async Task CallPatient1(QueuePatient patient, int? queueNumber = null)
+    private async Task CallPatient1(QueuePatient patient, int? queueNumber = null, string spotPlace = "")
     {
         if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
         {
@@ -1304,10 +1323,10 @@
             if (isConnected && hubConnection != null)
             {
                 await hubConnection.SendAsync("SendQueueUpdate", 
-                    $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode}");
+                    $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode} ช่อง {spotPlace}");
             }
             
-            await AnnounceQueue2(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);
+            await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
         }
         else
         {
@@ -1322,10 +1341,10 @@
                 if (isConnected && hubConnection != null)
                 {
                     await hubConnection.SendAsync("SendQueueUpdate", 
-                        $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode}");
+                        $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode} ช่อง {spotPlace}");
                 }
                 
-                await AnnounceQueue2(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);
+                await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
             }
         }
     }
@@ -1392,12 +1411,12 @@
         }
     }
     
-    private async Task AnnounceQueue2(int queueNumber, string name, string channel, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
+    private async Task AnnounceQueue2(int queueNumber, string name, string channel,  string spotPlace, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
     {
         try
         {
             await JSRuntime.InvokeVoidAsync("audioHelper.announceQueue2", 
-                queueNumber, name, channel, rate, pitch, volume);
+                queueNumber, name, channel, spotPlace, rate, pitch, volume);
         }
         catch (Exception ex)
         {
