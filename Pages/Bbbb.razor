@@ -10,14 +10,6 @@
 @inject QueueService QueueService
 @implements IAsyncDisposable
 
-@* เพิ่มการแสดงสถานะการเชื่อมต่อ SignalR *@
-<div class="connection-status-container">
-    <div class="@GetConnectionStatusClass()" title="@GetConnectionStatusText()">
-        <i class="fas @(isConnected ? "fa-wifi" : "fa-wifi-slash") me-1"></i>
-        @GetConnectionStatusText()
-    </div>
-</div>
-
 <!-- Header Section -->
 <div class="queue-header">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -38,44 +30,6 @@
                     @QueueCount
                 }
             </span>
-        </div>
-    </div>
-
-    <!-- Filter Controls -->
-    <div class="filter-controls card">
-        <div class="card-body py-3">
-            <div class="row g-3 align-items-center">
-                <div class="col-md-5">
-                    <label class="form-label fw-bold">ชื่อผู้ป่วยที่จะประกาศ</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        <InputText class="form-control" @bind-Value="userName" placeholder="กรอกชื่อผู้ป่วย" />
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                        <label class="form-label fw-bold">ห้องตรวจ</label>
-                        <div class="input-group">
-                            <span class="input-group-text"><i class="fas fa-hospital"></i></span>
-                            <select class="form-select" value="selectedDepartment" @onchange="(e) => OnDepartmentChanged(e)">
-                                <option value="">ทั้งหมด</option>
-                                @if (availableDepartments?.Count > 0)
-                                {
-                                    @foreach (var dept in availableDepartments)
-                                    {
-                                        <option value="@dept.Name">@dept.Name</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-                    </div>
-                
-                <div class="col-md-2 d-flex align-items-end">
-                    @* <button class="btn btn-outline-primary w-100" @onclick="RefreshData">
-                        <i class="fas fa-sync-alt me-1"></i> Refresh
-                    </button> *@
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -158,7 +112,7 @@
                                                             <span class="badge bg-queue-number">@patient.QueueHx</span>
                                                         </td>
                                                         <td class="text-center action-buttons">
-                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep)" title="เรียกผู้ป่วย">
+                                                              <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep, selectedSpotPlace)" title="เรียกผู้ป่วย">
                                                                 <i class="fas fa-bullhorn me-1"></i> เรียก
                                                             </button>
                                                             <button class="btn btn-arrived me-2" @onclick="() => UpdateStatusHx(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
@@ -258,7 +212,7 @@
                                                             <span class="badge bg-queue-number">@patient.QueueHx</span>
                                                         </td>
                                                         <td class="text-center action-buttons">
-                                                            <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep)" title="เรียกผู้ป่วยอีกครั้ง">
+                                                             <button class="btn btn-call me-2" @onclick="() => CallPatient1(patient, patient.QueueDep, selectedSpotPlace)" title="เรียกผู้ป่วย">
                                                                 <i class="fas fa-bullhorn me-1"></i> เรียก
                                                             </button>
                                                             <button class="btn btn-arrived" @onclick="() => UpdateStatusHx(patient.Id, 1, patient.Hn)" title="ผู้ป่วยมาแล้ว">
@@ -531,6 +485,7 @@
     
     private string userName = string.Empty;
     private string selectedDepartment = string.Empty;
+    private string selectedSpotPlace = "";
     private List<QueuePatient> filteredQueuePatients = new();
     private List<QueuePatient> filteredQueuePatientS2s = new();
     private List<QueuePatient> filteredQueuePatientHxs = new();
@@ -1292,7 +1247,7 @@
         }
     }
     
-    private async Task CallPatient1(QueuePatient patient, int? queueNumber = null)
+    private async Task CallPatient1(QueuePatient patient, int? queueNumber = null, string spotPlace = "")
     {
         if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
         {
@@ -1304,10 +1259,10 @@
             if (isConnected && hubConnection != null)
             {
                 await hubConnection.SendAsync("SendQueueUpdate", 
-                    $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode}");
+                    $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode} ช่อง {spotPlace}");
             }
             
-            await AnnounceQueue2(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);
+            await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
         }
         else
         {
@@ -1322,10 +1277,10 @@
                 if (isConnected && hubConnection != null)
                 {
                     await hubConnection.SendAsync("SendQueueUpdate", 
-                        $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode}");
+                        $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode} ช่อง {spotPlace}");
                 }
                 
-                await AnnounceQueue2(actualQueueNumber, userName, departmentCode, 0.7, 1.2, 2.0);
+                await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
             }
         }
     }
@@ -1392,12 +1347,12 @@
         }
     }
     
-    private async Task AnnounceQueue2(int queueNumber, string name, string channel, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
+    private async Task AnnounceQueue2(int queueNumber, string name, string channel,  string spotPlace, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
     {
         try
         {
             await JSRuntime.InvokeVoidAsync("audioHelper.announceQueue2", 
-                queueNumber, name, channel, rate, pitch, volume);
+                queueNumber, name, channel, spotPlace, rate, pitch, volume);
         }
         catch (Exception ex)
         {

@@ -1110,8 +1110,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>asdv58nrw6</Fingerprint>
-      <Integrity>isz+y0h7NqI5Ok60QAjPYiChFQ3/RqNaT4BRhWMQ1hU=</Integrity>
+      <Fingerprint>e3xrxf3o5y</Fingerprint>
+      <Integrity>Sm2BWfGENaI2epPoyfy5R4+JpMvgJGUCPv9Cv0wyT1A=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\rtfConvert.js'))</OriginalItemSpec>
@@ -1236,8 +1236,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>2eqpbetsfx</Fingerprint>
-      <Integrity>2gSoRa43H+k3d3cuXOEUorK82B/ACnDvCNTpUPI4uDw=</Integrity>
+      <Fingerprint>jl4km941ap</Fingerprint>
+      <Integrity>R25qHix5xZhhLMAsZn6DSnU+YrjIDTs8VowbpQKd6p0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SoundAnnoucementApp.styles.css'))</OriginalItemSpec>

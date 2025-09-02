@@ -45,12 +45,12 @@ window.audioHelper = {
 
         speechSynthesis.speak(speech);
     },
-    announceQueue2: function (queueNumber, name, channel, options = {}) {
+    announceQueue2: function (queueNumber, name, channel, spotPlace, options = {}) {
         const settings = {
             rate: options.rate || 0.7,
             pitch: options.pitch || 1.1,
             volume: options.volume || 2.0,
-            textTemplate: options.textTemplate || "ขอเชิญคิวที่ {0} ที่โต๊ะ	{2}"
+            textTemplate: options.textTemplate || "ขอเชิญคิวที่ {0} ที่ช่องซักประวัติที่ {3}"
         };
 
         // แปลง queueNumber เป็น string และจัดการค่า null
@@ -59,7 +59,8 @@ window.audioHelper = {
         const text = settings.textTemplate
             .replace('{0}', queueText)
             .replace('{1}', name)
-            .replace('{2}', channel);
+            .replace('{2}', channel)
+            .replace('{3}', spotPlace);
 
         const speech = new SpeechSynthesisUtterance(text);
         speech.lang = 'th-TH';
