@@ -1,0 +1,30 @@
+@page "/numread"
+@inject IJSRuntime JS
+
+<h3>Number Reader</h3>
+
+<div class="mb-3">
+    <label>Enter a number:</label>
+    <InputNumber @bind-Value="Value" class="form-control" />
+</div>
+
+<button class="btn btn-primary" @onclick="ReadAsync" disabled="@(!CanRead)">
+    Read
+</button>
+
+@code {
+    int? Value;
+
+    @* bool CanRead => Value is not null && Value >= 0 && Value <= 9; *@
+    bool CanRead => Value is not null && Value >= 0 && Value <= 500;
+    // Adjust range as you like; this example assumes files 0–9 exist.
+
+    async Task ReadAsync()
+    {
+        if (!CanRead) return;
+
+        // Build the audio file path (e.g., "audio/1.mp3")
+        var src = $"audio/customaudio/{Value}.mp3";
+        await JS.InvokeVoidAsync("audioPlayer2.play", src);
+    }
+}

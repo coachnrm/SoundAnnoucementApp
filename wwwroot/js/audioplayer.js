@@ -25,3 +25,11 @@ window.playaudio = (sound, id) => {
         document.getElementById(id)?.classList.add('highlight');
     }
 };
+
+window.audioPlayer2 = {
+  play: (src) => {
+    const audio = new Audio(src);
+    // optional: audio.preload = 'auto';
+    audio.play();
+  }
+};
