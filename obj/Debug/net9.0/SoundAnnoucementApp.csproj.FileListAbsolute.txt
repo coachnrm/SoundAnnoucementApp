@@ -6384,7 +6384,6 @@ D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\1g1r1l8vr2-{0}-ynje5zxh3w-ynj
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\6dg3ocum2f-{0}-kiwexlz6py-kiwexlz6py.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\mu77o96qh0-{0}-26wi1u0290-26wi1u0290.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\9zp97xxkin-{0}-xnz5x2272d-xnz5x2272d.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\7c1spd19b5-{0}-maeu7ewk88-maeu7ewk88.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\vwhslg0291-{0}-e3xrxf3o5y-e3xrxf3o5y.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\dfy7pe5xwf-{0}-i053odyqau-i053odyqau.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\8t03o0en37-{0}-efzh139b2k-efzh139b2k.gz
@@ -6623,10 +6622,11 @@ D:\SoundAnnoucementApp\obj\Debug\net9.0\SoundAnnoucementApp.dll
 D:\SoundAnnoucementApp\obj\Debug\net9.0\refint\SoundAnnoucementApp.dll
 D:\SoundAnnoucementApp\obj\Debug\net9.0\SoundAnnoucementApp.pdb
 D:\SoundAnnoucementApp\obj\Debug\net9.0\ref\SoundAnnoucementApp.dll
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.ue2w2f3ib8.wasm
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.8aslw50pg6.pdb
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.ue2w2f3ib8.wasm.gz
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.8aslw50pg6.pdb.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\o7e8pc3128-{0}-ue2w2f3ib8-ue2w2f3ib8.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\sw1u7n1mgo-{0}-8aslw50pg6-8aslw50pg6.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-{0}-8bpfkrhdmp-8bpfkrhdmp.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\7c1spd19b5-{0}-aaekimkhe3-aaekimkhe3.gz
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.pj6fs5ok0o.wasm
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.ps6foj5fg0.pdb
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.pj6fs5ok0o.wasm.gz
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.ps6foj5fg0.pdb.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\o7e8pc3128-{0}-pj6fs5ok0o-pj6fs5ok0o.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\sw1u7n1mgo-{0}-ps6foj5fg0-ps6foj5fg0.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-{0}-v1pp3975ft-v1pp3975ft.gz
