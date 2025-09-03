@@ -31,6 +31,12 @@ builder.Services.AddHttpClient("OpApi", client =>
     client.BaseAddress = new Uri("http://localhost:5222/");
 });
 
+builder.Services.AddHttpClient("QueueApi", client =>
+{
+    client.BaseAddress = new Uri("http://172.16.200.202:5041/");
+    //client.BaseAddress = new Uri("http://localhost:5041/");
+});
+
 builder.Services.AddHttpClient("MophApi", client =>
 {
     client.BaseAddress = new Uri("http://10.134.50.175:8000/");
