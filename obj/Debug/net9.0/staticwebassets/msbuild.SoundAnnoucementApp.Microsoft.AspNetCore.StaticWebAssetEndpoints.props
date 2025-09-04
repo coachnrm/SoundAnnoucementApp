@@ -816,17 +816,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-enKgCMkYmCpfEcmg6Annbmc40VZ/A6aYYSQjZfVn2cU="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"453"},{"Name":"Content-Type","Value":"application/json"},{"Name":"ETag","Value":"\u0022enKgCMkYmCpfEcmg6Annbmc40VZ/A6aYYSQjZfVn2cU=\u0022"},{"Name":"Last-Modified","Value":"Mon, 04 Aug 2025 03:23:50 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="SoundAnnoucementApp.cane0tinml.styles.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SoundAnnoucementApp.styles.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"cane0tinml"},{"Name":"integrity","Value":"sha256-ZOFfszPgf9kAN7efhvvs0JXpj4iqeL9DhJ/T27vgeE8="},{"Name":"label","Value":"SoundAnnoucementApp.styles.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"28127"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ZOFfszPgf9kAN7efhvvs0JXpj4iqeL9DhJ/T27vgeE8=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 07:21:24 GMT"},{"Name":"Link","Value":"\u003C_content/Blazor.SignaturePad/Blazor.SignaturePad.g22u5lm4z9.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022, \u003C_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="SoundAnnoucementApp.styles.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SoundAnnoucementApp.styles.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ZOFfszPgf9kAN7efhvvs0JXpj4iqeL9DhJ/T27vgeE8="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"28127"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ZOFfszPgf9kAN7efhvvs0JXpj4iqeL9DhJ/T27vgeE8=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 07:21:24 GMT"},{"Name":"Link","Value":"\u003C_content/Blazor.SignaturePad/Blazor.SignaturePad.g22u5lm4z9.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022, \u003C_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-b6QnoCrVITUtGnJUKb09hg4joaytxgeHgIoXAlL8mPo="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"32690"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022b6QnoCrVITUtGnJUKb09hg4joaytxgeHgIoXAlL8mPo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 08:22:31 GMT"},{"Name":"Link","Value":"\u003C_content/Blazor.SignaturePad/Blazor.SignaturePad.g22u5lm4z9.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022, \u003C_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="SoundAnnoucementApp.z71dxn23zo.styles.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SoundAnnoucementApp.styles.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"z71dxn23zo"},{"Name":"integrity","Value":"sha256-b6QnoCrVITUtGnJUKb09hg4joaytxgeHgIoXAlL8mPo="},{"Name":"label","Value":"SoundAnnoucementApp.styles.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"32690"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022b6QnoCrVITUtGnJUKb09hg4joaytxgeHgIoXAlL8mPo=\u0022"},{"Name":"Last-Modified","Value":"Thu, 04 Sep 2025 08:22:31 GMT"},{"Name":"Link","Value":"\u003C_content/Blazor.SignaturePad/Blazor.SignaturePad.g22u5lm4z9.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022, \u003C_content/BlazorStrap/BlazorStrap.10v83wk5fb.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="videos/sample.mp4">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\videos\sample.mp4'))</AssetFile>
