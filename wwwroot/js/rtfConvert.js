@@ -47,34 +47,55 @@ window.audioHelper = {
     },
     announceQueue2: function (queueNumber, name, channel, spotPlace, options = {}) {
         const settings = {
-            rate: options.rate || 0.7,
-            pitch: options.pitch || 1.1,
-            volume: options.volume || 2.0,
+            rate: options.rate || 0.8,
+            pitch: options.pitch || 1.0,
+            volume: options.volume || 1.0, // max คือ 1.0
             textTemplate: options.textTemplate || "ขอเชิญคิวที่ {0} ที่ช่องซักประวัติที่ {3}"
         };
-
-        // แปลง queueNumber เป็น string และจัดการค่า null
-        const queueText = queueNumber !== null && queueNumber !== undefined ? queueNumber.toString() : "";
-
+    
+        // ฟังก์ชันแปลงตัวเลขให้พูดทีละหลัก
+        function numberToThaiDigits(num) {
+            const map = {
+                '0': 'ศูนย์',
+                '1': 'หนึ่ง',
+                '2': 'สอง',
+                '3': 'สาม',
+                '4': 'สี่',
+                '5': 'ห้า',
+                '6': 'หก',
+                '7': 'เจ็ด',
+                '8': 'แปด',
+                '9': 'เก้า'
+            };
+            return num.toString().split('').map(d => map[d] || d).join(' ');
+        }
+    
+        // ถ้ามี queueNumber → แปลงเป็นคำ
+        const queueText = queueNumber !== null && queueNumber !== undefined 
+            ? numberToThaiDigits(queueNumber)
+            : "";
+    
         const text = settings.textTemplate
             .replace('{0}', queueText)
-            .replace('{1}', name)
-            .replace('{2}', channel)
-            .replace('{3}', spotPlace);
-
+            .replace('{1}', name || "")
+            .replace('{2}', channel || "")
+            .replace('{3}', spotPlace || "");
+    
         const speech = new SpeechSynthesisUtterance(text);
         speech.lang = 'th-TH';
         speech.rate = settings.rate;
         speech.pitch = settings.pitch;
         speech.volume = settings.volume;
-
+    
         const voices = speechSynthesis.getVoices();
         const thaiVoice = voices.find(voice => voice.lang === 'th-TH' || voice.lang === 'th');
         
         if (thaiVoice) {
             speech.voice = thaiVoice;
         }
-
+    
         speechSynthesis.speak(speech);
     }
+    
+    
 };

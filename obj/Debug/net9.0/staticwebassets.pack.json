@@ -1,0 +1,309 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\SoundAnnoucementApp\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\obj\\Debug\\net9.0\\scopedcss\\bundle\\SoundAnnoucementApp.styles.css",
+      "PackagePath": "staticwebassets\\SoundAnnoucementApp.styles.css"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio.js",
+      "PackagePath": "staticwebassets\\audio.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audioHelper.js",
+      "PackagePath": "staticwebassets\\audioHelper.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\AudioRecorder.js",
+      "PackagePath": "staticwebassets\\audio\\AudioRecorder.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\bass.mp3",
+      "PackagePath": "staticwebassets\\audio\\bass.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\cat.mp3",
+      "PackagePath": "staticwebassets\\audio\\cat.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\chicken.mp3",
+      "PackagePath": "staticwebassets\\audio\\chicken.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\cow.mp3",
+      "PackagePath": "staticwebassets\\audio\\cow.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\dog.mp3",
+      "PackagePath": "staticwebassets\\audio\\dog.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\donkey.mp3",
+      "PackagePath": "staticwebassets\\audio\\donkey.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\fx1.mp3",
+      "PackagePath": "staticwebassets\\audio\\fx1.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\fx2.mp3",
+      "PackagePath": "staticwebassets\\audio\\fx2.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\fx3.mp3",
+      "PackagePath": "staticwebassets\\audio\\fx3.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\hihat.mp3",
+      "PackagePath": "staticwebassets\\audio\\hihat.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\horse.mp3",
+      "PackagePath": "staticwebassets\\audio\\horse.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\kick.mp3",
+      "PackagePath": "staticwebassets\\audio\\kick.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\piano.mp3",
+      "PackagePath": "staticwebassets\\audio\\piano.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\pig.mp3",
+      "PackagePath": "staticwebassets\\audio\\pig.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\rooster.mp3",
+      "PackagePath": "staticwebassets\\audio\\rooster.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\sample.mp3",
+      "PackagePath": "staticwebassets\\audio\\sample.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\sheep.mp3",
+      "PackagePath": "staticwebassets\\audio\\sheep.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\snare.mp3",
+      "PackagePath": "staticwebassets\\audio\\snare.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\strings.mp3",
+      "PackagePath": "staticwebassets\\audio\\strings.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\css\\print.css",
+      "PackagePath": "staticwebassets\\css\\print.css"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\fonts\\NotoSans-Regular.ttf",
+      "PackagePath": "staticwebassets\\fonts\\NotoSans-Regular.ttf"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\fonts\\THSarabunNew BoldItalic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\THSarabunNew BoldItalic.ttf"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\fonts\\THSarabunNew Italic.ttf",
+      "PackagePath": "staticwebassets\\fonts\\THSarabunNew Italic.ttf"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\fonts\\THSarabunNew-Bold.ttf",
+      "PackagePath": "staticwebassets\\fonts\\THSarabunNew-Bold.ttf"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\fonts\\THSarabunNew.ttf",
+      "PackagePath": "staticwebassets\\fonts\\THSarabunNew.ttf"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\1.jpg",
+      "PackagePath": "staticwebassets\\images\\1.jpg"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\2.jpg",
+      "PackagePath": "staticwebassets\\images\\2.jpg"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\3.jpg",
+      "PackagePath": "staticwebassets\\images\\3.jpg"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\GarudaEmblem.png",
+      "PackagePath": "staticwebassets\\images\\GarudaEmblem.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\logoprolab.jpg",
+      "PackagePath": "staticwebassets\\images\\logoprolab.jpg"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\smskh.jpg",
+      "PackagePath": "staticwebassets\\images\\smskh.jpg"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\images\\smskhnew.jpg",
+      "PackagePath": "staticwebassets\\images\\smskhnew.jpg"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\cat.png",
+      "PackagePath": "staticwebassets\\img\\cat.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\chicken.png",
+      "PackagePath": "staticwebassets\\img\\chicken.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\cow.png",
+      "PackagePath": "staticwebassets\\img\\cow.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\dog.png",
+      "PackagePath": "staticwebassets\\img\\dog.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\donkey.png",
+      "PackagePath": "staticwebassets\\img\\donkey.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\horse.png",
+      "PackagePath": "staticwebassets\\img\\horse.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\pig.png",
+      "PackagePath": "staticwebassets\\img\\pig.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\rooster.png",
+      "PackagePath": "staticwebassets\\img\\rooster.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\img\\sheep.png",
+      "PackagePath": "staticwebassets\\img\\sheep.png"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\BlazorQuill.js",
+      "PackagePath": "staticwebassets\\js\\BlazorQuill.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\audioplayer.js",
+      "PackagePath": "staticwebassets\\js\\audioplayer.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\barcode.js",
+      "PackagePath": "staticwebassets\\js\\barcode.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\canvasHelper.js",
+      "PackagePath": "staticwebassets\\js\\canvasHelper.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\console.js",
+      "PackagePath": "staticwebassets\\js\\console.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\drawingCanvas.js",
+      "PackagePath": "staticwebassets\\js\\drawingCanvas.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\eraser.js",
+      "PackagePath": "staticwebassets\\js\\eraser.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\print.js",
+      "PackagePath": "staticwebassets\\js\\print.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\printsilent.js",
+      "PackagePath": "staticwebassets\\js\\printsilent.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\qrprompt.js",
+      "PackagePath": "staticwebassets\\js\\qrprompt.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\queueSignalR.js",
+      "PackagePath": "staticwebassets\\js\\queueSignalR.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\rtfConvert.js",
+      "PackagePath": "staticwebassets\\js\\rtfConvert.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\signaturePad.js",
+      "PackagePath": "staticwebassets\\js\\signaturePad.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\sortable-wrapper.js",
+      "PackagePath": "staticwebassets\\js\\sortable-wrapper.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\usb.js",
+      "PackagePath": "staticwebassets\\js\\usb.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\js\\youtubeplayer.js",
+      "PackagePath": "staticwebassets\\js\\youtubeplayer.js"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\videos\\sample.mp4",
+      "PackagePath": "staticwebassets\\videos\\sample.mp4"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.SoundAnnoucementApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.SoundAnnoucementApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.SoundAnnoucementApp.props",
+      "PackagePath": "build\\SoundAnnoucementApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.SoundAnnoucementApp.props",
+      "PackagePath": "buildMultiTargeting\\SoundAnnoucementApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.SoundAnnoucementApp.props",
+      "PackagePath": "buildTransitive\\SoundAnnoucementApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

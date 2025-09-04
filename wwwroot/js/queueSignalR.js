@@ -226,3 +226,42 @@ function addNewQueueToDepartment(data) {
         addNewQueueToDisplay(data);
     }
 }
+// รับการแจ้งเตือนทั่วไป
+connection.on("ReceiveDepartmentNotification", (data) => {
+    console.log("Department Notification:", data);
+    
+    // แสดงการแจ้งเตือนให้ผู้ใช้
+    showNotification(data.message);
+    
+    // หรืออัปเดต UI ตามต้องการ
+    addNotificationToLog(data);
+});
+
+function showNotification(message) {
+    // ใช้ browser notification
+    if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification('อัปเดตแผนก', { body: message });
+    }
+    
+    // หรือใช้ toast library
+    Toastify({
+        text: message,
+        duration: 5000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)"
+    }).showToast();
+}
+
+function addNotificationToLog(data) {
+    const logContainer = document.getElementById('notification-log');
+    if (logContainer) {
+        const logEntry = document.createElement('div');
+        logEntry.className = 'notification-entry';
+        logEntry.innerHTML = `
+            <span class="time">${data.Timestamp}</span>
+            <span class="message">${data.Message}</span>
+        `;
+        logContainer.prepend(logEntry);
+    }
+}
