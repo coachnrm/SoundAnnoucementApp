@@ -1,0 +1,343 @@
+@page "/eeee"
+@using Microsoft.AspNetCore.Components
+@using System.Text.Json
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+@inject IHttpClientFactory _httpClientFactory
+@inject ILogger<Dddd> Logger
+
+<div class="custom-input-section">
+    <div class="section-header mb-4">
+        <h4 class="section-title"><i class="fas fa-edit me-2"></i>ข้อมูลห้องตรวจ</h4>
+        <div class="section-divider"></div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="fas fa-exclamation-circle me-2"></i>@errorMessage
+            <button type="button" class="btn-close" @onclick="() => errorMessage = string.Empty"></button>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(successMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="fas fa-check-circle me-2"></i>@successMessage
+            <button type="button" class="btn-close" @onclick="() => successMessage = string.Empty"></button>
+        </div>
+    }
+
+    @if (updateResults?.Any() == true)
+    {
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            <h6><i class="fas fa-info-circle me-2"></i>ผลการอัพเดท:</h6>
+            <ul class="mb-0">
+                @foreach (var result in updateResults)
+                {
+                    <li>ห้อง @result.Id: @(result.Success ? "สำเร็จ" : "ล้มเหลว")</li>
+                }
+            </ul>
+            <button type="button" class="btn-close" @onclick="() => updateResults = null"></button>
+        </div>
+    }
+
+    <EditForm Model="@departmentValues" OnValidSubmit="@SavePatientData">
+        <DataAnnotationsValidator />
+        <div class="rounded-input-grid">
+            <!-- Input Card 1 -->
+            <div class="input-card">
+                <div class="input-header">
+                    <i class="fas fa-user-md input-icon"></i>
+                    <span class="input-label">ห้องเบอร์ 1 (ซักประวัติ)</span>
+                </div>
+                <div class="input-container">
+                    <InputText @bind-Value="@departmentValues.Room1" class="custom-input" placeholder="กรอกอาการสำคัญ" />
+                    <div class="input-border"></div>
+                </div>
+            </div>
+
+            <!-- Input Card 2 -->
+            <div class="input-card">
+                <div class="input-header">
+                    <i class="fas fa-heartbeat input-icon"></i>
+                    <span class="input-label">ห้องเบอร์ 2 (CVT)</span>
+                </div>
+                <div class="input-container">
+                    <InputText @bind-Value="@departmentValues.Room2" class="custom-input" placeholder="กรอกสัญญาณชีพ" />
+                    <div class="input-border"></div>
+                </div>
+            </div>
+
+            <!-- Input Card 3 -->
+            <div class="input-card">
+                <div class="input-header">
+                    <i class="fas fa-stethoscope input-icon"></i>
+                    <span class="input-label">ห้องเบอร์ 3 (Neuro)</span>
+                </div>
+                <div class="input-container">
+                    <InputText @bind-Value="@departmentValues.Room3" class="custom-input" placeholder="กรอกผลการตรวจร่างกาย" />
+                    <div class="input-border"></div>
+                </div>
+            </div>
+
+            <!-- Input Card 4 -->
+            <div class="input-card">
+                <div class="input-header">
+                    <i class="fas fa-pills input-icon"></i>
+                    <span class="input-label">ห้องเบอร์ 4</span>
+                </div>
+                <div class="input-container">
+                    <InputText @bind-Value="@departmentValues.Room4" class="custom-input" placeholder="กรอกการวินิจฉัย" />
+                    <div class="input-border"></div>
+                </div>
+            </div>
+
+            <!-- Input Card 5 -->
+            <div class="input-card">
+                <div class="input-header">
+                    <i class="fas fa-prescription input-icon"></i>
+                    <span class="input-label">ห้องเบอร์ 5</span>
+                </div>
+                <div class="input-container">
+                    <InputText @bind-Value="@departmentValues.Room5" class="custom-input" placeholder="กรอกแผนการรักษา" />
+                    <div class="input-border"></div>
+                </div>
+            </div>
+
+            <!-- Input Card 6 -->
+            <div class="input-card">
+                <div class="input-header">
+                    <i class="fas fa-capsules input-icon"></i>
+                    <span class="input-label">ห้องเบอร์ 6</span>
+                </div>
+                <div class="input-container">
+                    <InputText @bind-Value="@departmentValues.Room6" class="custom-input" placeholder="กรอกรายการยา" />
+                    <div class="input-border"></div>
+                </div>
+            </div>
+
+            <!-- Input Card 7 -->
+            <div class="input-card">
+                <div class="input-header">
+                    <i class="fas fa-notes-medical input-icon"></i>
+                    <span class="input-label">ห้องเบอร์ 7</span>
+                </div>
+                <div class="input-container">
+                    <InputText @bind-Value="@departmentValues.Room7" class="custom-input" placeholder="กรอกหมายเหตุเพิ่มเติม" />
+                    <div class="input-border"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-save" disabled="@isSaving">
+                @if (isSaving)
+                {
+                    <span><i class="fas fa-spinner fa-spin me-2"></i>กำลังบันทึก...</span>
+                }
+                else
+                {
+                    <span><i class="fas fa-save me-2"></i>บันทึกข้อมูล</span>
+                }
+            </button>
+            
+            <button type="button" class="btn btn-save" @onclick="Cancel">
+                <i class="fas fa-times me-2"></i>ยกเลิก
+            </button>
+        </div>
+    </EditForm>
+</div>
+
+@code {
+    private DepartmentValues departmentValues = new DepartmentValues();
+    private bool isSaving = false;
+    private string errorMessage = "";
+    private string successMessage = "";
+    private List<UpdateResult> updateResults;
+
+    public class DepartmentValues
+    {
+        public string Room1 { get; set; } = "";
+        public string Room2 { get; set; } = "";
+        public string Room3 { get; set; } = "";
+        public string Room4 { get; set; } = "";
+        public string Room5 { get; set; } = "";
+        public string Room6 { get; set; } = "";
+        public string Room7 { get; set; } = "";
+    }
+
+    public class UpdateResult
+    {
+        public int Id { get; set; }
+        public bool Success { get; set; }
+        public string Message { get; set; } = "";
+    }
+
+    public class QueueDepartmentUpdateItem
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+    }
+
+    public class BatchUpdateRequest
+    {
+        public List<QueueDepartmentUpdateItem> Updates { get; set; } = new List<QueueDepartmentUpdateItem>();
+    }
+
+
+
+    public class QueueDepartment
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+    }
+
+    // ย้าย method SetRoomValue มาอยู่ก่อน method ที่เรียกใช้
+    private void SetRoomValue(int roomId, string value)
+    {
+        switch (roomId)
+        {
+            case 1: departmentValues.Room1 = value; break;
+            case 2: departmentValues.Room2 = value; break;
+            case 3: departmentValues.Room3 = value; break;
+            case 4: departmentValues.Room4 = value; break;
+            case 5: departmentValues.Room5 = value; break;
+            case 6: departmentValues.Room6 = value; break;
+            case 7: departmentValues.Room7 = value; break;
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadExistingData();
+    }
+
+    private async Task LoadExistingData()
+    {
+        try
+        {
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var departments = await client.GetFromJsonAsync<List<QueueDepartment>>("api/DepartmentName");
+            
+            if (departments != null)
+            {
+                foreach (var dept in departments)
+                {
+                    SetRoomValue(dept.Id, dept.Name);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error loading existing department data");
+            // ไม่แสดง error เพื่อไม่ให้รบกวนผู้ใช้
+        }
+    }
+
+       public class BatchUpdateResponse
+    {
+        public string Message { get; set; } = "";
+        public List<UpdateResultResponse> SuccessResults { get; set; } = new List<UpdateResultResponse>();
+        public List<UpdateResultResponse> ErrorResults { get; set; } = new List<UpdateResultResponse>();
+        public int TotalUpdated { get; set; }
+        public int TotalFailed { get; set; }
+    }
+
+    public class UpdateResultResponse
+    {
+        public int Id { get; set; }
+        public bool Success { get; set; }
+        public string Name { get; set; } = "";
+        public string Error { get; set; } = "";
+    }
+
+    private async Task SavePatientData()
+    {
+        isSaving = true;
+        errorMessage = "";
+        successMessage = "";
+        updateResults = null;
+        
+        try
+        {
+            // สร้างรายการสำหรับอัพเดท
+            var updates = new List<QueueDepartmentUpdateItem>();
+            
+            // เพิ่มห้องต่างๆ ตาม ID ที่ตรงกัน
+            AddUpdateIfNotEmpty(updates, 1, departmentValues.Room1);
+            AddUpdateIfNotEmpty(updates, 2, departmentValues.Room2);
+            AddUpdateIfNotEmpty(updates, 3, departmentValues.Room3);
+            AddUpdateIfNotEmpty(updates, 4, departmentValues.Room4);
+            AddUpdateIfNotEmpty(updates, 5, departmentValues.Room5);
+            AddUpdateIfNotEmpty(updates, 6, departmentValues.Room6);
+            AddUpdateIfNotEmpty(updates, 7, departmentValues.Room7);
+
+            if (updates.Count == 0)
+            {
+                errorMessage = "กรุณากรอกข้อมูลอย่างน้อยหนึ่งห้อง";
+                return;
+            }
+            
+            var batchUpdateRequest = new BatchUpdateRequest { Updates = updates };
+            
+            // ใช้ HttpClientFactory สำหรับการอัพเดท
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var response = await client.PutAsJsonAsync("api/DepartmentName/UpdateQueueDepartments", batchUpdateRequest);
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var batchResponse = JsonSerializer.Deserialize<BatchUpdateResponse>(responseContent,
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                
+                successMessage = $"{batchResponse?.Message ?? "บันทึกข้อมูลสำเร็จ"} (อัพเดทสำเร็จ: {batchResponse?.TotalUpdated ?? 0}, ล้มเหลว: {batchResponse?.TotalFailed ?? 0})";
+                
+                // แสดงผลการอัพเดท
+                updateResults = new List<UpdateResult>();
+                if (batchResponse?.SuccessResults != null)
+                {
+                    updateResults.AddRange(batchResponse.SuccessResults.Select(r => 
+                        new UpdateResult { Id = r.Id, Success = true, Message = r.Name }));
+                }
+                if (batchResponse?.ErrorResults != null)
+                {
+                    updateResults.AddRange(batchResponse.ErrorResults.Select(r => 
+                        new UpdateResult { Id = r.Id, Success = false, Message = r.Error }));
+                }
+            }
+            else
+            {
+                errorMessage = "เกิดข้อผิดพลาดในการบันทึกข้อมูล";
+                var errorContent = await response.Content.ReadAsStringAsync();
+                Logger.LogError("API Error: {StatusCode} - {Content}", response.StatusCode, errorContent);
+            }
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError(ex, "Error saving patient data");
+            errorMessage = $"เกิดข้อผิดพลาด: {ex.Message}";
+        }
+        finally
+        {
+            isSaving = false;
+        }
+    }
+
+    private void AddUpdateIfNotEmpty(List<QueueDepartmentUpdateItem> updates, int id, string value)
+    {
+        if (!string.IsNullOrWhiteSpace(value))
+        {
+            updates.Add(new QueueDepartmentUpdateItem { Id = id, Name = value });
+        }
+    }
+
+    private void Cancel()
+    {
+        // รีเซ็ตฟอร์ม
+        departmentValues = new DepartmentValues();
+        errorMessage = "";
+        successMessage = "";
+        updateResults = null;
+    }
+}

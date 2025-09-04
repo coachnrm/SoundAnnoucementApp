@@ -5526,6 +5526,8 @@ D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\mscorlib.l6md3pggqy.w
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\netstandard.lij9csiyuf.wasm
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\QRCoder.jqr4n2c9hc.wasm
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SignaturePad.t8yuxgjti1.wasm
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.akjk0hf5ho.pdb
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.m5ei6bytjj.wasm
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.AppContext.ch56s52ual.wasm
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Buffers.tlm3i6pt76.wasm
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Collections.Concurrent.jadgrn67lq.wasm
@@ -5882,6 +5884,7 @@ D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.ComponentModel
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.InteropServices.RuntimeInformation.wikdnhmugy.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\Microsoft.JSInterop.WebAssembly.fkdz83fr0b.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\icudt_EFIGS.tptq2av103.dat.gz
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.m5ei6bytjj.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Net.WebSockets.eth3pjb0i0.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.IO.FileSystem.DriveInfo.1o666npdpl.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Security.Claims.tinfecfh1e.wasm.gz
@@ -5889,6 +5892,7 @@ D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.IO.Compression
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\dotnet.native.aep4lch3d1.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.ComponentModel.DataAnnotations.dtsracnza3.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Diagnostics.Contracts.g37ic7xnxa.wasm.gz
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.akjk0hf5ho.pdb.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Runtime.Loader.5z1xrbq3gs.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Reflection.Emit.ILGeneration.6hwdc9qxly.wasm.gz
 D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\System.Private.Xml.Linq.x7s9isnak8.wasm.gz
@@ -6382,6 +6386,7 @@ D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\7sqo05pfmo-kiwexlz6py.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\td7mw3rrgx-26wi1u0290.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\pcizxzsv25-xnz5x2272d.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\p32xbwlkmx-vbvx2f89yi.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\mvbur6fwos-rlgucq3gat.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\bjaefkd3kg-i053odyqau.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\jfp0co7lko-efzh139b2k.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\0x8bkhov8p-o82b44b2r0.gz
@@ -6391,6 +6396,8 @@ D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\221zr8wcoc-iag0ou56lh.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\9aqqon9q97-yiodnjoszm.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\pzed3m8xip-10v83wk5fb.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\pyy3amz7kq-g22u5lm4z9.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\z360cmiten-z71dxn23zo.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\qz8dum9bjy-anvvg4xt8e.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\mu0006ypru-t8yuxgjti1.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\cj64uvvk9c-ukk3gvz4st.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\4mem5znvxx-6sfrsc1pw7.gz
@@ -6608,6 +6615,9 @@ D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\8on94tfuti-tyz1a4w3vb.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\kpsjc1dwzs-tjcz0u77k5.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\vqpw6zgxsd-tptq2av103.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\oqp3f8tuay-lfu7j35m59.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\vvsbcnnopr-m5ei6bytjj.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\wtlmy325bf-akjk0hf5ho.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-j08gqlf0vf.gz
 D:\SoundAnnoucementApp\obj\Debug\net9.0\staticwebassets.build.json
 D:\SoundAnnoucementApp\obj\Debug\net9.0\staticwebassets.development.json
 D:\SoundAnnoucementApp\obj\Debug\net9.0\staticwebassets.build.endpoints.json
@@ -6622,13 +6632,3 @@ D:\SoundAnnoucementApp\obj\Debug\net9.0\SoundAnnoucementApp.dll
 D:\SoundAnnoucementApp\obj\Debug\net9.0\refint\SoundAnnoucementApp.dll
 D:\SoundAnnoucementApp\obj\Debug\net9.0\SoundAnnoucementApp.pdb
 D:\SoundAnnoucementApp\obj\Debug\net9.0\ref\SoundAnnoucementApp.dll
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\mvbur6fwos-rlgucq3gat.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\z360cmiten-z71dxn23zo.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\qz8dum9bjy-anvvg4xt8e.gz
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.6qrz38bibk.pdb
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.vnwjwgifjq.wasm
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.vnwjwgifjq.wasm.gz
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.6qrz38bibk.pdb.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\vvsbcnnopr-vnwjwgifjq.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\wtlmy325bf-6qrz38bibk.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-hsci6orwpm.gz

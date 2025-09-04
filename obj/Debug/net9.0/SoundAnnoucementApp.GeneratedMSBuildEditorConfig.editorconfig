@@ -60,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2NjYy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoundAnnoucementApp/Pages/Cccc2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2NjYzIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoundAnnoucementApp/Pages/ConsoleScreen.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc29sZVNjcmVlbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,6 +78,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/SoundAnnoucementApp/Pages/Drawing.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJhd2luZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/Eeee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWVlZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoundAnnoucementApp/Pages/Home.razor]
