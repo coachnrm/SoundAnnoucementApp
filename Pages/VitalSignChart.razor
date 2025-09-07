@@ -1,0 +1,241 @@
+﻿@* @page "/vitals"
+@using System.Net.Http.Json
+@inject HttpClient Http
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<h3 class="mb-2">IPD Vitals</h3>
+
+<div class="mb-2">
+    <label class="form-label">AN</label>
+    <input class="form-control w-auto d-inline-block me-2" @bind="An" />
+    <button class="btn btn-primary" @onclick="Load">Load</button>
+</div>
+
+<div class="border rounded p-2" style="height: 420px;">
+    <canvas @ref="canvasRef" style="width:100%; height:100%;"></canvas>
+</div>
+
+
+<!-- Table -->
+@if (items is not null && items.Count > 0)
+{
+    <table class="table table-striped table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Datetime</th>
+                <th>BT (°C)</th>
+                <th>PR (/min)</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var v in items.OrderBy(x => x.vsDatetime))
+        {
+            <tr>
+                <td>@v.vsDatetime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@(v.bt?.ToString("F1") ?? "-")</td>
+                <td>@(v.pr?.ToString("F0") ?? "-")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private ElementReference canvasRef;
+    private string An { get; set; } = "680032661"; // default for quick test
+    private List<VitalSignDto>? items;
+    private bool _renderedOnce;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        _renderedOnce = true;
+        if (items is not null && items.Count > 0)
+            await RenderChartAsync();
+    }
+
+    private async Task Load()
+    {
+        try
+        {
+            // Absolute URL to your API (CORS must be enabled on the API)
+            var url = $"http://localhost:5094/api/IpdVs/GetIpdVitalSignByAn?_An={Uri.EscapeDataString(An)}";
+            items = await Http.GetFromJsonAsync<List<VitalSignDto>>(url);
+
+            if (_renderedOnce && items is not null && items.Count > 0)
+                await RenderChartAsync();
+            else
+                StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine(ex);
+        }
+    }
+
+    private async Task RenderChartAsync()
+    {
+        if (items is null) return;
+
+        // Prepare a simple array for JS: [{x: date, bt: number|null, pr: number|null}, ...]
+        var points = items
+            .OrderBy(x => x.vsDatetime)
+            .Select(x => new
+            {
+                x = x.vsDatetime,          // Chart.js time scale will parse this ISO date
+                bt = x.bt,                 // keep nulls as null -> creates gaps
+                pr = x.pr
+            })
+            .ToList();
+
+        await JS.InvokeVoidAsync("vitalsChart.initOrUpdate", canvasRef, points);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            // Destroy chart bound to THIS canvas only
+            await JS.InvokeVoidAsync("vitalsChart.destroy", canvasRef);
+        }
+        catch { /* swallow on teardown */ }
+    }
+
+    public class VitalSignDto
+    {
+        public DateTime vsDatetime { get; set; }
+        public double? bt { get; set; }
+        public double? pr { get; set; }
+
+        // (Optional) Include other fields if you need them later:
+        // public double? rr { get; set; }
+        // public double? sbp { get; set; }
+        // public double? dbp { get; set; }
+        // public double? map { get; set; }
+        // public double? sat { get; set; }
+    }
+} *@
+
+@page "/vitals"
+@using System.Net.Http.Json
+@inject HttpClient Http
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<h3 class="mb-2">IPD Vitals</h3>
+
+<div class="mb-2">
+    <label class="form-label">AN</label>
+    <input class="form-control w-auto d-inline-block me-2" @bind="An" />
+    <button class="btn btn-primary" @onclick="Load">Load</button>
+</div>
+
+<!-- Chart -->
+<div class="border rounded p-2" style="height: 420px;">
+    <canvas @ref="canvasRef" style="width:100%; height:100%;"></canvas>
+</div>
+
+<!-- Table -->
+@if (items is not null && items.Count > 0)
+{
+    <table class="table table-striped table-bordered mt-3">
+        <thead class="table-light">
+            <tr>
+                <th>Datetime</th>
+                <th>BT (°C)</th>
+                <th>PR (/min)</th>
+                <th>RR (/min)</th>
+                <th>SBP (/mmHg)</th>
+                <th>DBP (/mmHg)</th>
+                <th>MAP (/mmHg)</th>
+                <th>O2 sat (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var v in items.OrderBy(x => x.vsDatetime))
+        {
+            <tr>
+                <td>@v.vsDatetime.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@(v.bt?.ToString("F1") ?? "-")</td>
+                <td>@(v.pr?.ToString("F0") ?? "-")</td>
+                <td>@(v.rr?.ToString("F0") ?? "-")</td>
+                <td>@(v.sbp?.ToString("F0") ?? "-")</td>
+                <td>@(v.dbp?.ToString("F0") ?? "-")</td>
+                <td>@(v.map?.ToString("F0") ?? "-")</td>
+                <td>@(v.sat?.ToString("F0") ?? "-")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private ElementReference canvasRef;
+    private string An { get; set; } = "680032661"; // default for quick test
+    private List<VitalSignDto>? items;
+    private bool _renderedOnce;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        _renderedOnce = true;
+        if (items is not null && items.Count > 0)
+            await RenderChartAsync();
+    }
+
+    private async Task Load()
+    {
+        try
+        {
+            var url = $"http://localhost:5094/api/IpdVs/GetIpdVitalSignByAn?_An={Uri.EscapeDataString(An)}";
+            items = await Http.GetFromJsonAsync<List<VitalSignDto>>(url);
+
+            if (_renderedOnce && items is not null && items.Count > 0)
+                await RenderChartAsync();
+            else
+                StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.Error.WriteLine(ex);
+        }
+    }
+
+    private async Task RenderChartAsync()
+    {
+        if (items is null || items.Count == 0) return;
+
+        // Send "x" (datetime), "bt", "pr" to JS
+        var points = items
+            .OrderBy(x => x.vsDatetime)
+            .Select(x => new
+            {
+                x = x.vsDatetime,   // JS will read p.x
+                bt = x.bt,          // nulls become gaps
+                pr = x.pr
+            })
+            .ToList();
+
+        await JS.InvokeVoidAsync("vitalsChart.initOrUpdate", canvasRef, points);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("vitalsChart.destroy", canvasRef);
+        }
+        catch { /* ignore on teardown */ }
+    }
+
+    public class VitalSignDto
+    {
+        public DateTime vsDatetime { get; set; }
+        public double? bt { get; set; }
+        public double? pr { get; set; }
+        public double? rr { get; set; }
+        public double? sbp { get; set; }
+        public double? dbp { get; set; }
+        public double? map { get; set; }
+        public double? sat { get; set; }
+    }
+}

@@ -204,6 +204,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlkZW9QbGF5ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ADMIN/Desktop/SoundAnnoucementApp/Pages/VitalSignChart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVml0YWxTaWduQ2hhcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ADMIN/Desktop/SoundAnnoucementApp/Pages/WardAudio.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2FyZEF1ZGlvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
