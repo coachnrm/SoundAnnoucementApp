@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SoundAnnoucementApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+247874a956727be2df8e7d184d446c38ef21d4df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3785ab288ba626b2c01815ca4b75157fb53dd711")]
 [assembly: System.Reflection.AssemblyProductAttribute("SoundAnnoucementApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SoundAnnoucementApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

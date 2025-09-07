@@ -215,7 +215,8 @@ window.vitalsChart = (function () {
               pointRadius: 2,
               borderWidth: 2,
               tension: 0.25,
-              spanGaps: false
+              spanGaps: false,
+              yAxisID: 'y1'   
             },
             {
               label: 'PR',
@@ -225,7 +226,8 @@ window.vitalsChart = (function () {
               pointRadius: 2,
               borderWidth: 2,
               tension: 0.25,
-              spanGaps: false
+              spanGaps: false,
+              yAxisID: 'y2'   
             }
           ]
         },
@@ -264,14 +266,56 @@ window.vitalsChart = (function () {
               title: {
                 display: true,
                 text: 'Date & Time'
-              }
+              },
+              // ✅ Add this:
+              min: points.length > 0 ? new Date(points[0].x) : undefined,
+              max: new Date()
             },
-            y: { 
+            // y: { 
+            //   beginAtZero: false, 
+            //   title: { 
+            //     display: true, 
+            //     text: 'Value' 
+            //   } 
+            // },
+            // ✅ Left Y-axis for BT
+            y1: { 
               beginAtZero: false, 
+              min: 35,
+              max: 41,
               title: { 
                 display: true, 
-                text: 'Value' 
-              } 
+                text: 'Body Temp (°C)',
+                color: 'blue' 
+              },
+              ticks: {
+                color: 'blue'
+              },
+              grid: {
+                color: 'rgba(0,0,255,0.1)' // light blue grid lines
+              },
+              position: 'left'
+            },
+            // ✅ Right Y-axis for PR
+            y2: { 
+              beginAtZero: false, 
+              min: 40,
+              max: 160,
+              title: { 
+                display: true, 
+                text: 'Pulse Rate (/min)',
+                color: 'red' 
+              },
+              ticks: {
+                color: 'red'           // tick labels color
+              },
+              grid: {
+                drawOnChartArea: false // keep only left grid
+              },
+              position: 'left',
+              grid: {
+                drawOnChartArea: false // ✅ Prevent grid overlap
+              }
             }
           },
           plugins: {
@@ -291,8 +335,44 @@ window.vitalsChart = (function () {
                   return `${year}-${month}-${day} ${hours}:${minutes}`;
                 }
               }
+            },
+            // ✅ Annotation plugin for reference lines
+            annotation: {
+              annotations: {
+                btLine: {
+                  type: 'line',
+                  yMin: 37.5,
+                  yMax: 37.5,
+                  borderColor: 'blue',
+                  borderWidth: 2,
+                  borderDash: [6, 6],
+                  yScaleID: 'y1',
+                  label: {
+                    display: true,
+                    content: 'BT 37.5°C',
+                    color: 'blue',
+                    position: 'end'
+                  }
+                },
+                prLine: {
+                  type: 'line',
+                  yMin: 120,
+                  yMax: 120,
+                  borderColor: 'red',
+                  borderWidth: 2,
+                  borderDash: [6, 6],
+                  yScaleID: 'y2',
+                  label: {
+                    display: true,
+                    content: 'PR 120',
+                    color: 'red',
+                    position: 'end'
+                  }
+                }
+              }
             }
           },
+          
           interaction: { mode: 'nearest', intersect: false }
         }
       };

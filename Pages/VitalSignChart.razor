@@ -186,7 +186,7 @@
     {
         try
         {
-            var url = $"http://localhost:5094/api/IpdVs/GetIpdVitalSignByAn?_An={Uri.EscapeDataString(An)}";
+            var url = $"http://172.16.200.202:8089/api/IpdVs/GetIpdVitalSignByAn?_An={Uri.EscapeDataString(An)}";
             items = await Http.GetFromJsonAsync<List<VitalSignDto>>(url);
 
             if (_renderedOnce && items is not null && items.Count > 0)
