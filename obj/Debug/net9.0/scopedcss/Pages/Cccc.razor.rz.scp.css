@@ -1,0 +1,438 @@
+/* Global Styles */
+*[b-a4l2392ja9] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* ดีมาก! ทำให้การคำนวณขนาด elements ถูกต้อง */
+}
+
+.display-container[b-a4l2392ja9] {
+    min-height: 100vh; /* ครอบคลุมความสูงเต็มหน้าจอ */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* กราฟิเอนต์สีสวยงาม */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* ฟอนต์อ่านง่าย */
+    padding: 20px; /* ระยะห่างขอบด้านใน */
+}
+
+/* Header Styles */
+.header-container[b-a4l2392ja9] {
+    background: linear-gradient(to right, #2c3e50, #4a6491); /* กราฟิเอนต์สีเข้มสวยงาม */
+    color: white; /* ข้อความสีขาวตัดกันดี */
+    border-radius: 12px; /* มุมโค้งมน */
+    margin-bottom: 25px; /* ระยะห่างด้านล่าง */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* เงาสวยงาม */
+}
+
+.header-content[b-a4l2392ja9] {
+    display: flex;
+    justify-content: space-between; /* กระจายเนื้อหาสุดขอบ */
+    align-items: center; /* จัดกลางแนวตั้ง */
+    padding: 15px 30px; /* ระยะห่างภายใน */
+}
+
+.title-section[b-a4l2392ja9] {
+    display: flex;
+    align-items: center; /* จัดกลางแนวตั้ง */
+    gap: 15px; /* ระยะห่างระหว่าง elements */
+}
+
+.hospital-icon[b-a4l2392ja9] {
+    font-size: 2.5rem; /* ขนาดไอคอนใหญ่พอดี */
+    color: #4cd964; /* สีเขียวสวยงาม */
+}
+
+.title-section h1[b-a4l2392ja9] {
+    font-size: 1.8rem; /* ขนาดฟอนต์หัวข้อเหมาะสม */
+    margin-bottom: 5px; /* ระยะห่างด้านล่าง */
+    font-weight: 600; /* ความหนาฟอนต์พอดี */
+}
+.title-section h2[b-a4l2392ja9] {
+    font-size: 1.3rem; /* ขนาดฟอนต์หัวข้อเหมาะสม */
+    margin-bottom: 5px; /* ระยะห่างด้านล่าง */
+    font-weight: 600; /* ความหนาฟอนต์พอดี */
+}
+
+.title-section p[b-a4l2392ja9] {
+    opacity: 0.9; /* ความโปร่งใสเล็กน้อย */
+    font-size: 1.3rem; /* ขนาดฟอนต์รอง */
+}
+
+.status-section[b-a4l2392ja9] {
+    display: flex;
+    flex-direction: column; /* เรียงแนวตั้ง */
+    align-items: flex-end; /* ชิดขวา */
+    gap: 10px; /* ระยะห่างระหว่าง elements */
+}
+
+.connection-status[b-a4l2392ja9] {
+    display: flex;
+    align-items: center; /* จัดกลางแนวตั้ง */
+    gap: 8px; /* ระยะห่างระหว่าง elements */
+    padding: 5px 15px; /* ระยะห่างภายใน */
+    border-radius: 20px; /* มุมโค้งมนแบบปุ่ม */
+    font-weight: 500; /* ความหนาฟอนต์ */
+    background-color: rgba(255, 255, 255, 0.1); /* พื้นหลังโปร่งใส */
+    font-size: 0.7rem; /* ขนาดฟอนต์ */
+}
+
+.status-indicator[b-a4l2392ja9] {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* วงกลม */
+    display: inline-block;
+}
+
+.connected .status-indicator[b-a4l2392ja9] {
+    background-color: #4cd964; /* สีเขียวเมื่อเชื่อมต่อ */
+    box-shadow: 0 0 8px #4cd964; /* เงาเรืองแสง */
+}
+
+.disconnected .status-indicator[b-a4l2392ja9] {
+    background-color: #ff3b30; /* สีแดงเมื่อตัดการเชื่อมต่อ */
+    box-shadow: 0 0 8px #ff3b30; /* เงาเรืองแสง */
+}
+
+.current-time[b-a4l2392ja9] {
+    display: flex;
+    align-items: center; /* จัดกลางแนวตั้ง */
+    gap: 8px; /* ระยะห่างระหว่าง elements */
+    font-size: 1.8rem; /* ขนาดฟอนต์ */
+    opacity: 0.9; /* ความโปร่งใสเล็กน้อย */
+}
+
+/* Reconnect Section */
+.reconnect-section[b-a4l2392ja9] {
+    display: flex;
+    justify-content: center; /* จัดกลางแนวนอน */
+    margin: 30px 0; /* ระยะห่างบนล่าง */
+}
+
+.reconnect-card[b-a4l2392ja9] {
+    background: white; /* พื้นหลังขาว */
+    padding: 30px; /* ระยะห่างภายใน */
+    border-radius: 12px; /* มุมโค้งมน */
+    text-align: center; /* จัดกลางข้อความ */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* เงาเบา */
+    max-width: 400px; /* ความกว้างสูงสุด */
+    width: 100%; /* ความกว้างเต็ม */
+}
+
+.disconnected-icon[b-a4l2392ja9] {
+    font-size: 3rem; /* ไอคอนใหญ่ */
+    color: #ff9500; /* สีส้ม */
+    margin-bottom: 15px; /* ระยะห่างด้านล่าง */
+}
+
+.reconnect-card h3[b-a4l2392ja9] {
+    margin-bottom: 10px; /* ระยะห่างด้านล่าง */
+    color: #2c3e50; /* สีเทาเข้ม */
+}
+
+.reconnect-card p[b-a4l2392ja9] {
+    color: #7f8c8d; /* สีเทาอ่อน */
+    margin-bottom: 20px; /* ระยะห่างด้านล่าง */
+}
+
+.reconnect-btn[b-a4l2392ja9] {
+    background: linear-gradient(to right, #3498db, #2980b9); /* กราฟิเอนต์สีน้ำเงิน */
+    color: white; /* ข้อความสีขาว */
+    border: none; /* ไม่มีขอบ */
+    padding: 12px 25px; /* ระยะห่างภายใน */
+    border-radius: 30px; /* มุมโค้งมนมาก */
+    font-weight: 600; /* ฟอนต์หนา */
+    display: flex;
+    align-items: center; /* จัดกลางแนวตั้ง */
+    gap: 8px; /* ระยะห่างระหว่าง elements */
+    margin: 0 auto; /* จัดกลางแนวนอน */
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์ */
+    transition: all 0.3s ease; /* เอฟเฟกต์ transition */
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3); /* เงาสีน้ำเงิน */
+}
+
+.reconnect-btn:hover[b-a4l2392ja9] {
+    transform: translateY(-2px); /* เลื่อนขึ้นเมื่อ hover */
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4); /* เงาเข้มขึ้นเมื่อ hover */
+}
+
+/* Queue Display Section */
+.queue-display-section[b-a4l2392ja9] {
+    background: rgba(255, 255, 255, 0.8); /* พื้นหลังขาวโปร่งใส */
+    border-radius: 12px; /* มุมโค้งมน */
+    padding: 25px; /* ระยะห่างภายใน */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* เงาเบา */
+}
+
+.spots-grid[b-a4l2392ja9] {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* กำหนด 7 columns พอดี */
+    gap: 7px; /* ระยะห่างระหว่างการ์ด */
+    width: 100%; /* ความกว้างเต็ม container */
+    overflow-x: auto; /* ให้ scroll แนวนอนถ้าจอเล็กเกิน */
+}
+
+.spot-card[b-a4l2392ja9] {
+    background: white; /* พื้นหลังขาว */
+    border-radius: 10px; /* มุมโค้งมน */
+    overflow: hidden; /* ตัดส่วนที่เกิน */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* เงาเบา */
+    transition: all 0.3s ease; /* เอฟเฟกต์ transition */
+    display: flex;
+    flex-direction: column; /* เรียงแนวตั้ง */
+    height: 230px; /* ความสูงคงที่ */
+    width: 235px; /* ความสูงคงที่ */
+    margin: 0 8px 16px 8px; /* ระยะห่างรอบๆ */
+}
+
+.spot-card:hover[b-a4l2392ja9] {
+    transform: translateY(-3px); /* เลื่อนขึ้นเมื่อ hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12); /* เงาเข้มขึ้นเมื่อ hover */
+}
+
+.spot-card.active[b-a4l2392ja9] {
+    border-top: 4px solid #4cd964; /* ขอบบนสีเขียวเมื่อ active */
+}
+
+.spot-card.inactive[b-a4l2392ja9] {
+    border-top: 4px solid #e0e0e0; /* ขอบบนสีเทาเมื่อ inactive */
+}
+
+.spot-header[b-a4l2392ja9] {
+    display: flex;
+    justify-content: space-between; /* กระจายเนื้อหาสุดขอบ */
+    align-items: center; /* จัดกลางแนวตั้ง */
+    padding: 10px 15px; /* ระยะห่างภายใน */
+    background-color: #f8f9fa; /* พื้นหลังสีอ่อน */
+    border-bottom: 1px solid #eaeaea; /* ขอบด้านล่าง */
+}
+
+.spot-number[b-a4l2392ja9] {
+    display: flex;
+    align-items: center; /* จัดกลางแนวตั้ง */
+    text-align: center; /* จัดกลางข้อความ */
+    gap: 6px; /* ระยะห่างระหว่าง elements */
+    font-weight: 600; /* ฟอนต์หนา */
+    color: #2c3e50; /* สีเทาเข้ม */
+    font-size: 1.5rem; /* ขนาดฟอนต์ใหญ่ */
+    
+}
+
+.spot-number i[b-a4l2392ja9] {
+    font-size: 0.9rem; /* ขนาดไอคอน */
+}
+
+.status-indicator[b-a4l2392ja9] {
+    width: 8px; /* ขนาดเล็ก */
+    height: 8px; /* ขนาดเล็ก */
+    border-radius: 50%; /* วงกลม */
+    display: inline-block;
+}
+
+.spot-body[b-a4l2392ja9] {
+    padding: 1px; /* ระยะห่างภายใน */
+    text-align: center; /* จัดกลางข้อความ */
+    flex-grow: 1; /* ขยายเต็มพื้นที่เหลือ */
+    display: flex;
+    flex-direction: column; /* เรียงแนวตั้ง */
+    justify-content: top; /* จัดกลางแนวตั้ง */
+}
+
+.queue-number-display[b-a4l2392ja9] {
+    margin-bottom: 1px; /* ระยะห่างด้านล่าง */
+}
+
+.queue-number[b-a4l2392ja9] {
+    font-size: 3.8rem; /* ขนาดฟอนต์非常大 */
+    font-weight: 800; /* ฟอนต์非常หนา */
+    color: #c02a2a; /* สีน้ำเงิน */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* เงาข้อความ */
+}
+
+.patient-info[b-a4l2392ja9] {
+    /*margin-top: 1px;  ระยะห่างด้านบน */
+}
+
+.patient-name[b-a4l2392ja9] {
+    display: flex;
+    align-items: center; /* จัดกลางแนวตั้ง */
+    justify-content: center; /* จัดกลางแนวนอน */
+    gap: 1px; /* ระยะห่างน้อยมาก */
+    font-size: 0.95rem; /* ขนาดฟอนต์ */
+    font-weight: 600; /* ฟอนต์หนา */
+    /*margin-bottom: 1px;  ระยะห่างด้านล่าง */
+    color: #2c3e50; /* สีเทาเข้ม */
+}
+
+.patient-name i[b-a4l2392ja9] {
+    font-size: 0.8rem; /* ขนาดไอคอนเล็ก */
+}
+
+.department[b-a4l2392ja9] {
+    display: flex;
+    align-items: center; /* จัดกลางแนวตั้ง */
+    justify-content: center; /* จัดกลางแนวนอน */
+    gap: 5px; /* ระยะห่างระหว่าง elements */
+    font-size: 0.8rem; /* ขนาดฟอนต์เล็ก */
+    color: #7f8c8d; /* สีเทาอ่อน */
+}
+
+.department i[b-a4l2392ja9] {
+    font-size: 0.7rem; /* ขนาดไอคอน非常เล็ก */
+}
+
+.no-queue[b-a4l2392ja9] {
+    padding: 20px 0; /* ระยะห่างบนล่าง */
+    color: #95a5a6; /* สีเทา */
+}
+
+.no-queue i[b-a4l2392ja9] {
+    font-size: 1.8rem; /* ขนาดไอคอน */
+    margin-bottom: 10px; /* ระยะห่างด้านล่าง */
+    display: block; /* display block */
+}
+
+.no-queue p[b-a4l2392ja9] {
+    font-size: 0.9rem; /* ขนาดฟอนต์ */
+    margin: 0; /* ไม่มี margin */
+}
+
+.spot-footer[b-a4l2392ja9] {
+    padding: 10px 15px; /* ระยะห่างภายใน */
+    background-color: #f8f9fa; /* พื้นหลังสีอ่อน */
+    border-top: 1px solid #eaeaea; /* ขอบด้านบน */
+    text-align: center; /* จัดกลางข้อความ */
+}
+
+.waiting-text[b-a4l2392ja9] {
+    font-weight: 500; /* ความหนาฟอนต์ */
+    color: #7f8c8d; /* สีเทาอ่อน */
+    font-size: 0.85rem; /* ขนาดฟอนต์เล็ก */
+}
+
+.active .waiting-text[b-a4l2392ja9] {
+    color: #4cd964; /* สีเขียวเมื่อ active */
+    font-weight: 600; /* ฟอนต์หนา */
+}
+
+/* Animation for queue numbers */
+@keyframes pulse-b-a4l2392ja9 {
+    0% { transform: scale(1); } /* ขนาดปกติ */
+    50% { transform: scale(1.03); } /* ขยายเล็กน้อย */
+    100% { transform: scale(1); } /* กลับสู่ขนาดปกติ */
+}
+
+.queue-number[b-a4l2392ja9] {
+    animation: pulse-b-a4l2392ja9 2s infinite; /* อนิเมชันเต้นถาวร */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .spot-card[b-a4l2392ja9] {
+        height: 200px; /* ความสูงลดลงบนมือถือ */
+        margin: 0 5px 12px 5px; /* ระยะห่างลดลง */
+    }
+    
+    .queue-number[b-a4l2392ja9] {
+        font-size: 1.8rem; /* ขนาดฟอนต์เล็กลง */
+    }
+    
+    .patient-name[b-a4l2392ja9], .department[b-a4l2392ja9] {
+        font-size: 0.85rem; /* ขนาดฟอนต์เล็กลง */
+    }
+}
+.loading-message[b-a4l2392ja9] {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+}
+
+.loading-message i[b-a4l2392ja9] {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.fa-spin[b-a4l2392ja9] {
+    animation: fa-spin-b-a4l2392ja9 2s infinite linear;
+}
+
+@keyframes fa-spin-b-a4l2392ja9 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loading-message[b-a4l2392ja9] {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+}
+
+.loading-message i[b-a4l2392ja9] {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.fa-spin[b-a4l2392ja9] {
+    animation: fa-spin-b-a4l2392ja9 2s infinite linear;
+}
+
+@keyframes fa-spin-b-a4l2392ja9 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.loading-message[b-a4l2392ja9], .error-message[b-a4l2392ja9], .no-data-message[b-a4l2392ja9] {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+}
+
+.loading-message i[b-a4l2392ja9], .error-message i[b-a4l2392ja9], .no-data-message i[b-a4l2392ja9] {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.error-message[b-a4l2392ja9] {
+    color: #e74c3c;
+}
+
+.retry-btn[b-a4l2392ja9] {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.retry-btn:hover[b-a4l2392ja9] {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+}
+
+.fa-spin[b-a4l2392ja9] {
+    animation: fa-spin-b-a4l2392ja9 2s infinite linear;
+}
+
+@keyframes fa-spin-b-a4l2392ja9 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

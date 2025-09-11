@@ -1,0 +1,554 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.display-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+}
+
+/* Tabs Styles */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.tab {
+    background: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tab.active {
+    background: linear-gradient(to right, #2c3e50, #4a6491);
+    color: white;
+    box-shadow: 0 4px 8px rgba(44, 62, 80, 0.3);
+}
+
+/* Header Styles */
+.header-container {
+    background: linear-gradient(to right, #2c3e50, #4a6491);
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.title-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.hospital-icon {
+    font-size: 2.5rem;
+    color: #4cd964;
+}
+
+.title-section h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.title-section p {
+    opacity: 0.9;
+    font-size: 1.3rem;
+}
+
+.status-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 0.7rem;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.connected .status-indicator {
+    background-color: #4cd964;
+    box-shadow: 0 0 8px #4cd964;
+}
+
+.disconnected .status-indicator {
+    background-color: #ff3b30;
+    box-shadow: 0 0 8px #ff3b30;
+}
+
+.current-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.8rem;
+    opacity: 0.9;
+}
+
+/* Reconnect Section */
+.reconnect-section {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.reconnect-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.disconnected-icon {
+    font-size: 3rem;
+    color: #ff9500;
+    margin-bottom: 15px;
+}
+
+.reconnect-card h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.reconnect-card p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.reconnect-btn {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.reconnect-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+}
+
+/* Queue Display Section */
+.queue-display-section {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.spots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+    width: 100%;
+}
+
+.spot-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 230px;
+}
+
+.spot-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.spot-card.active {
+    border-top: 4px solid #4cd964;
+}
+
+.spot-card.inactive {
+    border-top: 4px solid #e0e0e0;
+}
+
+.spot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.spot-number {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.spot-number i {
+    font-size: 0.9rem;
+}
+
+.spot-body {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.queue-number-display {
+    margin-bottom: 15px;
+}
+
+.queue-number {
+    font-size: 3.8rem;
+    font-weight: 800;
+    color: #c02a2a;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s infinite;
+}
+
+.patient-info {
+    margin-top: 10px;
+}
+
+.patient-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.patient-name i {
+    font-size: 0.8rem;
+}
+
+.department {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.department i {
+    font-size: 0.7rem;
+}
+
+.no-queue {
+    padding: 20px 0;
+    color: #95a5a6;
+}
+
+.no-queue i {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.no-queue p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.spot-footer {
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eaeaea;
+    text-align: center;
+}
+
+.waiting-text {
+    font-weight: 500;
+    color: #7f8c8d;
+    font-size: 0.85rem;
+}
+
+.active .waiting-text {
+    color: #4cd964;
+    font-weight: 600;
+}
+
+/* Animation for queue numbers */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.loading-message, .error-message, .no-data-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+}
+
+.loading-message i, .error-message i, .no-data-message i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.error-message {
+    color: #e74c3c;
+}
+
+.retry-btn {
+    background: linear-gradient(to right, #3498db, #2980b9);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.4);
+}
+
+.fa-spin {
+    animation: fa-spin 2s infinite linear;
+}
+
+@keyframes fa-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design - ปรับเพิ่มเติมสำหรับ Responsive */
+@media (max-width: 1200px) {
+    .spots-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    .queue-number {
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .status-section {
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .spots-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .spot-card {
+        min-height: 200px;
+    }
+    
+    .queue-number {
+        font-size: 2.8rem;
+    }
+    
+    .title-section h1 {
+        font-size: 1.5rem;
+    }
+    
+    .title-section p {
+        font-size: 1.1rem;
+    }
+    
+    .current-time {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .display-container {
+        padding: 10px;
+    }
+    
+    .queue-display-section {
+        padding: 15px;
+    }
+    
+    .spots-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 10px;
+    }
+    
+    .spot-card {
+        min-height: 180px;
+    }
+    
+    .queue-number {
+        font-size: 2.5rem;
+    }
+    
+    .patient-name, .department {
+        font-size: 0.85rem;
+    }
+    
+    .header-content {
+        padding: 15px;
+    }
+    
+    .title-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .title-section h1 {
+        font-size: 1.3rem;
+    }
+    
+    .current-time {
+        font-size: 1.3rem;
+    }
+    
+    .reconnect-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .spots-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .spot-card {
+        min-height: 160px;
+    }
+    
+    .spot-header, .spot-body, .spot-footer {
+        padding: 8px 12px;
+    }
+    
+    .queue-number {
+        font-size: 2.2rem;
+    }
+    
+    .status-section {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .header-content {
+        padding: 10px;
+    }
+    
+    .title-section h1 {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    
+    .current-time {
+        font-size: 1.1rem;
+    }
+    
+    .hospital-icon {
+        font-size: 2rem;
+    }
+}
+
+/* สำหรับหน้าจอแนวตั้ง (Portrait) */
+@media (max-height: 700px) and (orientation: portrait) {
+    .spot-card {
+        min-height: 140px;
+    }
+    
+    .queue-number {
+        font-size: 2rem;
+    }
+    
+    .spot-body {
+        padding: 10px;
+    }
+}
+
+/* สำหรับการพิมพ์ */
+@media print {
+    .display-container {
+        background: white;
+        padding: 0;
+    }
+    
+    .queue-display-section {
+        box-shadow: none;
+        background: white;
+    }
+    
+    .reconnect-section, .connection-status, .current-time {
+        display: none !important;
+    }
+}

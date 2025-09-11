@@ -1263,7 +1263,7 @@
     
     
 
-    private async Task CallPatient(QueuePatient patient, int? queueNumber = null)
+       private async Task CallPatient(QueuePatient patient, int? queueNumber = null)
     {
         if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
         {
@@ -1314,7 +1314,7 @@
         }
     }
     
-    private async Task CallPatient1(QueuePatient patient, int? queueNumber = null, string spotPlace = "")
+    @* private async Task CallPatient1(QueuePatient patient, int? queueNumber = null, string spotPlace = "")
     {
         if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
         {
@@ -1345,6 +1345,55 @@
                 {
                     await hubConnection.SendAsync("SendQueueUpdate", 
                         $"เรียกคิวซักประวัติ {actualQueueNumber} ผู้ป่วย: {userName} ที่ห้อง {departmentCode} ช่อง {spotPlace}");
+                }
+                
+                await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
+            }
+        }
+    } *@
+        private async Task CallPatient1(QueuePatient patient, int? queueDep, string spotPlace = "")
+    {
+        if (string.IsNullOrEmpty(spotPlace))
+        {
+            // Show error or select default spot
+            return;
+        }
+
+        if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+        {
+            userName = patientNames[patient.Hn];
+            var departmentCode = patient.QueueName?.Split('-')[0] ?? "";
+            var actualQueueNumber = patient.QueueHx ?? 0;
+            
+            // Send update via SignalR
+            if (isConnected && hubConnection != null)
+            {
+                await hubConnection.SendAsync("SendQueueUpdate", 
+                    spotPlace, 
+                    actualQueueNumber, 
+                    userName, 
+                    departmentCode);
+            }
+            
+            await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
+        }
+        else
+        {
+            searchHn = patient.Hn;
+            await SearchPatientByHn();
+            if (patientInfo != null)
+            {
+                var departmentCode = patient.QueueNameDep?.Split('-')[0] ?? "";
+                var actualQueueNumber = patient.QueueHx ?? 0;
+                
+                // Send update via SignalR
+                if (isConnected && hubConnection != null)
+                {
+                    await hubConnection.SendAsync("SendQueueUpdate", 
+                        spotPlace, 
+                        actualQueueNumber, 
+                        userName, 
+                        departmentCode);
                 }
                 
                 await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);

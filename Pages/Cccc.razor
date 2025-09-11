@@ -1,147 +1,279 @@
-@* @page "/queuedisplay"
+@page "/aaaa"
 @using Microsoft.AspNetCore.SignalR.Client
-@inject NavigationManager Navigation
+@using System.Text.Json
+@using System.Net.Http
+@using System.Net.Http.Json
+@using System.Threading
+@using SoundAnnoucementApp.Models
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+@layout QueueLayout
 
-<h3>📺 จอแสดงคิว</h3>
-
-
-@code {
-    private HubConnection? hubConnection;
-    private bool isConnected = false;
-    private string connectionStatus = "กำลังเชื่อมต่อ...";
-
-    private async Task InitializeSignalR()
-    {
-        try
-        {
-            // ใช้ URL แบบเต็มและถูกต้อง
-            var hubUrl = "http://localhost:5041/queuehub"; // เปลี่ยนเป็นพอร์ต 5041
-            Console.WriteLine($"Connecting to SignalR hub at: {hubUrl}");
-            
-            hubConnection = new HubConnectionBuilder()
-                .WithUrl(hubUrl, options =>
-                {
-                    // ตั้งค่าเพิ่มเติมหากจำเป็น
-                })
-                .WithAutomaticReconnect(new[] {
-                    TimeSpan.Zero,
-                    TimeSpan.FromSeconds(2),
-                    TimeSpan.FromSeconds(5),
-                    TimeSpan.FromSeconds(10)
-                })
-                .Build();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"SignalR connection error: {ex.Message}");
-            isConnected = false;
-            connectionStatus = "เชื่อมต่อล้มเหลว";
-        }
-        
-    }
-} *@
-
-@page "/queuedisplay"
-@using Microsoft.AspNetCore.SignalR.Client
-@inject NavigationManager Navigation
-@implements IAsyncDisposable
-
-<div class="display-container">
-    <div class="header">
-        <h1>📺 จอแสดงคิวซักประวัติ</h1>
-        <div class="connection-status @(isConnected ? "connected" : "disconnected")">
-            <i class="fas @(isConnected ? "fa-check-circle" : "fa-times-circle") me-1"></i>
-            @connectionStatus
+@* <div class="display-container"> *@
+    <div class="queue-display-section">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="title-section">
+                    <div class="hospital-icon">
+                        <i class="fas fa-hospital-alt"></i>
+                    </div>
+                    <div>
+                        <h1>จอแสดงคิวเข้าห้องตรวจ</h1>
+                        <p>@currentTime</p>
+                    </div>
+                </div>
+                <div class="status-section">
+                    <div class="connection-status @(isConnected ? "connected" : "disconnected")">
+                        <div class="status-indicator"></div>
+                        <span>@connectionStatus</span>
+                        @if (!isConnected)
+                        {
+                            <button class="btn btn-sm btn-outline-primary ms-2" @onclick="ReconnectSignalR" title="เชื่อมต่อใหม่">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    @if (!isConnected)
-    {
-        <div class="reconnect-section">
-            <button class="btn btn-primary" @onclick="InitializeSignalR">
-                <i class="fas fa-sync-alt me-1"></i> เชื่อมต่อใหม่
-            </button>
-        </div>
-    }
-
-    <div class="spots-container mt-4">
-        <div class="row">
-            @for (int i = 1; i <= 5; i++)
+        <!-- Queue Display Section -->
+        <div class="spots-grid">
+            @if (isLoading)
             {
-                var spotKey = i.ToString();
-                var spotInfo = spotQueues.ContainsKey(spotKey) ? spotQueues[spotKey] : null;
-                
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="spot-card card h-100">
-                        <div class="card-header text-center">
-                            <h5 class="mb-0">ช่องซักประวัติที่ @i</h5>
+                <div class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>กำลังโหลดข้อมูลแผนก...</p>
+                </div>
+            }
+            else if (hasLoadError)
+            {
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>ไม่สามารถโหลดข้อมูลแผนกได้</p>
+                    <button class="retry-btn" @onclick="RetryLoadDepartments">
+                        <i class="fas fa-redo"></i>
+                        โหลดใหม่
+                    </button>
+                </div>
+            }
+            else if (departments != null && departments.Any())
+            {
+                @foreach (var department in departments)
+                {
+                    var spotKey = department.Id.ToString();
+                    var spotInfo = spotQueues.ContainsKey(spotKey) ? spotQueues[spotKey] : null;
+                    
+                    <div class="spot-card @(spotInfo != null ? "active" : "inactive")">
+                        <div class="spot-header">
+                            <div class="spot-number">
+                                <i class="fas fa-user-md"></i>
+                                <span>@department.Name</span>
+                            </div>
+                            <div class="status-indicator"></div>
                         </div>
-                        <div class="card-body text-center">
+                        
+                        <div class="spot-body">
                             @if (spotInfo != null)
                             {
                                 <div class="queue-number-display">
                                     <span class="queue-number">@spotInfo.QueueNumber</span>
                                 </div>
                                 <div class="patient-info">
-                                    <div class="patient-name">@spotInfo.PatientName</div>
-                                    <div class="department">@spotInfo.Department</div>
+                                    <div class="patient-name">
+                                        <i class="fas fa-user"></i>
+                                        <span>@spotInfo.PatientName</span>
+                                    </div>
+                                    <div class="department">
+                                        <i class="fas fa-stethoscope"></i>
+                                        <span>@spotInfo.Department</span>
+                                    </div>
                                 </div>
                             }
                             else
                             {
                                 <div class="no-queue">
-                                    <i class="fas fa-user-clock fa-3x mb-3"></i>
+                                    <i class="fas fa-user-clock"></i>
                                     <p>ไม่มีคิวในขณะนี้</p>
                                 </div>
                             }
                         </div>
+                        
+                        <div class="spot-footer">
+                            <div class="waiting-text">
+                                @if (spotInfo != null)
+                                {
+                                    <span>กำลังซักประวัติ</span>
+                                }
+                                else
+                                {
+                                    <span>พร้อมให้บริการ</span>
+                                }
+                            </div>
+                        </div>
                     </div>
+                }
+            }
+            else
+            {
+                <div class="no-data-message">
+                    <i class="fas fa-database"></i>
+                    <p>ไม่มีข้อมูลแผนก</p>
                 </div>
             }
         </div>
     </div>
-</div>
+@* </div> *@
 
 @code {
-    private HubConnection? hubConnection;
+    private HubConnection hubConnection;
     private bool isConnected = false;
     private string connectionStatus = "กำลังเชื่อมต่อ...";
-    
+    private string currentTime = DateTime.Now.ToString("HH:mm:ss");
     private Dictionary<string, SpotQueueInfo> spotQueues = new Dictionary<string, SpotQueueInfo>();
-    protected override async Task OnInitializedAsync()
-    {
-        await InitializeSignalR();
-    }
+    private Timer timer;
+    private List<QueueDepartment> departments = new List<QueueDepartment>();
+    private bool isLoading = true;
+    private bool hasLoadError = false;
 
-    private async Task InitializeSignalR()
+    protected override async Task OnInitializedAsync()
     {
         try
         {
-            connectionStatus = "กำลังเชื่อมต่อ...";
-            isConnected = false;
+            // โหลด departments ก่อน
+            await LoadDepartments();
             
-            // ลบการเชื่อมต่อเดิมหากมี
-            if (hubConnection != null)
+            // จากนั้นค่อย initialize SignalR
+            await InitializeSignalR();
+            
+            // Initialize timer to update current time every second
+            timer = new Timer(new TimerCallback(_ =>
             {
-                await hubConnection.DisposeAsync();
-            }
+                currentTime = DateTime.Now.ToString("HH:mm:ss");
+                InvokeAsync(StateHasChanged);
+            }), null, 0, 1000);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in OnInitializedAsync: {ex.Message}");
+        }
+    }
 
-            // ใช้ URL แบบเต็มและถูกต้อง
-            var hubUrl = "http://localhost:5041/queuehub";
-            Console.WriteLine($"Connecting to SignalR hub at: {hubUrl}");
+    private async Task LoadDepartments()
+    {
+        try
+        {
+            isLoading = true;
+            hasLoadError = false;
+            StateHasChanged();
             
-            hubConnection = new HubConnectionBuilder()
-                .WithUrl(hubUrl)
-                .WithAutomaticReconnect(new[] {
-                    TimeSpan.Zero,
-                    TimeSpan.FromSeconds(2),
-                    TimeSpan.FromSeconds(5),
-                    TimeSpan.FromSeconds(10)
-                })
-                .Build();
+            // เรียก API เพื่อดึงข้อมูลแผนก
+            var response = await Http.GetAsync("http://localhost:5041/api/DepartmentName/DepartmentsNoHx");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<List<QueueDepartment>>(content, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+                
+                if (result != null && result.Any())
+                {
+                    departments = result;
+                }
+                else
+                {
+                    hasLoadError = true;
+                    Console.WriteLine("API returned empty department list");
+                }
+            }
+            else
+            {
+                hasLoadError = true;
+                Console.WriteLine($"Failed to load departments: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            hasLoadError = true;
+            Console.WriteLine($"Error loading departments: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
 
-            hubConnection.On<string, int, string, string>("ReceiveQueueUpdate", 
-                (spotPlace, queueNumber, patientName, department) =>
+private async Task InitializeSignalR()
+{
+    try
+    {
+        connectionStatus = "กำลังเชื่อมต่อ...";
+        isConnected = false;
+        StateHasChanged();
+        
+        // ลบการเชื่อมต่อเดิมหากมี
+        if (hubConnection != null)
+        {
+            await hubConnection.StopAsync();
+            await hubConnection.DisposeAsync();
+            hubConnection = null;
+        }
+
+        // ใช้ URL แบบเต็มและถูกต้อง
+        var hubUrl = "http://localhost:5041/queuehub";
+        Console.WriteLine($"Connecting to SignalR hub at: {hubUrl}");
+        
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(hubUrl)
+            .WithAutomaticReconnect(new[] {
+                TimeSpan.Zero,
+                TimeSpan.FromSeconds(2),
+                TimeSpan.FromSeconds(5),
+                TimeSpan.FromSeconds(10)
+            })
+            .Build();
+
+        // กำหนด event handlers ก่อนเริ่มการเชื่อมต่อ
+        hubConnection.Reconnecting += (exception) =>
+        {
+            connectionStatus = "กำลังเชื่อมต่อใหม่...";
+            isConnected = false;
+            Console.WriteLine($"SignalR reconnecting: {exception?.Message}");
+            InvokeAsync(StateHasChanged);
+            return Task.CompletedTask;
+        };
+
+        hubConnection.Reconnected += (connectionId) =>
+        {
+            connectionStatus = "เชื่อมต่อแล้ว";
+            isConnected = true;
+            Console.WriteLine($"SignalR reconnected: {connectionId}");
+            InvokeAsync(StateHasChanged);
+            return Task.CompletedTask;
+        };
+
+        hubConnection.Closed += (exception) =>
+        {
+            connectionStatus = "การเชื่อมต่อถูกปิด";
+            isConnected = false;
+            Console.WriteLine($"SignalR closed: {exception?.Message}");
+            InvokeAsync(StateHasChanged);
+            return Task.CompletedTask;
+        };
+
+        // กำหนด method ที่จะรับข้อมูล
+        hubConnection.On<string, int, string, string>("ReceiveQueueUpdate1", 
+            (spotPlace, queueNumber, patientName, department) =>
+        {
+            Console.WriteLine($"Received update - Spot: {spotPlace}, Queue: {queueNumber}, Patient: {patientName}, Dept: {department}");
+            
+            // ตรวจสอบว่า spotPlace ตรงกับ department.Id ใดในรายการ
+            var targetDepartment = departments?.FirstOrDefault(d => d.Id.ToString() == spotPlace);
+            
+            if (targetDepartment != null)
             {
                 var spotInfo = new SpotQueueInfo
                 {
@@ -152,164 +284,106 @@
                 };
 
                 spotQueues[spotPlace] = spotInfo;
-                StateHasChanged();
-            });
-
-            hubConnection.Reconnected += (connectionId) =>
-            {
-                connectionStatus = "เชื่อมต่อแล้ว";
-                isConnected = true;
+                
+                // Announce the queue update with sound
+                _ = AnnounceQueue3(queueNumber, patientName, department, spotPlace, 0.7, 1.2, 2.0);
+                
                 InvokeAsync(StateHasChanged);
-                return Task.CompletedTask;
-            };
-
-            hubConnection.Reconnecting += (exception) =>
+            }
+            else
             {
-                connectionStatus = "กำลังเชื่อมต่อใหม่...";
-                isConnected = false;
+                Console.WriteLine($"Received update for unknown spot: {spotPlace}");
+                // ยังแสดงข้อมูลแม้จะไม่ตรงกับ department ก็ตาม
+                var spotInfo = new SpotQueueInfo
+                {
+                    SpotPlace = spotPlace,
+                    QueueNumber = queueNumber,
+                    PatientName = patientName,
+                    Department = department
+                };
+
+                spotQueues[spotPlace] = spotInfo;
                 InvokeAsync(StateHasChanged);
-                return Task.CompletedTask;
-            };
+            }
+        });
 
-            hubConnection.Closed += (exception) =>
-            {
-                connectionStatus = "การเชื่อมต่อถูกปิด";
-                isConnected = false;
-                InvokeAsync(StateHasChanged);
-                return Task.CompletedTask;
-            };
+        // เริ่มการเชื่อมต่อ
+        await hubConnection.StartAsync();
+        
+        connectionStatus = "เชื่อมต่อแล้ว";
+        isConnected = true;
+        Console.WriteLine("SignalR connection established");
 
-            // เริ่มการเชื่อมต่อ
-            await hubConnection.StartAsync();
-            
-            connectionStatus = "เชื่อมต่อแล้ว";
-            isConnected = true;
-            Console.WriteLine("SignalR connection established");
-
-
+        // ขอข้อมูลล่าสุดทั้งหมดจาก server หลังจากเชื่อมต่อสำเร็จ
+        try
+        {
+            await hubConnection.InvokeAsync("RequestAllQueueData");
+            Console.WriteLine("Requested all queue data from server");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"SignalR connection error: {ex.Message}");
-            isConnected = false;
-            connectionStatus = "เชื่อมต่อล้มเหลว";
+            Console.WriteLine($"Error requesting all queue data: {ex.Message}");
         }
-        
-        // อัพเดท UI
-        StateHasChanged();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"SignalR connection error: {ex.Message}");
+        isConnected = false;
+        connectionStatus = "เชื่อมต่อล้มเหลว";
+    }
+    
+    // อัพเดท UI
+    await InvokeAsync(StateHasChanged);
+}
+
+    private async Task ReconnectSignalR()
+    {
+        await InitializeSignalR();
+    }
+
+    private async Task RetryLoadDepartments()
+    {
+        await LoadDepartments();
+    }
+
+    private async Task AnnounceQueue3(int queueNumber, string patientName, string department,  string spotPlace, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("audioHelper.announceQueue3", 
+                queueNumber, patientName, department, spotPlace, rate, pitch, volume);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error announcing queue: {ex.Message}");
+        }
     }
 
     public async ValueTask DisposeAsync()
     {
         if (hubConnection != null)
         {
+            await hubConnection.StopAsync();
             await hubConnection.DisposeAsync();
         }
+        
+        timer?.Dispose();
+        timer = null;
+        
+        Console.WriteLine("Component disposed");
     }
 
-     public class SpotQueueInfo
+    public class SpotQueueInfo
     {
         public string SpotPlace { get; set; }
         public int QueueNumber { get; set; }
         public string PatientName { get; set; }
         public string Department { get; set; }
     }
+
+    public class Department
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
 }
-
-<style>
-    .display-container {
-        padding: 20px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f8f9fa;
-        min-height: 100vh;
-    }
-
-    .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-        padding: 15px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .connection-status {
-        padding: 8px 15px;
-        border-radius: 20px;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-    }
-
-    .connection-status.connected {
-        background-color: #d4edda;
-        color: #155724;
-    }
-
-    .connection-status.disconnected {
-        background-color: #f8d7da;
-        color: #721c24;
-    }
-
-    .reconnect-section {
-        text-align: center;
-        margin: 30px 0;
-    }
-
-    .spots-container {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .spot-card {
-        border: 2px solid #dee2e6;
-        transition: all 0.3s ease;
-    }
-
-    .spot-card:hover {
-        border-color: #007bff;
-        box-shadow: 0 4px 15px rgba(0,123,255,0.2);
-        transform: translateY(-5px);
-    }
-
-    .spot-card .card-header {
-        background-color: #007bff;
-        color: white;
-        font-weight: bold;
-    }
-
-    .queue-number-display {
-        margin: 15px 0;
-    }
-
-    .queue-number {
-        font-size: 48px;
-        font-weight: bold;
-        color: #007bff;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    }
-
-    .patient-info {
-        margin-top: 15px;
-    }
-
-    .patient-name {
-        font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .department {
-        font-size: 14px;
-        color: #6c757d;
-    }
-
-    .no-queue {
-        padding: 30px 0;
-        color: #6c757d;
-    }
-</style>

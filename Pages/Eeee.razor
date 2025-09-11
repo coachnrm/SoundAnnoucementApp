@@ -1,343 +1,566 @@
 @page "/eeee"
-@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.SignalR.Client
+@using SoundAnnoucementApp.Models
 @using System.Text.Json
-@inject HttpClient Http
-@inject NavigationManager NavigationManager
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+@implements IAsyncDisposable
 @inject IHttpClientFactory _httpClientFactory
-@inject ILogger<Dddd> Logger
+@layout QueueLayout
 
-<div class="custom-input-section">
-    <div class="section-header mb-4">
-        <h4 class="section-title"><i class="fas fa-edit me-2"></i>ข้อมูลห้องตรวจ</h4>
-        <div class="section-divider"></div>
-    </div>
-
-    @if (!string.IsNullOrEmpty(errorMessage))
-    {
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <i class="fas fa-exclamation-circle me-2"></i>@errorMessage
-            <button type="button" class="btn-close" @onclick="() => errorMessage = string.Empty"></button>
-        </div>
-    }
-
-    @if (!string.IsNullOrEmpty(successMessage))
-    {
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <i class="fas fa-check-circle me-2"></i>@successMessage
-            <button type="button" class="btn-close" @onclick="() => successMessage = string.Empty"></button>
-        </div>
-    }
-
-    @if (updateResults?.Any() == true)
-    {
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
-            <h6><i class="fas fa-info-circle me-2"></i>ผลการอัพเดท:</h6>
-            <ul class="mb-0">
-                @foreach (var result in updateResults)
-                {
-                    <li>ห้อง @result.Id: @(result.Success ? "สำเร็จ" : "ล้มเหลว")</li>
-                }
-            </ul>
-            <button type="button" class="btn-close" @onclick="() => updateResults = null"></button>
-        </div>
-    }
-
-    <EditForm Model="@departmentValues" OnValidSubmit="@SavePatientData">
-        <DataAnnotationsValidator />
-        <div class="rounded-input-grid">
-            <!-- Input Card 1 -->
-            <div class="input-card">
-                <div class="input-header">
-                    <i class="fas fa-user-md input-icon"></i>
-                    <span class="input-label">ห้องเบอร์ 1 (ซักประวัติ)</span>
+<div class="display-container">
+    <!-- Header Section -->
+    <div class="queue-display-section">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="title-section">
+                    <div class="hospital-icon">
+                        <i class="fas fa-hospital-alt"></i>
+                    </div>
+                    <div>
+                        <h1>จอแสดงคิวซักประวัติ</h1>
+                        <p>โรงพยาบาลสมุทรสาคร</p>
+                    </div>
                 </div>
-                <div class="input-container">
-                    <InputText @bind-Value="@departmentValues.Room1" class="custom-input" placeholder="กรอกอาการสำคัญ" />
-                    <div class="input-border"></div>
-                </div>
-            </div>
-
-            <!-- Input Card 2 -->
-            <div class="input-card">
-                <div class="input-header">
-                    <i class="fas fa-heartbeat input-icon"></i>
-                    <span class="input-label">ห้องเบอร์ 2 (CVT)</span>
-                </div>
-                <div class="input-container">
-                    <InputText @bind-Value="@departmentValues.Room2" class="custom-input" placeholder="กรอกสัญญาณชีพ" />
-                    <div class="input-border"></div>
-                </div>
-            </div>
-
-            <!-- Input Card 3 -->
-            <div class="input-card">
-                <div class="input-header">
-                    <i class="fas fa-stethoscope input-icon"></i>
-                    <span class="input-label">ห้องเบอร์ 3 (Neuro)</span>
-                </div>
-                <div class="input-container">
-                    <InputText @bind-Value="@departmentValues.Room3" class="custom-input" placeholder="กรอกผลการตรวจร่างกาย" />
-                    <div class="input-border"></div>
-                </div>
-            </div>
-
-            <!-- Input Card 4 -->
-            <div class="input-card">
-                <div class="input-header">
-                    <i class="fas fa-pills input-icon"></i>
-                    <span class="input-label">ห้องเบอร์ 4</span>
-                </div>
-                <div class="input-container">
-                    <InputText @bind-Value="@departmentValues.Room4" class="custom-input" placeholder="กรอกการวินิจฉัย" />
-                    <div class="input-border"></div>
-                </div>
-            </div>
-
-            <!-- Input Card 5 -->
-            <div class="input-card">
-                <div class="input-header">
-                    <i class="fas fa-prescription input-icon"></i>
-                    <span class="input-label">ห้องเบอร์ 5</span>
-                </div>
-                <div class="input-container">
-                    <InputText @bind-Value="@departmentValues.Room5" class="custom-input" placeholder="กรอกแผนการรักษา" />
-                    <div class="input-border"></div>
-                </div>
-            </div>
-
-            <!-- Input Card 6 -->
-            <div class="input-card">
-                <div class="input-header">
-                    <i class="fas fa-capsules input-icon"></i>
-                    <span class="input-label">ห้องเบอร์ 6</span>
-                </div>
-                <div class="input-container">
-                    <InputText @bind-Value="@departmentValues.Room6" class="custom-input" placeholder="กรอกรายการยา" />
-                    <div class="input-border"></div>
-                </div>
-            </div>
-
-            <!-- Input Card 7 -->
-            <div class="input-card">
-                <div class="input-header">
-                    <i class="fas fa-notes-medical input-icon"></i>
-                    <span class="input-label">ห้องเบอร์ 7</span>
-                </div>
-                <div class="input-container">
-                    <InputText @bind-Value="@departmentValues.Room7" class="custom-input" placeholder="กรอกหมายเหตุเพิ่มเติม" />
-                    <div class="input-border"></div>
+                <div class="status-section">
+                    <div class="connection-status @(isConnected ? "connected" : "disconnected")">
+                        <div class="status-indicator"></div>
+                        <span>@connectionStatus</span>
+                    </div>
+                    <div class="current-time">
+                        <i class="fas fa-clock"></i>
+                        <span>@currentTime</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="text-center mt-4">
-            <button type="submit" class="btn btn-save" disabled="@isSaving">
-                @if (isSaving)
-                {
-                    <span><i class="fas fa-spinner fa-spin me-2"></i>กำลังบันทึก...</span>
-                }
-                else
-                {
-                    <span><i class="fas fa-save me-2"></i>บันทึกข้อมูล</span>
-                }
-            </button>
-            
-            <button type="button" class="btn btn-save" @onclick="Cancel">
-                <i class="fas fa-times me-2"></i>ยกเลิก
-            </button>
-        </div>
-    </EditForm>
-</div>
-
-@code {
-    private DepartmentValues departmentValues = new DepartmentValues();
-    private bool isSaving = false;
-    private string errorMessage = "";
-    private string successMessage = "";
-    private List<UpdateResult> updateResults;
-
-    public class DepartmentValues
-    {
-        public string Room1 { get; set; } = "";
-        public string Room2 { get; set; } = "";
-        public string Room3 { get; set; } = "";
-        public string Room4 { get; set; } = "";
-        public string Room5 { get; set; } = "";
-        public string Room6 { get; set; } = "";
-        public string Room7 { get; set; } = "";
-    }
-
-    public class UpdateResult
-    {
-        public int Id { get; set; }
-        public bool Success { get; set; }
-        public string Message { get; set; } = "";
-    }
-
-    public class QueueDepartmentUpdateItem
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = "";
-    }
-
-    public class BatchUpdateRequest
-    {
-        public List<QueueDepartmentUpdateItem> Updates { get; set; } = new List<QueueDepartmentUpdateItem>();
-    }
-
-
-
-    public class QueueDepartment
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-    }
-
-    // ย้าย method SetRoomValue มาอยู่ก่อน method ที่เรียกใช้
-    private void SetRoomValue(int roomId, string value)
-    {
-        switch (roomId)
+        @if (!isConnected)
         {
-            case 1: departmentValues.Room1 = value; break;
-            case 2: departmentValues.Room2 = value; break;
-            case 3: departmentValues.Room3 = value; break;
-            case 4: departmentValues.Room4 = value; break;
-            case 5: departmentValues.Room5 = value; break;
-            case 6: departmentValues.Room6 = value; break;
-            case 7: departmentValues.Room7 = value; break;
+            <div class="reconnect-section">
+                <div class="reconnect-card">
+                    <i class="fas fa-plug disconnected-icon"></i>
+                    <h3>การเชื่อมต่อขาดหาย</h3>
+                    <p>ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้ในขณะนี้</p>
+                    <button class="reconnect-btn" @onclick="InitializeSignalR">
+                        <i class="fas fa-sync-alt"></i> 
+                        <span>เชื่อมต่อใหม่</span>
+                    </button>
+                </div>
+            </div>
         }
-    }
 
-    protected override async Task OnInitializedAsync()
-    {
-        await LoadExistingData();
-    }
-
-    private async Task LoadExistingData()
-    {
-        try
-        {
-            var client = _httpClientFactory.CreateClient("QueueApi");
-            var departments = await client.GetFromJsonAsync<List<QueueDepartment>>("api/DepartmentName");
-            
-            if (departments != null)
-            {
-                foreach (var dept in departments)
+        <!-- Queue Display Section -->
+        @* <div class="queue-display-section"> *@
+            <div class="spots-grid">
+                @for (int i = 1; i <= 7; i++)
                 {
-                    SetRoomValue(dept.Id, dept.Name);
+                    var spotKey = i.ToString();
+                    var spotInfo = spotQueues.ContainsKey(spotKey) ? spotQueues[spotKey] : null;
+                    
+                    <div class="spot-card @(spotInfo != null ? "active" : "inactive")">
+                        <div class="spot-header">
+                            <div class="spot-number">
+                                <i class="fas fa-user-md"></i>
+                                <span>ช่องซักประวัติที่ @i</span>
+                            </div>
+                            <div class="status-indicator"></div>
+                        </div>
+                        
+                        <div class="spot-body">
+                            @if (spotInfo != null)
+                            {
+                                <div class="queue-number-display">
+                                    <span class="queue-number">@spotInfo.QueueNumber</span>
+                                </div>
+                                <div class="patient-info">
+                                    <div class="patient-name">
+                                        <i class="fas fa-user"></i>
+                                        <span>@spotInfo.PatientName</span>
+                                    </div>
+                                    <div class="department">
+                                        <i class="fas fa-stethoscope"></i>
+                                        <span>@spotInfo.Department</span>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="no-queue">
+                                    <i class="fas fa-user-clock"></i>
+                                    <p>ไม่มีคิวในขณะนี้</p>
+                                </div>
+                            }
+                        </div>
+                        
+                        <div class="spot-footer">
+                            <div class="waiting-text">
+                                @if (spotInfo != null)
+                                {
+                                    <span>กำลังซักประวัติ</span>
+                                }
+                                else
+                                {
+                                    <span>พร้อมให้บริการ</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
                 }
+            </div>
+            <div class="header-container">
+            <div class="header-content">
+                <div class="title-section">
+                    <div class="hospital-icon">
+                        <i class="fas fa-hospital-alt"></i>
+                    </div>
+                    <div>
+                        <h1>จอแสดงคิวเข้าห้องตรวจ</h1>
+                        <p>@currentTime</p>
+                    </div>
+                </div>
+                <div class="status-section">
+                    <div class="connection-status @(isConnected ? "connected" : "disconnected")">
+                        <div class="status-indicator"></div>
+                        <span>@connectionStatus</span>
+                        @if (!isConnected)
+                        {
+                            <button class="btn btn-sm btn-outline-primary ms-2" @onclick="ReconnectSignalR" title="เชื่อมต่อใหม่">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Queue Display Section -->
+        <div class="spots-grid">
+            @if (isLoading)
+            {
+                <div class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>กำลังโหลดข้อมูลแผนก...</p>
+                </div>
             }
-        }
-        catch (Exception ex)
-        {
-            Logger.LogError(ex, "Error loading existing department data");
-            // ไม่แสดง error เพื่อไม่ให้รบกวนผู้ใช้
-        }
-    }
-
-       public class BatchUpdateResponse
-    {
-        public string Message { get; set; } = "";
-        public List<UpdateResultResponse> SuccessResults { get; set; } = new List<UpdateResultResponse>();
-        public List<UpdateResultResponse> ErrorResults { get; set; } = new List<UpdateResultResponse>();
-        public int TotalUpdated { get; set; }
-        public int TotalFailed { get; set; }
-    }
-
-    public class UpdateResultResponse
-    {
-        public int Id { get; set; }
-        public bool Success { get; set; }
-        public string Name { get; set; } = "";
-        public string Error { get; set; } = "";
-    }
-
-    private async Task SavePatientData()
-    {
-        isSaving = true;
-        errorMessage = "";
-        successMessage = "";
-        updateResults = null;
-        
-        try
-        {
-            // สร้างรายการสำหรับอัพเดท
-            var updates = new List<QueueDepartmentUpdateItem>();
-            
-            // เพิ่มห้องต่างๆ ตาม ID ที่ตรงกัน
-            AddUpdateIfNotEmpty(updates, 1, departmentValues.Room1);
-            AddUpdateIfNotEmpty(updates, 2, departmentValues.Room2);
-            AddUpdateIfNotEmpty(updates, 3, departmentValues.Room3);
-            AddUpdateIfNotEmpty(updates, 4, departmentValues.Room4);
-            AddUpdateIfNotEmpty(updates, 5, departmentValues.Room5);
-            AddUpdateIfNotEmpty(updates, 6, departmentValues.Room6);
-            AddUpdateIfNotEmpty(updates, 7, departmentValues.Room7);
-
-            if (updates.Count == 0)
+            else if (hasLoadError)
             {
-                errorMessage = "กรุณากรอกข้อมูลอย่างน้อยหนึ่งห้อง";
-                return;
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>ไม่สามารถโหลดข้อมูลแผนกได้</p>
+                    <button class="retry-btn" @onclick="RetryLoadDepartments">
+                        <i class="fas fa-redo"></i>
+                        โหลดใหม่
+                    </button>
+                </div>
             }
-            
-            var batchUpdateRequest = new BatchUpdateRequest { Updates = updates };
-            
-            // ใช้ HttpClientFactory สำหรับการอัพเดท
-            var client = _httpClientFactory.CreateClient("QueueApi");
-            var response = await client.PutAsJsonAsync("api/DepartmentName/UpdateQueueDepartments", batchUpdateRequest);
-            
-            if (response.IsSuccessStatusCode)
+            else if (departments != null && departments.Any())
             {
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var batchResponse = JsonSerializer.Deserialize<BatchUpdateResponse>(responseContent,
-                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                
-                successMessage = $"{batchResponse?.Message ?? "บันทึกข้อมูลสำเร็จ"} (อัพเดทสำเร็จ: {batchResponse?.TotalUpdated ?? 0}, ล้มเหลว: {batchResponse?.TotalFailed ?? 0})";
-                
-                // แสดงผลการอัพเดท
-                updateResults = new List<UpdateResult>();
-                if (batchResponse?.SuccessResults != null)
+                @foreach (var department in departments)
                 {
-                    updateResults.AddRange(batchResponse.SuccessResults.Select(r => 
-                        new UpdateResult { Id = r.Id, Success = true, Message = r.Name }));
-                }
-                if (batchResponse?.ErrorResults != null)
-                {
-                    updateResults.AddRange(batchResponse.ErrorResults.Select(r => 
-                        new UpdateResult { Id = r.Id, Success = false, Message = r.Error }));
+                    var spotKey = department.Id.ToString();
+                    var spotInfo = spotQueues.ContainsKey(spotKey) ? spotQueues[spotKey] : null;
+                    
+                    <div class="spot-card @(spotInfo != null ? "active" : "inactive")">
+                        <div class="spot-header">
+                            <div class="spot-number">
+                                <i class="fas fa-user-md"></i>
+                                <span>@department.Name</span>
+                            </div>
+                            <div class="status-indicator"></div>
+                        </div>
+                        
+                        <div class="spot-body">
+                            @if (spotInfo != null)
+                            {
+                                <div class="queue-number-display">
+                                    <span class="queue-number">@spotInfo.QueueNumber</span>
+                                </div>
+                                <div class="patient-info">
+                                    <div class="patient-name">
+                                        <i class="fas fa-user"></i>
+                                        <span>@spotInfo.PatientName</span>
+                                    </div>
+                                    <div class="department">
+                                        <i class="fas fa-stethoscope"></i>
+                                        <span>@spotInfo.Department</span>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="no-queue">
+                                    <i class="fas fa-user-clock"></i>
+                                    <p>ไม่มีคิวในขณะนี้</p>
+                                </div>
+                            }
+                        </div>
+                        
+                        <div class="spot-footer">
+                            <div class="waiting-text">
+                                @if (spotInfo != null)
+                                {
+                                    <span>กำลังซักประวัติ</span>
+                                }
+                                else
+                                {
+                                    <span>พร้อมให้บริการ</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
                 }
             }
             else
             {
-                errorMessage = "เกิดข้อผิดพลาดในการบันทึกข้อมูล";
-                var errorContent = await response.Content.ReadAsStringAsync();
-                Logger.LogError("API Error: {StatusCode} - {Content}", response.StatusCode, errorContent);
+                <div class="no-data-message">
+                    <i class="fas fa-database"></i>
+                    <p>ไม่มีข้อมูลแผนก</p>
+                </div>
+            }
+        </div>
+        @* </div> *@
+    </div>
+</div>
+<div class="queue-display-section">
+        
+    </div>
+
+
+@code {
+      // สำหรับ QueueHub (คิวซักประวัติ)
+    private HubConnection hubConnection;
+    private bool isConnected = false;
+    private string connectionStatus = "กำลังเชื่อมต่อ...";
+    private Dictionary<string, SpotQueueInfo> spotQueues = new Dictionary<string, SpotQueueInfo>();
+    private string currentTime = DateTime.Now.ToString("HH:mm:ss");
+    private Timer timer;
+
+    // สำหรับ DisplayHub (คิวเข้าห้องตรวจ)
+    private HubConnection hubConnection1;
+    private bool isConnected1 = false;
+    private string connectionStatus1 = "กำลังเชื่อมต่อ...";
+    private Dictionary<string, SpotQueueInfo> spotQueues1 = new Dictionary<string, SpotQueueInfo>();
+    private string currentTime1 = DateTime.Now.ToString("HH:mm:ss");
+    private Timer timer1;
+    private List<QueueDepartment> departments = new List<QueueDepartment>();
+    private bool isLoading = true;
+    private bool hasLoadError = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        
+        await LoadDepartments(); // โหลด departments ก่อน
+        await InitializeSignalR();   // สำหรับ QueueHub
+        await InitializeSignalR1();  // สำหรับ DisplayHub
+        
+        // Initialize timer to update current time every second
+        timer = new Timer(new TimerCallback(_ =>
+        {
+            currentTime = DateTime.Now.ToString("HH:mm:ss");
+            InvokeAsync(StateHasChanged);
+        }), null, 0, 1000);
+        timer1 = new Timer(new TimerCallback(_ =>
+            {
+                currentTime1= DateTime.Now.ToString("HH:mm:ss");
+                InvokeAsync(StateHasChanged);
+            }), null, 0, 1000);
+    }
+    
+
+    private async Task InitializeSignalR()
+    {
+        try
+        {
+            connectionStatus = "กำลังเชื่อมต่อ...";
+            isConnected = false;
+            
+            // ลบการเชื่อมต่อเดิมหากมี
+            if (hubConnection != null)
+            {
+                await hubConnection.DisposeAsync();
+            }
+
+            // ใช้ URL แบบเต็มและถูกต้อง
+            var hubUrl = "http://localhost:5041/queuehub";
+            Console.WriteLine($"Connecting to SignalR hub at: {hubUrl}");
+            
+            hubConnection = new HubConnectionBuilder()
+                .WithUrl(hubUrl)
+                .WithAutomaticReconnect(new[] {
+                    TimeSpan.Zero,
+                    TimeSpan.FromSeconds(2),
+                    TimeSpan.FromSeconds(5),
+                    TimeSpan.FromSeconds(10)
+                })
+                .Build();
+
+            hubConnection.On<string, int, string, string>("ReceiveQueueUpdate", 
+                async (spotPlace, queueNumber, patientName, department) =>
+            {
+                var spotInfo = new SpotQueueInfo
+                {
+                    SpotPlace = spotPlace,
+                    QueueNumber = queueNumber,
+                    PatientName = patientName,
+                    Department = department
+                };
+
+                spotQueues[spotPlace] = spotInfo;
+                
+                // Announce the queue update with sound
+                await AnnounceQueue2(queueNumber, patientName, department, spotPlace, 0.7, 1.2, 2.0);
+                
+                StateHasChanged();
+            });
+
+            hubConnection.Reconnected += (connectionId) =>
+            {
+                connectionStatus = "เชื่อมต่อแล้ว";
+                isConnected = true;
+                InvokeAsync(StateHasChanged);
+                return Task.CompletedTask;
+            };
+
+            hubConnection.Reconnecting += (exception) =>
+            {
+                connectionStatus = "กำลังเชื่อมต่อใหม่...";
+                isConnected = false;
+                InvokeAsync(StateHasChanged);
+                return Task.CompletedTask;
+            };
+
+            hubConnection.Closed += (exception) =>
+            {
+                connectionStatus = "การเชื่อมต่อถูกปิด";
+                isConnected = false;
+                InvokeAsync(StateHasChanged);
+                return Task.CompletedTask;
+            };
+
+            // เริ่มการเชื่อมต่อ
+            await hubConnection.StartAsync();
+            
+            connectionStatus = "เชื่อมต่อแล้ว";
+            isConnected = true;
+            Console.WriteLine("SignalR connection established");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"SignalR connection error: {ex.Message}");
+            isConnected = false;
+            connectionStatus = "เชื่อมต่อล้มเหลว";
+        }
+        
+        // อัพเดท UI
+        StateHasChanged();
+    }
+    private async Task InitializeSignalR1()
+    {
+        try
+        {
+            connectionStatus1 = "กำลังเชื่อมต่อ..."; // ใช้ connectionStatus1
+            isConnected1 = false; // ใช้ isConnected1
+            StateHasChanged();
+            
+            if (hubConnection1 != null)
+            {
+                await hubConnection1.StopAsync();
+                await hubConnection1.DisposeAsync();
+                hubConnection1 = null;
+            }
+
+            var hubUrl = "http://localhost:5041/displayhub";
+            Console.WriteLine($"Connecting to DisplayHub at: {hubUrl}");
+            
+            hubConnection1 = new HubConnectionBuilder()
+                .WithUrl(hubUrl)
+                .WithAutomaticReconnect(new[] {
+                    TimeSpan.Zero,
+                    TimeSpan.FromSeconds(2),
+                    TimeSpan.FromSeconds(5),
+                    TimeSpan.FromSeconds(10)
+                })
+                .Build();
+
+            // แก้ไข event handlers ให้ใช้ state ที่ถูกต้อง
+            hubConnection1.Reconnecting += (exception) =>
+            {
+                connectionStatus1 = "กำลังเชื่อมต่อใหม่..."; // ใช้ connectionStatus1
+                isConnected1 = false; // ใช้ isConnected1
+                Console.WriteLine($"DisplayHub reconnecting: {exception?.Message}");
+                InvokeAsync(StateHasChanged);
+                return Task.CompletedTask;
+            };
+
+            hubConnection1.Reconnected += (connectionId) =>
+            {
+                connectionStatus1 = "เชื่อมต่อแล้ว"; // ใช้ connectionStatus1
+                isConnected1 = true; // ใช้ isConnected1
+                Console.WriteLine($"DisplayHub reconnected: {connectionId}");
+                InvokeAsync(StateHasChanged);
+                return Task.CompletedTask;
+            };
+
+            hubConnection1.Closed += (exception) =>
+            {
+                connectionStatus1 = "การเชื่อมต่อถูกปิด"; // ใช้ connectionStatus1
+                isConnected1 = false; // ใช้ isConnected1
+                Console.WriteLine($"DisplayHub closed: {exception?.Message}");
+                InvokeAsync(StateHasChanged);
+                return Task.CompletedTask;
+            };
+
+            hubConnection1.On<string, int, string, string>("ReceiveQueueUpdate1", 
+                (spotPlace, queueNumber, patientName, department) =>
+            {
+                // 処理ข้อมูล...
+            });
+
+            await hubConnection1.StartAsync();
+            
+            connectionStatus1 = "เชื่อมต่อแล้ว"; // ใช้ connectionStatus1
+            isConnected1 = true; // ใช้ isConnected1
+            Console.WriteLine("DisplayHub connection established");
+
+            // แก้ไขการเรียกใช้ method ให้ถูก Hub
+            try
+            {
+                await hubConnection1.InvokeAsync("RequestAllQueueData1"); // ใช้ hubConnection1
+                Console.WriteLine("Requested all queue data from DisplayHub");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error requesting all queue data: {ex.Message}");
             }
         }
         catch (Exception ex)
         {
-            Logger.LogError(ex, "Error saving patient data");
-            errorMessage = $"เกิดข้อผิดพลาด: {ex.Message}";
+            Console.WriteLine($"DisplayHub connection error: {ex.Message}");
+            isConnected1 = false; // ใช้ isConnected1
+            connectionStatus1 = "เชื่อมต่อล้มเหลว"; // ใช้ connectionStatus1
+        }
+        
+        await InvokeAsync(StateHasChanged);
+    }
+     private async Task LoadDepartments()
+    {
+        try
+        {
+            isLoading = true;
+            hasLoadError = false;
+            StateHasChanged();
+            
+            // เรียก API เพื่อดึงข้อมูลแผนก
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var response = await client.GetAsync("api/DepartmentName/DepartmentsNoHx");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<List<QueueDepartment>>(content, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+                
+                if (result != null && result.Any())
+                {
+                    departments = result;
+                }
+                else
+                {
+                    hasLoadError = true;
+                    Console.WriteLine("API returned empty department list");
+                }
+            }
+            else
+            {
+                hasLoadError = true;
+                Console.WriteLine($"Failed to load departments: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            hasLoadError = true;
+            Console.WriteLine($"Error loading departments: {ex.Message}");
         }
         finally
         {
-            isSaving = false;
+            isLoading = false;
+            StateHasChanged();
         }
     }
 
-    private void AddUpdateIfNotEmpty(List<QueueDepartmentUpdateItem> updates, int id, string value)
+    private async Task AnnounceQueue2(int queueNumber, string patientName, string department,  string spotPlace, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
     {
-        if (!string.IsNullOrWhiteSpace(value))
+        try
         {
-            updates.Add(new QueueDepartmentUpdateItem { Id = id, Name = value });
+            await JSRuntime.InvokeVoidAsync("audioHelper.announceQueue2", 
+                queueNumber, patientName, department, spotPlace, rate, pitch, volume);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error announcing queue: {ex.Message}");
         }
     }
 
-    private void Cancel()
+    public async ValueTask DisposeAsync()
     {
-        // รีเซ็ตฟอร์ม
-        departmentValues = new DepartmentValues();
-        errorMessage = "";
-        successMessage = "";
-        updateResults = null;
+        if (hubConnection != null)
+        {
+            await hubConnection.DisposeAsync();
+        }
+        
+        timer?.Dispose();
+    }
+     private async Task ReconnectSignalR()
+    {
+        await InitializeSignalR1();
+    }
+
+    private async Task RetryLoadDepartments()
+    {
+        await LoadDepartments();
+    }
+
+    private async Task AnnounceQueue3(int queueNumber, string patientName, string department,  string spotPlace, double rate = 0.7, double pitch = 1.5, double volume = 0.9)
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("audioHelper.announceQueue3", 
+                queueNumber, patientName, department, spotPlace, rate, pitch, volume);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error announcing queue: {ex.Message}");
+        }
+    }
+
+    public async ValueTask DisposeAsync1()
+    {
+        if (hubConnection1 != null)
+        {
+            await hubConnection1.StopAsync();
+            await hubConnection1.DisposeAsync();
+        }
+        
+        timer1?.Dispose();
+        timer1 = null;
+        
+        Console.WriteLine("Component disposed");
+    }
+
+    public class Department
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class SpotQueueInfo
+    {
+        public string SpotPlace { get; set; }
+        public int QueueNumber { get; set; }
+        public string PatientName { get; set; }
+        public string Department { get; set; }
     }
 }

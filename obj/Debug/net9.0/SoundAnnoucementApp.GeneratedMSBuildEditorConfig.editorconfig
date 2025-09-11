@@ -28,6 +28,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoundAnnoucementApp/Layout/QueueLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XFF1ZXVlTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoundAnnoucementApp/Pages/Animal.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQW5pbWFsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaW9DYWxsLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/SoundAnnoucementApp/Pages/AudioCustomQueue.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXVkaW9DdXN0b21RdWV1ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/SoundAnnoucementApp/Pages/BarcodeGenerator.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFyY29kZUdlbmVyYXRvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,10 +62,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/SoundAnnoucementApp/Pages/Carousel.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2Fyb3VzZWwucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/SoundAnnoucementApp/Pages/Cccc.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2NjYy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoundAnnoucementApp/Pages/Cccc2.razor]
@@ -80,10 +84,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHJhd2luZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/SoundAnnoucementApp/Pages/Eeee.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWVlZS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/SoundAnnoucementApp/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -94,6 +94,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/SoundAnnoucementApp/Pages/Kanban.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS2FuYmFuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/MophAppointment/ShowSlot.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9waEFwcG9pbnRtZW50XFNob3dTbG90LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/MophAppointment/ShowSlot2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9waEFwcG9pbnRtZW50XFNob3dTbG90Mi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/MophAppointment/ShowSlot3.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9waEFwcG9pbnRtZW50XFNob3dTbG90My5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/MophAppointment/ShowSlot4.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9waEFwcG9pbnRtZW50XFNob3dTbG90NC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/MophAppointment/ShowSlot5.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9waEFwcG9pbnRtZW50XFNob3dTbG90NS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoundAnnoucementApp/Pages/OpNoteImageUpload.razor]
@@ -146,6 +166,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/SoundAnnoucementApp/Pages/QueueCounter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SoundAnnoucementApp/Pages/QueueCountMoph.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudE1vcGgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/SoundAnnoucementApp/Pages/RecordMove.razor]
@@ -220,9 +244,25 @@ build_metadata.AdditionalFiles.CssScope = b-tcsymy4wla
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmJiYi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-uvutyhv3l3
 
-[D:/SoundAnnoucementApp/Pages/Dddd.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGRkZC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-tdy79ui6ef
+[D:/SoundAnnoucementApp/Pages/Bbbb2.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmJiYjIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-1drlkmafmw
+
+[D:/SoundAnnoucementApp/Pages/Cccc.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2NjYy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-a4l2392ja9
+
+[D:/SoundAnnoucementApp/Pages/Eeee.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWVlZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-2ux4s3zpxo
+
+[D:/SoundAnnoucementApp/Pages/ExaminationRoom.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhhbWluYXRpb25Sb29tLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-84mzitxn5r
+
+[D:/SoundAnnoucementApp/Pages/Ffff.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmZmZi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-csggbs1zy5
 
 [D:/SoundAnnoucementApp/Pages/MusicPad/Pad.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkLnJhem9y
@@ -232,6 +272,18 @@ build_metadata.AdditionalFiles.CssScope = b-nz1olq9wq5
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkQ29udHJvbGxlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-rhkae1j2hq
 
+[D:/SoundAnnoucementApp/Pages/Queuedisplay.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVkaXNwbGF5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-rewtvv08wt
+
+[D:/SoundAnnoucementApp/Pages/QueueHxlist.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVIeGxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-pimodsijuo
+
 [D:/SoundAnnoucementApp/Pages/Queuelist.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVsaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-6dvgqgbqk4
+
+[D:/SoundAnnoucementApp/Pages/QueuePrescriptionReceipt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVQcmVzY3JpcHRpb25SZWNlaXB0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-kgf2u7oxp1

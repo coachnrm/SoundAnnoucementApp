@@ -12,5 +12,5 @@ public class QueuePatient
     public string? QueueNameDep { get; set; }
     public int? QueueDep { get; set; }
     public int? Status { get; set; }
-    
+    public int? StatusHx { get; set; }
 }

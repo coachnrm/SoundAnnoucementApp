@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "SoundAnnoucementApp",
   "resources": {
-    "hash": "sha256-SAznzMO1C1gLi5YKTq6jzug8S8LpeTZB9W7K1zvZW0A=",
+    "hash": "sha256-zYKLL3eGOvDVF+ubc2acKx4zTWMerpWp2m5u/KBgdfA=",
     "fingerprinting": {
       "SignaturePad.t8yuxgjti1.wasm": "SignaturePad.wasm",
       "BlazorComponentUtilities.ukk3gvz4st.wasm": "BlazorComponentUtilities.wasm",
@@ -218,8 +218,8 @@
       "icudt_CJK.tjcz0u77k5.dat": "icudt_CJK.dat",
       "icudt_EFIGS.tptq2av103.dat": "icudt_EFIGS.dat",
       "icudt_no_CJK.lfu7j35m59.dat": "icudt_no_CJK.dat",
-      "SoundAnnoucementApp.m5ei6bytjj.wasm": "SoundAnnoucementApp.wasm",
-      "SoundAnnoucementApp.akjk0hf5ho.pdb": "SoundAnnoucementApp.pdb"
+      "SoundAnnoucementApp.5s5lf9y3rr.wasm": "SoundAnnoucementApp.wasm",
+      "SoundAnnoucementApp.i20ps50sim.pdb": "SoundAnnoucementApp.pdb"
     },
     "jsModuleNative": {
       "dotnet.native.8o8n7iomrf.js": "sha256-WIUiy49hHQ3kOAtRdCtUzm3Yg5BnOqCC+Q+kri9Fi1g="
@@ -446,10 +446,10 @@
       "WindowsBase.ovqw333kan.wasm": "sha256-7LCr4nX9JSGuwzMr8Rk8TGvC6ApzQNxCDiMV/0I9JlI=",
       "mscorlib.l6md3pggqy.wasm": "sha256-jZgH0LixLeQKqaq33akQgDGhfE7vbXbHtvCId5HC0Yo=",
       "netstandard.lij9csiyuf.wasm": "sha256-DeeBl9s8G34N3IfYRQ+MoY807amodj8cvpuvUSNaWE4=",
-      "SoundAnnoucementApp.m5ei6bytjj.wasm": "sha256-KkoYOnugpthHa2/dNQKSWxHmKA3JdbvNxQ2fnWLXkyU="
+      "SoundAnnoucementApp.5s5lf9y3rr.wasm": "sha256-hSNhXQ8IiCAR1doTJMJ5TlrbFN1ZBgpfRjhzdvDKVso="
     },
     "pdb": {
-      "SoundAnnoucementApp.akjk0hf5ho.pdb": "sha256-CrR97EaYk1MJCEteAGaMH4q+6pFxvUk8RD76rGGXvrQ="
+      "SoundAnnoucementApp.i20ps50sim.pdb": "sha256-mpzdoVZ7ZLxZ8bO8iCbQYeT42UqTazcJ6lw3FAcyFaE="
     }
   },
   "cacheBootResources": true,

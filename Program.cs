@@ -10,6 +10,7 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+
 //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 // project จาก github https://github.com/Ph00n102/hosxpapi.git
 // builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5094/") });
@@ -35,20 +36,14 @@ builder.Services.AddHttpClient("OpApi", client =>
 
 builder.Services.AddHttpClient("QueueApi", client =>
 {
-    // client.BaseAddress = new Uri("http://10.134.50.175:8000/");
+    // client.BaseAddress = new Uri("http://172.16.200.202:5041/");
     client.BaseAddress = new Uri("http://localhost:5041/");
 });
 
-// ✅ เพิ่มบริการสำหรับ SignalR HubConnection
-builder.Services.AddSingleton<HubConnection>(sp => 
+builder.Services.AddHttpClient("MophApi", client =>
 {
-    var navigationManager = sp.GetRequiredService<NavigationManager>();
-    return new HubConnectionBuilder()
-        .WithUrl(navigationManager.ToAbsoluteUri("/queuehub"))
-        .WithAutomaticReconnect()
-        .Build();
+    client.BaseAddress = new Uri("http://10.134.50.175:8000/");
 });
-
 builder.Services.AddSingleton<QueueService>();
 builder.Services.AddScoped<ISoundPlayer, SoundPlayer>();
 builder.Services.AddHttpClient<IpdService>(client =>
@@ -56,7 +51,10 @@ builder.Services.AddHttpClient<IpdService>(client =>
     client.BaseAddress = new Uri("http://172.16.200.202:8089/");
 });
 
-// ✅ เพิ่มบริการสำหรับจัดการ SignalR connection
-builder.Services.AddScoped<SignalRService>();
+builder.Services.AddScoped<IHospitalSlotService, HospitalSlotService>();
+// Program.cs
+builder.Services.AddScoped<QueueHubService>();
+builder.Services.AddScoped<DisplayHubService>();
+
 
 await builder.Build().RunAsync();

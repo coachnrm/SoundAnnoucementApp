@@ -695,7 +695,429 @@ window.generateOperativeNotePDF = function (patientData2) {
     });
 };
 
+window.generateOperativeNurseNotePDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
 
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer())
+        ]).then(([regularFont, boldFont]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(16);
+            doc.text("SKH-NUR-IPD13_OR", 10, 15);doc.text("แผ่นที่......", 180, 15);
+            
+            doc.setFontSize(16);
+            doc.text("แบบบันทึกการพยาบาลสำหรับผู้ป่วยผ่าตัด โรงพยาบาลสมุทรสาคร", 105, 22, { align: 'center' });
+
+            doc.setFontSize(14);
+
+            //กล่อง Date/time
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 26, 24, 5); // x, y, width, height
+
+            //กล่อง สัญญาณชีพ
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(32, 26, 24, 5); // x, y, width, height
+
+            //กล่อง อื่นๆ
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(56, 26, 18, 5); // x, y, width, height
+
+            //กล่องกิจกรรมการพยาบาล
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(74, 26, 81, 25); // x, y, width, height
+
+            //กล่องประเมินผล
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(155, 26, 45, 25); // x, y, width, height
+
+            doc.text("Date/time", 10, 30);doc.text("สัญญาณชีพ", 37, 30);doc.text("อื่นๆ", 63, 30);
+            //กล่องเล็ก P, R, BP, FHS
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(32, 31, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(40, 31, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(48, 31, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(56, 31, 9, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(65, 31, 9, 5); // x, y, width, height
+            doc.text("P", 36, 35);doc.text("R", 42, 35);doc.text("BP", 49, 35);doc.text("FHS", 57, 35);
+            
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 31, 24, 10); // x, y, width, height
+            //กล่องเล็กล่าง P, R, BP, FHS
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(32, 36, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(40, 36, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(48, 36, 8, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(56, 36, 9, 5); // x, y, width, height
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(65, 36, 9, 5); // x, y, width, height
+
+            doc.text(patientData2.date, 10, 37);doc.text("กิจกรรมการพยาบาล", 105, 37);doc.text("ประเมินผล", 170, 37);
+            //กล่องข้อมูล/ปัญหา
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 41, 66, 10); // x, y, width, height
+            doc.text("ข้อมูล/ปัญหา", 35, 47);
+
+            //กล่อง Sign in (ก่อนดมยาสลบ)
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 51, 66, 7); // x, y, width, height
+            doc.rect(10, 54, 2, 2, 'F'); doc.text("Sign in (ก่อนดมยาสลบ)", 15, 56);
+
+            //กล่องตรวจสอบใบเซ็นต์ยินยอมผ่าตัด
+            doc.rect(74, 51, 81, 7); // x, y, width, height
+            doc.rect(77, 54, 2, 2, 'F'); doc.text("ตรวจสอบใบเซ็นต์ยินยอมผ่าตัด", 80, 56);
+
+            //กล่องล่างประเมินผล
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(155, 51, 45, 7); // x, y, width, height
+            doc.rect(158, 54, 2, 2); doc.text("มี", 163, 56);doc.rect(167, 54, 2, 2); doc.text("ไม่มี..........................", 172, 56);
+
+            //กล่อง Sign in (ก่อนดมยาสลบ)
+            doc.setDrawColor(0); // Set border color (black)
+            doc.setLineWidth(0.1); // Set border thickness
+            doc.rect(8, 58, 66, 39); // x, y, width, height
+            doc.text("อาการแรกรับ", 10, 64);
+
+            // Define the rectangle dimensions
+            // const rectX = 8;
+            // const rectY = 59;
+            // const rectWidth = 66;
+            // const rectHeight = 32;
+
+            // // Draw the rectangle
+            // doc.setDrawColor(0);
+            // doc.setLineWidth(0.1);
+            // doc.rect(rectX, rectY, rectWidth, rectHeight);
+
+            // // The label and text you want to display
+            // const label = "อาการแรกรับ";
+            // const text = "ผู้ป่วยรู้สึกตัวดี ช่วยเหลือตนเองได้ มีก้อนที่ไหปลาร้าข้างขวา on IVF แขนซ้าย ผู้ป่วยตื่นดี ไม่เหนื่อย หายใจ";
+
+            // // First write the label at a fixed position
+            // doc.text(label, rectX + 2, rectY + 6); // Positioned slightly below top
+
+            // // Calculate available width for the text (accounting for label width)
+            // const labelWidth = doc.getStringUnitWidth(label) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+            // const availableWidth = rectWidth - 6 - labelWidth; // 6 = padding (2 left + 4 right)
+
+            // // Split the text into lines that fit within the available width
+            // const splitText = doc.splitTextToSize(text, availableWidth);
+
+            // // Calculate starting Y position (start below the label)
+            // const lineHeight = 5;
+            // const startY = rectY + 6; // Start below the label
+
+            // // Add each line of text, indented after the label
+            // splitText.forEach((line, i) => {
+            //     // For first line, position after the label
+            //     if (i === 0) {
+            //         doc.text(line, rectX + 4 + labelWidth, startY);
+            //     } 
+            //     // For subsequent lines, align with the text (not the label)
+            //     else {
+            //         doc.text(line, rectX + 4, startY + (i * lineHeight));
+            //     }
+            // });
+
+            
+            doc.rect(74, 58, 81, 7); // x, y, width, height
+            doc.rect(77, 61, 2, 2, 'F'); doc.text("ยืนยันชื่อ การผ่าตัด ตำแหน่งที่จะทำการผ่าตัด", 80, 63);
+
+            doc.rect(155, 58, 45, 7); // x, y, width, height
+            doc.rect(158, 61, 2, 2); doc.text("ถูกต้อง", 163, 63);doc.rect(174, 61, 2, 2); doc.text("ไม่ถูกต้อง", 178, 63);
+
+            doc.rect(74, 65, 81, 7); // x, y, width, height
+            doc.rect(77, 68, 2, 2, 'F'); doc.text("ตำแหน่งที่ mark site", 80, 70);
+
+            doc.rect(155, 65, 45, 7); // x, y, width, height
+            doc.rect(158, 68, 2, 2); doc.text("ถูกต้อง", 163, 70);doc.rect(174, 68, 2, 2); doc.text("ไม่ถูกต้อง", 178, 70);
+        
+            doc.rect(74, 72, 81, 13); // x, y, width, height
+            doc.rect(77, 74, 2, 2, 'F'); doc.text("ตรวจสอบการ NPO", 80, 76);
+
+            doc.rect(155, 72, 45, 13); // x, y, width, height
+            doc.rect(158, 74, 2, 2); doc.text("ครบ", 163, 76);doc.rect(174, 74, 2, 2); doc.text("ไม่ครบ", 178, 76);
+            doc.rect(158, 80, 2, 2); doc.text("ไม่ต้อง NPO", 163, 82);
+
+            doc.rect(74, 85, 81, 12); // x, y, width, height
+            doc.rect(77, 88, 2, 2, 'F'); doc.text("ตรวจสอบป้ายข้อมือ", 80, 90);
+
+            doc.rect(155, 85, 45, 12); // x, y, width, height
+            doc.rect(158, 88, 2, 2); doc.text("มีถูกต้อง", 163, 90);doc.rect(176, 88, 2, 2); doc.text("ไม่มี", 180, 90);
+            doc.rect(158, 93, 2, 2); doc.text("มีแต่ไม่ถูกต้อง", 163, 95);
+
+            //กล่อง Time out (ก่อนลงมีดผ่าตัด)
+            doc.rect(8, 97, 66, 7); // x, y, width, height
+            doc.rect(10, 100, 2, 2, 'F'); doc.text("Time out (ก่อนลงมีดผ่าตัด)", 15, 102);
+
+            doc.rect(74, 97, 81, 14); // x, y, width, height
+            doc.text("ชนิดของการดมยาสลบ", 77, 102);
+            doc.rect(77, 105, 2, 2); doc.text("GA", 80, 107);doc.rect(88, 105, 2, 2); doc.text("SA", 92, 107);doc.rect(98, 105, 2, 2); doc.text("LA", 101, 107);
+            doc.rect(108, 105, 2, 2); doc.text("IV", 113, 107);doc.rect(119, 105, 2, 2); doc.text("ฺฺBB", 123, 107);doc.rect(130, 105, 2, 2); doc.text("ฺฺอื่นๆ", 133, 107);
+
+            doc.rect(155, 97, 45, 14); // x, y, width, height
+
+            //กล่องเริ่มผ่าตัดเวลา
+            doc.rect(8, 104, 66, 7); // x, y, width, height
+            doc.text("เริ่มผ่าตัดเวลา", 10, 109);doc.text(patientData2.starttime, 30, 109);doc.text("น.", 40, 109);
+
+            //กล่องเริ่มผ่าตัดเวลา
+            doc.rect(8, 111, 66, 7); // x, y, width, height
+            doc.text("แพทย์", 10, 116);doc.text(patientData2.surgeon, 20, 116);
+
+            doc.rect(74, 111, 81, 13); // x, y, width, height
+            doc.rect(77, 114, 2, 2, 'F');doc.text("ยืนยันชื่่อผู้ป่วย / นามสกุล ป้ายข้อมือ ชื่อโรค หัตถการ", 80, 116);
+            doc.text("ตำแหน่งผ่าตัด ข้างที่ผ่าตัด", 77, 122);
+
+            doc.rect(155, 111, 45, 13); // x, y, width, height
+            doc.rect(158, 114, 2, 2); doc.text("มีถูกต้อง", 163, 116);doc.rect(176, 114, 2, 2); doc.text("ไม่ถูกต้อง", 180, 116);
+
+            //กล่องผู้ช่วยผ่าตัด
+            doc.rect(8, 118, 66, 6); // x, y, width, height
+            doc.text("Assistant", 10, 122);doc.text(patientData2.assistant, 25, 122);
+
+            //กล่อง scrubnurse
+            doc.rect(8, 124, 66, 6); // x, y, width, height
+            doc.text("Scrub", 10, 128);doc.text(patientData2.scrubNurse, 20, 128);
+
+            doc.rect(74, 124, 81, 6); // x, y, width, height
+            doc.rect(77, 126, 2, 2, 'F');doc.text("ตรวจสอบ implant of Prosthesis", 80, 128);doc.rect(130, 126, 2, 2);doc.text("ใช้", 134, 128);doc.rect(138, 126, 2, 2);doc.text("ไม่ใช้", 142, 128);
+
+            doc.rect(155, 124, 45, 6); // x, y, width, height
+            doc.rect(158, 126, 2, 2); doc.text("ถูกต้อง", 163, 128);doc.rect(176, 126, 2, 2); doc.text("ไม่ถูกต้อง", 180, 128);
+
+            //กล่อง circulate
+            doc.rect(8, 130, 66, 6); // x, y, width, height
+            doc.text("Circulate", 10, 134);doc.text(patientData2.circulateNurse, 25, 134);
+
+            doc.rect(74, 130, 81, 12); // x, y, width, height
+            doc.rect(77, 133, 2, 2, 'F'); doc.text("ติด Film เปิด Film / ตรวจสอบภาพรังสีที่ต้องใช้", 80, 135);
+            doc.text("ระหว่างผ่าตัด", 77, 140);
+
+            doc.rect(155, 130, 45, 12); // x, y, width, height
+            doc.rect(158, 133, 2, 2); doc.text("ถูกต้อง", 163, 135);doc.rect(176, 133, 2, 2); doc.text("ไม่ถูกต้อง", 180, 135);
+            doc.rect(158, 138, 2, 2); doc.text("มี", 163, 140);doc.rect(176, 138, 2, 2); doc.text("ไม่มี", 180, 140);
+
+            //กล่อง NA
+            doc.rect(8, 136, 66, 6); // x, y, width, height
+            doc.text("NA", 10, 140);doc.text(patientData2.anesthetist, 18, 140);
+
+            doc.rect(8, 142, 66, 12); // x, y, width, height
+
+            doc.rect(74, 142, 81, 12); // x, y, width, height
+            doc.rect(77, 144, 2, 2, 'F'); doc.text("ตรวจสอบ Sterile Indicator วันหมดอายุ ของ", 80, 146);
+            doc.text("เครื่องมือผ่าตัด", 77, 152);
+
+            doc.rect(155, 142, 45, 12); // x, y, width, height
+            doc.rect(158, 144, 2, 2); doc.text("ถูกต้อง", 163, 146);doc.rect(176, 144, 2, 2); doc.text("ไม่ถูกต้อง", 180, 146);
+            doc.text("ระบุ ........................................", 158, 152);
+
+            doc.rect(8, 154, 66, 6); // x, y, width, height
+            doc.rect(8, 160, 66, 6); // x, y, width, height
+            doc.rect(8, 166, 66, 6); // x, y, width, height
+
+            doc.rect(74, 154, 81, 18); // x, y, width, height
+            doc.rect(77, 156, 2, 2, 'F'); doc.text("เครื่องมือผ่าตัด set................จำนวน......ชิ้น", 80, 158);
+            doc.rect(77, 161, 2, 2); doc.text("Gauze......ชิ้น", 80, 163);doc.rect(102, 161, 2, 2); doc.text("ใบมีด......อัน", 105, 163);
+            doc.rect(127, 161, 2, 2); doc.text("เข็ม......อัน", 130, 163);
+            doc.rect(77, 167, 2, 2); doc.text("Sponge......ชิ้น", 80, 169);doc.rect(102, 167, 2, 2); doc.text("swab......ชิ้น", 105, 169);
+
+            doc.rect(155, 154, 45, 18); // x, y, width, height
+            doc.rect(158, 156, 2, 2); doc.text("ครบ", 163, 158);doc.rect(176, 156, 2, 2); doc.text("ไม่ครบ", 180, 158);
+
+            doc.rect(8, 172, 66, 6); // x, y, width, height
+
+            doc.rect(74, 172, 81, 6); // x, y, width, height
+            doc.rect(77, 174, 2, 2, 'F'); doc.text("ตำแหน่งที่ติด electrode pad ของเครื่องจี้ไฟฟ้า", 80, 176);
+
+            doc.rect(155, 172, 45, 6); // x, y, width, height
+            doc.rect(158, 174, 2, 2); doc.text("ไม่ใช้", 163, 176);doc.rect(176, 174, 2, 2); doc.text("ใช้ระบุ.........", 180, 176);
+
+            doc.rect(8, 178, 66, 6); // x, y, width, height
+            doc.rect(8, 184, 66, 6); // x, y, width, height
+
+            doc.rect(74, 178, 81, 12); // x, y, width, height
+            doc.rect(77, 180, 2, 2, 'F'); doc.text("ตำแหน่งที่ขึ้น Tourniquet", 80, 182);
+                                          doc.text("Tourniquet Time.............นาที", 80, 187);
+
+            doc.rect(155, 178, 45, 12); // x, y, width, height
+            doc.rect(158, 180, 2, 2); doc.text("ไม่ใช้", 163, 182);doc.rect(176, 180, 2, 2); doc.text("ใช้ระบุ.........", 180, 182);
+            
+            //กล่อง sign out
+            doc.rect(8, 190, 66, 7); // x, y, width, height
+            doc.rect(10, 193, 2, 2, 'F'); doc.text("Sign out (เมื่อปิดแผลผ่าตัด ก่อนย้ายออกจาก", 13, 195);
+            doc.rect(8, 197, 66, 7); // x, y, width, height
+            doc.text("ห้องผ่าตัด) ผ่าตัดเสร็จเวลา", 10, 202);doc.text(patientData2.endtime, 50, 202);doc.text("น.", 65, 202);
+            
+            doc.rect(74, 190, 126, 14); // x, y, width, height
+            doc.rect(77, 192, 2, 2, 'F'); doc.text("ลักษณะแผล", 80, 194);doc.rect(100, 192, 2, 2); doc.text("Clean wound", 103, 194);doc.rect(140, 192, 2, 2); doc.text("Clean Contaminate", 143, 194);
+                                                                         doc.rect(100, 200, 2, 2); doc.text("Contaminate wound", 103, 202);doc.rect(140, 200, 2, 2); doc.text("Dirty wound", 143, 202);                     
+            
+            doc.rect(8, 204, 66, 7); // x, y, width, height
+            doc.text("ส่งต่อข้อมูล", 10, 209);  
+            doc.rect(8, 211, 66, 6); // x, y, width, height
+            doc.rect(8, 217, 66, 6); // x, y, width, height
+
+            doc.rect(74, 204, 81, 19); // x, y, width, height
+            doc.rect(77, 207, 2, 2, 'F'); doc.text("เครื่องมือผ่าตัด set................จำนวน......ชิ้น", 80, 209);
+            doc.rect(77, 212, 2, 2); doc.text("Gauze......ชิ้น", 80, 214);doc.rect(102, 211, 2, 2); doc.text("ใบมีด......อัน", 105, 214);
+            doc.rect(127, 212, 2, 2); doc.text("เข็ม......อัน", 130, 214);
+            doc.rect(77, 217, 2, 2); doc.text("Sponge......ชิ้น", 80, 219);doc.rect(102, 217, 2, 2); doc.text("swab......ชิ้น", 105, 219);
+
+            doc.rect(155, 204, 45, 19); // x, y, width, height
+            doc.rect(158, 207, 2, 2); doc.text("ครบ", 163, 209);doc.rect(176, 207, 2, 2); doc.text("ไม่ครบ", 180, 209);      
+            
+            doc.rect(8, 223, 66, 6); // x, y, width, height
+            doc.rect(8, 229, 66, 6); // x, y, width, height
+
+            doc.rect(74, 223, 81, 12); // x, y, width, height
+            doc.rect(77, 225, 2, 2, 'F'); doc.text("การใส่ implant / ท่อระบายต่างๆ", 80, 227);
+
+            doc.rect(155, 223, 45, 12); // x, y, width, height
+            doc.rect(158, 225, 2, 2); doc.text("ไม่ใส่", 163, 227);doc.rect(176, 225, 2, 2); doc.text("ใส่ คือ..........", 180, 227);      
+            doc.text("...............................................", 158, 232);
+
+            doc.rect(8, 235, 66, 6); // x, y, width, height
+            doc.rect(8, 241, 66, 6); // x, y, width, height
+
+            doc.rect(74, 235, 81, 12); // x, y, width, height
+            doc.rect(77, 237, 2, 2, 'F'); doc.text("การส่งชิ้นเนื้อ", 80, 239);
+
+            doc.rect(155, 235, 45, 12); // x, y, width, height
+            doc.rect(158, 237, 2, 2); doc.text("ไม่ใส่", 163, 239);doc.rect(176, 237, 2, 2); doc.text("ใส่ คือ..........", 180, 239);      
+            doc.text("...............................................", 158, 244);
+
+            doc.rect(8, 247, 66, 6); // x, y, width, height
+            doc.rect(8, 253, 66, 6); // x, y, width, height
+
+            doc.rect(74, 247, 81, 12); // x, y, width, height
+            doc.rect(77, 249, 2, 2, 'F'); doc.text("การ Pack ผ้าซับโลหิตหรือ อื่นๆ", 80, 251);doc.rect(125, 249, 2, 2); doc.text("มี คือ.................", 130, 251);
+            doc.text("จำนวน.................................ตำแหน่ง.....................................", 77, 257);
+
+            doc.rect(155, 247, 45, 12); // x, y, width, height
+            doc.rect(158, 249, 2, 2); doc.text("ไม่มี", 163, 251);
+
+            doc.rect(8, 259, 66, 14); // x, y, width, height
+            doc.text("Name of Patient", 10, 262);
+             doc.text(patientData2.name, 15, 269);
+
+            doc.rect(74, 259, 81, 14); // x, y, width, height
+            doc.text("Attending physician", 77, 262);
+            doc.text(patientData2.surgeon, 82, 269);
+
+            doc.rect(155, 259, 45, 14); // x, y, width, height
+            doc.text("ผู้ประเมิน", 158, 264);
+            doc.text(patientData2.scrubNurse, 163, 269);
+            
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
+
+window.generateInterventionRequestPDF = function (patientData2) {
+    return new Promise((resolve, reject) => {
+        if (!window.jspdf) {
+            reject("jsPDF is not loaded!");
+            return;
+        }
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Load both Regular and Bold Thai fonts
+        Promise.all([
+            fetch('/fonts/THSarabunNew.ttf').then(response => response.arrayBuffer()),
+            fetch('/fonts/THSarabunNew-Bold.ttf').then(response => response.arrayBuffer())
+        ]).then(([regularFont, boldFont]) => {
+            // Convert fonts to Base64
+            const base64Regular = arrayBufferToBase64(regularFont);
+            const base64Bold = arrayBufferToBase64(boldFont);
+
+            // Add fonts to jsPDF virtual file system
+            doc.addFileToVFS('THSarabunNew.ttf', base64Regular);
+            doc.addFont('THSarabunNew.ttf', 'THSarabunNew', 'normal');
+
+            doc.addFileToVFS('THSarabunNew-Bold.ttf', base64Bold);
+            doc.addFont('THSarabunNew-Bold.ttf', 'THSarabunNew', 'bold');
+
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(14);
+            doc.text("ชื่อ-สกุลผู้ป่วย", 100, 16);doc.text("...........................................................", 120, 16.3);doc.text("อายุ", 170, 16);doc.text("..........................", 176, 16.3);
+            doc.text("HN", 100, 21);doc.text(".............................................", 105, 21.3);doc.text("OPD/Ward", 143, 21);doc.text("............................................", 160, 21.3);
+
+            // ===== HEADER SECTION =====
+            doc.setFont('THSarabunNew', 'bold');
+            doc.setFontSize(16);
+            doc.text("ใบปรึกษาทำหัตถการ รังสีร่วมรักษาระบบลำตัว (Body Intervention)", 105, 27, { align: 'center' });
+            doc.text("หน่วยงานรังสีวิทยา โรงพยาบาลสมุทรสาคร", 105, 32, { align: 'center' });
+            doc.text("Non Vascular procedure", 105, 37, { align: 'center' });
+            
+
+            doc.setFont('THSarabunNew', 'normal');
+            doc.setFontSize(14);
+            doc.rect(10, 43, 3, 3);doc.text("US / CT guided biopsy", 14, 46);doc.text("Location", 80, 46);doc.text("...............................", 93, 46.3);
+            doc.rect(140, 43, 3, 3);doc.text("PTBD", 145, 46);doc.ellipse(165, 45, 2, 2);doc.text("Left", 168, 46);
+
+            // Generate the PDF as Blob
+            const pdfBlob = doc.output('blob');
+            resolve(URL.createObjectURL(pdfBlob));
+        }).catch(error => {
+            console.error("Error loading fonts:", error);
+            reject(error);
+        });
+    });
+};
 
 window.generateProlabNotePDF = function (patientData2) {
     return new Promise((resolve, reject) => {

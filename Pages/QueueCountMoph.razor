@@ -1,0 +1,114 @@
+@page "/queuemoph"
+@using SoundAnnoucementApp.Services
+@using Microsoft.JSInterop
+@using SoundAnnoucementApp.Models
+@inject QueueService QueueService
+@inject IJSRuntime JS
+
+<h3>Queue Counter</h3>
+
+<p>Queue Number: @QueueNumber</p>
+
+<p>
+    <label for="nameInput">ชื่อนามสกุลคนไข้:</label>
+    <InputText id="nameInput" @bind-Value="userName" />
+</p>
+<p>
+    <label for="noNameInput">ช่องซักประวัติ:</label>
+    @* <InputText id="noNameInput" @bind-Value="noName" /> *@
+    <select id="noNameInput" @bind="noName" class="form-control">
+        <option value="">Select a channel</option>
+        @foreach (var option in channelOptions)
+        {
+            <option value="@option">@option</option>
+        }
+    </select>
+</p>
+
+<button @onclick="AddToQueue">Add Item</button>
+
+<ul>
+    @foreach (var person in people)
+    {
+       <li>
+            <InputCheckbox 
+                @bind-Value="person.IsSelected"
+                @onclick="() => SelectPerson(person)" /> 
+            @person.FirstName @person.LastName
+        </li>
+    }
+</ul>
+
+@code {
+    private string userName = string.Empty;
+    private string noName = string.Empty;
+    private string QueueNumber = "A000";
+    private int QueueCount => QueueService.Count();
+    private List<string> channelOptions = new List<string> { "1", "2", "3", "4", "5" };
+
+    private async Task AddToQueue()
+    {
+        // Increment the queue count
+        QueueService.Enqueue(userName);
+        
+        // Format the queue number as A001, A002, etc.
+        QueueNumber = $"A{QueueCount:D3}";
+        
+        // Announce the queue number, name, and channel
+        await AnnounceQueue(QueueNumber, userName, noName);
+    }
+
+    @* private async Task AnnounceQueue(string queueNumber, string name, string channel)
+    {
+        // Call the JS function with the formatted queue number and other info
+        await JS.InvokeVoidAsync("audioHelper3.announceQueue", queueNumber, name, channel);
+    } *@
+
+    private async Task AnnounceQueue(string queueNumber, string name, string channel)
+    {
+        string formattedQueueNumber = FormatQueueNumber(queueNumber);
+        await JS.InvokeVoidAsync("audioHelper3.announceQueue2", formattedQueueNumber, name, channel);
+    }
+
+    private string FormatQueueNumber(string queueNumber)
+    {
+        if (string.IsNullOrEmpty(queueNumber) || queueNumber.Length < 1)
+            return queueNumber;
+        
+        // Get the letter part and convert to Thai pronunciation
+        char letter = queueNumber[0];
+        string thaiLetter = letter switch
+        {
+            'A' => "เอ",
+            'B' => "บี",
+            'C' => "ซี",
+            // Add more letters as needed
+            _ => letter.ToString()
+        };
+        
+        // Get the number part
+        string numberPart = queueNumber.Length > 1 ? queueNumber.Substring(1) : "";
+        
+        return $"{thaiLetter} {numberPart}";
+    }
+
+    private void SelectPerson(Person selectedPerson)
+    {
+        foreach (var person in people)
+        {
+            person.IsSelected = false;
+        }
+
+        selectedPerson.IsSelected = true;
+        userName = $"{selectedPerson.FirstName} {selectedPerson.LastName}";
+    }
+
+    private List<Person> people = new List<Person>
+    {
+        new Person { FirstName = "สมชาย", LastName = "แข็งแรง" },
+        new Person { FirstName = "สมหญิง", LastName = "ใจดี" },
+        new Person { FirstName = "สมควร", LastName = "ทำดี" },
+        new Person { FirstName = "สมทรง", LastName = "รักโลก" },
+        new Person { FirstName = "สมใจ", LastName = "ปรารถนา" }
+    };
+}

@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\audio.js"
     },
     {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio2.js",
+      "PackagePath": "staticwebassets\\audio2.js"
+    },
+    {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audioHelper.js",
       "PackagePath": "staticwebassets\\audioHelper.js"
     },
@@ -35,6 +39,86 @@
     {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\cow.mp3",
       "PackagePath": "staticwebassets\\audio\\cow.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\1.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\1.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\10.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\10.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\11.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\11.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\12.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\12.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\13.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\13.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\14.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\14.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\15.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\15.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\16.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\16.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\17.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\17.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\18.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\18.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\19.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\19.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\2.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\2.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\20.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\20.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\3.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\3.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\4.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\4.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\5.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\5.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\6.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\6.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\7.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\7.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\8.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\8.mp3"
+    },
+    {
+      "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\customaudio\\9.mp3",
+      "PackagePath": "staticwebassets\\audio\\customaudio\\9.mp3"
     },
     {
       "Id": "D:\\SoundAnnoucementApp\\wwwroot\\audio\\dog.mp3",

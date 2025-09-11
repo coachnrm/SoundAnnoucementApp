@@ -1,0 +1,352 @@
+@page "/queuedisplay3"
+@using Microsoft.AspNetCore.SignalR.Client
+@using SoundAnnoucementApp.Models
+@using System.Text.Json
+@inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+@inject IHttpClientFactory _httpClientFactory
+@inject QueueHubService QueueHubService
+@inject DisplayHubService DisplayHubService
+@layout QueueLayout
+@implements IAsyncDisposable
+
+<div class="display-container">
+    <!-- Header Section -->
+    <div class="queue-display-section">
+        <div class="header-container">
+            <div class="header-content">
+                <div class="title-section">
+                    <div class="hospital-icon">
+                        <i class="fas fa-hospital-alt"></i>
+                    </div>
+                    <div>
+                        <h1>จอแสดงคิวซักประวัติ</h1>
+                        <p>โรงพยาบาลสมุทรสาคร</p>
+                    </div>
+                </div>
+                <div class="status-section">
+                    <div class="connection-status @(QueueHubService.IsConnected ? "connected" : "disconnected")">
+                        <div class="status-indicator"></div>
+                        <span>@QueueHubService.ConnectionStatus</span>
+                    </div>
+                    <div class="current-time">
+                        <i class="fas fa-clock"></i>
+                        <span>@QueueHubService.CurrentTime</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* @if (!QueueHubService.IsConnected)
+        {
+            <div class="reconnect-section">
+                <div class="reconnect-card">
+                    <i class="fas fa-plug disconnected-icon"></i>
+                    <h3>การเชื่อมต่อขาดหาย</h3>
+                    <p>ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้ในขณะนี้</p>
+                    <button class="reconnect-btn" @onclick="ReconnectQueueHub">
+                        <i class="fas fa-sync-alt"></i> 
+                        <span>เชื่อมต่อใหม่</span>
+                    </button>
+                </div>
+            </div>
+        } *@
+
+        <!-- Queue Display Section -->
+        <div class="spots-grid">
+            @for (int i = 1; i <= 7; i++)
+            {
+                var spotKey = i.ToString();
+                var spotInfo = QueueHubService.SpotQueues.ContainsKey(spotKey) ? QueueHubService.SpotQueues[spotKey] : null;
+                
+                <div class="spot-card @(spotInfo != null ? "active" : "inactive")">
+                    <div class="spot-header">
+                        <div class="spot-number">
+                            <i class="fas fa-user-md"></i>
+                            <span>ช่องซักประวัติที่ @i</span>
+                        </div>
+                        <div class="status-indicator"></div>
+                    </div>
+                    
+                    <div class="spot-body">
+                        @if (spotInfo != null)
+                        {
+                            <div class="queue-number-display">
+                                <span class="queue-number">@spotInfo.QueueNumber</span>
+                            </div>
+                            <div class="patient-info">
+                                <div class="patient-name">
+                                    <i class="fas fa-user"></i>
+                                    <span>@spotInfo.PatientName</span>
+                                </div>
+                                <div class="department">
+                                    <i class="fas fa-stethoscope"></i>
+                                    <span>@spotInfo.Department</span>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="no-queue">
+                                <i class="fas fa-user-clock"></i>
+                                <p>ไม่มีคิวในขณะนี้</p>
+                            </div>
+                        }
+                    </div>
+                    
+                    <div class="spot-footer">
+                        <div class="waiting-text">
+                            @if (spotInfo != null)
+                            {
+                                <span>กำลังซักประวัติ</span>
+                            }
+                            else
+                            {
+                                <span>พร้อมให้บริการ</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <div class="header-container">
+            <div class="header-content">
+                <div class="title-section">
+                    <div class="hospital-icon">
+                        <i class="fas fa-hospital-alt"></i>
+                    </div>
+                    <div>
+                        <h1>จอแสดงคิวเข้าห้องตรวจ</h1>
+                        <p>@DisplayHubService.CurrentTime</p>
+                    </div>
+                </div>
+                <div class="status-section">
+                    <div class="connection-status @(DisplayHubService.IsConnected ? "connected" : "disconnected")">
+                        <div class="status-indicator"></div>
+                        <span>@DisplayHubService.ConnectionStatus</span>
+                        @if (!DisplayHubService.IsConnected)
+                        {
+                            <button class="btn btn-sm btn-outline-primary ms-2" @onclick="ReconnectDisplayHub" title="เชื่อมต่อใหม่">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Queue Display Section -->
+        <div class="spots-grid">
+            @if (isLoading)
+            {
+                <div class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>กำลังโหลดข้อมูลแผนก...</p>
+                </div>
+            }
+            else if (hasLoadError)
+            {
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>ไม่สามารถโหลดข้อมูลแผนกได้</p>
+                    <button class="retry-btn" @onclick="RetryLoadDepartments">
+                        <i class="fas fa-redo"></i>
+                        โหลดใหม่
+                    </button>
+                </div>
+            }
+            else if (departments != null && departments.Any())
+            {
+                @foreach (var department in departments)
+                {
+                    var spotKey = department.Id.ToString();
+                    var spotInfo = DisplayHubService.SpotQueues.ContainsKey(spotKey) ? DisplayHubService.SpotQueues[spotKey] : null;
+                    
+                    <div class="spot-card @(spotInfo != null ? "active" : "inactive")">
+                        <div class="spot-header">
+                            <div class="spot-number">
+                                <i class="fas fa-user-md"></i>
+                                <span>@department.Name</span>
+                            </div>
+                            <div class="status-indicator"></div>
+                        </div>
+                        
+                        <div class="spot-body">
+                            @if (spotInfo != null)
+                            {
+                                <div class="queue-number-display">
+                                    <span class="queue-number">@spotInfo.QueueNumber</span>
+                                </div>
+                                <div class="patient-info">
+                                    <div class="patient-name">
+                                        <i class="fas fa-user"></i>
+                                        <span>@spotInfo.PatientName</span>
+                                    </div>
+                                    <div class="department">
+                                        <i class="fas fa-stethoscope"></i>
+                                        <span>@spotInfo.Department</span>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="no-queue">
+                                    <i class="fas fa-user-clock"></i>
+                                    <p>ไม่มีคิวในขณะนี้</p>
+                                </div>
+                            }
+                        </div>
+                        
+                        <div class="spot-footer">
+                            <div class="waiting-text">
+                                @if (spotInfo != null)
+                                {
+                                    <span>กำลังซักประวัติ</span>
+                                }
+                                else
+                                {
+                                    <span>พร้อมให้บริการ</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="no-data-message">
+                    <i class="fas fa-database"></i>
+                    <p>ไม่มีข้อมูลแผนก</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<QueueDepartment> departments = new List<QueueDepartment>();
+    private bool isLoading = true;
+    private bool hasLoadError = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            // Subscribe to change events
+            QueueHubService.OnChange += StateHasChanged;
+            DisplayHubService.OnChange += StateHasChanged;
+            
+            // โหลด departments ก่อน
+            await LoadDepartments();
+
+            // Initialize hub connections
+            await QueueHubService.InitializeAsync();
+            await DisplayHubService.InitializeAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in OnInitializedAsync: {ex.Message}");
+        }
+    }
+    
+    private async Task LoadDepartments()
+    {
+        try
+        {
+            isLoading = true;
+            hasLoadError = false;
+            StateHasChanged();
+            
+            // เรียก API เพื่อดึงข้อมูลแผนก
+            var client = _httpClientFactory.CreateClient();
+            client.BaseAddress = new Uri("http://localhost:5041/"); // ตั้งค่า base address
+            var response = await client.GetAsync("api/DepartmentName/DepartmentsNoHx");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"API Response: {content}");
+                
+                var result = JsonSerializer.Deserialize<List<QueueDepartment>>(content, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+                
+                if (result != null && result.Any())
+                {
+                    departments = result;
+                    Console.WriteLine($"Loaded {departments.Count} departments");
+                }
+                else
+                {
+                    hasLoadError = true;
+                    Console.WriteLine("API returned empty department list");
+                }
+            }
+            else
+            {
+                hasLoadError = true;
+                Console.WriteLine($"Failed to load departments: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            hasLoadError = true;
+            Console.WriteLine($"Error loading departments: {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task ReconnectQueueHub()
+    {
+        try
+        {
+            await QueueHubService.InitializeAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error reconnecting QueueHub: {ex.Message}");
+        }
+    }
+
+    private async Task ReconnectDisplayHub()
+    {
+        try
+        {
+            await DisplayHubService.InitializeAsync();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error reconnecting DisplayHub: {ex.Message}");
+        }
+    }
+
+    private async Task RetryLoadDepartments()
+    {
+        await LoadDepartments();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            QueueHubService.OnChange -= StateHasChanged;
+            DisplayHubService.OnChange -= StateHasChanged;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in DisposeAsync: {ex.Message}");
+        }
+    }
+
+    public class Department
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+}
