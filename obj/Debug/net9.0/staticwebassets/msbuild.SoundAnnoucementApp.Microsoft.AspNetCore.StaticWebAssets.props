@@ -1614,8 +1614,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ApplicationBundle</AssetTraitValue>
-      <Fingerprint>29227wuqri</Fingerprint>
-      <Integrity>5r5SGXH2WuRk9NG4NGRWmoBAU7FlHyJDQUsW6lh6fNI=</Integrity>
+      <Fingerprint>txs9abt0ee</Fingerprint>
+      <Integrity>P9/IBaI0jGewOUrxDtoOC2dK3PHjCM1Z0Hj8/5Yzjt0=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\SoundAnnoucementApp.styles.css'))</OriginalItemSpec>

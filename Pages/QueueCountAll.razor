@@ -1,0 +1,301 @@
+@page "/queuecount"
+@using System.Text.Json
+@using System.Net.Http.Json
+@using System.Globalization
+@inject IHttpClientFactory _httpClientFactory
+
+<PageTitle>จำนวนคิวผู้ป่วย</PageTitle>
+
+<div class="custom-input-section">
+    <div class="section-header">
+        <h1 class="section-title">
+            <i class="bi bi-clipboard2-pulse me-2"></i>จำนวนคิวผู้ป่วย
+        </h1>
+        <div class="section-divider"></div>
+        <p class="text-muted mb-0 mt-2">แสดงข้อมูลจำนวนคิวผู้ป่วยตามวันที่ที่เลือก</p>
+    </div>
+
+    <div class="rounded-input-grid">
+        <div class="input-card">
+            <div class="input-header">
+                <div class="input-icon">
+                    <i class="bi bi-calendar3"></i>
+                </div>
+                <label class="input-label">เลือกวันที่</label>
+            </div>
+            <div class="input-container">
+                <input type="date" class="custom-input" @bind="SearchDate" @bind:format="yyyy-MM-dd" />
+                <span class="input-border"></span>
+            </div>
+             <button class="btn-save" @onclick="LoadQueueDataAsync">
+                <i class="bi bi-search me-1"></i> ค้นหา
+            </button>
+        </div>
+        
+        <div class="input-card" style="display: flex; align-items: flex-end;">
+             <div class="input-header text-white">
+                <div class="input-icon text-white">
+                    <i class="bi bi-clipboard2-data"></i>
+                </div>
+                <label class="input-label text-white">จำนวนคิวทั้งหมด</label>
+            </div>
+            <div class="text-center mt-3">
+                <p class="mb-0 opacity-75">สำหรับวันที่ @SearchDate.ToString("dd MMMM yyyy", new CultureInfo("th-TH"))</p>
+                <h2 class="display-4 fw-bold mb-0 mt-2">@TotalQueueCount.ToString("N0")</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (isLoading)
+{
+    <div class="custom-input-section text-center">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <p class="mt-3 text-muted">กำลังโหลดข้อมูล...</p>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="custom-input-section">
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <div>
+                <strong>เกิดข้อผิดพลาด:</strong> @errorMessage
+            </div>
+        </div>
+    </div>
+}
+
+@if (!isLoading && string.IsNullOrEmpty(errorMessage))
+{
+    @* <!-- Summary Card -->
+    <div class="custom-input-section">
+        <div class="input-card bg-primary text-white">
+            <div class="input-header text-white">
+                <div class="input-icon text-white">
+                    <i class="bi bi-clipboard2-data"></i>
+                </div>
+                <label class="input-label text-white">จำนวนคิวทั้งหมด</label>
+            </div>
+            <div class="text-center mt-3">
+                <p class="mb-0 opacity-75">สำหรับวันที่ @SearchDate.ToString("dd MMMM yyyy", new CultureInfo("th-TH"))</p>
+                <h2 class="display-4 fw-bold mb-0 mt-2">@TotalQueueCount.ToString("N0")</h2>
+            </div>
+        </div>
+    </div> *@
+    
+    <!-- Statistics Cards -->
+    @if (queueStats != null)
+    {
+        <div class="rounded-input-grid">
+            <!-- ซักประวัติ -->
+            <div class="input-card">
+                <div class="input-header">
+                    <div class="input-icon text-info">
+                        <i class="bi bi-clipboard-data"></i>
+                    </div>
+                    <label class="input-label">คิวซักประวัติ</label>
+                </div>
+                <div class="row g-0 text-center mt-3">
+                    <div class="col-4">
+                        <div class="p-2 border-end">
+                            <div class="text-info mb-1">
+                                <i class="bi bi-clock-history fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold mb-0">@queueStats.WaitingCountHx</h4>
+                            <small class="text-muted">รอเรียก</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="p-2 border-end">
+                            <div class="text-warning mb-1">
+                                <i class="bi bi-droplet fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold mb-0">@queueStats.LabCountHx</h4>
+                            <small class="text-muted">รอ lab</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="p-2">
+                            <div class="text-success mb-1">
+                                <i class="bi bi-check-circle fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold mb-0">@queueStats.CompletedCountHx</h4>
+                            <small class="text-muted">มาแล้ว</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                    <span class="text-muted small">คิวที่ไม่มา</span>
+                    <span class="badge bg-danger">@queueStats.NoShowCountHx</span>
+                </div>
+            </div>
+            
+            <!-- ห้องตรวจ -->
+            <div class="input-card">
+                <div class="input-header">
+                    <div class="input-icon text-purple">
+                        <i class="bi bi-heart-pulse"></i>
+                    </div>
+                    <label class="input-label">คิวเข้าห้องตรวจ</label>
+                </div>
+                <div class="row g-0 text-center mt-3">
+                    <div class="col-6">
+                        <div class="p-2 border-end">
+                            <div class="text-purple mb-1">
+                                <i class="bi bi-clock-history fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold mb-0">@queueStats.WaitingCount</h4>
+                            <small class="text-muted">รอเรียก</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-2">
+                            <div class="text-success mb-1">
+                                <i class="bi bi-check-circle fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold mb-0">@queueStats.CompletedCount</h4>
+                            <small class="text-muted">มาแล้ว</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                    <span class="text-muted small">คิวที่ไม่มา</span>
+                    <span class="badge bg-danger">@queueStats.NoShowCount</span>
+                </div>
+            </div>
+            
+            <!-- รับยา -->
+            <div class="input-card">
+                <div class="input-header">
+                    <div class="input-icon text-success">
+                        <i class="bi bi-capsule"></i>
+                    </div>
+                    <label class="input-label">คิวรับใบสั่งยา</label>
+                </div>
+                <div class="row g-0 text-center mt-3">
+                    <div class="col-6">
+                        <div class="p-2 border-end">
+                            <div class="text-success mb-1">
+                                <i class="bi bi-clock-history fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold mb-0">@queueStats.WaitingCountGm</h4>
+                            <small class="text-muted">รอเรียก</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-2">
+                            <div class="text-success mb-1">
+                                <i class="bi bi-check-circle fs-4"></i>
+                            </div>
+                            <h4 class="fw-bold mb-0">@queueStats.CompletedCountGm</h4>
+                            <small class="text-muted">มาแล้ว</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
+                    <span class="text-muted small">คิวที่ไม่มา</span>
+                    <span class="badge bg-danger">@queueStats.NoShowCountGm</span>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+    private int TotalQueueCount { get; set; } = 0;
+    private DateTime SearchDate { get; set; } = DateTime.Today;
+    private bool isLoading = false;
+    private string errorMessage = string.Empty;
+    private QueueStats queueStats = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadQueueDataAsync();
+    }
+
+    private async Task LoadQueueDataAsync()
+    {
+        isLoading = true;
+        errorMessage = string.Empty;
+        TotalQueueCount = 0;
+        queueStats = new QueueStats();
+        
+        try
+        {
+            var client = _httpClientFactory.CreateClient("QueueApi");
+            var dateString = SearchDate.ToString("yyyy-MM-dd");
+            var response = await client.GetAsync($"api/Queue/GetQueueByDate?date={dateString}");
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var queuePatients = JsonSerializer.Deserialize<List<QueuePatient>>(content, 
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                
+                if (queuePatients != null)
+                {
+                    TotalQueueCount = queuePatients.Count;
+                    
+                    // คำนวณสถิติ
+                    queueStats.WaitingCount = queuePatients.Count(p => p.Status == null || p.Status == 0 && p.StatusHx == 1);
+                    queueStats.CompletedCount = queuePatients.Count(p => p.Status == 1);
+                    queueStats.NoShowCount = queuePatients.Count(p => p.Status == 2);
+                    queueStats.WaitingCountHx = queuePatients.Count(p => p.StatusHx == null || p.StatusHx == 0);
+                    queueStats.LabCountHx = queuePatients.Count(p => p.StatusHx == 3);
+                    queueStats.CompletedCountHx = queuePatients.Count(p => p.StatusHx == 1);
+                    queueStats.NoShowCountHx = queuePatients.Count(p => p.StatusHx == 2);
+                    queueStats.WaitingCountGm = queuePatients.Count(p => p.StatusGm == null || p.Status == 0);
+                    queueStats.CompletedCountGm = queuePatients.Count(p => p.StatusGm == 1);
+                    queueStats.NoShowCountGm = queuePatients.Count(p => p.StatusGm == 2);
+                }
+            }
+            else
+            {
+                errorMessage = $"ไม่สามารถดึงข้อมูลได้: {response.StatusCode}";
+            }
+        }
+        catch (HttpRequestException ex)
+        {
+            errorMessage = $"ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้: {ex.Message}";
+            Console.WriteLine(errorMessage);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"เกิดข้อผิดพลาดในการดึงข้อมูล: {ex.Message}";
+            Console.WriteLine(errorMessage);
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    public class QueuePatient
+    {
+        public int Id { get; set; }
+        public string Hn { get; set; }
+        public int? Status { get; set; }
+        public int? StatusHx { get; set; }
+        public int? StatusGm { get; set; }
+        public DateTime? CreatedAt { get; set; }
+    }
+
+    public class QueueStats
+    {
+        public int WaitingCount { get; set; }
+        public int CompletedCount { get; set; }
+        public int NoShowCount { get; set; }
+        public int WaitingCountHx { get; set; }
+        public int LabCountHx { get; set; }
+        public int CompletedCountHx { get; set; }
+        public int NoShowCountHx { get; set; }
+        public int WaitingCountGm { get; set; }
+        public int CompletedCountGm { get; set; }
+        public int NoShowCountGm { get; set; }
+    }
+}

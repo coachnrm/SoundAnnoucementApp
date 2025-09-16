@@ -3,7 +3,7 @@ using Microsoft.JSInterop;
 
 public class QueueHubService : BaseHubService
 {
-    private const string HubUrl = "http://localhost:5041/queuehub";
+    private const string HubUrl = "http://localhost:5082/queuehub";
 
     public QueueHubService(IJSRuntime jsRuntime) : base(jsRuntime)
     {

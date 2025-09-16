@@ -667,22 +667,18 @@
         try
         {
             // ใช้ URL แบบเต็มและถูกต้อง
-            var hubUrl = "http://localhost:5041/queuehub"; // เปลี่ยนเป็นพอร์ต 5041
+            var hubUrl = "http://localhost:5082/queuehub"; // เปลี่ยนเป็นพอร์ต 5041
             Console.WriteLine($"Connecting to SignalR hub at: {hubUrl}");
             
-            hubConnection = new HubConnectionBuilder()
-                .WithUrl(hubUrl, options =>
-                {
-                    // ตั้งค่าเพิ่มเติมหากจำเป็น
-                })
-                .WithAutomaticReconnect(new[] {
-                    TimeSpan.Zero,
-                    TimeSpan.FromSeconds(2),
-                    TimeSpan.FromSeconds(5),
-                    TimeSpan.FromSeconds(10)
-                })
-                .Build();
-
+          hubConnection = new HubConnectionBuilder()
+            .WithUrl(hubUrl)
+            .WithAutomaticReconnect(new[] {
+                TimeSpan.Zero,
+                TimeSpan.FromSeconds(2),
+                TimeSpan.FromSeconds(5),
+                TimeSpan.FromSeconds(10)
+            })
+            .Build();
             // ตั้งค่า event handlers
             hubConnection.Reconnecting += error =>
             {
@@ -746,6 +742,15 @@
                 {
                     message = "อัปเดตสถานะประวัติคิวเรียบร้อย";
                     alertClass = "alert-info";
+                    await RefreshData();
+                    StateHasChanged();
+                });
+            });
+            hubConnection.On<object>("QueueStatusGmUpdated", async (queueData) =>
+            {
+                Console.WriteLine("Queue GM status updated via SignalR");
+                await InvokeAsync(async () =>
+                {
                     await RefreshData();
                     StateHasChanged();
                 });
@@ -1069,7 +1074,7 @@
             isLoadingDepartments = true;
             
             // เรียก API เพื่อดึงข้อมูลแผนก - ใช้ URL เดียวกับ Page2
-            var response = await Http.GetAsync("http://localhost:5041/api/DepartmentName/DepartmentsNoHx");
+            var response = await Http.GetAsync("http://localhost:5082/api/DepartmentName/DepartmentsNoHx");
             
             if (response.IsSuccessStatusCode)
             {
@@ -1205,6 +1210,20 @@
         patientNames.Clear();
         await LoadData();
     }
+    private async Task EnsureConnection()
+    {
+        if (hubConnection == null || hubConnection.State == HubConnectionState.Disconnected)
+        {
+            await InitializeSignalR();
+        }
+        
+        // รอจนกว่าจะเชื่อมต่อสำเร็จ (ไม่เกิน 5 วินาที)
+        var timeout = DateTime.Now.AddSeconds(5);
+        while (hubConnection.State != HubConnectionState.Connected && DateTime.Now < timeout)
+        {
+            await Task.Delay(100);
+        }
+    }
 
     private async Task UpdateStatus(int patientId, int status, string hn)
     {
@@ -1212,6 +1231,7 @@
         {
             isLoading = true;
             StateHasChanged();
+            await EnsureConnection();
 
             var client = _httpClientFactory.CreateClient("QueueApi");
             var updateDto = new QueueStatusUpdateDto { Status = status };
@@ -1228,8 +1248,15 @@
                 {
                     try
                     {
-                        await hubConnection.SendAsync("SendQueueUpdate", 
-                            $"อัปเดตสถานะคิว HN: {hn} เป็น {GetStatusText(status)}");
+                        // ส่งข้อมูลไปยัง prescriptionreceiptHub
+                        await hubConnection.SendAsync("NotifyQueueStatusUpdated", 
+                            new { 
+                                Id = patientId, 
+                                Hn = hn, 
+                                Status = status,
+                                UpdatedAt = DateTime.Now,
+                                QueueType = "examination" // เพิ่มประเภทคิวเพื่อให้รู้ว่าเป็นคิวตรวจ
+                            });
                     }
                     catch (Exception ex)
                     {
@@ -1264,6 +1291,7 @@
         {
             isLoading = true;
             StateHasChanged();
+            
 
             var client = _httpClientFactory.CreateClient("QueueApi");
             var updateDto = new QueueStatusHxUpdateDto { StatusHx = status };
@@ -1369,7 +1397,7 @@
 
         // สร้าง Hub Connection ใหม่สำหรับส่งข้อมูลไปยัง DisplayHub
         var displayHubConnection = new HubConnectionBuilder()
-            .WithUrl("http://localhost:5041/displayhub")
+            .WithUrl("http://localhost:5082/displayhub")
             .Build();
 
         try

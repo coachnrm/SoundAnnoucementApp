@@ -383,111 +383,104 @@
         await InitializeSignalR();
     }
 
-    private async Task InitializeSignalR()
+   private async Task InitializeSignalR()
+{
+    try
     {
-        try
+        // ใช้ URL ให้ตรงกับ Hub
+        var hubUrl = "http://localhost:5082/prescriptionreceiptHub";
+        Console.WriteLine($"Connecting to SignalR hub at: {hubUrl}");
+        // ล้าง connection เก่าถ้ามี
+        if (hubConnection != null)
         {
-            // ใช้ URL แบบเต็มและถูกต้อง
-            var hubUrl = "http://localhost:5041/queuehub"; // เปลี่ยนเป็นพอร์ต 5041
-            Console.WriteLine($"Connecting to SignalR hub at: {hubUrl}");
-            
-            hubConnection = new HubConnectionBuilder()
-                .WithUrl(hubUrl, options =>
-                {
-                    // ตั้งค่าเพิ่มเติมหากจำเป็น
-                })
-                .WithAutomaticReconnect(new[] {
-                    TimeSpan.Zero,
-                    TimeSpan.FromSeconds(2),
-                    TimeSpan.FromSeconds(5),
-                    TimeSpan.FromSeconds(10)
-                })
-                .Build();
+            await hubConnection.DisposeAsync();
+        }
 
-            // ตั้งค่า event handlers
-            hubConnection.Reconnecting += error =>
-            {
-                isConnected = false;
-                connectionStatus = "กำลังเชื่อมต่อใหม่...";
-                Console.WriteLine($"SignalR reconnecting: {error?.Message}");
-                return Task.CompletedTask;
-            };
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(hubUrl)
+            .WithAutomaticReconnect(new[] {
+                TimeSpan.Zero,
+                TimeSpan.FromSeconds(2),
+                TimeSpan.FromSeconds(5),
+                TimeSpan.FromSeconds(10)
+            })
+            .Build();
 
-            hubConnection.Reconnected += connectionId =>
-            {
-                isConnected = true;
-                connectionStatus = "เชื่อมต่อเรียบร้อย";
-                Console.WriteLine($"SignalR reconnected: {connectionId}");
-                return Task.CompletedTask;
-            };
+        // ตั้งค่า event handlers
+        hubConnection.Reconnecting += error =>
+        {
+            isConnected = false;
+            connectionStatus = "กำลังเชื่อมต่อใหม่...";
+            Console.WriteLine($"SignalR reconnecting: {error?.Message}");
+            StateHasChanged();
+            return Task.CompletedTask;
+        };
 
-            hubConnection.Closed += async error =>
-            {
-                isConnected = false;
-                connectionStatus = "เชื่อมต่อขาด";
-                Console.WriteLine($"SignalR connection closed: {error?.Message}");
-                
-                // พยายาม reconnect หลังจาก delay
-                await Task.Delay(5000);
-                if (!_cancellationTokenSource.Token.IsCancellationRequested)
-                {
-                    await InitializeSignalR();
-                }
-            };
-
-            // กำหนดการรับข้อมูลจาก Server - ใช้ชื่อ method ที่ตรงกับ Server
-            hubConnection.On<object>("NewQueueAdded", async (queueData) =>
-            {
-                Console.WriteLine("New queue added via SignalR");
-                await InvokeAsync(async () =>
-                {
-                    message = "มีคิวใหม่เพิ่มเข้ามาในระบบ";
-                    alertClass = "alert-info";
-                    await RefreshData();
-                    StateHasChanged();
-                });
-            });
-
-            hubConnection.On<object>("QueueStatusUpdated", async (queueData) =>
-            {
-                Console.WriteLine("Queue status updated via SignalR");
-                await InvokeAsync(async () =>
-                {
-                    message = "อัปเดตสถานะคิวเรียบร้อย";
-                    alertClass = "alert-info";
-                    await RefreshData();
-                    StateHasChanged();
-                });
-            });
-
-            hubConnection.On<object>("QueueStatusHxUpdated", async (queueData) =>
-            {
-                Console.WriteLine("Queue history status updated via SignalR");
-                await InvokeAsync(async () =>
-                {
-                    message = "อัปเดตสถานะประวัติคิวเรียบร้อย";
-                    alertClass = "alert-info";
-                    await RefreshData();
-                    StateHasChanged();
-                });
-            });
-
-            // เริ่มการเชื่อมต่อ
-            await hubConnection.StartAsync(_cancellationTokenSource.Token);
+        hubConnection.Reconnected += connectionId =>
+        {
             isConnected = true;
             connectionStatus = "เชื่อมต่อเรียบร้อย";
-            Console.WriteLine("SignalR connected successfully");
-            
-            // Join group ทั่วไป
-            await hubConnection.InvokeAsync("JoinAllQueuesGroup");
-        }
-        catch (Exception ex)
+            Console.WriteLine($"SignalR reconnected: {connectionId}");
+            StateHasChanged();
+            return Task.CompletedTask;
+        };
+
+        hubConnection.Closed += async error =>
         {
-            Console.WriteLine($"SignalR connection error: {ex.Message}");
             isConnected = false;
-            connectionStatus = "เชื่อมต่อล้มเหลว";
-        }
+            connectionStatus = "เชื่อมต่อขาด";
+            Console.WriteLine($"SignalR connection closed: {error?.Message}");
+            StateHasChanged();
+            
+            // พยายาม reconnect หลังจาก delay
+            await Task.Delay(5000);
+            if (!_cancellationTokenSource.Token.IsCancellationRequested)
+            {
+                await InitializeSignalR();
+            }
+        };
+
+        // กำหนดการรับข้อมูลจาก Server
+        hubConnection.On<object>("QueueStatusGmUpdated", async (queueData) =>
+        {
+            Console.WriteLine("Queue GM status updated via SignalR");
+            await InvokeAsync(async () =>
+            {
+                message = "อัปเดตสถานะคิวใบสั่งยาเรียบร้อย";
+                alertClass = "alert-success";
+                await RefreshData();
+                StateHasChanged();
+            });
+        });
+
+        hubConnection.On<string, int, string, string>("ReceiveQueueUpdate2", 
+            async (spotPlace, queueNumber, patientName, department) =>
+        {
+            await InvokeAsync(() =>
+            {
+                Console.WriteLine($"Received update: {spotPlace}, {queueNumber}, {patientName}");
+                message = $"ได้รับข้อมูลคิวล่าสุด: {patientName}";
+                alertClass = "alert-info";
+                StateHasChanged();
+            });
+        });
+
+        // เริ่มการเชื่อมต่อ
+        await hubConnection.StartAsync(_cancellationTokenSource.Token);
+        isConnected = true;
+        connectionStatus = "เชื่อมต่อเรียบร้อย";
+        Console.WriteLine("SignalR connected successfully");
+        
+        // Join group ทั่วไป
+        await hubConnection.InvokeAsync("JoinAllQueuesGroup");
     }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"SignalR connection error: {ex.Message}");
+        isConnected = false;
+        connectionStatus = "เชื่อมต่อล้มเหลว";
+    }
+}
 
 
       private async Task MonitorConnection()
@@ -801,6 +794,7 @@
         {
             isLoading = true;
             StateHasChanged();
+             await EnsureConnection();
 
             var client = _httpClientFactory.CreateClient("QueueApi");
             var updateDto = new QueueStatusUpdateDto { Status = status };
@@ -968,54 +962,97 @@
             }
         }
     }
+    private async Task EnsureConnection()
+    {
+        if (hubConnection == null || hubConnection.State == HubConnectionState.Disconnected)
+        {
+            await InitializeSignalR();
+        }
+        
+        // รอจนกว่าจะเชื่อมต่อสำเร็จ (ไม่เกิน 5 วินาที)
+        var timeout = DateTime.Now.AddSeconds(5);
+        while (hubConnection.State != HubConnectionState.Connected && DateTime.Now < timeout)
+        {
+            await Task.Delay(100);
+        }
+    }
 
     private async Task CallPatient1(QueuePatient patient, int? queueDep, string spotPlace = "")
     {
         if (string.IsNullOrEmpty(spotPlace))
         {
-            // Show error or select default spot
+            message = "กรุณาเลือกจุดซักประวัติ";
+            alertClass = "alert-warning";
+            StateHasChanged();
             return;
         }
 
-        if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
+        // ตรวจสอบการเชื่อมต่อ
+        if (hubConnection == null || hubConnection.State != HubConnectionState.Connected)
         {
-            userName = patientNames[patient.Hn];
-            var departmentCode = patient.QueueName?.Split('-')[0] ?? "";
-            var actualQueueNumber = patient.QueueHx ?? 0;
+            await InitializeSignalR();
             
-            // Send update via SignalR
-            if (isConnected && hubConnection != null)
+            // รอสักครู่ให้เชื่อมต่อ
+            await Task.Delay(1000);
+            
+            if (hubConnection == null || hubConnection.State != HubConnectionState.Connected)
             {
-                await hubConnection.SendAsync("SendQueueUpdate", 
-                    spotPlace, 
-                    actualQueueNumber, 
-                    userName, 
-                    departmentCode);
+                message = "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้";
+                alertClass = "alert-danger";
+                StateHasChanged();
+                return;
             }
-            
-            await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
         }
-        else
+
+        try
         {
-            searchHn = patient.Hn;
-            await SearchPatientByHn();
-            if (patientInfo != null)
+            string patientName = "";
+            if (patient.Hn != null && patientNames.ContainsKey(patient.Hn))
             {
-                var departmentCode = patient.QueueNameDep?.Split('-')[0] ?? "";
-                var actualQueueNumber = patient.QueueHx ?? 0;
-                
-                // Send update via SignalR
-                if (isConnected && hubConnection != null)
-                {
-                    await hubConnection.SendAsync("SendQueueUpdate", 
-                        spotPlace, 
-                        actualQueueNumber, 
-                        userName, 
-                        departmentCode);
-                }
-                
-                await AnnounceQueue2(actualQueueNumber, userName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
+                patientName = patientNames[patient.Hn];
             }
+            else
+            {
+                // ถ้ายังไม่มีชื่อให้ลองโหลดใหม่
+                searchHn = patient.Hn;
+                await SearchPatientByHn();
+                if (patientInfo != null)
+                {
+                    patientName = $"{patientInfo.Pname}{patientInfo.Fname} {patientInfo.Lname}";
+                }
+                else
+                {
+                    patientName = $"HN: {patient.Hn}";
+                }
+            }
+
+            var departmentCode = patient.QueueNameDep?.Split('-')[0] ?? "";
+            var actualQueueNumber = patient.QueueHx ?? 0;
+
+            // ส่งข้อมูลไปยัง Hub - ใช้ method name ที่ถูกต้อง
+            await hubConnection.SendAsync("SendQueueUpdate2", 
+                spotPlace, 
+                actualQueueNumber, 
+                patientName, 
+                departmentCode);
+            
+            Console.WriteLine($"Sent queue update: {spotPlace}, {actualQueueNumber}, {patientName}");
+
+            // ประกาศเสียง
+            await AnnounceQueue2(actualQueueNumber, patientName, departmentCode, spotPlace, 0.7, 1.2, 2.0);
+
+            message = $"เรียกคิว {actualQueueNumber} ที่จุดซักประวัติ {spotPlace} สำเร็จ";
+            alertClass = "alert-success";
+        }
+        catch (Exception ex)
+        {
+            message = $"เกิดข้อผิดพลาด: {ex.Message}";
+            alertClass = "alert-danger";
+            Console.WriteLine($"Error in CallPatient1: {ex.Message}");
+        }
+        finally
+        {
+            StateHasChanged();
         }
     }
 

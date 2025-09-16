@@ -260,7 +260,7 @@
             
             // เรียก API เพื่อดึงข้อมูลแผนก
             var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("http://localhost:5041/"); // ตั้งค่า base address
+            client.BaseAddress = new Uri("http://localhost:5082/"); // ตั้งค่า base address
             var response = await client.GetAsync("api/DepartmentName/DepartmentsNoHx");
             
             if (response.IsSuccessStatusCode)

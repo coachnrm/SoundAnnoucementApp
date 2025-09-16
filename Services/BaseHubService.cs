@@ -53,4 +53,11 @@ public abstract class BaseHubService : IAsyncDisposable
         public string PatientName { get; set; }
         public string Department { get; set; }
     }
+    public class SpotQueueInfo1
+    {
+        public string SpotPlace { get; set; }
+        public int QueueNumber { get; set; }
+        public string PatientName { get; set; }
+        public string Department { get; set; }
+    }
 }

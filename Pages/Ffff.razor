@@ -7,6 +7,7 @@
 @inject IHttpClientFactory _httpClientFactory
 @inject QueueHubService QueueHubService
 @inject DisplayHubService DisplayHubService
+@inject PrescriptionReceiptHubService PrescriptionReceiptHubService
 @layout QueueLayout
 @implements IAsyncDisposable
 
@@ -175,7 +176,7 @@
                         <div class="spot-header">
                             <div class="spot-number">
                                 <i class="fas fa-user-md"></i>
-                                <span>@department.Name - ห้องตรวจ @department.Id</span>
+                                <span>@department.Name-ห้องตรวจ @department.Id</span>
                             </div>
                             <div class="status-indicator"></div>
                         </div>
@@ -261,7 +262,7 @@
             @for (int i = 1; i <= 2; i++)
             {
                 var spotKey = i.ToString();
-                var spotInfo = QueueHubService.SpotQueues.ContainsKey(spotKey) ? QueueHubService.SpotQueues[spotKey] : null;
+                var spotInfo = PrescriptionReceiptHubService.SpotQueues.ContainsKey(spotKey) ? PrescriptionReceiptHubService.SpotQueues[spotKey] : null;
                 
                 <div class="spot-card1 @(spotInfo != null ? "active" : "inactive")">
                     <div class="spot-header">
@@ -328,6 +329,7 @@
             // Subscribe to change events
             QueueHubService.OnChange += StateHasChanged;
             DisplayHubService.OnChange += StateHasChanged;
+            PrescriptionReceiptHubService.OnChange += StateHasChanged;
             
             // โหลด departments ก่อน
             await LoadDepartments();
@@ -335,6 +337,7 @@
             // Initialize hub connections
             await QueueHubService.InitializeAsync();
             await DisplayHubService.InitializeAsync();
+            await PrescriptionReceiptHubService.InitializeAsync();
         }
         catch (Exception ex)
         {
@@ -352,7 +355,7 @@
             
             // เรียก API เพื่อดึงข้อมูลแผนก
             var client = _httpClientFactory.CreateClient();
-            client.BaseAddress = new Uri("http://localhost:5041/"); // ตั้งค่า base address
+            client.BaseAddress = new Uri("http://localhost:5082/"); // ตั้งค่า base address
             var response = await client.GetAsync("api/DepartmentName/DepartmentsNoHx");
             
             if (response.IsSuccessStatusCode)
@@ -429,6 +432,7 @@
         {
             QueueHubService.OnChange -= StateHasChanged;
             DisplayHubService.OnChange -= StateHasChanged;
+            PrescriptionReceiptHubService.OnChange -= StateHasChanged;
         }
         catch (Exception ex)
         {

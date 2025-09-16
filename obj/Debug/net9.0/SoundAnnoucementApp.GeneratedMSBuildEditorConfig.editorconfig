@@ -272,6 +272,10 @@ build_metadata.AdditionalFiles.CssScope = b-nz1olq9wq5
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTXVzaWNQYWRcUGFkQ29udHJvbGxlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-rhkae1j2hq
 
+[D:/SoundAnnoucementApp/Pages/QueueCountAll.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVDb3VudEFsbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-xw3uotna5n
+
 [D:/SoundAnnoucementApp/Pages/Queuedisplay.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVldWVkaXNwbGF5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-rewtvv08wt

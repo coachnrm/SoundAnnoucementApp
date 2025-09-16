@@ -37,7 +37,7 @@ builder.Services.AddHttpClient("OpApi", client =>
 builder.Services.AddHttpClient("QueueApi", client =>
 {
     // client.BaseAddress = new Uri("http://172.16.200.202:5041/");
-    client.BaseAddress = new Uri("http://localhost:5041/");
+    client.BaseAddress = new Uri("http://localhost:5082/");
 });
 
 builder.Services.AddHttpClient("MophApi", client =>
@@ -53,8 +53,11 @@ builder.Services.AddHttpClient<IpdService>(client =>
 
 builder.Services.AddScoped<IHospitalSlotService, HospitalSlotService>();
 // Program.cs
-builder.Services.AddScoped<QueueHubService>();
-builder.Services.AddScoped<DisplayHubService>();
+// builder.Services.AddScoped<QueueHubService>();
+// builder.Services.AddScoped<DisplayHubService>();
+builder.Services.AddSingleton<QueueHubService>();
+builder.Services.AddSingleton<DisplayHubService>();
+builder.Services.AddSingleton<PrescriptionReceiptHubService>();
 
 
 await builder.Build().RunAsync();
