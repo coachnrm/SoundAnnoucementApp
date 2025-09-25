@@ -1,0 +1,370 @@
+﻿@page "/p4p-dummy"
+@using System.Globalization
+@inject SoundAnnoucementApp.Services.P4PApiService Api
+@inject IJSRuntime JS
+
+<h3 class="mb-3">P4P – กรอกงานรายวัน (Dummy)</h3>
+
+<div class="row g-2 mb-3">
+  <div class="col-auto">
+    <label class="form-label">ชื่อแพทย์</label>
+    <input class="form-control" style="min-width:220px"
+           placeholder="พิมพ์ชื่อแพทย์"
+           @bind="DoctorName" @bind:event="oninput" />
+  </div>
+
+  <div class="col-auto">
+    <label class="form-label">กลุ่มงาน</label>
+    <input class="form-control" style="min-width:200px"
+           placeholder="เช่น งานบริหาร, งานตรวจ ฯลฯ"
+           @bind="WorkGroup" @bind:event="oninput" />
+  </div>
+
+  <div class="col-auto">
+    <label class="form-label">เดือน</label>
+    <select class="form-select" style="min-width:160px" @bind="Month">
+      @for (int m = 1; m <= 12; m++)
+      {
+        <option value="@m">@CultureInfo.GetCultureInfo("th-TH").DateTimeFormat.GetMonthName(m)</option>
+      }
+    </select>
+  </div>
+
+  <div class="col-auto">
+    <label class="form-label">ปี (ค.ศ.)</label>
+    <input type="number" class="form-control" style="width:120px"
+           @bind="Year" @bind:event="oninput" />
+  </div>
+
+  <div class="col-auto align-self-end">
+    <button class="btn btn-outline-secondary" @onclick="ClearAll">ล้างข้อมูล</button>
+  </div>
+  <div class="col-auto align-self-end">
+    <button class="btn btn-outline-primary" @onclick="AddRow">+ เพิ่มกิจกรรม</button>
+  </div>
+  <div class="col-auto align-self-end">
+    <button class="btn btn-success" @onclick="ExportJson">Export JSON</button>
+  </div>
+</div>
+
+@if (Rows.Count == 0)
+{
+  <div class="alert alert-info">ยังไม่มีรายการกิจกรรม กด “+ เพิ่มกิจกรรม” เพื่อเริ่มต้น</div>
+}
+else
+{
+  <div class="table-responsive">
+    <table class="table table-sm align-middle">
+      <thead class="table-light">
+        <tr>
+          <th style="min-width:180px;">ประเภทงาน</th>
+          <th style="min-width:280px;">กิจกรรม</th>
+          <th class="text-end" style="width:120px;">แต้ม/หน่วย</th>
+          @for (int d = 1; d <= DaysInMonth; d++)
+          {
+            <th class="text-end">@($"D{d}")</th>
+          }
+          <th class="text-end" style="width:110px;">รวมจำนวน</th>
+          <th class="text-end" style="width:130px;">รวมแต้ม</th>
+          <th style="width:90px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var (row, idx) in Rows.Select((r, i) => (r, i)))
+        {
+          // capture row index to avoid closure issues
+          var rIndex = idx;
+          <tr @key="row">
+            <td><input class="form-control form-control-sm" @bind="row.Category" /></td>
+            <td><input class="form-control form-control-sm" @bind="row.Activity" /></td>
+            <td>
+              <input type="number" step="0.01"
+                     class="form-control form-control-sm text-end no-spin"
+                     @bind="row.PointsPerUnit" @bind:event="oninput" />
+            </td>
+
+            @for (int d = 0; d < DaysInMonth; d++)
+            {
+              // capture day index to avoid closure issues
+              var dayIndex = d;
+              var cellId = $"d-{rIndex}-{dayIndex}";
+              <td @key="cellId">
+                <input id="@cellId"
+                       type="number" min="0" step="1" inputmode="numeric"
+                       class="form-control form-control-sm text-end no-spin"
+                       value="@ShowDaily(row, dayIndex)"
+                       @oninput="(ChangeEventArgs e) => OnDailyChanged(rIndex, dayIndex, e?.Value?.ToString())"
+                       @onkeydown="(KeyboardEventArgs e) => OnDailyKeyDown(rIndex, dayIndex, e)" />
+              </td>
+            }
+
+            <!-- Sum across ALL days -->
+            <td class="text-end fw-semibold">@row.TotalCountSum.ToString("N0")</td>
+            <td class="text-end fw-semibold">@row.TotalPoints.ToString("N2")</td>
+            <td>
+              <div class="d-flex gap-1">
+                <button class="btn btn-outline-secondary btn-sm" title="คัดลอกแถว" @onclick="() => DuplicateRow(rIndex)">คัดลอก</button>
+                <button class="btn btn-outline-danger btn-sm" title="ลบแถว" @onclick="() => RemoveRow(rIndex)">ลบ</button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+      <tfoot class="table-light">
+        <tr>
+          <th colspan="@(3 + DaysInMonth)" class="text-end">
+            รวมแต้มทั้งเดือน
+            <small class="text-muted ms-2">
+              (@DoctorName@if(!string.IsNullOrWhiteSpace(WorkGroup)){<text> · @WorkGroup</text>})
+            </small>
+          </th>
+          <th class="text-end" style="width:110px;">@Rows.Sum(r => r.TotalCountSum).ToString("N0")</th>
+          <th class="text-end" style="width:130px;">@Rows.Sum(r => r.TotalPoints).ToString("N2")</th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+}
+
+<div class="col-auto align-self-end">
+  <button class="btn btn-primary" @onclick="SaveToServer">Save to Server</button>
+</div>
+
+<style>
+  .no-spin::-webkit-outer-spin-button,
+  .no-spin::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .no-spin[type=number] {
+    -moz-appearance: textfield;
+  }
+</style>
+
+@code {
+  // ---------------- Models ----------------
+  public class P4PRow
+  {
+    public string? Category { get; set; }
+    public string? Activity { get; set; }
+    public decimal PointsPerUnit { get; set; } = 0m;
+    public List<int?> Daily { get; set; } = new();
+
+    public int TotalCountSum => Daily.Sum(x => x ?? 0);
+    public int TotalDaysFilled => Daily.Count(x => (x ?? 0) > 0);
+    public decimal TotalPoints => TotalCountSum * PointsPerUnit;
+  }
+
+  public class P4PSnapshot
+  {
+    public int Year { get; set; }
+    public int Month { get; set; }
+    public string? DoctorName { get; set; }
+    public string? WorkGroup { get; set; }
+    public List<P4PRow> Rows { get; set; } = new();
+  }
+
+  // ---------------- State ----------------
+  string? DoctorName { get => _doctorName; set { _doctorName = value; Save(); } }
+  string? WorkGroup  { get => _workGroup;  set { _workGroup  = value; Save(); } }
+  string? _doctorName;
+  string? _workGroup;
+
+  int _year = DateTime.Now.Year;
+  int Year
+  {
+    get => _year;
+    set { _year = value; EnsureDailySize(); Save(); }
+  }
+
+  int _month = DateTime.Now.Month;
+  int Month
+  {
+    get => _month;
+    set { _month = value; EnsureDailySize(); Save(); }
+  }
+
+  int DaysInMonth => DateTime.DaysInMonth(Year, Month);
+  List<P4PRow> Rows { get; set; } = new();
+
+  protected override async Task OnInitializedAsync()
+  {
+    try
+    {
+      var snap = await JS.InvokeAsync<P4PSnapshot?>("p4pStorage.load");
+      if (snap is not null)
+      {
+        Year = snap.Year;
+        Month = snap.Month;
+        DoctorName = snap.DoctorName;
+        WorkGroup = snap.WorkGroup;
+        Rows = snap.Rows ?? new();
+        EnsureDailySize();
+        StateHasChanged();
+        return;
+      }
+    }
+    catch { /* ignore */ }
+
+    AddRow();
+    Rows[0].Category = "งานบริหาร";
+    Rows[0].Activity = "ประชุมหน่วยงานดิจิทัล";
+    Rows[0].PointsPerUnit = 50m;
+  }
+
+  // ---------------- UI Actions ----------------
+  void AddRow()
+  {
+    var r = new P4PRow
+    {
+      Daily = Enumerable.Repeat<int?>(null, DaysInMonth).ToList()
+    };
+    Rows.Add(r);
+    Save();
+  }
+
+  void DuplicateRow(int index)
+  {
+    var src = Rows[index];
+    var copy = new P4PRow
+    {
+      Category = src.Category,
+      Activity = src.Activity,
+      PointsPerUnit = src.PointsPerUnit,
+      Daily = src.Daily.Select(x => x).ToList()
+    };
+    Rows.Insert(index + 1, copy);
+    Save();
+  }
+
+  void RemoveRow(int index)
+  {
+    Rows.RemoveAt(index);
+    Save();
+  }
+
+  void ClearAll()
+  {
+    Rows.Clear();
+    Save();
+  }
+
+  // Expand-only ensures late events never go out-of-range
+  void EnsureDailySize()
+  {
+    foreach (var row in Rows)
+    {
+      if (row.Daily.Count < DaysInMonth)
+      {
+        row.Daily.AddRange(Enumerable.Repeat<int?>(null, DaysInMonth - row.Daily.Count));
+      }
+    }
+  }
+
+  string ShowDaily(P4PRow row, int dayIndex)
+    => (row.Daily.ElementAtOrDefault(dayIndex) ?? 0).ToString();
+
+  // Absolute set per day; totals are SUM of all days
+  void OnDailyChanged(int rowIndex, int dayIndex, string? value)
+  {
+    if (rowIndex < 0 || rowIndex >= Rows.Count) return;
+    var row = Rows[rowIndex];
+    if (dayIndex < 0) return;
+
+    if (dayIndex >= row.Daily.Count)
+        row.Daily.AddRange(Enumerable.Repeat<int?>(null, dayIndex - row.Daily.Count + 1));
+
+    if (string.IsNullOrWhiteSpace(value))
+        row.Daily[dayIndex] = null;
+    else if (int.TryParse(value, out var v))
+        row.Daily[dayIndex] = Math.Max(0, v);
+    else
+        row.Daily[dayIndex] = 0;
+
+    Save(); // triggers re-render; other days remain intact
+  }
+
+  // Keyboard navigation
+  async Task OnDailyKeyDown(int rowIndex, int dayIndex, KeyboardEventArgs e)
+  {
+    string? targetId = null;
+
+    if (e.Key == "Enter" || e.Key == "ArrowRight")
+    {
+      var next = dayIndex + 1;
+      if (next < DaysInMonth) targetId = $"d-{rowIndex}-{next}";
+    }
+    else if (e.Key == "ArrowLeft")
+    {
+      var prev = dayIndex - 1;
+      if (prev >= 0) targetId = $"d-{rowIndex}-{prev}";
+    }
+
+    if (targetId is not null)
+      await JS.InvokeVoidAsync("p4pFocus.focusById", targetId);
+  }
+
+  async void Save()
+  {
+    var snap = new P4PSnapshot
+    {
+      Year = Year,
+      Month = Month,
+      DoctorName = DoctorName,
+      WorkGroup = WorkGroup,
+      Rows = Rows
+    };
+    await JS.InvokeVoidAsync("p4pStorage.save", snap);
+    StateHasChanged();
+  }
+
+  async void ExportJson()
+  {
+    var snap = new P4PSnapshot
+    {
+      Year = Year,
+      Month = Month,
+      DoctorName = DoctorName,
+      WorkGroup = WorkGroup,
+      Rows = Rows
+    };
+    var json = System.Text.Json.JsonSerializer.Serialize(
+      snap,
+      new System.Text.Json.JsonSerializerOptions { WriteIndented = true }
+    );
+    var safeName = string.IsNullOrWhiteSpace(DoctorName) ? "p4p" : $"p4p-{DoctorName}".Replace(" ", "_");
+    await JS.InvokeVoidAsync("downloadTextFile", $"{safeName}-{Year}-{Month:00}.json", json);
+  }
+
+  async Task SaveToServer()
+    {
+        var dto = new SoundAnnoucementApp.Services.P4PSnapshot
+        {
+            Year = Year,
+            Month = Month,
+            DoctorName = DoctorName,
+            WorkGroup = WorkGroup,
+            Rows = Rows.Select(r => new SoundAnnoucementApp.Services.P4PRowDto
+            {
+                Category = r.Category,
+                Activity = r.Activity,
+                PointsPerUnit = r.PointsPerUnit,
+                Daily = r.Daily.ToList() // clone
+            }).ToList()
+        };
+
+        var result = await Api.SaveDocumentAsync(dto);
+        if (result is not null)
+        {
+            await JS.InvokeVoidAsync("alert", $"Saved! DocumentId = {result.DocumentId}");
+        }
+        else
+        {
+            await JS.InvokeVoidAsync("alert", "Save failed!");
+        }
+    }
+
+}
+
+

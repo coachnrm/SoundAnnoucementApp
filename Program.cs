@@ -50,6 +50,11 @@ builder.Services.AddHttpClient<IpdService>(client =>
 
 builder.Services.AddScoped<IHospitalSlotService, HospitalSlotService>();
 
+builder.Services.AddHttpClient("P4pApi", client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5071/");
+});
+builder.Services.AddSingleton<P4PApiService>();
 
 await builder.Build().RunAsync();
 

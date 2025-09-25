@@ -1,0 +1,432 @@
+﻿@* @page "/p4p-edit/{Id:int}"
+@using System.Globalization
+@inject SoundAnnoucementApp.Services.P4PApiService Api
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<h3 class="mb-3">แก้ไขเอกสาร P4P #@Id</h3>
+
+@if (Loading)
+{
+  <div class="alert alert-info">กำลังโหลด...</div>
+}
+else if (Error is not null)
+{
+  <div class="alert alert-danger">@Error</div>
+}
+else if (Model is null)
+{
+  <div class="alert alert-warning">ไม่พบข้อมูล</div>
+}
+else
+{
+  <div class="row g-2 mb-3">
+    <div class="col-auto">
+      <label class="form-label">ชื่อแพทย์</label>
+      <input class="form-control" style="min-width:220px" @bind="Model.DoctorName" @bind:event="oninput" />
+    </div>
+    <div class="col-auto">
+      <label class="form-label">กลุ่มงาน</label>
+      <input class="form-control" style="min-width:200px" @bind="Model.WorkGroup" @bind:event="oninput" />
+    </div>
+    <div class="col-auto">
+      <label class="form-label">เดือน</label>
+      <select class="form-select" style="min-width:160px" @bind="Model.Month">
+        @for (int m = 1; m <= 12; m++)
+        { <option value="@m">@CultureInfo.GetCultureInfo("th-TH").DateTimeFormat.GetMonthName(m)</option> }
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="form-label">ปี (ค.ศ.)</label>
+      <input type="number" class="form-control" style="width:120px" @bind="Model.Year" @bind:event="oninput" />
+    </div>
+    <div class="col-auto align-self-end">
+      <button class="btn btn-primary" @onclick="Save">บันทึก</button>
+      <button class="btn btn-outline-secondary ms-2" @onclick="GoBack">ย้อนกลับ</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-sm align-middle">
+      <thead class="table-light">
+        <tr>
+          <th style="min-width:160px;">ประเภทงาน</th>
+          <th style="min-width:240px;">กิจกรรม</th>
+          <th class="text-end" style="width:120px;">แต้ม/หน่วย</th>
+          @for (int d = 1; d <= DaysInMonth; d++)
+          {
+            <th class="text-end">@($"D{d}")</th>
+          }
+          <th class="text-end" style="width:110px;">รวมจำนวน</th>
+          <th class="text-end" style="width:130px;">รวมแต้ม</th>
+          <th style="width:90px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (int r = 0; r < Model.Rows.Count; r++)
+        {
+          var row = Model.Rows[r];
+          <tr @key="row">
+            <td><input class="form-control form-control-sm" @bind="row.Category" /></td>
+            <td><input class="form-control form-control-sm" @bind="row.Activity" /></td>
+            <td>
+              <input type="number" step="0.01" class="form-control form-control-sm text-end no-spin"
+                     @bind="row.PointsPerUnit" @bind:event="oninput" />
+            </td>
+
+            @for (int d = 0; d < DaysInMonth; d++)
+            {
+              var dayIndex = d;
+              <td @key="@($"c-{r}-{d}")">
+                <input type="number" min="0" step="1" inputmode="numeric"
+                       class="form-control form-control-sm text-end no-spin"
+                       value="@ShowDaily(row, dayIndex)"
+                       @oninput="(ChangeEventArgs e) => OnDailyChanged(row, dayIndex, e?.Value?.ToString())" />
+              </td>
+            }
+
+            <td class="text-end fw-semibold">@RowTotal(row).ToString("N0")</td>
+            <td class="text-end fw-semibold">@((RowTotal(row) * row.PointsPerUnit).ToString("N2"))</td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-secondary" @onclick="() => DuplicateRow(r)">คัดลอก</button>
+                <button class="btn btn-outline-danger" @onclick="() => RemoveRow(r)">ลบ</button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+      <tfoot class="table-light">
+        <tr>
+          <th colspan="@(3 + DaysInMonth)" class="text-end">รวมทั้งเดือน</th>
+          <th class="text-end">@Model.Rows.Sum(RowTotal).ToString("N0")</th>
+          <th class="text-end">@Model.Rows.Sum(r => RowTotal(r) * r.PointsPerUnit).ToString("N2")</th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+}
+
+@code {
+  [Parameter] public int Id { get; set; }
+  bool Loading { get; set; }
+  string? Error { get; set; }
+  SoundAnnoucementApp.Services.P4PSnapshot? Model { get; set; }
+
+  int DaysInMonth => Model is null ? 31 : DateTime.DaysInMonth(Model.Year, Model.Month);
+
+  protected override async Task OnParametersSetAsync()
+  {
+    Loading = true; Error = null;
+    try
+    {
+      Model = await Api.GetDocumentAsync(Id);
+      if (Model is null) Error = "ไม่พบเอกสาร";
+      else EnsureDailySize(Model);
+    }
+    catch (Exception ex) { Error = ex.Message; }
+    finally { Loading = false; }
+  }
+
+  void EnsureDailySize(SoundAnnoucementApp.Services.P4PSnapshot m)
+  {
+    foreach (var row in m.Rows)
+    {
+      if (row.Daily.Count < DaysInMonth)
+        row.Daily.AddRange(Enumerable.Repeat<int?>(0, DaysInMonth - row.Daily.Count));
+      else if (row.Daily.Count > DaysInMonth)
+        row.Daily = row.Daily.Take(DaysInMonth).ToList();
+    }
+  }
+
+  string ShowDaily(SoundAnnoucementApp.Services.P4PRowDto row, int i)
+    => (row.Daily.ElementAtOrDefault(i) ?? 0).ToString();
+
+  void OnDailyChanged(SoundAnnoucementApp.Services.P4PRowDto row, int i, string? v)
+  {
+    if (i < 0) return;
+    if (i >= row.Daily.Count)
+      row.Daily.AddRange(Enumerable.Repeat<int?>(0, i - row.Daily.Count + 1));
+
+    if (string.IsNullOrWhiteSpace(v)) row.Daily[i] = 0;
+    else if (int.TryParse(v, out var n)) row.Daily[i] = Math.Max(0, n);
+    else row.Daily[i] = 0;
+    StateHasChanged();
+  }
+
+  int RowTotal(SoundAnnoucementApp.Services.P4PRowDto row)
+    => row.Daily.Sum(x => x ?? 0);
+
+  void DuplicateRow(int index)
+  {
+    var src = Model!.Rows[index];
+    Model!.Rows.Insert(index + 1, new()
+    {
+      Category = src.Category,
+      Activity = src.Activity,
+      PointsPerUnit = src.PointsPerUnit,
+      Daily = src.Daily.ToList()
+    });
+  }
+
+  void RemoveRow(int index) => Model!.Rows.RemoveAt(index);
+
+  void GoBack() => Nav.NavigateTo("/p4p-list");
+
+  async Task Save()
+  {
+    if (Model is null) return;
+    try
+    {
+      var resp = await Api.UpdateDocumentAsync(Id, Model);
+      if (resp is not null)
+      {
+        await JS.InvokeVoidAsync("alert", $"บันทึกแล้ว (DocumentId={resp.DocumentId})");
+        Nav.NavigateTo("/p4p-list");
+      }
+      else
+      {
+        await JS.InvokeVoidAsync("alert", "บันทึกไม่สำเร็จ");
+      }
+    }
+    catch (Exception ex)
+    {
+      await JS.InvokeVoidAsync("alert", ex.Message);
+    }
+  }
+}  *@
+
+
+@page "/p4p-edit/{Id:int}"
+@using System.Globalization
+@inject SoundAnnoucementApp.Services.P4PApiService Api
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<h3 class="mb-3">แก้ไขเอกสาร P4P #@Id</h3>
+
+@if (Loading)
+{
+  <div class="alert alert-info">กำลังโหลด...</div>
+}
+else if (Error is not null)
+{
+  <div class="alert alert-danger">@Error</div>
+}
+else if (Model is null)
+{
+  <div class="alert alert-warning">ไม่พบข้อมูล</div>
+}
+else
+{
+  <div class="row g-2 mb-3">
+    <div class="col-auto">
+      <label class="form-label">ชื่อแพทย์</label>
+      <input class="form-control" style="min-width:220px" @bind="Model.DoctorName" @bind:event="oninput" />
+    </div>
+    <div class="col-auto">
+      <label class="form-label">กลุ่มงาน</label>
+      <input class="form-control" style="min-width:200px" @bind="Model.WorkGroup" @bind:event="oninput" />
+    </div>
+    <div class="col-auto">
+      <label class="form-label">เดือน</label>
+      <select class="form-select" style="min-width:160px" @bind="Model.Month">
+        @for (int m = 1; m <= 12; m++)
+        { <option value="@m">@CultureInfo.GetCultureInfo("th-TH").DateTimeFormat.GetMonthName(m)</option> }
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="form-label">ปี (ค.ศ.)</label>
+      <input type="number" class="form-control" style="width:120px" @bind="Model.Year" @bind:event="oninput" />
+    </div>
+    <div class="col-auto align-self-end">
+      <button class="btn btn-primary" @onclick="Save">บันทึก</button>
+      <button class="btn btn-outline-secondary ms-2" @onclick="GoBack">ย้อนกลับ</button>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-sm align-middle">
+      <thead class="table-light">
+        <tr>
+          <th style="min-width:160px;">ประเภทงาน</th>
+          <th style="min-width:240px;">กิจกรรม</th>
+          <th class="text-end" style="width:120px;">แต้ม/หน่วย</th>
+          @for (int d = 1; d <= DaysInMonth; d++)
+          {
+            <th class="text-end">@($"D{d}")</th>
+          }
+          <th class="text-end" style="width:110px;">รวมจำนวน</th>
+          <th class="text-end" style="width:130px;">รวมแต้ม</th>
+          <th style="width:90px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (var (row, rIndex) in Model.Rows.Select((r, i) => (r, i)))
+        {
+          <tr @key="row">
+            <td><input class="form-control form-control-sm" @bind="row.Category" /></td>
+            <td><input class="form-control form-control-sm" @bind="row.Activity" /></td>
+            <td>
+              <input type="number" step="0.01" class="form-control form-control-sm text-end no-spin"
+                     @bind="row.PointsPerUnit" @bind:event="oninput" />
+            </td>
+
+            @for (int d = 0; d < DaysInMonth; d++)
+            {
+              var dayIndex = d;                          // capture day index
+              var cellId = $"d-{rIndex}-{dayIndex}";     // stable id like dummy
+              <td @key="@($"c-{rIndex}-{dayIndex}")">
+                <input id="@cellId"
+                       type="number" min="0" step="1" inputmode="numeric"
+                       class="form-control form-control-sm text-end no-spin"
+                       value="@ShowDaily(row, dayIndex)"
+                       @oninput="(ChangeEventArgs e) => OnDailyChanged(rIndex, dayIndex, e?.Value?.ToString())"
+                       @onkeydown="(KeyboardEventArgs e) => OnDailyKeyDown(rIndex, dayIndex, e)" />
+              </td>
+            }
+
+            <td class="text-end fw-semibold">@RowTotal(row).ToString("N0")</td>
+            <td class="text-end fw-semibold">@((RowTotal(row) * row.PointsPerUnit).ToString("N2"))</td>
+            <td>
+              <div class="btn-group btn-group-sm">
+                <button class="btn btn-outline-secondary" @onclick="() => DuplicateRow(rIndex)">คัดลอก</button>
+                <button class="btn btn-outline-danger" @onclick="() => RemoveRow(rIndex)">ลบ</button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+      <tfoot class="table-light">
+        <tr>
+          <th colspan="@(3 + DaysInMonth)" class="text-end">รวมทั้งเดือน</th>
+          <th class="text-end">@Model.Rows.Sum(RowTotal).ToString("N0")</th>
+          <th class="text-end">@Model.Rows.Sum(r => RowTotal(r) * r.PointsPerUnit).ToString("N2")</th>
+          <th></th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+}
+
+<style>
+  .no-spin::-webkit-outer-spin-button,
+  .no-spin::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .no-spin[type=number] { -moz-appearance: textfield; }
+</style>
+
+@code {
+  [Parameter] public int Id { get; set; }
+  bool Loading { get; set; }
+  string? Error { get; set; }
+  SoundAnnoucementApp.Services.P4PSnapshot? Model { get; set; }
+
+  int DaysInMonth => Model is null ? 31 : DateTime.DaysInMonth(Model.Year, Model.Month);
+
+  protected override async Task OnParametersSetAsync()
+  {
+    Loading = true; Error = null;
+    try
+    {
+      Model = await Api.GetDocumentAsync(Id);
+      if (Model is null) Error = "ไม่พบเอกสาร";
+      else EnsureDailySize(Model);
+    }
+    catch (Exception ex) { Error = ex.Message; }
+    finally { Loading = false; }
+  }
+
+  void EnsureDailySize(SoundAnnoucementApp.Services.P4PSnapshot m)
+  {
+    foreach (var row in m.Rows)
+    {
+      if (row.Daily.Count < DaysInMonth)
+        row.Daily.AddRange(Enumerable.Repeat<int?>(0, DaysInMonth - row.Daily.Count));
+      else if (row.Daily.Count > DaysInMonth)
+        row.Daily = row.Daily.Take(DaysInMonth).ToList();
+    }
+  }
+
+  // Same as dummy: show 0 if null/missing
+  string ShowDaily(SoundAnnoucementApp.Services.P4PRowDto row, int dayIndex)
+    => (row.Daily.ElementAtOrDefault(dayIndex) ?? 0).ToString();
+
+  // Index-based change handler (like dummy)
+  void OnDailyChanged(int rIndex, int dayIndex, string? value)
+  {
+    if (Model is null) return;
+    if (rIndex < 0 || rIndex >= Model.Rows.Count) return;
+    var row = Model.Rows[rIndex];
+    if (dayIndex < 0) return;
+
+    if (dayIndex >= row.Daily.Count)
+      row.Daily.AddRange(Enumerable.Repeat<int?>(0, dayIndex - row.Daily.Count + 1));
+
+    if (string.IsNullOrWhiteSpace(value)) row.Daily[dayIndex] = 0;
+    else if (int.TryParse(value, out var v)) row.Daily[dayIndex] = Math.Max(0, v);
+    else row.Daily[dayIndex] = 0;
+
+    StateHasChanged();
+  }
+
+  // Optional: keyboard nav like dummy
+  async Task OnDailyKeyDown(int rIndex, int dayIndex, KeyboardEventArgs e)
+  {
+    string? targetId = null;
+    if (e.Key == "Enter" || e.Key == "ArrowRight")
+    {
+      var next = dayIndex + 1;
+      if (next < DaysInMonth) targetId = $"d-{rIndex}-{next}";
+    }
+    else if (e.Key == "ArrowLeft")
+    {
+      var prev = dayIndex - 1;
+      if (prev >= 0) targetId = $"d-{rIndex}-{prev}";
+    }
+
+    if (targetId is not null)
+      await JS.InvokeVoidAsync("p4pFocus.focusById", targetId);
+  }
+
+  int RowTotal(SoundAnnoucementApp.Services.P4PRowDto row)
+    => row.Daily.Sum(x => x ?? 0);
+
+  void DuplicateRow(int index)
+  {
+    var src = Model!.Rows[index];
+    Model!.Rows.Insert(index + 1, new()
+    {
+      Category = src.Category,
+      Activity = src.Activity,
+      PointsPerUnit = src.PointsPerUnit,
+      Daily = src.Daily.ToList()
+    });
+  }
+
+  void RemoveRow(int index) => Model!.Rows.RemoveAt(index);
+
+  void GoBack() => Nav.NavigateTo("/p4p-list");
+
+  async Task Save()
+  {
+    if (Model is null) return;
+    try
+    {
+      var resp = await Api.UpdateDocumentAsync(Id, Model);
+      if (resp is not null)
+      {
+        await JS.InvokeVoidAsync("alert", $"บันทึกแล้ว (DocumentId={resp.DocumentId})");
+        Nav.NavigateTo("/p4p-list");
+      }
+      else
+      {
+        await JS.InvokeVoidAsync("alert", "บันทึกไม่สำเร็จ");
+      }
+    }
+    catch (Exception ex)
+    {
+      await JS.InvokeVoidAsync("alert", ex.Message);
+    }
+  }
+}

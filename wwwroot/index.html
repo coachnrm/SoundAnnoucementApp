@@ -62,6 +62,45 @@
     <script src="js/graph.js"></script>
     <script type="module" src="js/signaturePad.js"></script>
     <!-- <script src="_content/Blazor.SignaturePad/signature_pad.min.js"></script> -->
+     <script>
+  window.downloadTextFile = (fileName, content) => {
+    const blob = new Blob([content], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    URL.revokeObjectURL(url);
+    a.remove();
+  };
+
+  window.p4pStorage = {
+    key: 'p4p-dummy-v1',
+    save: (snapshot) => {
+      try { localStorage.setItem(window.p4pStorage.key, JSON.stringify(snapshot)); }
+      catch { /* ignore quota */ }
+    },
+    load: () => {
+      try {
+        const raw = localStorage.getItem(window.p4pStorage.key);
+        return raw ? JSON.parse(raw) : null;
+      } catch {
+        return null;
+      }
+    }
+  };
+
+  window.p4pFocus = {
+    focusById: (id) => {
+      const el = document.getElementById(id);
+      if (el) el.focus();
+    }
+  };
+</script>
+
+
 </body>
 
 </html>

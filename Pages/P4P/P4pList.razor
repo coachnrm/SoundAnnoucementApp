@@ -1,0 +1,466 @@
+﻿@* @page "/p4p-list"
+@using System.Text.Json
+@inject SoundAnnoucementApp.Services.P4PApiService Api
+
+<h3 class="mb-3">ค้นหาเอกสาร P4P</h3>
+
+<div class="row g-2 align-items-end mb-3">
+  <!-- Doctor typeahead -->
+  <div class="col-md-4 position-relative">
+    <label class="form-label">ชื่อแพทย์</label>
+    <input class="form-control" placeholder="พิมพ์เพื่อค้นหา..."
+           @bind="DoctorQuery" @bind:event="oninput"
+           @onfocus="ShowDoctorDropdown" @onblur="HideDoctorDropdownDelayed" />
+    @if (ShowDoctorSuggestions && DoctorSuggestions.Count > 0)
+    {
+      <ul class="list-group position-absolute w-100 shadow-sm z-3"
+          style="max-height: 240px; overflow:auto;">
+        @foreach (var name in DoctorSuggestions)
+        {
+          <li class="list-group-item list-group-item-action"
+              @onclick="() => SelectDoctorSuggestion(name)">
+            @name
+          </li>
+        }
+      </ul>
+    }
+  </div>
+
+  <!-- Year -->
+  <div class="col-md-2">
+    <label class="form-label">ปี (ค.ศ.)</label>
+    <input type="number" class="form-control" @bind="Year" @bind:event="oninput" />
+  </div>
+
+  <!-- Month -->
+  <div class="col-md-2">
+    <label class="form-label">เดือน</label>
+    <select class="form-select" @bind="Month">
+      <option value="">ทั้งหมด</option>
+      @for (int m = 1; m <= 12; m++)
+      {
+        <option value="@m">@m.ToString("00")</option>
+      }
+    </select>
+  </div>
+
+  <div class="col-auto">
+    <button class="btn btn-primary" @onclick="Search">ค้นหา</button>
+  </div>
+
+  <div class="col-auto form-check ms-2">
+    <input id="toggleJson" class="form-check-input" type="checkbox" @bind="ShowJson" />
+    <label class="form-check-label" for="toggleJson">แสดง JSON</label>
+  </div>
+</div>
+
+@if (IsLoading)
+{
+  <div class="alert alert-info">กำลังดึงข้อมูล...</div>
+}
+else if (Error is not null)
+{
+  <div class="alert alert-danger">@Error</div>
+}
+else
+{
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th style="width:80px;">ID</th>
+          <th>แพทย์</th>
+          <th>กลุ่มงาน</th>
+          <th style="width:90px;">ปี</th>
+          <th style="width:90px;">เดือน</th>
+          <th style="width:200px;">สร้างเมื่อ (UTC)</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (Results.Count == 0)
+        {
+          <tr><td colspan="6" class="text-center text-muted">ไม่พบข้อมูล</td></tr>
+        }
+        else
+        {
+          @foreach (var x in Results)
+          {
+            <tr>
+              <td>@x.Id</td>
+              <td>@x.DoctorName</td>
+              <td>@x.WorkGroup</td>
+              <td>@x.Year</td>
+              <td>@x.Month.ToString("00")</td>
+              <td>@x.CreatedUtc.ToString("yyyy-MM-dd HH:mm:ss")</td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (ShowJson)
+  {
+    <pre class="bg-light p-3 border rounded mt-3" style="white-space:pre-wrap;">@JsonOut</pre>
+  }
+}
+
+@code {
+  // ---------- State ----------
+  string? DoctorQuery { get; set; }
+  int? Year { get; set; } = DateTime.UtcNow.Year; // default this year
+  int? Month { get; set; } // null = all
+  bool ShowJson { get; set; }
+  bool IsLoading { get; set; }
+  string? Error { get; set; }
+
+  List<SoundAnnoucementApp.Services.P4PDocumentSummary> Results { get; set; } = new();
+  string JsonOut => JsonSerializer.Serialize(Results, new JsonSerializerOptions { WriteIndented = true });
+
+  // Typeahead state
+  bool ShowDoctorSuggestions { get; set; }
+  List<string> DoctorSuggestions { get; set; } = new();
+  CancellationTokenSource? _suggestCts;
+
+  protected override async Task OnInitializedAsync()
+  {
+    // initial load without doctor/month to show this year's docs
+    await Search();
+  }
+
+  // ---------- Actions ----------
+  async Task Search()
+  {
+    try
+    {
+      IsLoading = true;
+      Error = null;
+      Results = await Api.SearchDocumentsAsync(DoctorQuery, Year, Month);
+    }
+    catch (Exception ex)
+    {
+      Error = ex.Message;
+    }
+    finally
+    {
+      IsLoading = false;
+      StateHasChanged();
+    }
+  }
+
+  // Typeahead: show suggestions when focusing
+  void ShowDoctorDropdown() => ShowDoctorSuggestions = true;
+
+  // Delay hide to allow click selection
+  async Task HideDoctorDropdownDelayed()
+  {
+    await Task.Delay(150);
+    ShowDoctorSuggestions = false;
+  }
+
+  // When typing in doctor box, debounce and fetch suggestions using the same endpoint
+  async Task OnDoctorChangedAsync()
+  {
+    _suggestCts?.Cancel();
+    _suggestCts = new CancellationTokenSource();
+    var ct = _suggestCts.Token;
+
+    try
+    {
+      await Task.Delay(250, ct); // debounce
+      var q = (DoctorQuery ?? string.Empty).Trim();
+      if (q.Length == 0)
+      {
+        DoctorSuggestions.Clear();
+        ShowDoctorSuggestions = false;
+        StateHasChanged();
+        return;
+      }
+
+      // Use server contains() by querying documents with doctor=q; dedupe names client-side
+      var docs = await Api.SearchDocumentsAsync(q, null, null, ct);
+      DoctorSuggestions = docs
+        .Where(d => !string.IsNullOrWhiteSpace(d.DoctorName))
+        .Select(d => d.DoctorName!.Trim())
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .OrderBy(n => n)
+        .Take(10)
+        .ToList();
+
+      ShowDoctorSuggestions = DoctorSuggestions.Count > 0;
+      StateHasChanged();
+    }
+    catch (TaskCanceledException) { }
+    catch
+    {
+      // ignore suggest errors
+    }
+  }
+
+  void SelectDoctorSuggestion(string name)
+  {
+    DoctorQuery = name;
+    ShowDoctorSuggestions = false;
+    _ = Search();
+  }
+
+  // Bind oninput for doctor to our handler
+  async Task OnDoctorInput(ChangeEventArgs e)
+  {
+    DoctorQuery = e?.Value?.ToString();
+    await OnDoctorChangedAsync();
+  }
+}  *@
+
+@page "/p4p-list"
+@using System.Text.Json
+@inject SoundAnnoucementApp.Services.P4PApiService Api
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+<h3 class="mb-3">ค้นหาเอกสาร P4P</h3>
+
+<div class="row g-2 align-items-end mb-3">
+  <!-- Doctor typeahead -->
+  <div class="col-md-4 position-relative">
+    <label class="form-label">ชื่อแพทย์</label>
+    <input class="form-control" placeholder="พิมพ์เพื่อค้นหา..."
+           @bind="DoctorQuery" @bind:event="oninput"
+           @onfocus="ShowDoctorDropdown" @onblur="HideDoctorDropdownDelayed" />
+    @if (ShowDoctorSuggestions && DoctorSuggestions.Count > 0)
+    {
+      <ul class="list-group position-absolute w-100 shadow-sm z-3"
+          style="max-height:240px; overflow:auto;">
+        @foreach (var name in DoctorSuggestions)
+        {
+          <li class="list-group-item list-group-item-action"
+              @onclick="() => SelectDoctorSuggestion(name)">@name</li>
+        }
+      </ul>
+    }
+  </div>
+
+  <!-- Year -->
+  <div class="col-md-2">
+    <label class="form-label">ปี (ค.ศ.)</label>
+    <input type="number" class="form-control" @bind="Year" @bind:event="oninput" />
+  </div>
+
+  <!-- Month -->
+  <div class="col-md-2">
+    <label class="form-label">เดือน</label>
+    <select class="form-select" @bind="Month">
+      <option value="">ทั้งหมด</option>
+      @for (int m = 1; m <= 12; m++)
+      {
+        <option value="@m">@m.ToString("00")</option>
+      }
+    </select>
+  </div>
+
+  <div class="col-auto">
+    <button class="btn btn-primary" @onclick="Search">ค้นหา</button>
+  </div>
+
+  <div class="col-auto">
+    <button class="btn btn-outline-secondary"
+            @onclick="() => { DoctorQuery=null; Year=null; Month=null; _=Search(); }">
+      ล้างตัวกรอง
+    </button>
+  </div>
+
+  <div class="col-auto form-check ms-2">
+    <input id="toggleJson" class="form-check-input" type="checkbox" @bind="ShowJson" />
+    <label class="form-check-label" for="toggleJson">แสดง JSON</label>
+  </div>
+</div>
+
+@if (IsLoading)
+{
+  <div class="alert alert-info">กำลังดึงข้อมูล...</div>
+}
+else if (Error is not null)
+{
+  <div class="alert alert-danger">@Error</div>
+}
+else
+{
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th style="width:80px;">ID</th>
+          <th>แพทย์</th>
+          <th>กลุ่มงาน</th>
+          <th style="width:90px;">ปี</th>
+          <th style="width:90px;">เดือน</th>
+          <th style="width:200px;">สร้างเมื่อ (UTC)</th>
+          <th style="width:160px;">การทำงาน</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (Results.Count == 0)
+        {
+          <tr><td colspan="7" class="text-center text-muted">ไม่พบข้อมูล</td></tr>
+        }
+        else
+        {
+          @foreach (var x in Results)
+          {
+            <tr>
+              <td>@x.Id</td>
+              <td>@x.DoctorName</td>
+              <td>@x.WorkGroup</td>
+              <td>@x.Year</td>
+              <td>@x.Month.ToString("00")</td>
+              <td>@x.CreatedUtc.ToString("yyyy-MM-dd HH:mm:ss")</td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <button class="btn btn-outline-primary" @onclick="() => Edit(x.Id)">แก้ไข</button>
+                  <button class="btn btn-outline-danger" @onclick="() => Delete(x.Id)">ลบ</button>
+                </div>
+              </td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (ShowJson)
+  {
+    <pre class="bg-light p-3 border rounded mt-3" style="white-space:pre-wrap;">@JsonOut</pre>
+  }
+}
+
+@code {
+  // ---------- State ----------
+  string? _doctorQuery;
+  string? DoctorQuery
+  {
+    get => _doctorQuery;
+    set { _doctorQuery = value; _ = OnDoctorChangedAsync(); } // debounce suggestions
+  }
+
+  int? _year = DateTime.UtcNow.Year;
+  int? Year
+  {
+    get => _year;
+    set { _year = value; _ = Search(); } // auto-search when year changes
+  }
+
+  int? _month;
+  int? Month
+  {
+    get => _month;
+    set { _month = value; _ = Search(); } // auto-search when month changes
+  }
+
+  bool ShowJson { get; set; }
+  bool IsLoading { get; set; }
+  string? Error { get; set; }
+
+  List<SoundAnnoucementApp.Services.P4PDocumentSummary> Results { get; set; } = new();
+  string JsonOut => JsonSerializer.Serialize(Results, new JsonSerializerOptions { WriteIndented = true });
+
+  // Typeahead
+  bool ShowDoctorSuggestions { get; set; }
+  List<string> DoctorSuggestions { get; set; } = new();
+  CancellationTokenSource? _suggestCts;
+
+  protected override async Task OnInitializedAsync()
+  {
+    await Search(); // initial load
+  }
+
+  // ---------- Actions ----------
+  async Task Search()
+  {
+    try
+    {
+      IsLoading = true;
+      Error = null;
+      Results = await Api.SearchDocumentsAsync(DoctorQuery, Year, Month);
+    }
+    catch (Exception ex)
+    {
+      Error = ex.Message;
+    }
+    finally
+    {
+      IsLoading = false;
+      StateHasChanged();
+    }
+  }
+
+  @* void Edit(int id) => Nav.NavigateTo($"/p4p-edit/{id}"); *@
+  void Edit(int id) => Nav.NavigateTo($"/p4p-edit/{id}", forceLoad: true);
+
+
+  async Task Delete(int id)
+  {
+    if (!await Confirm($"ยืนยันลบเอกสาร #{id} ?")) return;
+    var ok = await Api.DeleteDocumentAsync(id);
+    if (ok) await Search();
+  }
+
+  async Task<bool> Confirm(string message)
+  {
+    try { return await JS.InvokeAsync<bool>("confirm", message); }
+    catch { return false; }
+  }
+
+  // ---- Typeahead for doctor ----
+  void ShowDoctorDropdown() => ShowDoctorSuggestions = true;
+
+  async Task HideDoctorDropdownDelayed()
+  {
+    await Task.Delay(150);
+    ShowDoctorSuggestions = false;
+  }
+
+  async Task OnDoctorChangedAsync()
+  {
+    _suggestCts?.Cancel();
+    _suggestCts = new CancellationTokenSource();
+    var ct = _suggestCts.Token;
+
+    try
+    {
+      await Task.Delay(250, ct); // debounce
+      var q = (DoctorQuery ?? string.Empty).Trim();
+      if (q.Length == 0)
+      {
+        DoctorSuggestions.Clear();
+        ShowDoctorSuggestions = false;
+        StateHasChanged();
+        return;
+      }
+
+      var docs = await Api.SearchDocumentsAsync(q, null, null, ct);
+      DoctorSuggestions = docs
+        .Where(d => !string.IsNullOrWhiteSpace(d.DoctorName))
+        .Select(d => d.DoctorName!.Trim())
+        .Distinct(StringComparer.OrdinalIgnoreCase)
+        .OrderBy(n => n)
+        .Take(10)
+        .ToList();
+
+      ShowDoctorSuggestions = DoctorSuggestions.Count > 0;
+      StateHasChanged();
+    }
+    catch (TaskCanceledException) { }
+    catch { /* ignore suggest errors */ }
+  }
+
+  void SelectDoctorSuggestion(string name)
+  {
+    DoctorQuery = name;
+    ShowDoctorSuggestions = false;
+    _ = Search();
+  }
+}
+
+
+
+
