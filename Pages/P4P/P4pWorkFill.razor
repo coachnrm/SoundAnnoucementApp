@@ -1,4 +1,4 @@
-﻿@page "/p4p-dummy"
+﻿@page "/p4p-insert"
 @using System.Globalization
 @inject SoundAnnoucementApp.Services.P4PApiService Api
 @inject IJSRuntime JS
@@ -36,6 +36,10 @@
            @bind="Year" @bind:event="oninput" />
   </div>
 
+ 
+  <div class="col-auto align-self-end">
+    <button class="btn btn-warning me-2" @onclick="LoadPreviousFromServer">โหลด P4P ล่าสุด</button>
+  </div>
   <div class="col-auto align-self-end">
     <button class="btn btn-outline-secondary" @onclick="ClearAll">ล้างข้อมูล</button>
   </div>
@@ -364,6 +368,62 @@ else
             await JS.InvokeVoidAsync("alert", "Save failed!");
         }
     }
+
+    List<int?> NormalizeDailyToCurrentMonth(List<int?>? src)
+    {
+        var list = (src ?? new()).Select(x => x).ToList();
+        if (list.Count > DaysInMonth)
+            list = list.Take(DaysInMonth).ToList();
+        else if (list.Count < DaysInMonth)
+            list.AddRange(Enumerable.Repeat<int?>(null, DaysInMonth - list.Count));
+        return list;
+    }
+
+    async Task LoadPreviousFromServer()
+  {
+      if (string.IsNullOrWhiteSpace(DoctorName))
+      {
+          await JS.InvokeVoidAsync("alert", "กรุณากรอกชื่อแพทย์ก่อน");
+          return;
+      }
+
+      try
+      {
+          var prev = await Api.GetLatestByDoctorAsync(DoctorName);
+          if (prev is null)
+          {
+              await JS.InvokeVoidAsync("alert", "ไม่พบข้อมูลเดือนก่อนของแพทย์คนนี้");
+              return;
+          }
+
+          // Optionally carry over workgroup if empty
+          if (string.IsNullOrWhiteSpace(WorkGroup) && !string.IsNullOrWhiteSpace(prev.WorkGroup))
+              WorkGroup = prev.WorkGroup;
+
+          // Replace current rows with previous rows, normalized to current month
+          Rows.Clear();
+          foreach (var pr in prev.Rows)
+          {
+              Rows.Add(new P4PRow
+              {
+                  Category = pr.Category,
+                  Activity = pr.Activity,
+                  PointsPerUnit = pr.PointsPerUnit,
+                  Daily = NormalizeDailyToCurrentMonth(pr.Daily) // <-- key step
+              });
+          }
+
+          // If there were no rows in previous, ensure at least one row exists (optional)
+          if (Rows.Count == 0) AddRow();
+
+          Save(); // persist to localStorage + re-render
+          await JS.InvokeVoidAsync("alert", $"โหลดข้อมูลล่าสุดของ \"{DoctorName}\" สำเร็จ");
+      }
+      catch (Exception ex)
+      {
+          await JS.InvokeVoidAsync("alert", $"โหลดไม่สำเร็จ: {ex.Message}");
+      }
+  }
 
 }
 

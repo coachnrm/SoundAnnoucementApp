@@ -44,7 +44,7 @@ public class P4PApiService
     // --- NEW: Get by id ---
     public async Task<P4PSnapshot?> GetDocumentAsync(int id, CancellationToken ct = default)
     {
-         var http = CreateClient();
+        var http = CreateClient();
         var r = await http.GetAsync($"/api/P4p/documents/{id}", ct);
         if (!r.IsSuccessStatusCode) return null;
         return await r.Content.ReadFromJsonAsync<P4PSnapshot>(cancellationToken: ct);
@@ -62,9 +62,19 @@ public class P4PApiService
     // --- NEW: Delete ---
     public async Task<bool> DeleteDocumentAsync(int id, CancellationToken ct = default)
     {
-         var http = CreateClient();
+        var http = CreateClient();
         var r = await http.DeleteAsync($"/api/P4p/documents/{id}", ct);
         return r.IsSuccessStatusCode;
+    }
+    
+    public async Task<P4PSnapshot?> GetLatestByDoctorAsync(string doctor, CancellationToken ct = default)
+    {
+        var http = CreateClient();
+        if (string.IsNullOrWhiteSpace(doctor)) return null;
+        var url = $"/api/P4p/documents/latest-by-doctor?doctor={Uri.EscapeDataString(doctor)}";
+        var r = await http.GetAsync(url, ct);
+        if (!r.IsSuccessStatusCode) return null;
+        return await r.Content.ReadFromJsonAsync<P4PSnapshot>(cancellationToken: ct);
     }
 
 }

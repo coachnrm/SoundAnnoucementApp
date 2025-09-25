@@ -7242,10 +7242,10 @@ D:\SoundAnnoucementApp\obj\Debug\net9.0\SoundAnnoucementApp.dll
 D:\SoundAnnoucementApp\obj\Debug\net9.0\refint\SoundAnnoucementApp.dll
 D:\SoundAnnoucementApp\obj\Debug\net9.0\SoundAnnoucementApp.pdb
 D:\SoundAnnoucementApp\obj\Debug\net9.0\ref\SoundAnnoucementApp.dll
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.8px02kxvho.wasm
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.x09glqw2pr.pdb
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.8px02kxvho.wasm.gz
-D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.x09glqw2pr.pdb.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\o7e8pc3128-{0}-8px02kxvho-8px02kxvho.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\sw1u7n1mgo-{0}-x09glqw2pr-x09glqw2pr.gz
-D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-{0}-n0bea7wwoy-n0bea7wwoy.gz
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.b5xdxm4rws.wasm
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.fz39s65iph.pdb
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.b5xdxm4rws.wasm.gz
+D:\SoundAnnoucementApp\bin\Debug\net9.0\wwwroot\_framework\SoundAnnoucementApp.fz39s65iph.pdb.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\o7e8pc3128-{0}-b5xdxm4rws-b5xdxm4rws.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\sw1u7n1mgo-{0}-fz39s65iph-fz39s65iph.gz
+D:\SoundAnnoucementApp\obj\Debug\net9.0\compressed\2wducpxqk8-{0}-x4x7jg2ouv-x4x7jg2ouv.gz
